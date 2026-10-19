@@ -227,6 +227,7 @@ function Dashboard({ onSignOut }: { onSignOut: () => void }) {
 export default function CoachApp() {
   const [session, setSession] = useState<Session | null | undefined>(undefined);
   const [allowed, setAllowed] = useState<boolean | null>(null);
+  const [checkError, setCheckError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!supabase) return;
@@ -240,9 +241,14 @@ export default function CoachApp() {
       setAllowed(null);
       return;
     }
+    setCheckError(null);
     isCoach()
       .then(setAllowed)
-      .catch(() => setAllowed(false));
+      .catch((e: unknown) => {
+        const msg = e && typeof e === 'object' && 'message' in e ? String((e as { message: unknown }).message) : String(e);
+        setCheckError(msg);
+        setAllowed(false);
+      });
   }, [session]);
 
   const signOut = () => void supabase?.auth.signOut();
@@ -259,7 +265,17 @@ export default function CoachApp() {
       <main className="app">
         <div className="center-screen">
           <h2>Accès refusé</h2>
-          <p className="muted">Ce compte n'est pas enregistré comme coach. Voir l'étape « Te déclarer coach » du guide de mise en ligne.</p>
+          {checkError ? (
+            <>
+              <p className="muted">La vérification du compte a échoué. Message technique à transmettre :</p>
+              <code style={{ background: 'var(--sand)', padding: '8px 12px', borderRadius: 8, fontSize: 13, wordBreak: 'break-word' }}>{checkError}</code>
+            </>
+          ) : (
+            <p className="muted">
+              Connecté en tant que <strong>{session.user.email}</strong>, mais ce compte n'est pas enregistré comme coach.
+              Voir l'étape « Te déclarer coach » du guide de mise en ligne.
+            </p>
+          )}
           <button className="btn secondary" onClick={signOut}>Déconnexion</button>
         </div>
       </main>
