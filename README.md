@@ -5,7 +5,7 @@ Web app de reprise sportive pour Alice (hernie dorsale haute), avec un panneau c
 - **Alice** ouvre son lien personnel secret (`/a/<lien>`) sur son iPhone : séance du jour, minuteur, consignes illustrées, bilan de fin de séance (douleur, symptômes, ressenti par exercice).
 - **Le coach** se connecte sur `/coach` : alertes, propositions de montée de niveau à valider, niveaux par exercice, message pour Alice, régularité, historique, journal des niveaux, changement de lien.
 
-Cadrage complet du projet : [docs/CADRAGE.md](docs/CADRAGE.md).
+Cadrage complet du projet : [docs/CADRAGE.md](docs/CADRAGE.md). Guide de reprise et d'utilisation : [docs/GUIDE.md](docs/GUIDE.md).
 
 ## Règles de sécurité (dans la base de données, impossibles à contourner depuis l'app)
 
