@@ -54,11 +54,21 @@ export async function startMock(port = 54321) {
 
   const RPC_ARGS = {
     athlete_get: ['p_token'],
-    athlete_submit_workout: ['p_token', 'p_client_id', 'p_session', 'p_pain', 'p_neuro', 'p_items', 'p_comment'],
+    athlete_submit_workout: ['p_token', 'p_client_id', 'p_session', 'p_pain', 'p_neuro', 'p_items', 'p_comment', 'p_done_at', 'p_rpe', 'p_duration_min', 'p_swaps'],
+    athlete_swap_options: ['p_token', 'p_session', 'p_exercise', 'p_limit'],
+    athlete_library: ['p_token'],
     is_coach: [],
     coach_set_level: ['p_athlete', 'p_exercise', 'p_level', 'p_reason'],
     coach_rotate_token: ['p_athlete'],
+    coach_swap_exercise: ['p_athlete', 'p_session', 'p_from', 'p_to', 'p_reason'],
+    coach_add_exercise: ['p_athlete', 'p_session', 'p_exercise', 'p_block'],
+    coach_remove_exercise: ['p_athlete', 'p_session', 'p_exercise'],
+    coach_set_sets: ['p_athlete', 'p_session', 'p_exercise', 'p_sets'],
+    coach_move_exercise: ['p_athlete', 'p_session', 'p_exercise', 'p_dir'],
+    coach_save_exercise: ['p_ex'],
   };
+  // arguments reçus en JSON : le serveur les attend en jsonb
+  const JSONB_ARGS = new Set(['p_items', 'p_swaps', 'p_ex']);
 
   function filters(url, allowed) {
     const where = [];
@@ -112,8 +122,10 @@ export async function startMock(port = 54321) {
       }
       const names = RPC_ARGS[fn];
       if (!names) return send(404, { message: 'unknown rpc' });
-      const vals = names.map((n) => (n === 'p_items' ? JSON.stringify(args[n] ?? []) : args[n] ?? null));
-      const sql = `select public.${fn}(${names.map((n, i) => `${n} => $${i + 1}${n === 'p_items' ? '::jsonb' : ''}`).join(', ')}) as r`;
+      // seuls les arguments envoyés sont passés : les valeurs par défaut de la base s'appliquent aux autres
+      const given = names.filter((n) => n in args);
+      const vals = given.map((n) => (JSONB_ARGS.has(n) ? JSON.stringify(args[n] ?? []) : args[n] ?? null));
+      const sql = `select public.${fn}(${given.map((n, i) => `${n} => $${i + 1}${JSONB_ARGS.has(n) ? '::jsonb' : ''}`).join(', ')}) as r`;
       const r = await run(role, sub, async () => (await db.query(sql, vals)).rows[0].r);
       return send(200, r);
     }
@@ -124,22 +136,28 @@ export async function startMock(port = 54321) {
       let f;
       if (table === 'athletes') {
         f = filters(url, ['id']);
-        sql = `select id, first_name, access_token, start_date, coach_message, frozen, frozen_at from public.athletes ${f.where} order by created_at`;
+        sql = `select id, first_name, access_token, start_date, coach_message, frozen, frozen_at, allow_swaps from public.athletes ${f.where} order by created_at`;
       } else if (table === 'program_items') {
         f = filters(url, ['athlete_id', 'active']);
-        sql = `select pi.athlete_id, pi.session_key, pi.position, pi.level, pi.exercise_id,
-                 (select json_build_object('name', e.name, 'levels', e.levels) from public.exercises e where e.id = pi.exercise_id) as exercises
+        sql = `select pi.athlete_id, pi.session_key, pi.block, pi.position, pi.level, pi.sets, pi.exercise_id,
+                 (select json_build_object('name', e.name, 'kind', e.kind, 'levels', e.levels, 'max_sets', e.max_sets) from public.exercises e where e.id = pi.exercise_id) as exercises
                from public.program_items pi ${f.where.replace(/(\w+) =/g, 'pi.$1 =')} order by pi.session_key, pi.position`;
       } else if (table === 'workouts') {
         f = filters(url, ['athlete_id', 'reviewed']);
         const limit = Number(url.searchParams.get('limit') || 100);
-        sql = `select w.id, w.athlete_id, w.session_key, w.done_at, w.pain, w.neuro, w.comment, w.reviewed,
-                 coalesce((select json_agg(json_build_object('exercise_id', wi.exercise_id, 'level', wi.level, 'feeling', wi.feeling))
+        sql = `select w.id, w.athlete_id, w.session_key, w.done_at, w.pain, w.neuro, w.comment, w.reviewed, w.rpe, w.duration_min,
+                 coalesce((select json_agg(json_build_object('exercise_id', wi.exercise_id, 'level', wi.level, 'feeling', wi.feeling, 'preference', wi.preference))
                    from public.workout_items wi where wi.workout_id = w.id), '[]') as workout_items
                from public.workouts w ${f.where.replace(/(\w+) =/g, 'w.$1 =')} order by w.done_at desc limit ${limit}`;
       } else if (table === 'level_changes') {
         f = filters(url, ['athlete_id']);
         sql = `select * from public.level_changes ${f.where} order by created_at desc limit 30`;
+      } else if (table === 'exercises') {
+        f = filters(url, ['id']);
+        sql = `select id, name, kind, illustration, video_url, cues, caution, levels, zones, equipment, intensity, family, pattern, max_sets, approved, source from public.exercises ${f.where} order by name`;
+      } else if (table === 'program_changes') {
+        f = filters(url, ['athlete_id']);
+        sql = `select * from public.program_changes ${f.where} order by created_at desc limit 30`;
       } else return send(404, { message: 'table inconnue du faux serveur' });
       const rows = await run(role, sub, async () => (await db.query(sql, f.params)).rows);
       return send(200, rows);

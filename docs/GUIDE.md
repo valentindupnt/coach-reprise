@@ -80,13 +80,14 @@ Quand Alice est gelée, tu la réactives depuis sa fiche, **après** avis médic
 | Je veux changer… | Comment | Redéploiement |
 |---|---|---|
 | Un niveau, un message, une pause | Panneau coach | Aucun, immédiat |
-| Une consigne, un exercice, un lien vidéo, la composition d'une séance | Modifier `supabase/seed.sql`, le coller dans le SQL Editor de Supabase, **Run** | Aucun |
+| Un exercice (consignes, niveaux, validation), la composition d'une séance, le nombre de tours | Panneau coach : onglet **Bibliothèque** et fiche de l'athlète | Aucun, immédiat |
+| Une modification en masse du catalogue | Modifier `supabase/seed.sql`, le coller dans le SQL Editor de Supabase, **Run** | Aucun |
 | Une règle de progression ou de sécurité | Modifier `supabase/schema.sql`, le relancer dans Supabase | Aucun (mais tester avant) |
 | L'apparence, un écran, une fonction | Modifier le code, le pousser sur `main` | Automatique (1 à 2 min) |
 
 Le plus simple : me décrire le changement. Je modifie les fichiers, je lance les tests, puis je pousse.
 
-**Attention à `schema.sql`** : il recrée des tables. Le relancer **efface les données** (c'est ce qui a vidé la table des coachs lors de la mise en route). Pour une modification de règle, demande-moi un script de migration qui conserve les données.
+**`schema.sql` et `seed.sql`** peuvent être relancés sans perdre de données (testé : athlètes, niveaux, séances et lien conservés). Les exercices que tu as modifiés dans le panneau ne sont pas écrasés par `seed.sql`. Détail et exercices à valider : `docs/BIBLIOTHEQUE.md`.
 
 ## 7. Reprendre le projet (nouvelle machine ou nouvelle conversation)
 
@@ -111,10 +112,11 @@ Pour reprendre avec Claude : donne-lui le dépôt GitHub et ce guide, ainsi que 
 | `src/components/Figure.tsx` | Dessins des exercices |
 | `src/lib/plan.ts` | Semaine type, phases, nombre de tours |
 | `supabase/schema.sql` | Tables, sécurité, règles de progression |
-| `supabase/seed.sql` | 25 exercices et programme d'Alice |
+| `supabase/seed.sql` | 43 exercices (18 à valider) et programme d'Alice |
 | `supabase/reset-alice.sql` | Remise à zéro avant le vrai lancement |
 | `tests/` | Tests des règles et des parcours |
 | `docs/CADRAGE.md` | Décisions, logique de progression, risques |
+| `docs/BIBLIOTHEQUE.md` | Sources des exercices, règle de remplacement, validation |
 
 ## 8. Avant de donner l'app à Alice (checklist)
 

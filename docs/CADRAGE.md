@@ -39,7 +39,7 @@ Accompagner la reprise sportive d'Alice (hernie dorsale haute : ni pompes ni tra
 | « Douleur » sur un exercice | Niveau − 1 automatique, inscrit au journal |
 | Douleur > 3 sur la séance | Alerte coach, conseil d'alléger |
 | Fourmillements / faiblesse | Programme gelé jusqu'à réactivation par le coach |
-| Niveau maximal atteint et toujours trop facile | Le coach change ou ajoute un exercice (`seed.sql` en V1, panneau en V2) |
+| Niveau maximal atteint et toujours trop facile | Le coach change ou ajoute un exercice (panneau coach, onglet Bibliothèque) |
 
 Semaines : 1-2 apprentissage (2 tours), 3 volume (3 tours), 4 allégée (2 tours), 5-6 endurance, 7-8 consolidation, puis entretien.
 
@@ -48,7 +48,7 @@ Semaines : 1-2 apprentissage (2 tours), 3 volume (3 tours), 4 allégée (2 tours
 | Version | Contenu |
 |---|---|
 | **V1** (livrée) | Niveaux, alertes, propositions, historique, message coach, régularité, mode hors ligne, changement de lien |
-| **V2** (≈ +2 semaines) | Édition des exercices depuis le panneau, graphiques douleur, export pour le kiné, modèles réutilisables |
+| **V2** (en cours) | Fait : édition des exercices et du programme depuis le panneau, remplacement d'exercice, bibliothèque, 2 à 4 tours, effort ressenti, date et durée réelles. Reste : graphiques douleur, export pour le kiné, modèles réutilisables |
 | **V3** | Résumé hebdomadaire vers Notion (Suivi des Athlètes), plusieurs athlètes dans l'interface |
 
 ## Risques et limites

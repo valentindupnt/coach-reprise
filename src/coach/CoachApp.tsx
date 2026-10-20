@@ -4,15 +4,18 @@ import { readableError, supabase } from '../lib/supabase';
 import {
   isCoach,
   loadAthletes,
+  loadLibrary,
   loadProposals,
   loadUnreviewedAlerts,
   markReviewed,
   setLevel,
   type CoachAthlete,
+  type CoachExercise,
   type CoachWorkout,
   type Proposal,
 } from './api';
 import AthleteDetail, { describeWorkout, Dot } from './AthleteDetail';
+import LibraryAdmin from './LibraryAdmin';
 import { SESSION_META } from '../lib/plan';
 
 function Login() {
@@ -75,11 +78,14 @@ function Dashboard({ onSignOut }: { onSignOut: () => void }) {
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState<string | null>(null);
   const [version, setVersion] = useState(0);
+  const [library, setLibrary] = useState<CoachExercise[]>([]);
+  const [view, setView] = useState<'athletes' | 'library'>('athletes');
 
   const reload = useCallback(async () => {
     try {
-      const [a, al, pr] = await Promise.all([loadAthletes(), loadUnreviewedAlerts(), loadProposals()]);
+      const [a, al, pr, lib] = await Promise.all([loadAthletes(), loadUnreviewedAlerts(), loadProposals(), loadLibrary()]);
       setAthletes(a);
+      setLibrary(lib);
       setAlerts(al);
       setProposals(pr.filter((p) => !isHidden(p)));
       setSelected((s) => s ?? a[0]?.id ?? null);
@@ -123,10 +129,21 @@ function Dashboard({ onSignOut }: { onSignOut: () => void }) {
         </div>
       </div>
 
+      <div className="row" role="tablist" aria-label="Sections">
+        <button role="tab" aria-selected={view === 'athletes'} className={`btn small ${view === 'athletes' ? '' : 'secondary'}`} onClick={() => setView('athletes')}>
+          Athlètes
+        </button>
+        <button role="tab" aria-selected={view === 'library'} className={`btn small ${view === 'library' ? '' : 'secondary'}`} onClick={() => setView('library')}>
+          Bibliothèque{library.some((e) => !e.approved) ? ` (${library.filter((e) => !e.approved).length} à valider)` : ''}
+        </button>
+      </div>
+
       {error && <div className="banner error" role="alert">{error}</div>}
       {!athletes && !error && <div className="spinner" aria-label="Chargement" />}
 
-      {frozenAthletes.map((a) => (
+      {view === 'library' && <LibraryAdmin library={library} onChanged={reload} />}
+
+      {view === 'athletes' && frozenAthletes.map((a) => (
         <div key={a.id} className="card rose">
           <h3>Programme en pause : {a.first_name}</h3>
           <p className="small">
@@ -137,7 +154,7 @@ function Dashboard({ onSignOut }: { onSignOut: () => void }) {
         </div>
       ))}
 
-      <div className="coach-grid">
+      {view === 'athletes' && <div className="coach-grid">
         <section className="card" aria-labelledby="alerts-title">
           <div className="row between">
             <h2 id="alerts-title">Alertes</h2>
@@ -200,9 +217,9 @@ function Dashboard({ onSignOut }: { onSignOut: () => void }) {
             </div>
           ))}
         </section>
-      </div>
+      </div>}
 
-      {athletes && athletes.length > 1 && (
+      {view === 'athletes' && athletes && athletes.length > 1 && (
         <div className="row wrap">
           {athletes.map((a) => (
             <button key={a.id} className={`btn small ${selected === a.id ? '' : 'secondary'}`} onClick={() => setSelected(a.id)}>
@@ -211,14 +228,14 @@ function Dashboard({ onSignOut }: { onSignOut: () => void }) {
           ))}
         </div>
       )}
-      {athletes && athletes.length === 0 && (
+      {view === 'athletes' && athletes && athletes.length === 0 && (
         <div className="card">
           <p>Aucune athlète pour le moment. Lance le script <code>supabase/seed.sql</code> pour créer Alice.</p>
         </div>
       )}
 
-      {selected && athletes?.find((a) => a.id === selected) && (
-        <AthleteDetail key={selected} refreshKey={version} athlete={athletes.find((a) => a.id === selected)!} onChanged={reload} />
+      {view === 'athletes' && selected && athletes?.find((a) => a.id === selected) && (
+        <AthleteDetail key={selected} library={library} refreshKey={version} athlete={athletes.find((a) => a.id === selected)!} onChanged={reload} />
       )}
     </main>
   );

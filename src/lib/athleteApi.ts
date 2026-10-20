@@ -1,8 +1,9 @@
 import { supabase, isNetworkError } from './supabase';
-import type { AthleteData, SubmitResult, WorkoutSubmission } from './types';
+import type { AthleteData, Library, ProgramSessionKey, SubmitResult, SwapOption, WorkoutSubmission } from './types';
 
 const CACHE_KEY = (token: string) => `cr-cache-${token.slice(0, 12)}`;
 const QUEUE_KEY = (token: string) => `cr-queue-${token.slice(0, 12)}`;
+const LIB_KEY = (token: string) => `cr-lib-${token.slice(0, 12)}`;
 
 function safeGet<T>(key: string): T | null {
   try {
@@ -32,6 +33,36 @@ export async function fetchAthlete(token: string): Promise<AthleteData> {
   return data as AthleteData;
 }
 
+export function readLibraryCache(token: string): Library | null {
+  return safeGet<Library>(LIB_KEY(token));
+}
+
+export async function fetchLibrary(token: string): Promise<Library> {
+  if (!supabase) throw new Error('not_configured');
+  const { data, error } = await supabase.rpc('athlete_library', { p_token: token });
+  if (error) throw error;
+  safeSet(LIB_KEY(token), data);
+  return data as Library;
+}
+
+/** Propositions de remplacement (variante, autre zone) choisies par la base. */
+export async function fetchSwapOptions(
+  token: string,
+  session: ProgramSessionKey,
+  exerciseId: string,
+  limit = 2,
+): Promise<SwapOption[]> {
+  if (!supabase) throw new Error('not_configured');
+  const { data, error } = await supabase.rpc('athlete_swap_options', {
+    p_token: token,
+    p_session: session,
+    p_exercise: exerciseId,
+    p_limit: limit,
+  });
+  if (error) throw error;
+  return (data ?? []) as SwapOption[];
+}
+
 export function pendingWorkouts(token: string): WorkoutSubmission[] {
   return safeGet<WorkoutSubmission[]>(QUEUE_KEY(token)) ?? [];
 }
@@ -50,6 +81,10 @@ async function sendOne(token: string, w: WorkoutSubmission): Promise<SubmitResul
     p_neuro: w.neuro,
     p_items: w.items,
     p_comment: w.comment,
+    p_done_at: w.created_at,
+    p_rpe: w.rpe ?? null,
+    p_duration_min: w.duration_min ?? null,
+    p_swaps: w.swaps ?? [],
   });
   if (error) throw error;
   return data as SubmitResult;

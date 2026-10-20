@@ -60,6 +60,19 @@ const submit = (args) => as('anon', null, async () =>
     args.token ?? TOKEN, args.client_id ?? crypto.randomUUID(), args.session ?? 'A',
     args.pain ?? 1, args.neuro ?? false, JSON.stringify(args.items ?? []), args.comment ?? null,
   ])).rows[0].r);
+const submitX = (args) => as('anon', null, async () =>
+  (await db.query('select public.athlete_submit_workout($1,$2,$3,$4,$5,$6::jsonb,$7,$8,$9,$10,$11::jsonb) r', [
+    args.token ?? TOKEN, args.client_id ?? crypto.randomUUID(), args.session ?? 'A',
+    args.pain ?? 1, args.neuro ?? false, JSON.stringify(args.items ?? []), args.comment ?? null,
+    args.done_at ?? null, args.rpe ?? null, args.duration ?? null, JSON.stringify(args.swaps ?? []),
+  ])).rows[0].r);
+const options = (session, exercise, limit = 2, token = TOKEN) => as('anon', null, async () =>
+  (await db.query('select public.athlete_swap_options($1,$2,$3,$4) r', [token, session, exercise, limit])).rows[0].r);
+const library = (token = TOKEN) => as('anon', null, async () =>
+  (await db.query('select public.athlete_library($1) r', [token])).rows[0].r);
+const asCoach = (sql, params = []) => as('authenticated', COACH, () => db.query(sql, params));
+const row = async (sql, params = []) => (await db.query(sql, params)).rows[0];
+const approve = (...ids) => db.query(`update public.exercises set approved = true where id = any($1)`, [ids]);
 const level = async (ex) => (await db.query(
   `select level from public.program_items where athlete_id=$1 and exercise_id=$2 limit 1`, [alice.id, ex])).rows[0].level;
 // Vieillit toutes les séances d'un jour (évite la limite de 12 séances / 24 h dans les tests)
@@ -71,7 +84,7 @@ console.log('Accès et sécurité');
 {
   const data = await get();
   assert.equal(data.athlete.first_name, 'Alice');
-  assert.equal(data.program.length, 26);
+  assert.equal(data.program.length, 36);
   assert.ok(data.program.every((p) => p.level === 1));
   ok('athlete_get renvoie le programme avec le bon lien');
 
@@ -114,8 +127,16 @@ console.log('Enregistrement des séances');
   await rejects(submit({ pain: -1 }), /invalid_pain/, 'douleur -1');
   await rejects(submit({ session: 'Z' }), /invalid_session/, 'séance inconnue');
   await rejects(submit({ items: [{ exercise_id: 'dead_bug', feeling: 'super' }] }), /invalid_feeling/, 'ressenti inconnu');
-  await rejects(submit({ items: [{ exercise_id: 'dead_bug' }] }), /invalid_feeling/, 'ressenti manquant');
   ok('les valeurs invalides sont refusées');
+
+  // un exercice fait mais non noté : ressenti vide, jamais un « bien » inventé
+  const cidNo = crypto.randomUUID();
+  await submit({ client_id: cidNo, items: [{ exercise_id: 'dead_bug', preference: 'aime' }] });
+  const noFeel = await row(
+    `select wi.feeling, wi.preference from public.workout_items wi join public.workouts w on w.id = wi.workout_id where w.client_id = $1`, [cidNo]);
+  assert.equal(noFeel.feeling, null);
+  assert.equal(noFeel.preference, 'aime');
+  ok('un exercice non noté est enregistré sans ressenti (pas de « bien » par défaut)');
 
   const r3 = await submit({ items: [{ exercise_id: 'inconnu', feeling: 'bien' }] });
   assert.equal(r3.status, 'ok');
@@ -142,11 +163,11 @@ console.log('Régression automatique');
 
   await as('authenticated', COACH, () => db.query(`select public.coach_set_level($1,'respiration',2,null)`, [alice.id]));
   const { rows } = await db.query(`select level from public.program_items where athlete_id=$1 and exercise_id='respiration'`, [alice.id]);
-  assert.ok(rows.length === 2 && rows.every((x) => x.level === 2));
+  assert.ok(rows.length === 3 && rows.every((x) => x.level === 2));
   await submit({ session: 'M', items: [{ exercise_id: 'respiration', feeling: 'douleur' }] });
   const { rows: rows2 } = await db.query(`select level from public.program_items where athlete_id=$1 and exercise_id='respiration'`, [alice.id]);
   assert.ok(rows2.every((x) => x.level === 1));
-  ok('un exercice présent dans deux séances garde le même niveau partout');
+  ok('un exercice présent dans plusieurs séances garde le même niveau partout');
 
   const { rows: [{ n }] } = await db.query(`select count(*)::int n from public.level_changes where source='auto'`);
   assert.equal(n, 2);
@@ -213,6 +234,226 @@ console.log('Symptôme neurologique');
   ok('le coach peut débloquer');
 }
 
+console.log('Date, durée et effort de la séance');
+{
+  await ageAll();
+  const threeDays = new Date(Date.now() - 3 * 86_400_000).toISOString();
+  const cidDate = crypto.randomUUID();
+  const r = await submitX({ client_id: cidDate, done_at: threeDays, duration: 28, rpe: 6, items: [{ exercise_id: 'rowing', feeling: 'bien', preference: 'aime' }] });
+  assert.equal(r.status, 'ok');
+  const w = await row(`select * from public.workouts where client_id = $1`, [cidDate]);
+  assert.ok(Math.abs(new Date(w.done_at) - new Date(threeDays)) < 1000, 'date réelle conservée');
+  assert.equal(w.duration_min, 28);
+  assert.equal(w.rpe, 6);
+  const wi = await row(`select preference from public.workout_items where workout_id = $1`, [w.id]);
+  assert.equal(wi.preference, 'aime');
+  ok('la date réelle, la durée, l\'effort ressenti et le « j\'aime » sont enregistrés');
+
+  const cidFuture = crypto.randomUUID();
+  const cidOld = crypto.randomUUID();
+  await submitX({ client_id: cidFuture, done_at: new Date(Date.now() + 3 * 86_400_000).toISOString() });
+  await submitX({ client_id: cidOld, done_at: new Date(Date.now() - 40 * 86_400_000).toISOString() });
+  const { rows: odd } = await db.query(`select done_at from public.workouts where client_id = any($1)`, [[cidFuture, cidOld]]);
+  assert.ok(odd.every((x) => Math.abs(new Date(x.done_at) - Date.now()) < 60_000), 'date hors limites = maintenant');
+  ok('une date dans le futur ou trop ancienne est remplacée par l\'heure de réception');
+
+  await rejects(submitX({ rpe: 11 }), /invalid_rpe/, 'rpe 11');
+  await rejects(submitX({ items: [{ exercise_id: 'rowing', feeling: 'bien', preference: 'bof' }] }), /invalid_preference/, 'préférence inconnue');
+  const cidBig = crypto.randomUUID();
+  const big = await submitX({ client_id: cidBig, duration: 9999 });
+  assert.equal(big.status, 'ok');
+  assert.equal((await row(`select duration_min d from public.workouts where client_id = $1`, [cidBig])).d, 240);
+  ok('un effort hors échelle ou une préférence inconnue sont refusés, une durée excessive est plafonnée');
+}
+
+console.log('Bibliothèque');
+{
+  const lib = await library();
+  assert.equal(lib.exercises.length, 25, 'seuls les 25 exercices de départ sont validés');
+  assert.ok(lib.exercises.every((e) => e.zones.length > 0 && e.intensity >= 1));
+  assert.equal((await row(`select count(*)::int n from public.exercises where not approved`)).n, 18);
+  ok('l\'athlète ne voit que les exercices validés par le coach (18 nouveaux exercices en attente)');
+
+  await rejects(library('x'.repeat(48)), /invalid_token/, 'bibliothèque avec un mauvais lien');
+  await rejects(as('anon', null, () => db.query('select * from public.exercises')), /permission denied/, 'anon lit exercises');
+  ok('la bibliothèque exige le lien personnel');
+
+  await approve('clamshell');
+  assert.equal((await library()).exercises.length, 26);
+  ok('un exercice validé par le coach apparaît chez l\'athlète');
+
+  const data = await get();
+  const A = data.program.filter((p) => p.session_key === 'A').map((p) => p.block);
+  assert.deepEqual(A, ['warmup', 'warmup', 'warmup', 'main', 'main', 'main', 'main', 'main', 'main', 'cooldown', 'cooldown']);
+  assert.ok(data.program.every((p) => p.exercise.max_sets >= 1 && Array.isArray(p.exercise.zones)));
+  ok('le programme est livré dans l\'ordre échauffement, circuit, retour au calme');
+}
+
+console.log('Remplacement d\'un exercice');
+{
+  await approve('glissement_talon', 'planche_inclinee');
+
+  // dead bug (gainage, intensité 2, zone abdos) : variante = glissement de talon, autre zone = planche latérale
+  const o = await options('A', 'dead_bug');
+  assert.equal(o.length, 2);
+  assert.equal(o[0].why, 'variante');
+  assert.equal(o[0].exercise.id, 'glissement_talon');
+  assert.equal(o[1].why, 'autre_zone');
+  assert.equal(o[1].exercise.id, 'planche_laterale');
+  ok('« Ça fait mal » propose 2 exercices : une variante et une alternative sur une autre zone');
+
+  assert.ok(o.every((x) => x.exercise.kind === 'gainage' && Math.abs(x.exercise.intensity - 2) <= 1));
+  const ids = (await options('A', 'dead_bug', 4)).map((x) => x.exercise.id);
+  assert.ok(!ids.includes('pallof_genoux') && !ids.includes('curl_up_mcgill'), 'jamais d\'exercice non validé');
+  assert.ok(!ids.includes('bird_dog') && !ids.includes('pallof') && !ids.includes('planche'), 'jamais un exercice déjà dans la séance');
+  assert.ok(!ids.includes('dead_bug'));
+  ok('les propositions sont du même type, d\'intensité voisine, validées et pas déjà dans la séance');
+
+  await rejects(options('Z', 'dead_bug'), /invalid_session/, 'séance inconnue');
+  assert.deepEqual(await options('A', 'inconnu'), []);
+  ok('une séance ou un exercice inconnus ne plantent pas');
+
+  // exercice choisi en séance parmi les remplacements : le ressenti est gardé sans toucher au programme
+  await ageAll();
+  const before = (await get()).program.length;
+  await submitX({ items: [{ exercise_id: 'glissement_talon', feeling: 'bien' }] });
+  const saved = await row(`select wi.level from public.workout_items wi where wi.exercise_id = 'glissement_talon'`);
+  assert.equal(saved.level, 1);
+  assert.equal((await get()).program.length, before);
+  await submitX({ items: [{ exercise_id: 'pallof_genoux', feeling: 'bien' }] });
+  assert.equal((await row(`select count(*)::int n from public.workout_items where exercise_id = 'pallof_genoux'`)).n, 0);
+  ok('un remplacement choisi en séance est enregistré ; un exercice non validé reste ignoré');
+
+  // douleur récente : l'exercice n'est plus proposé
+  await ageAll();
+  await submitX({ session: 'A', pain: 2, items: [{ exercise_id: 'glissement_talon', feeling: 'douleur' }] });
+  const after = (await options('A', 'dead_bug', 4)).map((x) => x.exercise.id);
+  assert.ok(!after.includes('glissement_talon'));
+  ok('un exercice douloureux ces 14 derniers jours n\'est plus proposé');
+  await db.query(`delete from public.workout_items where exercise_id = 'glissement_talon'`);
+
+  // remplacement permanent demandé au bilan
+  await ageAll();
+  const sw = await submitX({ pain: 1, swaps: [{ session: 'A', from: 'dead_bug', to: 'planche_inclinee' }] });
+  assert.equal(sw.swapped.length, 1);
+  const inA = (await db.query(`select exercise_id, level, block, position from public.program_items where athlete_id=$1 and session_key='A' and active and exercise_id in ('dead_bug','planche_inclinee')`, [alice.id])).rows;
+  assert.equal(inA.length, 1);
+  assert.equal(inA[0].exercise_id, 'planche_inclinee');
+  assert.equal(inA[0].level, 1);
+  assert.equal(inA[0].block, 'main');
+  assert.equal(inA[0].position, 4);
+  const log = await row(`select * from public.program_changes where athlete_id = $1`, [alice.id]);
+  assert.equal(log.kind, 'swap');
+  assert.equal(log.source, 'athlete');
+  assert.equal(log.from_exercise, 'dead_bug');
+  ok('le remplacement demandé au bilan garde la place dans la séance et s\'inscrit au journal');
+
+  // demandes refusées : la séance est enregistrée quand même, rien ne change
+  await ageAll();
+  const bad = [
+    { session: 'A', from: 'rowing', to: 'pallof_genoux' },        // non validé
+    { session: 'A', from: 'rowing', to: 'respiration' },          // autre type
+    { session: 'A', from: 'rowing', to: 'pull_apart' },           // déjà dans la séance
+    { session: 'A', from: 'inconnu', to: 'clamshell' },           // pas dans la séance
+    { session: 'Z', from: 'rowing', to: 'clamshell' },            // séance inconnue
+  ];
+  const r2 = await submitX({ swaps: bad });
+  assert.equal(r2.status, 'ok');
+  assert.equal(r2.swapped.length, 0);
+  assert.equal((await row(`select count(*)::int n from public.program_changes`)).n, 1);
+  ok('un remplacement invalide est ignoré sans bloquer l\'enregistrement de la séance');
+
+  // le coach peut interdire les remplacements
+  await asCoach(`update public.athletes set allow_swaps = false where id = $1`, [alice.id]);
+  assert.deepEqual(await options('A', 'rowing'), []);
+  await ageAll();
+  const r3 = await submitX({ swaps: [{ session: 'B', from: 'ext_hanche', to: 'clamshell' }] });
+  assert.equal(r3.swapped.length, 0);
+  assert.equal((await get()).athlete.allow_swaps, false);
+  await asCoach(`update public.athletes set allow_swaps = true where id = $1`, [alice.id]);
+  ok('quand le coach verrouille les remplacements, aucune proposition et aucun changement');
+
+  // pas de remplacement sur un programme gelé
+  await ageAll();
+  const r4 = await submitX({ neuro: true, swaps: [{ session: 'B', from: 'ext_hanche', to: 'clamshell' }] });
+  assert.equal(r4.swapped.length, 0);
+  assert.equal(r4.frozen, true);
+  await asCoach('update public.athletes set frozen=false, frozen_at=null where id=$1', [alice.id]);
+  ok('un symptôme neurologique gèle le programme avant tout remplacement');
+}
+
+console.log('Éditeur de programme (coach)');
+{
+  // accès
+  for (const q of [
+    `select public.coach_add_exercise($1,'B','clamshell','main')`,
+    `select public.coach_remove_exercise($1,'B','ext_hanche')`,
+    `select public.coach_set_sets($1,'A','rowing',3)`,
+    `select public.coach_move_exercise($1,'A','rowing',1)`,
+    `select public.coach_swap_exercise($1,'B','ext_hanche','clamshell',null)`,
+  ]) {
+    await rejects(as('authenticated', STRANGER, () => db.query(q, [alice.id])), /forbidden/, 'non-coach : ' + q);
+    await rejects(as('anon', null, () => db.query(q, [alice.id])), /permission denied/, 'anon : ' + q);
+  }
+  await rejects(as('authenticated', STRANGER, () => db.query(`select public.coach_save_exercise('{}'::jsonb)`)), /forbidden/, 'non-coach enregistre un exercice');
+  await rejects(as('anon', null, () => db.query(`select public._swap_options($1,'A','rowing',2)`, [alice.id])), /permission denied/, 'anon appelle une fonction interne');
+  ok('seul le coach peut modifier le programme et le catalogue, les fonctions internes sont fermées');
+
+  // tours par exercice
+  await asCoach(`select public.coach_set_sets($1,'A','rowing',4)`, [alice.id]);
+  assert.equal((await get()).program.find((p) => p.exercise.id === 'rowing').sets, 4);
+  await rejects(asCoach(`select public.coach_set_sets($1,'A','planche',4)`, [alice.id]), /invalid_sets/, 'planche max 3 tours');
+  await rejects(asCoach(`select public.coach_set_sets($1,'A','rowing',0)`, [alice.id]), /invalid_sets/, '0 tour');
+  await asCoach(`select public.coach_set_sets($1,'A','rowing',null)`, [alice.id]);
+  assert.equal((await get()).program.find((p) => p.exercise.id === 'rowing').sets, null);
+  ok('le coach règle le nombre de tours par exercice (1 à 4, dans la limite conseillée de l\'exercice)');
+
+  // ajout / retrait / ordre
+  await asCoach(`select public.coach_add_exercise($1,'B','clamshell','main')`, [alice.id]);
+  let main = (await get()).program.filter((p) => p.session_key === 'B' && p.block === 'main').map((p) => p.exercise.id);
+  assert.equal(main.at(-1), 'clamshell');
+  await rejects(asCoach(`select public.coach_add_exercise($1,'B','clamshell','main')`, [alice.id]), /already_in_session/, 'doublon');
+  await asCoach(`select public.coach_move_exercise($1,'B','clamshell',-1)`, [alice.id]);
+  main = (await get()).program.filter((p) => p.session_key === 'B' && p.block === 'main').map((p) => p.exercise.id);
+  assert.equal(main.at(-2), 'clamshell');
+  await asCoach(`select public.coach_move_exercise($1,'B','clamshell',-1)`, [alice.id]);
+  await asCoach(`select public.coach_move_exercise($1,'B','clamshell',-1)`, [alice.id]);
+  await asCoach(`select public.coach_move_exercise($1,'B','clamshell',-1)`, [alice.id]);
+  await asCoach(`select public.coach_move_exercise($1,'B','clamshell',-1)`, [alice.id]);
+  await asCoach(`select public.coach_move_exercise($1,'B','clamshell',-1)`, [alice.id]); // déjà en tête : sans effet
+  main = (await get()).program.filter((p) => p.session_key === 'B' && p.block === 'main').map((p) => p.exercise.id);
+  assert.equal(main[0], 'clamshell');
+  assert.equal(new Set(main).size, main.length);
+  await asCoach(`select public.coach_remove_exercise($1,'B','clamshell')`, [alice.id]);
+  assert.ok(!(await get()).program.some((p) => p.exercise.id === 'clamshell'));
+  await asCoach(`select public.coach_add_exercise($1,'B','clamshell','cooldown')`, [alice.id]);
+  assert.equal((await get()).program.find((p) => p.exercise.id === 'clamshell' && p.session_key === 'B').block, 'cooldown');
+  ok('le coach ajoute, retire, réactive et réordonne les exercices d\'une séance');
+
+  // remplacement par le coach : sans les limites imposées à l'athlète
+  await asCoach(`select public.coach_swap_exercise($1,'B','clamshell','pallof_genoux','test')`, [alice.id]);
+  assert.ok((await get()).program.some((p) => p.exercise.id === 'pallof_genoux' && p.session_key === 'B'));
+  ok('le coach peut aussi mettre un exercice qu\'il n\'a pas encore validé');
+
+  // catalogue
+  const id = (await asCoach(`select public.coach_save_exercise($1::jsonb) id`, [JSON.stringify({
+    id: 'mon_exercice', name: 'Mon exercice', kind: 'force', cues: ['Une consigne.'], levels: [{ label: 'Niveau 1' }],
+    zones: ['dos'], equipment: ['aucun'], intensity: 2, max_sets: 3, approved: true,
+  })])).rows[0].id;
+  assert.equal(id, 'mon_exercice');
+  assert.ok((await library()).exercises.some((e) => e.id === 'mon_exercice'));
+  await asCoach(`select public.coach_save_exercise($1::jsonb)`, [JSON.stringify({
+    id: 'mon_exercice', name: 'Mon exercice modifié', kind: 'force', levels: [{ label: 'Niveau 1' }, { label: 'Niveau 2' }], approved: false,
+  })]);
+  assert.ok(!(await library()).exercises.some((e) => e.id === 'mon_exercice'));
+  assert.equal((await row(`select name from public.exercises where id = 'mon_exercice'`)).name, 'Mon exercice modifié');
+  await rejects(asCoach(`select public.coach_save_exercise($1::jsonb)`, [JSON.stringify({ id: 'Mauvais Id', name: 'x', kind: 'force', levels: [{ label: 'a' }] })]), /invalid_id/, 'id invalide');
+  await rejects(asCoach(`select public.coach_save_exercise($1::jsonb)`, [JSON.stringify({ id: 'abcd', name: 'x', kind: 'cardio', levels: [{ label: 'a' }] })]), /check/, 'type inconnu');
+  await rejects(asCoach(`select public.coach_save_exercise($1::jsonb)`, [JSON.stringify({ id: 'abcd', name: 'x', kind: 'force', levels: [] })]), /check/, 'aucun niveau');
+  await rejects(asCoach(`select public.coach_save_exercise($1::jsonb)`, [JSON.stringify({ id: 'abcd', name: 'x', kind: 'force', levels: [{ label: 'a' }], video_url: 'http://x.fr' })]), /check/, 'vidéo non https');
+  ok('le coach crée, modifie et retire de la bibliothèque un exercice ; les données invalides sont refusées');
+}
+
 console.log('Lien secret');
 {
   const t = await as('authenticated', COACH, async () =>
@@ -233,6 +474,14 @@ console.log('Remise à zéro');
   assert.equal(m, 1);
   assert.equal(a2.frozen, false);
   ok('reset-alice.sql efface les tests, remet les niveaux à 1 et change le lien');
+
+  const prog = (await db.query(`select session_key, block, exercise_id, sets, active from public.program_items where athlete_id = $1`, [alice.id])).rows;
+  assert.equal(prog.length, 36);
+  assert.ok(prog.every((p) => p.active && p.sets === null));
+  assert.ok(prog.some((p) => p.session_key === 'A' && p.exercise_id === 'dead_bug'));
+  assert.ok(!prog.some((p) => p.exercise_id === 'planche_inclinee' || p.exercise_id === 'pallof_genoux'));
+  assert.equal((await row(`select count(*)::int n from public.program_changes`)).n, 0);
+  ok('reset-alice.sql rétablit aussi le programme de départ (remplacements, ajouts et tours annulés)');
 }
 
 console.log(`\n${passed} vérifications réussies.`);

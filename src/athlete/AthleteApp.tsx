@@ -1,15 +1,28 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import Player from './Player';
+import Player, { type SessionResult } from './Player';
+import LibraryBrowser from '../components/LibraryBrowser';
 import Feedback, { type FeedbackValue } from './Feedback';
 import { FrozenScreen, SafetyCard } from './Safety';
-import { fetchAthlete, flushPending, newClientId, pendingWorkouts, readCache, submitWorkout } from '../lib/athleteApi';
+import {
+  fetchAthlete,
+  fetchLibrary,
+  fetchSwapOptions,
+  flushPending,
+  newClientId,
+  pendingWorkouts,
+  readCache,
+  readLibraryCache,
+  submitWorkout,
+} from '../lib/athleteApi';
+import { suggestSwaps } from '../lib/library';
 import { readableError } from '../lib/supabase';
-import type { AthleteData, ProgramSessionKey, SessionKey, SubmitResult } from '../lib/types';
+import type { AthleteData, Library, ProgramItem, ProgramSessionKey, SessionKey, SubmitResult, SwapOption } from '../lib/types';
 import {
   DAY_NAMES,
   PHASES,
   SESSION_META,
   currentLevel,
+  estimateMinutes,
   itemsForSession,
   localDay,
   phaseForWeek,
@@ -17,13 +30,13 @@ import {
   programWeek,
 } from '../lib/plan';
 
-type Tab = 'today' | 'week' | 'progress';
+type Tab = 'today' | 'week' | 'library' | 'progress';
 type Screen =
   | { name: 'tabs' }
   | { name: 'player'; session: ProgramSessionKey }
   | { name: 'cardio' }
-  | { name: 'feedback'; session: SessionKey; painful: string | null }
-  | { name: 'result'; result: SubmitResult | null; queued: boolean; pain: number };
+  | { name: 'feedback'; session: SessionKey; played: SessionResult | null }
+  | { name: 'result'; result: SubmitResult | null; queued: boolean; pain: number; swapNames: string[] };
 
 function startOfWeek(d: Date): Date {
   const x = new Date(d.getFullYear(), d.getMonth(), d.getDate());
@@ -34,6 +47,7 @@ function startOfWeek(d: Date): Date {
 
 export default function AthleteApp({ token }: { token: string }) {
   const [data, setData] = useState<AthleteData | null>(() => readCache(token));
+  const [library, setLibrary] = useState<Library | null>(() => readLibraryCache(token));
   const [loadError, setLoadError] = useState<string | null>(null);
   const [offline, setOffline] = useState(false);
   const [tab, setTab] = useState<Tab>('today');
@@ -52,6 +66,8 @@ export default function AthleteApp({ token }: { token: string }) {
       setData(d);
       setLoadError(null);
       setOffline(false);
+      // la bibliothèque sert hors ligne (propositions de remplacement) : on la garde à jour, sans bloquer
+      void fetchLibrary(token).then(setLibrary).catch(() => undefined);
     } catch (e) {
       const msg = readableError(e);
       if (/connexion/.test(msg)) setOffline(true);
@@ -134,15 +150,30 @@ export default function AthleteApp({ token }: { token: string }) {
         items: v.items,
         comment: v.comment,
         created_at: new Date().toISOString(),
+        rpe: v.rpe,
+        duration_min: v.duration_min,
+        swaps: v.swaps,
       });
       setPendingCount(pendingWorkouts(token).length);
-      setScreen({ name: 'result', result, queued, pain: v.pain });
+      const nameOf = (id: string) =>
+        data?.program.find((p) => p.exercise.id === id)?.exercise.name ?? library?.exercises.find((e) => e.id === id)?.name ?? id;
+      const swapNames = v.swaps.map((s) => `${nameOf(s.from)} → ${nameOf(s.to)}`);
+      setScreen({ name: 'result', result, queued, pain: v.pain, swapNames });
       if (v.neuro) setData((d) => (d ? { ...d, athlete: { ...d.athlete, frozen: true } } : d));
       if (!queued) void refresh();
     } catch (e) {
       setSubmitError(readableError(e));
     } finally {
       setSubmitting(false);
+    }
+  }
+
+  /** Propositions de remplacement : la base d'abord, la bibliothèque du téléphone hors ligne. */
+  async function loadOptions(session: ProgramSessionKey, item: ProgramItem): Promise<SwapOption[]> {
+    try {
+      return await fetchSwapOptions(token, session, item.exercise.id, 2);
+    } catch {
+      return suggestSwaps(library?.exercises ?? [], item.exercise, itemsForSession(data!.program, session), [], 2);
     }
   }
 
@@ -157,11 +188,14 @@ export default function AthleteApp({ token }: { token: string }) {
     return (
       <main className="app">
         <Player
+          token={token}
           session={screen.session}
           items={items}
           rounds={phase.rounds}
+          library={library?.exercises ?? []}
+          allowSwaps={data.athlete.allow_swaps}
           onCancel={() => setScreen({ name: 'tabs' })}
-          onFinish={(painful) => setScreen({ name: 'feedback', session: screen.session, painful })}
+          onFinish={(played) => setScreen({ name: 'feedback', session: screen.session, played })}
         />
       </main>
     );
@@ -181,7 +215,7 @@ export default function AthleteApp({ token }: { token: string }) {
           <p className="small muted">Termine par 5 min de mobilité douce si tu en as envie.</p>
         </div>
         <SafetyCard />
-        <button className="btn block" onClick={() => setScreen({ name: 'feedback', session: 'C', painful: null })}>
+        <button className="btn block" onClick={() => setScreen({ name: 'feedback', session: 'C', played: null })}>
           J'ai terminé
         </button>
       </main>
@@ -189,16 +223,18 @@ export default function AthleteApp({ token }: { token: string }) {
   }
 
   if (screen.name === 'feedback') {
-    const items = screen.session === 'C' ? [] : itemsForSession(data.program, screen.session);
+    const fbSession = screen.session;
     return (
       <main className="app">
         <Feedback
-          session={screen.session}
-          items={items}
-          painfulExerciseId={screen.painful}
+          session={fbSession}
+          entries={screen.played?.entries ?? []}
+          durationMin={screen.played?.durationMin ?? null}
+          allowSwaps={data.athlete.allow_swaps}
           submitting={submitting}
           error={submitError}
-          onSubmit={(v) => void handleSubmit(screen.session, v)}
+          loadOptions={(item) => loadOptions(item.session_key, item)}
+          onSubmit={(v) => void handleSubmit(fbSession, v)}
         />
       </main>
     );
@@ -229,6 +265,12 @@ export default function AthleteApp({ token }: { token: string }) {
           <div className="banner warn">
             Pas de réseau : ta séance est gardée sur ton téléphone. Elle sera envoyée automatiquement dès que tu seras
             connectée.
+          </div>
+        )}
+        {screen.swapNames.length > 0 && (
+          <div className="card sage">
+            <h3>Programme adapté</h3>
+            <p className="small">{screen.swapNames.join(' · ')}. Ton coach est prévenu et peut revenir en arrière.</p>
           </div>
         )}
         {regressedNames.length > 0 && (
@@ -274,7 +316,11 @@ export default function AthleteApp({ token }: { token: string }) {
   const coachUps = data.recent_changes.filter(
     (c) => c.source === 'coach' && c.to_level > c.from_level && Date.now() - new Date(c.created_at).getTime() < 7 * 86_400_000,
   );
-  const exName = (id: string) => data.program.find((p) => p.exercise.id === id)?.exercise.name ?? id;
+  const exName = (id: string) =>
+    data.program.find((p) => p.exercise.id === id)?.exercise.name ?? library?.exercises.find((e) => e.id === id)?.name ?? id;
+
+  const minutesLabel = (s: SessionKey, fallback: string) =>
+    s === 'C' ? fallback : `≈ ${estimateMinutes(data.program, s, phase.rounds)} min`;
 
   const startSession = (s: SessionKey) => (s === 'C' ? setScreen({ name: 'cardio' }) : setScreen({ name: 'player', session: s }));
 
@@ -321,7 +367,7 @@ export default function AthleteApp({ token }: { token: string }) {
               <div className="card">
                 <div className="row between">
                   <span className={`pill ${SESSION_META[today.session].tone === 'rose' ? 'rose' : SESSION_META[today.session].tone === 'sage' ? 'sage' : ''}`}>
-                    Aujourd'hui · {today.minutes}
+                    Aujourd'hui · {minutesLabel(today.session, today.minutes)}
                   </span>
                   {doneToday && <span className="pill sage">Fait ✓</span>}
                 </div>
@@ -375,7 +421,7 @@ export default function AthleteApp({ token }: { token: string }) {
                       <span style={{ display: 'block', fontWeight: 700 }}>{p.title}</span>
                       <span className="small muted">{p.detail}</span>
                     </span>
-                    <span className="tiny muted">{doneDays.has(k) ? '✓' : p.minutes}</span>
+                    <span className="tiny muted">{doneDays.has(k) ? '✓' : minutesLabel(p.session, p.minutes)}</span>
                   </button>
                 );
               })}
@@ -394,6 +440,24 @@ export default function AthleteApp({ token }: { token: string }) {
             </div>
             <h2 style={{ marginTop: 8 }}>Écoute ton corps</h2>
             <SafetyCard />
+          </>
+        )}
+
+        {tab === 'library' && (
+          <>
+            <div>
+              <div className="eyebrow">Tous les exercices</div>
+              <h1 style={{ marginTop: 8 }}>Bibliothèque</h1>
+              <p className="muted" style={{ marginTop: 8 }}>
+                Les exercices validés par ton coach, avec les variantes. Pour changer un exercice de ton programme, demande-lui ou
+                choisis une proposition pendant ou après la séance.
+              </p>
+            </div>
+            {library ? (
+              <LibraryBrowser exercises={library.exercises} inProgram={library.in_program} />
+            ) : (
+              <p className="small muted">La bibliothèque se charge quand tu es connectée à internet.</p>
+            )}
           </>
         )}
 
@@ -420,7 +484,24 @@ export default function AthleteApp({ token }: { token: string }) {
                 );
               })}
             </div>
-            {(['A', 'B'] as ProgramSessionKey[]).map((s) => (
+            {data.workouts.length > 0 && (
+              <div className="card">
+                <h3>Mes dernières séances</h3>
+                {data.workouts.slice(0, 6).map((w, i) => (
+                  <div key={i} className="list-row">
+                    <div className="grow">
+                      <div style={{ fontWeight: 700 }}>{SESSION_META[w.session_key].title}</div>
+                      <div className="small muted">
+                        {new Date(w.done_at).toLocaleDateString('fr-FR', { weekday: 'short', day: 'numeric', month: 'short' })}
+                        {w.duration_min ? ` · ${w.duration_min} min` : ''}
+                        {w.rpe != null ? ` · effort ${w.rpe}/10` : ''}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+            {(['A', 'B', 'M'] as ProgramSessionKey[]).map((s) => (
               <div key={s} className="card">
                 <h3>{SESSION_META[s].title}</h3>
                 {itemsForSession(data.program, s).map((it) => (
@@ -454,6 +535,7 @@ export default function AthleteApp({ token }: { token: string }) {
       <nav className="tabbar" aria-label="Navigation">
         <button aria-current={tab === 'today' ? 'page' : undefined} onClick={() => setTab('today')}>Aujourd'hui</button>
         <button aria-current={tab === 'week' ? 'page' : undefined} onClick={() => setTab('week')}>Séances</button>
+        <button aria-current={tab === 'library' ? 'page' : undefined} onClick={() => setTab('library')}>Exercices</button>
         <button aria-current={tab === 'progress' ? 'page' : undefined} onClick={() => setTab('progress')}>Progrès</button>
       </nav>
     </>

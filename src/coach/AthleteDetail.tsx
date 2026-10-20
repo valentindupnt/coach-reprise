@@ -1,23 +1,24 @@
 import { useEffect, useMemo, useState } from 'react';
 import { readableError } from '../lib/supabase';
 import { SESSION_META, localDay, programWeek, phaseForWeek } from '../lib/plan';
-import type { ProgramSessionKey } from '../lib/types';
+import ProgramEditor from './ProgramEditor';
 import {
   loadChanges,
   loadProgram,
+  loadProgramChanges,
+  setAllowSwaps,
   loadWorkouts,
   markReviewed,
   rotateToken,
   saveMessage,
-  setLevel,
   unfreeze,
   type CoachAthlete,
+  type CoachExercise,
   type CoachProgramItem,
   type CoachWorkout,
   type LevelChange,
+  type ProgramChange,
 } from './api';
-
-const FEELING_LABEL: Record<string, string> = { facile: 'trop facile', bien: 'bien', dur: 'dur', douleur: 'douleur' };
 
 export function describeWorkout(w: CoachWorkout): string {
   const d = new Date(w.done_at);
@@ -26,6 +27,8 @@ export function describeWorkout(w: CoachWorkout): string {
       ' ' + d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }),
     `douleur ${w.pain}/10`,
   ];
+  if (w.duration_min) parts.push(`${w.duration_min} min`);
+  if (w.rpe != null) parts.push(`effort ${w.rpe}/10`);
   if (w.neuro) parts.push('fourmillements / faiblesse');
   const painful = w.workout_items.filter((i) => i.feeling === 'douleur').length;
   if (painful) parts.push(`${painful} exercice${painful > 1 ? 's' : ''} douloureux`);
@@ -38,15 +41,17 @@ function Dot({ color }: { color: string }) {
 export { Dot };
 
 interface Props {
+  library: CoachExercise[];
   athlete: CoachAthlete;
   refreshKey: number;
   onChanged: () => Promise<void>;
 }
 
-export default function AthleteDetail({ athlete, refreshKey, onChanged }: Props) {
+export default function AthleteDetail({ library, athlete, refreshKey, onChanged }: Props) {
   const [program, setProgram] = useState<CoachProgramItem[] | null>(null);
   const [workouts, setWorkouts] = useState<CoachWorkout[]>([]);
   const [changes, setChanges] = useState<LevelChange[]>([]);
+  const [programChanges, setProgramChanges] = useState<ProgramChange[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState<string | null>(null);
   const [message, setMessage] = useState(athlete.coach_message ?? '');
@@ -58,12 +63,13 @@ export default function AthleteDetail({ athlete, refreshKey, onChanged }: Props)
 
   useEffect(() => {
     let alive = true;
-    Promise.all([loadProgram(athlete.id), loadWorkouts(athlete.id), loadChanges(athlete.id)])
-      .then(([p, w, c]) => {
+    Promise.all([loadProgram(athlete.id), loadWorkouts(athlete.id), loadChanges(athlete.id), loadProgramChanges(athlete.id)])
+      .then(([p, w, c, pc]) => {
         if (!alive) return;
         setProgram(p);
         setWorkouts(w);
         setChanges(c);
+        setProgramChanges(pc);
       })
       .catch((e) => alive && setError(readableError(e)));
     return () => {
@@ -111,14 +117,12 @@ export default function AthleteDetail({ athlete, refreshKey, onChanged }: Props)
     return { days, thisWeek };
   }, [workouts]);
 
-  const exName = (id: string) => program?.find((p) => p.exercise_id === id)?.exercises?.name ?? id;
-
-  const bySession = (s: ProgramSessionKey) => (program ?? []).filter((p) => p.session_key === s);
+  const exName = (id: string) => library.find((e) => e.id === id)?.name ?? program?.find((p) => p.exercise_id === id)?.exercises?.name ?? id;
 
   // Dernier ressenti par exercice
   const lastFeeling = useMemo(() => {
     const m = new Map<string, string>();
-    for (const w of workouts) for (const i of w.workout_items) if (!m.has(i.exercise_id)) m.set(i.exercise_id, i.feeling);
+    for (const w of workouts) for (const i of w.workout_items) if (i.feeling && !m.has(i.exercise_id)) m.set(i.exercise_id, i.feeling);
     return m;
   }, [workouts]);
 
@@ -242,60 +246,30 @@ export default function AthleteDetail({ athlete, refreshKey, onChanged }: Props)
         </div>
       </div>
 
+      <ProgramEditor
+        athlete={athlete}
+        program={program}
+        library={library}
+        lastFeeling={lastFeeling}
+        reason={reason}
+        setReason={setReason}
+        busy={busy}
+        act={act}
+      />
+
       <div className="card">
-        <div className="row between wrap">
-          <h3>Niveaux par exercice</h3>
-          <label className="field" style={{ minWidth: 240, flex: 1, maxWidth: 420 }}>
-            <span className="tiny muted">Raison du prochain changement (facultatif)</span>
-            <input className="input" maxLength={300} value={reason} onChange={(e) => setReason(e.target.value)} placeholder="Ex. : validé avec son kiné" />
-          </label>
-        </div>
-        {!program && <div className="spinner" aria-label="Chargement" />}
-        <div className="coach-grid">
-          {(['A', 'B', 'M'] as ProgramSessionKey[]).map((s) => (
-            <div key={s}>
-              <div className="eyebrow" style={{ marginBottom: 4 }}>{SESSION_META[s].title}</div>
-              {bySession(s).map((p) => {
-                const max = p.exercises?.levels.length ?? 1;
-                const label = p.exercises?.levels[p.level - 1]?.label ?? '';
-                const key = `${s}-${p.exercise_id}`;
-                const lf = lastFeeling.get(p.exercise_id);
-                return (
-                  <div key={key} className="list-row" style={{ alignItems: 'flex-start' }}>
-                    <div className="grow">
-                      <div style={{ fontWeight: 700, fontSize: 15 }}>{p.exercises?.name ?? p.exercise_id}</div>
-                      <div className="tiny muted">{label}</div>
-                      {lf && <div className="tiny" style={{ color: lf === 'douleur' ? 'var(--clay)' : 'var(--muted)' }}>Dernier ressenti : {FEELING_LABEL[lf]}</div>}
-                    </div>
-                    <div className="stepper">
-                      <button
-                        aria-label={`Baisser ${p.exercises?.name}`}
-                        disabled={p.level <= 1 || busy === key}
-                        onClick={() => void act(key, async () => {
-                          await setLevel(athlete.id, p.exercise_id, p.level - 1, reason.trim() || null);
-                          setReason('');
-                        })}
-                      >
-                        −
-                      </button>
-                      <output aria-live="polite">{p.level}/{max}</output>
-                      <button
-                        aria-label={`Monter ${p.exercises?.name}`}
-                        disabled={p.level >= max || busy === key || athlete.frozen}
-                        onClick={() => void act(key, async () => {
-                          await setLevel(athlete.id, p.exercise_id, p.level + 1, reason.trim() || null);
-                          setReason('');
-                        })}
-                      >
-                        +
-                      </button>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          ))}
-        </div>
+        <label className="row" style={{ gap: 10 }}>
+          <input
+            type="checkbox"
+            checked={athlete.allow_swaps}
+            disabled={busy === 'allow'}
+            onChange={(e) => void act('allow', () => setAllowSwaps(athlete.id, e.target.checked))}
+          />
+          <span className="small">
+            <strong>{athlete.first_name} peut changer un exercice elle-même</strong> (propositions pendant et après la séance).
+            Décoche pour garder la main : elle pourra seulement passer l'exercice.
+          </span>
+        </label>
       </div>
 
       <div className="card">
@@ -312,12 +286,12 @@ export default function AthleteDetail({ athlete, refreshKey, onChanged }: Props)
           <div className="table-wrap">
             <table className="history">
               <thead>
-                <tr><th>Date</th><th>Séance</th><th>Douleur</th><th>Ressentis</th><th>Commentaire</th></tr>
+                <tr><th>Date</th><th>Séance</th><th>Durée · effort</th><th>Douleur</th><th>Ressentis</th><th>Commentaire</th></tr>
               </thead>
               <tbody>
                 {workouts.slice(0, 40).map((w) => {
                   const counts = { facile: 0, bien: 0, dur: 0, douleur: 0 } as Record<string, number>;
-                  w.workout_items.forEach((i) => counts[i.feeling]++);
+                  w.workout_items.forEach((i) => i.feeling && counts[i.feeling]++);
                   const painfulNames = w.workout_items.filter((i) => i.feeling === 'douleur').map((i) => exName(i.exercise_id));
                   const easyNames = w.workout_items.filter((i) => i.feeling === 'facile').map((i) => exName(i.exercise_id));
                   return (
@@ -327,11 +301,21 @@ export default function AthleteDetail({ athlete, refreshKey, onChanged }: Props)
                       </td>
                       <td>{w.session_key === 'C' ? 'Cardio' : w.session_key}</td>
                       <td style={{ whiteSpace: 'nowrap' }}>
+                        {w.duration_min ? `${w.duration_min} min` : '–'}
+                        {w.rpe != null ? ` · ${w.rpe}/10` : ''}
+                      </td>
+                      <td style={{ whiteSpace: 'nowrap' }}>
                         <Dot color={w.neuro ? 'var(--clay)' : w.pain > 3 ? 'var(--rose-fig)' : 'var(--sage-mid)'} />
                         {w.pain}/10{w.neuro ? ' · symptôme' : ''}
                       </td>
                       <td>
                         {painfulNames.length > 0 && <div style={{ color: 'var(--clay)' }}>Douleur : {painfulNames.join(', ')}</div>}
+                        {w.workout_items.some((i) => i.preference === 'a_changer') && (
+                          <div>À changer : {w.workout_items.filter((i) => i.preference === 'a_changer').map((i) => exName(i.exercise_id)).join(', ')}</div>
+                        )}
+                        {w.workout_items.some((i) => i.preference === 'aime') && (
+                          <div>Aimé : {w.workout_items.filter((i) => i.preference === 'aime').map((i) => exName(i.exercise_id)).join(', ')}</div>
+                        )}
                         {easyNames.length > 0 && <div>Trop facile : {easyNames.join(', ')}</div>}
                         {!painfulNames.length && !easyNames.length && w.workout_items.length > 0 && <span className="muted">{counts.dur ? `${counts.dur} dur, ` : ''}reste bien</span>}
                       </td>
@@ -343,6 +327,24 @@ export default function AthleteDetail({ athlete, refreshKey, onChanged }: Props)
             </table>
           </div>
         )}
+      </div>
+
+      <div className="card">
+        <h3>Changements d'exercices</h3>
+        {programChanges.length === 0 && <p className="small muted">Aucun exercice changé.</p>}
+        {programChanges.map((c) => (
+          <div key={c.id} className="list-row small">
+            <span style={{ width: 90, flex: 'none' }} className="muted">{new Date(c.created_at).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })}</span>
+            <span className="grow">
+              {c.kind === 'swap' && <><strong>{exName(c.from_exercise ?? '')}</strong> → <strong>{exName(c.to_exercise ?? '')}</strong></>}
+              {c.kind === 'add' && <>Ajout : <strong>{exName(c.to_exercise ?? '')}</strong></>}
+              {c.kind === 'remove' && <>Retrait : <strong>{exName(c.from_exercise ?? '')}</strong></>}
+              {c.kind === 'sets' && <><strong>{exName(c.from_exercise ?? '')}</strong> · {c.reason}</>}
+              {' '}({SESSION_META[c.session_key].title}){c.kind !== 'sets' && c.reason ? ` · ${c.reason}` : ''}
+            </span>
+            <span className={`pill ${c.source === 'athlete' ? 'rose' : 'sage'}`}>{c.source === 'athlete' ? 'athlète' : 'coach'}</span>
+          </div>
+        ))}
       </div>
 
       <div className="card">

@@ -25,7 +25,7 @@ Cadrage complet du projet : [docs/CADRAGE.md](docs/CADRAGE.md). Guide de reprise
 | `src/components/Figure.tsx` | Illustrations des exercices |
 | `src/lib/plan.ts` | Semaine type, phases sur 8 semaines, nombre de tours |
 | `supabase/schema.sql` | Tables, sécurité (RLS), règles de progression |
-| `supabase/seed.sql` | Catalogue de 25 exercices (4 niveaux pour la force) + programme d'Alice |
+| `supabase/seed.sql` | Catalogue de 43 exercices (dont 18 à valider par le coach) + programme d'Alice |
 | `supabase/reset-alice.sql` | Remise à zéro après les tests |
 | `tests/` | Tests des règles en base (`npm run test:db`) et parcours complets dans un navigateur iPhone (`npm run test:e2e`) |
 
@@ -63,7 +63,7 @@ Alice n'a pas de compte : elle accède à ses données uniquement par deux fonct
 ## Mettre à jour
 
 - **Niveaux, message, déblocage** : depuis le panneau coach, effet immédiat, sans redéployer.
-- **Exercices (consignes, niveaux, vidéos)** : modifier `supabase/seed.sql` puis le relancer dans le SQL Editor (il ne touche pas aux niveaux atteints). Édition depuis le panneau : prévue en V2.
+- **Exercices, séances, nombre de tours** : depuis le panneau coach (onglet Bibliothèque et fiche de l'athlète). Voir `docs/BIBLIOTHEQUE.md`. Mise à jour d'une installation existante : relancer `schema.sql` puis `seed.sql`, sans perte de données.
 - **Code** : chaque commit sur `main` est redéployé automatiquement par Vercel.
 
 ## Développement

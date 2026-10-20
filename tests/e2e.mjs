@@ -29,6 +29,17 @@ function watch(page, who) {
   });
 }
 
+// avance de n étapes dans le lecteur
+const next = async (page, n) => {
+  for (let i = 0; i < n; i++) await page.getByRole('button', { name: 'Étape suivante' }).click();
+};
+const endSession = async (page) => {
+  await page.getByRole('button', { name: 'Terminer la séance' }).click();
+  await page.getByRole('button', { name: 'Oui, terminer' }).click();
+};
+const noSymptom = (page) => page.locator('fieldset', { hasText: 'fourmillements' }).getByRole('button', { name: 'Non' }).click();
+const exerciseBox = (page, name) => page.locator('fieldset', { hasText: name });
+
 try {
   // ------------------------------------------------------------------
   console.log('Coach : connexion et préparation');
@@ -79,15 +90,27 @@ try {
   await alice.screenshot({ path: SHOTS + 'alice-1-accueil.png', fullPage: true });
 
   await alice.getByRole('button', { name: 'Séances' }).click();
+  const tileTexts = await alice.locator('.day-tile').allInnerTexts();
+  assert.ok(tileTexts.some((t) => /≈ \d+ min/.test(t)), 'les durées affichées sont estimées');
+  assert.ok(!tileTexts.some((t) => /^\s*30 min/m.test(t) && /Renforcement/.test(t)), 'plus de « 30 min » en dur sur les séances de renforcement');
+  ok('les durées des séances sont estimées d\'après le contenu réel');
+
   await alice.getByRole('button', { name: /^A Renforcement A/ }).click();
   await alice.getByRole('heading', { name: 'Renforcement A' }).waitFor();
+  const estimate = Number((await alice.getByText(/Environ \d+ min/).innerText()).match(/(\d+)/)[1]);
+  assert.ok(estimate >= 15 && estimate <= 35, `durée estimée plausible (${estimate} min)`);
+  await alice.getByText('Échauffement', { exact: true }).waitFor();
+  await alice.getByText('Retour au calme', { exact: true }).waitFor();
+  ok(`écran de départ : échauffement, circuit et retour au calme, environ ${estimate} min`);
   await alice.screenshot({ path: SHOTS + 'alice-2-intro.png', fullPage: true });
   await alice.getByRole('button', { name: "C'est parti" }).click();
-  await alice.getByRole('heading', { name: 'Rowing assis à l\'élastique' }).waitFor();
+  await alice.getByRole('heading', { name: 'Respiration costale' }).waitFor();
+  await alice.getByText('Échauffement · 1 sur 3').waitFor();
   const t1 = await alice.getByRole('timer').innerText();
   await alice.waitForTimeout(1600);
   const t2 = await alice.getByRole('timer').innerText();
-  assert.ok(Number(t2) < Number(t1), `le minuteur doit défiler (${t1} -> ${t2})`);
+  const secs = (t) => t.split(':').reduce((a, x) => a * 60 + Number(x), 0);
+  assert.ok(secs(t2) < secs(t1), `le minuteur doit défiler (${t1} -> ${t2})`);
   ok('le minuteur défile');
   await alice.screenshot({ path: SHOTS + 'alice-3-exercice.png', fullPage: true });
 
@@ -98,30 +121,86 @@ try {
   await alice.getByRole('button', { name: 'Reprendre' }).click();
   ok('pause et reprise du minuteur');
 
-  // avancer jusqu'au dead bug (exercice 4) : 3 exercices + 3 repos
-  for (let i = 0; i < 6; i++) await alice.getByRole('button', { name: 'Étape suivante' }).click();
+  // jusqu'au dead bug (4e du circuit) : 3 échauffements + 3 repos, puis 3 exercices + 3 repos
+  await next(alice, 12);
   await alice.getByRole('heading', { name: 'Dead bug' }).waitFor();
+  await alice.getByText('Tour 1 sur 2 · Exercice 4 sur 6').waitFor();
   await alice.getByText('Niveau 2 : Bras et jambe opposés').waitFor();
+
   await alice.getByRole('button', { name: 'Ça fait mal' }).click();
+  const chooser = alice.getByRole('dialog', { name: "Changer d'exercice" });
+  await chooser.waitFor();
+  await chooser.locator('.swap-option').first().waitFor();
+  const proposed = await chooser.locator('.swap-option').count();
+  assert.ok(proposed >= 1 && proposed <= 2, `1 à 2 propositions (${proposed})`);
+  assert.equal(await alice.getByRole('heading', { name: "Comment ça s'est passé ?" }).count(), 0);
+  await alice.screenshot({ path: SHOTS + 'alice-3b-ca-fait-mal.png', fullPage: true });
+  ok('« Ça fait mal » propose un autre exercice sans couper la séance');
+
+  const replacement = (await chooser.locator('.swap-option').first().locator('.grow > div').first().innerText()).trim();
+  await chooser.getByRole('button', { name: 'Choisir' }).first().click();
+  await alice.getByRole('heading', { name: replacement }).waitFor();
+  await alice.getByText(/remplace « Dead bug »/).waitFor();
+  ok(`la séance continue avec « ${replacement} » à la place du dead bug`);
+  await next(alice, 1);
+  await endSession(alice);
   await alice.getByRole('heading', { name: "Comment ça s'est passé ?" }).waitFor();
-  const deadBugGroup = alice.locator('fieldset', { hasText: 'Dead bug' });
-  assert.equal(await deadBugGroup.getByRole('button', { name: 'Douleur' }).getAttribute('aria-pressed'), 'true');
-  ok('« Ça fait mal » ouvre le bilan avec l\'exercice marqué douloureux');
+
+  // bilan fidèle : seuls les exercices faits, aucune pré-coche
+  const rowing = exerciseBox(alice, "Rowing assis");
+  const pallof = exerciseBox(alice, 'Pallof press');
+  await rowing.waitFor();
+  await pallof.waitFor();
+  assert.equal(await pallof.locator('[aria-pressed="true"]').count(), 0);
+  assert.equal(await exerciseBox(alice, 'Bird-dog').count(), 0);
+  assert.equal(await exerciseBox(alice, 'Étirement').count(), 0);
+  ok('le bilan ne liste que les exercices faits, sans « Bien » pré-coché');
+  const deadBug = exerciseBox(alice, 'Dead bug');
+  await deadBug.getByText('Douleur signalée').waitFor();
+  await exerciseBox(alice, replacement).getByText(/Pris à la place de « Dead bug »/).waitFor();
+  ok('le dead bug est marqué douloureux, son remplaçant est rattaché');
 
   const submit = alice.getByRole('button', { name: 'Enregistrer ma séance' });
   assert.equal(await submit.isDisabled(), true);
-  ok('impossible d\'enregistrer sans douleur ni réponse sur les symptômes');
   await alice.getByRole('button', { name: 'Douleur 5 sur 10' }).click();
-  await alice.locator('fieldset', { hasText: 'fourmillements' }).getByRole('button', { name: 'Non' }).click();
-  await alice.locator('fieldset', { hasText: 'Pallof press' }).getByRole('button', { name: 'Trop facile' }).click();
+  await noSymptom(alice);
+  assert.equal(await submit.isDisabled(), true);
+  ok('impossible d\'enregistrer sans score d\'effort (RPE)');
+  await alice.getByRole('button', { name: 'Effort 6 sur 10' }).click();
+  await alice.getByText('6 · Dur +').waitFor();
+  await pallof.getByRole('button', { name: 'Trop facile' }).click();
+  await rowing.getByRole('button', { name: "J'aime" }).click();
+  const pull = exerciseBox(alice, 'Écarté');
+  await pull.getByRole('button', { name: 'À changer' }).click();
+  await pull.locator('.swap-option').nth(1).waitFor();
+  assert.equal(await pull.locator('.swap-option').count(), 2);
+  const pullTo = (await pull.locator('.swap-option').first().locator('.grow > div').first().innerText()).trim();
+  await pull.getByRole('button', { name: 'Choisir' }).first().click();
   await alice.getByLabel('Un mot pour ton coach').fill('Un peu tiré entre les omoplates.');
   await alice.screenshot({ path: SHOTS + 'alice-4-bilan.png', fullPage: true });
+  ok('« À changer » propose 2 exercices équivalents, un est choisi');
   await submit.click();
   await alice.getByRole('heading', { name: 'Bravo Alice !' }).waitFor();
   await alice.getByText('On allège un peu').waitFor();
   await alice.getByText('Douleur au-dessus de 3').waitFor();
-  ok('séance enregistrée : dead bug allégé et conseil douleur > 3');
+  await alice.getByText('Programme adapté').waitFor();
+  ok('séance enregistrée : dead bug allégé, conseil douleur > 3, remplacement annoncé');
   await alice.screenshot({ path: SHOTS + 'alice-5-resultat.png', fullPage: true });
+
+  const { rows: [w1] } = await mock.db.query(
+    `select rpe, duration_min, extract(epoch from (now() - done_at)) as age from public.workouts where session_key = 'A' order by done_at desc limit 1`);
+  assert.equal(w1.rpe, 6);
+  assert.ok(w1.duration_min >= 1);
+  assert.ok(Number(w1.age) < 60);
+  const { rows: prefs } = await mock.db.query(
+    `select wi.exercise_id, wi.preference, wi.feeling from public.workout_items wi order by wi.exercise_id`);
+  assert.ok(prefs.some((r) => r.exercise_id === 'rowing' && r.preference === 'aime'));
+  assert.ok(prefs.some((r) => r.exercise_id === 'dead_bug' && r.feeling === 'douleur'));
+  ok('durée, effort, date réelle et préférences bien enregistrés');
+  const { rows: progA } = await mock.db.query(`select exercise_id from public.program_items where session_key = 'A' and active`);
+  assert.equal(progA.some((r) => r.exercise_id === 'pull_apart'), false);
+  assert.equal(progA.some((r) => r.exercise_id === 'dead_bug'), true);
+  ok('le remplacement choisi à l\'écran de bilan est appliqué au programme');
 
   await alice.getByRole('button', { name: "Retour à l'accueil" }).click();
   await alice.getByText(/On a allégé : Dead bug \(niveau 1\)/).waitFor({ timeout: 5000 });
@@ -132,22 +211,30 @@ try {
   await coach.getByRole('button', { name: 'Actualiser' }).click();
   await coach.getByText('Un peu tiré entre les omoplates.').first().waitFor();
   await coach.getByText(/douleur 5\/10/).first().waitFor();
-  ok('alerte visible avec douleur et commentaire');
+  await coach.getByText(/effort 6\/10/).first().waitFor();
+  ok('alerte visible avec douleur, effort et commentaire');
   await coach.locator('output', { hasText: '1/4' }).first().waitFor();
   await coach.getByText(/Dead bug.*: 2 → 1/).waitFor();
   ok('régression automatique visible au journal');
+  await coach.getByText("Changements d'exercices").waitFor();
+  await coach.locator('.list-row', { hasText: 'athlète' }).first().waitFor();
+  ok('le remplacement fait par Alice apparaît au journal, signé « athlète »');
 
   // 2e séance « trop facile » sur le Pallof press, sans douleur
-  await alice.getByRole('button', { name: 'Séances' }).click();
-  await alice.getByRole('button', { name: /^A Renforcement A/ }).click();
-  await alice.getByRole('button', { name: "C'est parti" }).click();
-  await alice.getByRole('button', { name: 'Terminer la séance' }).click();
-  await alice.getByRole('button', { name: 'Oui, terminer' }).click();
-  await alice.getByRole('button', { name: 'Douleur 1 sur 10' }).click();
-  await alice.locator('fieldset', { hasText: 'fourmillements' }).getByRole('button', { name: 'Non' }).click();
-  await alice.locator('fieldset', { hasText: 'Pallof press' }).getByRole('button', { name: 'Trop facile' }).click();
-  await alice.getByRole('button', { name: 'Enregistrer ma séance' }).click();
-  await alice.getByRole('heading', { name: 'Bravo Alice !' }).waitFor();
+  const quickSession = async (pain) => {
+    await alice.getByRole('button', { name: 'Séances' }).click();
+    await alice.getByRole('button', { name: /^A Renforcement A/ }).click();
+    await alice.getByRole('button', { name: "C'est parti" }).click();
+    await next(alice, 11); // jusqu'à la fin du Pallof press
+    await endSession(alice);
+    await alice.getByRole('button', { name: `Douleur ${pain} sur 10` }).click();
+    await noSymptom(alice);
+    await alice.getByRole('button', { name: 'Effort 4 sur 10' }).click();
+    await exerciseBox(alice, 'Pallof press').getByRole('button', { name: 'Trop facile' }).click();
+    await alice.getByRole('button', { name: 'Enregistrer ma séance' }).click();
+    await alice.getByRole('heading', { name: 'Bravo Alice !' }).waitFor();
+  };
+  await quickSession(1);
 
   await coach.getByRole('button', { name: 'Actualiser' }).click();
   // le premier « trop facile » était avec douleur 5 : pas de proposition
@@ -155,16 +242,7 @@ try {
   ok('pas de proposition quand une des deux séances avait une douleur > 3');
 
   await alice.getByRole('button', { name: "Retour à l'accueil" }).click();
-  await alice.getByRole('button', { name: 'Séances' }).click();
-  await alice.getByRole('button', { name: /^A Renforcement A/ }).click();
-  await alice.getByRole('button', { name: "C'est parti" }).click();
-  await alice.getByRole('button', { name: 'Terminer la séance' }).click();
-  await alice.getByRole('button', { name: 'Oui, terminer' }).click();
-  await alice.getByRole('button', { name: 'Douleur 0 sur 10' }).click();
-  await alice.locator('fieldset', { hasText: 'fourmillements' }).getByRole('button', { name: 'Non' }).click();
-  await alice.locator('fieldset', { hasText: 'Pallof press' }).getByRole('button', { name: 'Trop facile' }).click();
-  await alice.getByRole('button', { name: 'Enregistrer ma séance' }).click();
-  await alice.getByRole('heading', { name: 'Bravo Alice !' }).waitFor();
+  await quickSession(0);
 
   await coach.getByRole('button', { name: 'Actualiser' }).click();
   await coach.getByText('Alice · Pallof press').waitFor();
@@ -176,27 +254,187 @@ try {
   ok('validation : Pallof press passe au niveau 2');
 
   // ------------------------------------------------------------------
-  console.log('Hors connexion');
+  console.log('Bibliothèque');
   await alice.getByRole('button', { name: "Retour à l'accueil" }).click();
+  await alice.getByRole('button', { name: 'Exercices' }).click();
+  await alice.getByRole('heading', { name: 'Bibliothèque' }).waitFor();
+  await alice.getByPlaceholder('Chercher un exercice').fill('clamshell');
+  await alice.getByText('Aucun exercice ne correspond.').waitFor();
+  ok('côté Alice, un exercice non validé n\'apparaît pas');
+  await alice.getByPlaceholder('Chercher un exercice').fill('dead bug');
+  await alice.getByRole('button', { name: /Dead bug/ }).click();
+  await alice.getByText('Comment faire').waitFor();
+  await alice.getByText('Dans ton programme').first().waitFor();
+  await alice.screenshot({ path: SHOTS + 'alice-8-bibliotheque.png', fullPage: true });
+  ok('côté Alice : recherche et fiche d\'un exercice, repère « dans ton programme »');
+
+  await coach.getByRole('tab', { name: /Bibliothèque/ }).click();
+  await coach.getByRole('heading', { name: 'Bibliothèque' }).waitFor();
+  await coach.getByText(/18 à valider/).first().waitFor();
+  await coach.getByLabel(/Seulement ceux à valider/).check();
+  await coach.getByText('18 exercices').waitFor();
+  await coach.getByRole('button', { name: /Clamshell/ }).click();
+  await coach.getByText(/Source :/).waitFor();
+  await coach.screenshot({ path: SHOTS + 'coach-4-bibliotheque.png', fullPage: true });
+  await coach.getByRole('button', { name: 'Valider', exact: true }).click();
+  await coach.getByText('17 exercices').waitFor();
+  ok('le coach valide un exercice de la bibliothèque (18 → 17 à valider)');
+
+  await coach.getByRole('button', { name: '+ Nouvel exercice' }).click();
+  await coach.getByLabel('Nom', { exact: true }).fill('Montée de genou sur élastique');
+  await coach.getByRole('button', { name: 'Fessiers' }).click();
+  await coach.getByRole('button', { name: 'Élastique', exact: true }).click();
+  await coach.getByLabel(/Niveaux/).fill('Facile | 30\nNormal | 45');
+  await coach.getByLabel(/Consignes/).fill('Dos neutre\nSouffle régulier');
+  await coach.getByRole('button', { name: 'Enregistrer' }).click();
+  await coach.getByRole('heading', { name: 'Bibliothèque' }).waitFor();
+  await coach.getByLabel(/Seulement ceux à valider/).uncheck();
+  await coach.getByPlaceholder('Chercher un exercice').fill('montée de genou');
+  await coach.getByRole('button', { name: /Montée de genou sur élastique/ }).click();
+  await coach.getByRole('button', { name: 'Valider', exact: true }).click();
+  await coach.getByRole('button', { name: 'Retirer la validation' }).waitFor();
+  ok('le coach crée un exercice, puis le valide');
+
+  await alice.reload();
+  await alice.getByRole('button', { name: 'Exercices' }).click();
+  await alice.getByPlaceholder('Chercher un exercice').fill('clamshell');
+  await alice.getByRole('button', { name: /Clamshell/ }).waitFor();
+  await alice.getByPlaceholder('Chercher un exercice').fill('montée de genou');
+  await alice.getByRole('button', { name: /Montée de genou sur élastique/ }).waitFor();
+  ok('une fois validés, les exercices apparaissent chez Alice');
+
+  // ------------------------------------------------------------------
+  console.log('Coach : éditeur de programme');
+  await coach.getByRole('tab', { name: 'Athlètes' }).click();
+  await coach.getByRole('heading', { name: 'Alice', exact: true }).waitFor();
+
+  const sets = coach.getByLabel("Nombre de tours pour Rowing assis à l'élastique");
+  await sets.selectOption('4');
+  await coach.waitForTimeout(600);
+  const { rows: [{ sets: rowingSets }] } = await mock.db.query(`select sets from public.program_items where exercise_id = 'rowing' and session_key = 'A'`);
+  assert.equal(rowingSets, 4);
+  ok('le coach passe le rowing à 4 tours');
+
+  await coach.getByRole('button', { name: "Déplacer vers le bas : Rowing assis à l'élastique" }).click();
+  await coach.waitForTimeout(400);
+  const { rows: order } = await mock.db.query(
+    `select exercise_id from public.program_items where session_key = 'A' and block = 'main' and active order by position`);
+  assert.notEqual(order[0].exercise_id, 'rowing');
+  ok('le coach change l\'ordre des exercices');
+
+  await coach.getByRole('button', { name: 'Changer' }).nth(0).waitFor();
+  await coach.locator('.list-row', { hasText: 'Bird-dog' }).getByRole('button', { name: 'Changer' }).click();
+  await coach.getByRole('dialog', { name: /Remplacer/ }).waitFor();
+  await coach.getByRole('dialog').getByRole('button', { name: /Planche latérale/ }).click();
+  await coach.getByRole('dialog').getByRole('button', { name: 'Remplacer par celui-ci' }).click();
+  await coach.getByRole('dialog').waitFor({ state: 'detached' });
+  const { rows: afterSwap } = await mock.db.query(`select exercise_id from public.program_items where session_key = 'A' and active`);
+  assert.equal(afterSwap.some((r) => r.exercise_id === 'bird_dog'), false);
+  assert.equal(afterSwap.some((r) => r.exercise_id === 'planche_laterale'), true);
+  ok('le coach remplace le bird-dog par la planche latérale');
+
+  await coach.getByRole('button', { name: '+ Ajouter' }).first().click();
+  await coach.getByRole('dialog', { name: /Ajouter/ }).getByPlaceholder('Chercher un exercice').fill('clamshell');
+  await coach.getByRole('dialog').getByRole('button', { name: /Clamshell/ }).click();
+  await coach.getByRole('dialog').getByRole('button', { name: 'Ajouter', exact: true }).click();
+  await coach.getByRole('dialog').waitFor({ state: 'detached' });
+  const { rows: afterAdd } = await mock.db.query(`select 1 from public.program_items where session_key = 'A' and exercise_id = 'clamshell' and active`);
+  assert.equal(afterAdd.length, 1);
+  ok('le coach ajoute un exercice du catalogue');
+  await coach.screenshot({ path: SHOTS + 'coach-5-programme.png', fullPage: true });
+
+  await coach.getByRole('button', { name: 'Retirer Clamshell (coquillage)' }).click();
+  await coach.waitForTimeout(400);
+  const { rows: afterRemove } = await mock.db.query(`select 1 from public.program_items where session_key = 'A' and exercise_id = 'clamshell' and active`);
+  assert.equal(afterRemove.length, 0);
+  ok('le coach retire un exercice');
+
+  // Alice voit les 4 tours dans le lecteur
+  await alice.reload();
+  await alice.getByRole('button', { name: 'Séances' }).click();
+  await alice.getByRole('button', { name: /^A Renforcement A/ }).click();
+  await alice.getByText(/4 tours/).first().waitFor();
+  ok('Alice voit le nouveau nombre de tours avant de commencer');
+  await alice.getByRole('button', { name: "C'est parti" }).click();
+  await next(alice, 6); // sortie de l'échauffement
+  await alice.getByText(/Tour 1 sur 4/).waitFor();
+  ok('le circuit passe à 4 tours pour cet exercice');
+
+  // le coach garde la main : plus de changement possible côté Alice
+  await coach.getByLabel(/peut changer un exercice elle-même/).click();
+  await coach.waitForTimeout(500);
+  await alice.getByRole('button', { name: 'Terminer la séance' }).click();
+  await alice.getByRole('button', { name: 'Oui, terminer' }).click();
+  await alice.getByRole('button', { name: 'Douleur 0 sur 10' }).click();
+  await noSymptom(alice);
+  await alice.getByRole('button', { name: 'Effort 2 sur 10' }).click();
+  await alice.getByRole('button', { name: 'Enregistrer ma séance' }).click();
+  await alice.getByRole('heading', { name: 'Bravo Alice !' }).waitFor();
+  await alice.getByRole('button', { name: "Retour à l'accueil" }).click();
+  await alice.reload();
+  await alice.getByRole('button', { name: 'Séances' }).click();
+  await alice.getByRole('button', { name: /^A Renforcement A/ }).click();
+  await alice.getByRole('button', { name: "C'est parti" }).click();
+  await next(alice, 6);
+  assert.equal(await alice.getByRole('button', { name: 'Ne me convient pas' }).count(), 0);
+  await alice.getByRole('button', { name: 'Ça fait mal' }).click();
+  await alice.getByText(/garder la main/).waitFor();
+  await alice.getByRole('button', { name: 'Annuler' }).click();
+  await endSession(alice);
+  await alice.getByRole('button', { name: 'Douleur 0 sur 10' }).click();
+  await noSymptom(alice);
+  await alice.getByRole('button', { name: 'Effort 1 sur 10' }).click();
+  await alice.getByRole('button', { name: 'Enregistrer ma séance' }).click();
+  await alice.getByRole('heading', { name: 'Bravo Alice !' }).waitFor();
+  ok('quand le coach garde la main, Alice ne peut plus changer d\'exercice');
+  await coach.getByLabel(/peut changer un exercice elle-même/).click();
+  await coach.waitForTimeout(400);
+  await alice.getByRole('button', { name: "Retour à l'accueil" }).click();
+
+  // ------------------------------------------------------------------
+  console.log('Hors connexion');
   await alice.getByRole('button', { name: 'Séances' }).click();
   await alice.getByRole('button', { name: /^♡ Cardio doux/ }).click();
   await aliceCtx.setOffline(true);
   await alice.getByRole('button', { name: "J'ai terminé" }).click();
   await alice.getByRole('button', { name: 'Douleur 2 sur 10' }).click();
   await alice.getByRole('button', { name: 'Non' }).click();
+  await alice.getByRole('button', { name: 'Effort 3 sur 10' }).click();
   await alice.getByRole('button', { name: 'Enregistrer ma séance' }).click();
   await alice.getByText(/ta séance est gardée sur ton téléphone/).waitFor();
   ok('sans réseau, la séance est gardée sur le téléphone');
   await alice.getByRole('button', { name: "Retour à l'accueil" }).click();
   await alice.getByText(/1 séance en attente d'envoi/).waitFor();
+  await alice.waitForTimeout(2000);
   await aliceCtx.setOffline(false);
   // l'app renvoie d'elle-même au retour du réseau (événement « online ») ;
   // sinon, le bouton Réessayer le fait
   await alice.evaluate(() => window.dispatchEvent(new Event('online')));
   await alice.getByText(/en attente d'envoi/).waitFor({ state: 'detached' });
-  const { rows: [{ n }] } = await mock.db.query(`select count(*)::int n from public.workouts where session_key = 'C'`);
+  const { rows: [{ n, lag }] } = await mock.db.query(
+    `select count(*)::int n, max(extract(epoch from (now() - done_at))) lag from public.workouts where session_key = 'C'`);
   assert.equal(n, 1);
-  ok('au retour du réseau, la séance est envoyée une seule fois');
+  assert.ok(Number(lag) >= 1.5, `la séance garde l'heure à laquelle elle a été faite (écart ${lag} s)`);
+  ok('au retour du réseau, la séance est envoyée une seule fois, avec sa vraie date');
+
+  // propositions de remplacement sans réseau : calculées sur la bibliothèque gardée sur le téléphone
+  await alice.getByRole('button', { name: 'Séances' }).click();
+  await alice.getByRole('button', { name: /^A Renforcement A/ }).click();
+  await alice.getByRole('button', { name: "C'est parti" }).click();
+  await next(alice, 6);
+  await aliceCtx.setOffline(true);
+  await alice.getByRole('button', { name: 'Ça fait mal' }).click();
+  await alice.getByRole('dialog').locator('.swap-option').first().waitFor();
+  ok('sans réseau, « Ça fait mal » propose quand même des exercices');
+  await aliceCtx.setOffline(false);
+  await alice.getByRole('button', { name: 'Annuler' }).click();
+  await endSession(alice);
+  await alice.getByRole('button', { name: 'Douleur 0 sur 10' }).click();
+  await noSymptom(alice);
+  await alice.getByRole('button', { name: 'Effort 1 sur 10' }).click();
+  await alice.getByRole('button', { name: 'Enregistrer ma séance' }).click();
+  await alice.getByRole('heading', { name: 'Bravo Alice !' }).waitFor();
+  await alice.getByRole('button', { name: "Retour à l'accueil" }).click();
 
   // ------------------------------------------------------------------
   console.log('Symptôme neurologique');
@@ -204,9 +442,9 @@ try {
   await alice.getByRole('button', { name: /^M Mobilité/ }).click();
   await alice.getByRole('button', { name: "C'est parti" }).click();
   await alice.getByRole('heading', { name: 'Respiration costale' }).waitFor();
-  await alice.getByRole('button', { name: 'Terminer la séance' }).click();
-  await alice.getByRole('button', { name: 'Oui, terminer' }).click();
+  await endSession(alice);
   await alice.getByRole('button', { name: 'Douleur 2 sur 10' }).click();
+  await alice.getByRole('button', { name: 'Effort 2 sur 10' }).click();
   await alice.locator('fieldset', { hasText: 'fourmillements' }).getByRole('button', { name: 'Oui' }).click();
   await alice.getByRole('button', { name: 'Enregistrer ma séance' }).click();
   await alice.getByRole('heading', { name: 'On fait une pause, Alice.' }).waitFor();
@@ -231,8 +469,9 @@ try {
 
   await alice.getByRole('button', { name: 'Progrès' }).click();
   await alice.getByRole('heading', { name: 'Ma progression' }).waitFor();
+  await alice.getByText('Mes dernières séances').waitFor();
   await alice.screenshot({ path: SHOTS + 'alice-7-progres.png', fullPage: true });
-  ok('écran de progression');
+  ok('écran de progression avec durée et effort des dernières séances');
 
   // ------------------------------------------------------------------
   console.log('Changement de lien');

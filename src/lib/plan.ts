@@ -1,4 +1,4 @@
-import type { SessionKey, ProgramSessionKey, ProgramItem, Level } from './types';
+import type { Block, SessionKey, ProgramSessionKey, ProgramItem, Level } from './types';
 
 export const SESSION_META: Record<SessionKey, { title: string; subtitle: string; tone: 'sage' | 'rose' | 'sand' }> = {
   A: { title: 'Renforcement A', subtitle: 'Élastiques et gainage', tone: 'sage' },
@@ -73,7 +73,7 @@ export function phaseForWeek(week: number): Phase {
   if (week === 3) return { name: 'Construire le volume', detail: '3 tours', rounds: 3 };
   if (week === 4) return { name: 'Semaine allégée', detail: '2 tours pour récupérer', rounds: 2 };
   if (week <= 6) return { name: 'Gagner en endurance', detail: 'Élastique moyen, tempo lent', rounds: 3 };
-  if (week <= 8) return { name: 'Consolider', detail: 'Plus ferme, seulement si tout est stable', rounds: 3 };
+  if (week <= 8) return { name: 'Consolider', detail: '3 tours, certains exercices passent à 4 si ton coach le décide', rounds: 3 };
   return { name: 'Entretien', detail: 'On garde le rythme, ton coach ajuste', rounds: 3 };
 }
 
@@ -81,7 +81,7 @@ export const PHASES = [
   { weeks: '1-2', name: 'Apprendre le geste', detail: 'Élastique très léger, 2 tours' },
   { weeks: '3-4', name: 'Construire le volume', detail: '3 tours, semaine 4 allégée' },
   { weeks: '5-6', name: 'Gagner en endurance', detail: 'Élastique moyen, tempo lent' },
-  { weeks: '7-8', name: 'Consolider', detail: 'Plus ferme, seulement si tout est stable' },
+  { weeks: '7-8', name: 'Consolider', detail: '3 tours, 4 sur certains exercices si ton coach le décide' },
 ];
 
 export const WORK_SECONDS = 45;
@@ -93,44 +93,73 @@ export function currentLevel(item: ProgramItem): Level {
   return lv[Math.min(Math.max(item.level, 1), lv.length) - 1] ?? { label: '' };
 }
 
+export const BLOCK_ORDER: Record<Block, number> = { warmup: 0, main: 1, cooldown: 2 };
+export const BLOCK_LABEL: Record<Block, string> = { warmup: 'Échauffement', main: 'Circuit', cooldown: 'Retour au calme' };
+
+/** Exercices d'une séance dans l'ordre : échauffement, circuit, retour au calme. */
 export function itemsForSession(program: ProgramItem[], s: ProgramSessionKey): ProgramItem[] {
-  return program.filter((p) => p.session_key === s).sort((a, b) => a.position - b.position);
+  return program
+    .filter((p) => p.session_key === s)
+    .sort((a, b) => BLOCK_ORDER[a.block] - BLOCK_ORDER[b.block] || a.position - b.position);
+}
+
+/** Les séances A et B sont des circuits à plusieurs tours ; la séance M s'enchaîne une seule fois. */
+export function isCircuit(session: ProgramSessionKey): boolean {
+  return session === 'A' || session === 'B';
+}
+
+/**
+ * Nombre de tours d'un exercice du circuit : celui fixé par le coach, sinon celui de la phase,
+ * sans dépasser le maximum conseillé pour cet exercice.
+ */
+export function setsFor(item: ProgramItem, session: ProgramSessionKey, phaseRounds: number): number {
+  if (!isCircuit(session) || item.block !== 'main') return 1;
+  const base = item.sets ?? phaseRounds;
+  return Math.min(Math.max(base, 1), Math.max(item.exercise.max_sets, 1));
 }
 
 /** Étapes du lecteur de séance. */
 export interface Step {
   kind: 'work' | 'rest';
+  block: Block;
   item: ProgramItem;
   round: number;
   rounds: number;
-  index: number; // position de l'exercice dans la séance
+  index: number; // position de l'exercice dans son bloc, pour ce tour
   total: number;
   seconds: number;
 }
 
-export function buildSteps(items: ProgramItem[], session: ProgramSessionKey, rounds: number): Step[] {
-  const steps: Step[] = [];
-  const isCircuit = session === 'A' || session === 'B';
-  const r = isCircuit ? rounds : 1;
-  for (let round = 1; round <= r; round++) {
-    items.forEach((item, index) => {
-      const lv = currentLevel(item);
-      const work = lv.seconds ?? WORK_SECONDS;
-      steps.push({ kind: 'work', item, round, rounds: r, index, total: items.length, seconds: work });
-      const last = round === r && index === items.length - 1;
-      if (!last) {
-        steps.push({
-          kind: 'rest',
-          item,
-          round,
-          rounds: r,
-          index,
-          total: items.length,
-          seconds: isCircuit ? REST_SECONDS : TRANSITION_SECONDS,
-        });
-      }
-    });
+export function buildSteps(items: ProgramItem[], session: ProgramSessionKey, phaseRounds: number): Step[] {
+  const circuit = isCircuit(session);
+  const warmup = items.filter((i) => i.block === 'warmup');
+  const main = items.filter((i) => i.block === 'main');
+  const cooldown = items.filter((i) => i.block === 'cooldown');
+
+  const works: Omit<Step, 'kind' | 'seconds'>[] = [];
+  const once = (list: ProgramItem[], block: Block) =>
+    list.forEach((item, index) => works.push({ block, item, round: 1, rounds: 1, index, total: list.length }));
+
+  once(warmup, 'warmup');
+  if (circuit) {
+    const rounds = Math.max(1, ...main.map((m) => setsFor(m, session, phaseRounds)));
+    for (let round = 1; round <= rounds; round++) {
+      const list = main.filter((m) => setsFor(m, session, phaseRounds) >= round);
+      list.forEach((item, index) => works.push({ block: 'main', item, round, rounds, index, total: list.length }));
+    }
+  } else {
+    once(main, 'main');
   }
+  once(cooldown, 'cooldown');
+
+  const steps: Step[] = [];
+  works.forEach((w, i) => {
+    const lv = currentLevel(w.item);
+    steps.push({ ...w, kind: 'work', seconds: lv.seconds ?? WORK_SECONDS });
+    if (i < works.length - 1) {
+      steps.push({ ...w, kind: 'rest', seconds: circuit && w.block === 'main' ? REST_SECONDS : TRANSITION_SECONDS });
+    }
+  });
   return steps;
 }
 
@@ -142,4 +171,9 @@ export function formatSeconds(s: number): string {
 
 export function totalMinutes(steps: Step[]): number {
   return Math.max(1, Math.round(steps.reduce((acc, s) => acc + s.seconds, 0) / 60));
+}
+
+/** Durée estimée d'une séance du programme, pour l'afficher honnêtement. */
+export function estimateMinutes(program: ProgramItem[], session: ProgramSessionKey, phaseRounds: number): number {
+  return totalMinutes(buildSteps(itemsForSession(program, session), session, phaseRounds));
 }

@@ -184,3 +184,13 @@ table.history th { font-weight: 700; color: var(--muted); font-size: 13px; borde
 .heat div.alert { background: var(--clay); color: #fff; }
 .heat div.future { background: transparent; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---- V2 : remplacement d'exercice, bibliothèque, pastilles ---- */
+.swap-option { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 16px; background: rgba(255, 255, 255, 0.7); }
+.chip { min-height: 40px; padding: 6px 14px; border-radius: 999px; border: 2px solid var(--sand-strong); background: var(--card); font-weight: 500; font-size: 14px; }
+.chip[aria-pressed='true'] { border-color: var(--sage-strong); background: var(--sage); color: var(--sage-ink); }
+.filter-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+@media (max-width: 520px) { .filter-row { grid-template-columns: 1fr; } }
+.lib-card { gap: 8px; }
+.lib-head { display: flex; align-items: center; gap: 10px; width: 100%; padding: 0; border: 0; background: transparent; text-align: left; min-height: 44px; }
+.tabbar button { font-size: 13px; }
