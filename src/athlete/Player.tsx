@@ -3,7 +3,8 @@ import Figure from '../components/Figure';
 import { fetchSwapOptions } from '../lib/athleteApi';
 import { WHY_LABEL, ZONE_LABEL, label, suggestSwaps } from '../lib/library';
 import type { Exercise, ProgramItem, ProgramSessionKey, SwapOption } from '../lib/types';
-import { BLOCK_LABEL, buildSteps, currentLevel, formatSeconds, SESSION_META, totalMinutes } from '../lib/plan';
+import { writeLive, type LiveSession } from '../lib/liveSession';
+import { BLOCK_LABEL, buildSteps, currentLevel, formatSeconds, SESSION_META, totalMinutes, WORK_SECONDS } from '../lib/plan';
 
 export type EntryStatus = 'done' | 'skipped' | 'painful';
 
@@ -20,6 +21,8 @@ export interface SessionResult {
   entries: SessionEntry[];
   /** Vrai si la séance est allée jusqu'à la dernière étape. */
   completed: boolean;
+  /** Niveaux choisis par l'athlète pendant la séance, à enregistrer avec le ressenti. */
+  levels: { exercise_id: string; level: number }[];
 }
 
 interface Props {
@@ -29,6 +32,10 @@ interface Props {
   rounds: number;
   library: Exercise[];
   allowSwaps: boolean;
+  /** Vrai si l'athlète peut choisir elle-même le niveau (boutons « plus facile / plus dur »). */
+  canChangeLevel: boolean;
+  /** Séance interrompue (page rechargée) à reprendre là où elle en était. */
+  resume?: LiveSession | null;
   onFinish: (result: SessionResult) => void;
   onCancel: () => void;
 }
@@ -105,35 +112,121 @@ interface Chooser {
   options: SwapOption[] | null; // null = chargement
 }
 
-export default function Player({ token, session, items, rounds, library, allowSwaps, onFinish, onCancel }: Props) {
+/** Un exercice compte comme « fait » s'il a été travaillé au moins à moitié de son temps. */
+const HALF = 0.5;
+
+export default function Player({ token, session, items, rounds, library, allowSwaps, canChangeLevel, resume, onFinish, onCancel }: Props) {
   // exercices remplacés pendant la séance : identifiant d'origine -> exercice choisi
-  const [replaced, setReplaced] = useState<Record<string, ProgramItem>>({});
-  const [skipped, setSkipped] = useState<string[]>([]);
-  const [painful, setPainful] = useState<string[]>([]);
-  const effective = useMemo(() => items.map((it) => replaced[it.exercise.id] ?? it), [items, replaced]);
+  const [replaced, setReplaced] = useState<Record<string, ProgramItem>>(() => resume?.replaced ?? {});
+  const [skipped, setSkipped] = useState<string[]>(() => resume?.skipped ?? []);
+  const [painful, setPainful] = useState<string[]>(() => resume?.painful ?? []);
+  // niveaux choisis pendant la séance : exercice -> niveau
+  const [levels, setLevels] = useState<Record<string, number>>(() => resume?.levels ?? {});
+  const effective = useMemo(
+    () =>
+      items.map((it) => {
+        const base = replaced[it.exercise.id] ?? it;
+        const lv = levels[base.exercise.id];
+        return lv ? { ...base, level: lv } : base;
+      }),
+    [items, replaced, levels],
+  );
   const steps = useMemo(() => buildSteps(effective, session, rounds), [effective, session, rounds]);
 
-  const [started, setStarted] = useState(false);
-  const [index, setIndex] = useState(0);
+  const startIndex = resume ? Math.min(Math.max(resume.index ?? 0, 0), Math.max(steps.length - 1, 0)) : 0;
+  const [started, setStarted] = useState(() => !!resume);
+  const [index, setIndex] = useState(startIndex);
   const [running, setRunning] = useState(false);
-  const [remainingMs, setRemainingMs] = useState(() => (steps[0]?.seconds ?? 0) * 1000);
+  const [remainingMs, setRemainingMs] = useState(() => resume?.remainingMs ?? (steps[startIndex]?.seconds ?? 0) * 1000);
   const [confirmStop, setConfirmStop] = useState(false);
   const [chooser, setChooser] = useState<Chooser | null>(null);
   const endsAt = useRef<number | null>(null);
-  const startedAt = useRef<number>(Date.now());
+  const remainingRef = useRef(remainingMs);
+  const indexRef = useRef(startIndex);
+  /** Étapes d'effort réellement faites : numéro d'étape -> exercice qui était à l'écran. */
+  const marks = useRef<Record<number, string>>({ ...(resume?.marks ?? {}) });
+  // temps réellement passé en séance : durée écoulée moins les pauses
+  const startedAt = useRef<number>(Date.now() - (resume?.activeMs ?? 0));
+  const pausedAt = useRef<number | null>(null);
+  const pausedTotal = useRef(0);
   const { unlock, beep } = useBeep();
   useWakeLock(started);
 
   const step = steps[index];
   const isSkipped = useCallback((i: number) => skipped.includes(steps[i]?.item.exercise.id ?? ''), [skipped, steps]);
 
-  /** Résumé de la séance à l'instant où elle se termine, à l'étape `at`. */
+  const setRemaining = useCallback((ms: number) => {
+    remainingRef.current = ms;
+    setRemainingMs(ms);
+  }, []);
+
+  useEffect(() => {
+    if (!started) return;
+    if (running) {
+      if (pausedAt.current != null) {
+        pausedTotal.current += Date.now() - pausedAt.current;
+        pausedAt.current = null;
+      }
+    } else if (pausedAt.current == null) {
+      pausedAt.current = Date.now();
+    }
+  }, [running, started]);
+
+  const activeMs = useCallback(
+    () => Math.max(0, Date.now() - startedAt.current - pausedTotal.current - (pausedAt.current != null ? Date.now() - pausedAt.current : 0)),
+    [],
+  );
+
+  /** Compte l'étape en cours comme faite si elle a duré au moins la moitié de son temps. */
+  const creditCurrent = useCallback(() => {
+    const cur = steps[indexRef.current];
+    if (!cur || cur.kind !== 'work') return;
+    const total = cur.seconds * 1000;
+    if (total - remainingRef.current >= total * HALF) marks.current[indexRef.current] = cur.item.exercise.id;
+  }, [steps]);
+
+  /** État à garder sur le téléphone pour reprendre la séance après un rechargement. */
+  const snapshot = useCallback((): LiveSession => {
+    const left = endsAt.current != null ? Math.max(0, endsAt.current - Date.now()) : remainingRef.current;
+    return {
+      v: 1,
+      session,
+      savedAt: Date.now(),
+      rounds,
+      index: indexRef.current,
+      remainingMs: left,
+      activeMs: activeMs(),
+      replaced,
+      levels,
+      skipped,
+      painful,
+      marks: { ...marks.current },
+    };
+  }, [session, rounds, activeMs, replaced, levels, skipped, painful]);
+
+  useEffect(() => {
+    if (!started) return;
+    const save = () => writeLive(token, snapshot());
+    save();
+    const id = window.setInterval(save, 5000);
+    const onHide = () => {
+      if (document.visibilityState === 'hidden') save();
+    };
+    document.addEventListener('visibilitychange', onHide);
+    window.addEventListener('pagehide', save);
+    return () => {
+      window.clearInterval(id);
+      document.removeEventListener('visibilitychange', onHide);
+      window.removeEventListener('pagehide', save);
+    };
+  }, [started, token, snapshot, index, running]);
+
+  /** Résumé de la séance à l'instant où elle se termine. Un exercice n'est « fait » que s'il a vraiment été travaillé. */
   const finish = useCallback(
     (at: number, skippedNow = skipped, painfulNow = painful) => {
       setRunning(false);
       endsAt.current = null;
-      const doneCount = (id: string) =>
-        steps.slice(0, Math.min(at, steps.length)).filter((s) => s.kind === 'work' && s.item.exercise.id === id).length;
+      const doneCount = (id: string) => Object.values(marks.current).filter((x) => x === id).length;
       const entries: SessionEntry[] = [];
       for (const orig of items) {
         const origId = orig.exercise.id;
@@ -151,17 +244,24 @@ export default function Player({ token, session, items, rounds, library, allowSw
           entries.push({ item: orig, status: 'done' });
         }
       }
-      onFinish({
-        durationMin: Math.max(1, Math.round((Date.now() - startedAt.current) / 60_000)),
+      const result: SessionResult = {
+        durationMin: Math.max(1, Math.round(activeMs() / 60_000)),
         entries,
         completed: at >= steps.length,
-      });
+        levels: Object.entries(levels)
+          .filter(([id, lv]) => (items.find((it) => it.exercise.id === id)?.level ?? lv) !== lv)
+          .map(([exercise_id, level]) => ({ exercise_id, level })),
+      };
+      // le ressenti n'est pas encore envoyé : on garde le résultat au cas où la page se recharge
+      writeLive(token, { v: 1, session, savedAt: Date.now(), rounds, finished: result });
+      onFinish(result);
     },
-    [items, replaced, skipped, painful, steps, onFinish],
+    [items, replaced, levels, skipped, painful, steps, onFinish, activeMs, token, session, rounds],
   );
 
   const goTo = useCallback(
-    (i: number, autoRun: boolean, dir: 1 | -1 = 1, skippedNow = skipped) => {
+    (i: number, autoRun: boolean, dir: 1 | -1 = 1, skippedNow = skipped, credit = true) => {
+      if (credit) creditCurrent();
       let j = Math.max(0, i);
       while (j >= 0 && j < steps.length && skippedNow.includes(steps[j].item.exercise.id)) j += dir;
       if (j < 0) j = 0;
@@ -170,8 +270,9 @@ export default function Player({ token, session, items, rounds, library, allowSw
         return;
       }
       const next = steps[j];
+      indexRef.current = j;
       setIndex(j);
-      setRemainingMs(next.seconds * 1000);
+      setRemaining(next.seconds * 1000);
       if (autoRun) {
         endsAt.current = Date.now() + next.seconds * 1000;
         setRunning(true);
@@ -180,7 +281,7 @@ export default function Player({ token, session, items, rounds, library, allowSw
         setRunning(false);
       }
     },
-    [steps, skipped, finish],
+    [steps, skipped, finish, creditCurrent, setRemaining],
   );
 
   // Minuteur basé sur l'heure réelle : reste juste même si l'écran se met en veille.
@@ -191,15 +292,17 @@ export default function Player({ token, session, items, rounds, library, allowSw
       const left = endsAt.current - Date.now();
       if (left <= 0) {
         beep(step?.kind === 'work' ? 660 : 990, 260);
+        remainingRef.current = 0; // temps entièrement écoulé : l'effort compte
         goTo(index + 1, true);
       } else {
-        setRemainingMs(left);
+        setRemaining(left);
       }
     }, 200);
     return () => window.clearInterval(id);
-  }, [running, index, goTo, beep, step?.kind]);
+  }, [running, index, goTo, beep, step?.kind, setRemaining]);
 
   const pauseTimer = () => {
+    if (endsAt.current != null) remainingRef.current = Math.max(0, endsAt.current - Date.now());
     setRunning(false);
     endsAt.current = null;
   };
@@ -225,14 +328,31 @@ export default function Player({ token, session, items, rounds, library, allowSw
     if (!chooser) return;
     const orig = chooser.item;
     const origKey = items.find((it) => (replaced[it.exercise.id] ?? it).exercise.id === orig.exercise.id)?.exercise.id ?? orig.exercise.id;
-    const replacement: ProgramItem = { ...orig, exercise: opt.exercise, level: 1 };
+    // même niveau que ce que le serveur appliquera : le niveau déjà atteint ailleurs, sinon 1
+    const known = items.find((it) => it.exercise.id === opt.exercise.id)?.level;
+    const replacement: ProgramItem = { ...orig, exercise: opt.exercise, level: Math.min(known ?? 1, opt.exercise.levels.length) };
     if (chooser.mode === 'pain') setPainful((p) => (p.includes(origKey) ? p : [...p, origKey]));
     setReplaced((r) => ({ ...r, [origKey]: replacement }));
     setChooser(null);
     // l'étape en cours repart sur le nouvel exercice, en pause le temps de se mettre en place
-    setRemainingMs((step?.seconds ?? 45) * 1000);
+    setRemaining((step?.seconds ?? 45) * 1000);
     endsAt.current = null;
     setRunning(false);
+  }
+
+  /** Plus facile (-1) ou plus dur (+1) pour l'exercice à l'écran : le minuteur repart sur la durée du nouveau niveau. */
+  function changeLevel(delta: -1 | 1) {
+    if (!step) return;
+    const shownNow = step.kind === 'work' ? step.item : steps.slice(index + 1).find((s) => s.kind === 'work')?.item ?? step.item;
+    const max = shownNow.exercise.levels.length;
+    const next = Math.min(Math.max(shownNow.level + delta, 1), max);
+    if (next === shownNow.level) return;
+    setLevels((l) => ({ ...l, [shownNow.exercise.id]: next }));
+    if (step.kind === 'work') {
+      const secs = shownNow.exercise.levels[next - 1]?.seconds ?? WORK_SECONDS;
+      setRemaining(secs * 1000);
+      if (endsAt.current != null) endsAt.current = Date.now() + secs * 1000;
+    }
   }
 
   function skipCurrent(markPainful: boolean) {
@@ -250,7 +370,7 @@ export default function Player({ token, session, items, rounds, library, allowSw
       finish(steps.length, next, nextPainful);
       return;
     }
-    goTo(j, false, 1, next);
+    goTo(j, false, 1, next, false);
   }
 
   function stopSession(markPainful: boolean) {
@@ -258,6 +378,7 @@ export default function Player({ token, session, items, rounds, library, allowSw
     const nextPainful = markPainful && id && !painful.includes(id) ? [...painful, id] : painful;
     setPainful(nextPainful);
     setChooser(null);
+    if (!markPainful) creditCurrent();
     finish(index, skipped, nextPainful);
   }
 
@@ -312,8 +433,11 @@ export default function Player({ token, session, items, rounds, library, allowSw
           onClick={() => {
             unlock();
             startedAt.current = Date.now();
+            pausedTotal.current = 0;
+            pausedAt.current = null;
+            marks.current = {};
             setStarted(true);
-            goTo(0, true);
+            goTo(0, true, 1, skipped, false);
           }}
         >
           C'est parti
@@ -370,7 +494,7 @@ export default function Player({ token, session, items, rounds, library, allowSw
       </div>
 
       <div className="row" style={{ gap: 8 }}>
-        <button className="btn secondary small" onClick={() => goTo(index - 1, false, -1)} disabled={index === 0} aria-label="Étape précédente">
+        <button className="btn secondary small" onClick={() => goTo(index - 1, false, -1, skipped, false)} disabled={index === 0} aria-label="Étape précédente">
           ←
         </button>
         {running ? (
@@ -382,7 +506,7 @@ export default function Player({ token, session, items, rounds, library, allowSw
             className="btn grow"
             onClick={() => {
               unlock();
-              endsAt.current = Date.now() + remainingMs;
+              endsAt.current = Date.now() + remainingRef.current;
               setRunning(true);
             }}
           >
@@ -393,6 +517,20 @@ export default function Player({ token, session, items, rounds, library, allowSw
           →
         </button>
       </div>
+
+      {canChangeLevel && !chooser && (
+        <div className="row" style={{ gap: 8, alignItems: 'center' }}>
+          <button className="btn secondary small" disabled={shown.level <= 1} onClick={() => changeLevel(-1)}>
+            Plus facile
+          </button>
+          <span className="small muted grow" style={{ textAlign: 'center' }} aria-live="polite">
+            Niveau {shown.level} sur {shown.exercise.levels.length}
+          </span>
+          <button className="btn secondary small" disabled={shown.level >= shown.exercise.levels.length} onClick={() => changeLevel(1)}>
+            Plus dur
+          </button>
+        </div>
+      )}
 
       {isWork && !chooser && (
         <>

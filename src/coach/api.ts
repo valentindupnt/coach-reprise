@@ -1,5 +1,5 @@
 import { supabase } from '../lib/supabase';
-import type { Block, Exercise, Feeling, Level, Preference, ProgramSessionKey, SessionKey } from '../lib/types';
+import type { Block, Exercise, Feeling, Level, Preference, ProgramSessionKey, SessionKey, WeekSlot } from '../lib/types';
 
 export interface CoachAthlete {
   id: string;
@@ -10,6 +10,8 @@ export interface CoachAthlete {
   frozen: boolean;
   frozen_at: string | null;
   allow_swaps: boolean;
+  week_plan: WeekSlot[] | null;
+  levelup_mode: 'coach' | 'self';
 }
 
 /** Exercice du catalogue tel que le coach le voit (avec validation et source). */
@@ -61,7 +63,7 @@ export interface LevelChange {
   exercise_id: string;
   from_level: number;
   to_level: number;
-  source: 'auto' | 'coach';
+  source: 'auto' | 'coach' | 'self';
   reason: string | null;
   created_at: string;
 }
@@ -90,7 +92,7 @@ export async function isCoach(): Promise<boolean> {
 export async function loadAthletes(): Promise<CoachAthlete[]> {
   const { data, error } = await db()
     .from('athletes')
-    .select('id, first_name, access_token, start_date, coach_message, frozen, frozen_at, allow_swaps')
+    .select('id, first_name, access_token, start_date, coach_message, frozen, frozen_at, allow_swaps, week_plan, levelup_mode')
     .order('created_at');
   if (error) throw error;
   return (data ?? []) as CoachAthlete[];
@@ -258,5 +260,15 @@ export async function moveExercise(athleteId: string, session: ProgramSessionKey
 
 export async function setAllowSwaps(athleteId: string, allow: boolean) {
   const { error } = await db().from('athletes').update({ allow_swaps: allow }).eq('id', athleteId);
+  if (error) throw error;
+}
+
+export async function setCoachWeekPlan(athleteId: string, plan: WeekSlot[] | null) {
+  const { error } = await db().rpc('coach_set_week_plan', { p_athlete: athleteId, p_plan: plan });
+  if (error) throw error;
+}
+
+export async function setLevelupMode(athleteId: string, mode: 'coach' | 'self') {
+  const { error } = await db().rpc('coach_set_levelup_mode', { p_athlete: athleteId, p_mode: mode });
   if (error) throw error;
 }

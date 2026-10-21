@@ -29,6 +29,16 @@ create table if not exists public.athletes (
 );
 -- V2 : le coach peut interdire à l'athlète de remplacer des exercices
 alter table public.athletes add column if not exists allow_swaps boolean not null default true;
+-- V3 : semaine type personnalisée (7 jours, lundi en premier ; A, B, M, C, R = repos, AB = A ou B selon la semaine)
+-- null = semaine par défaut de l'application
+alter table public.athletes add column if not exists week_plan jsonb
+  check (week_plan is null or (jsonb_typeof(week_plan) = 'array' and jsonb_array_length(week_plan) = 7));
+-- V3 : qui valide la montée de niveau. 'coach' (par défaut) = proposition à valider par le coach ;
+-- 'self' = l'athlète monte seule, avec les mêmes garde-fous que les propositions (voir athlete_submit_workout)
+alter table public.athletes add column if not exists levelup_mode text not null default 'coach'
+  check (levelup_mode in ('coach', 'self'));
+-- Par défaut l'athlète choisit librement son niveau (même en séance) ; le coach peut repasser en 'coach'.
+alter table public.athletes alter column levelup_mode set default 'self';
 
 -- Catalogue d'exercices, partagé entre athlètes.
 -- levels : tableau JSON de niveaux, du plus facile au plus dur.
@@ -126,6 +136,12 @@ create table if not exists public.level_changes (
   created_at timestamptz not null default now()
 );
 create index if not exists level_changes_athlete_idx on public.level_changes (athlete_id, created_at desc);
+-- V3 : 'self' = montée de niveau validée automatiquement (réglage « l'athlète monte seule »)
+do $$
+begin
+  alter table public.level_changes drop constraint if exists level_changes_source_check;
+  alter table public.level_changes add constraint level_changes_source_check check (source in ('auto', 'coach', 'self'));
+end $$;
 
 -- V2 : journal des changements de programme (remplacement, ajout, retrait, nombre de tours)
 create table if not exists public.program_changes (
@@ -449,7 +465,10 @@ begin
       'start_date', a.start_date,
       'coach_message', a.coach_message,
       'frozen', a.frozen,
-      'allow_swaps', a.allow_swaps
+      'allow_swaps', a.allow_swaps,
+      'week_plan', a.week_plan,
+      'levelup_mode', a.levelup_mode,
+      'workout_count', (select count(*) from public.workouts where athlete_id = a.id)
     ),
     'program', coalesce((
       select jsonb_agg(jsonb_build_object(
@@ -507,6 +526,7 @@ $$;
 -- V2 : date et durée réelles, effort ressenti (RPE), préférence par exercice
 -- (« aime » / « à changer ») et remplacements demandés au bilan (p_swaps).
 drop function if exists public.athlete_submit_workout(text, text, text, int, boolean, jsonb, text);
+drop function if exists public.athlete_submit_workout(text, text, text, int, boolean, jsonb, text, timestamptz, int, int, jsonb);
 create or replace function public.athlete_submit_workout(
   p_token text,
   p_client_id text,
@@ -518,7 +538,8 @@ create or replace function public.athlete_submit_workout(
   p_done_at timestamptz default null,
   p_rpe int default null,
   p_duration_min int default null,
-  p_swaps jsonb default '[]'::jsonb
+  p_swaps jsonb default '[]'::jsonb,
+  p_levels jsonb default '[]'::jsonb
 )
 returns jsonb
 language plpgsql volatile security definer
@@ -537,6 +558,10 @@ declare
   v_lvl int;
   regressed jsonb := '[]'::jsonb;
   swapped jsonb := '[]'::jsonb;
+  leveled jsonb := '[]'::jsonb;
+  cand record;
+  lv jsonb;
+  cur_level int;
   today_count int;
 begin
   a := public._athlete_by_token(p_token);
@@ -565,6 +590,12 @@ begin
   if jsonb_typeof(p_swaps) <> 'array' or jsonb_array_length(p_swaps) > 10 then
     raise exception 'invalid_swaps' using errcode = '22023';
   end if;
+  if p_levels is null then
+    p_levels := '[]'::jsonb;
+  end if;
+  if jsonb_typeof(p_levels) <> 'array' or jsonb_array_length(p_levels) > 40 then
+    raise exception 'invalid_levels' using errcode = '22023';
+  end if;
   if p_client_id is not null and char_length(p_client_id) > 64 then
     raise exception 'invalid_client_id' using errcode = '22023';
   end if;
@@ -577,7 +608,8 @@ begin
     select 1 from public.workouts where client_id = p_client_id and athlete_id = a.id
   ) then
     return jsonb_build_object('status', 'duplicate', 'frozen', a.frozen,
-                              'regressed', '[]'::jsonb, 'swapped', '[]'::jsonb);
+                              'regressed', '[]'::jsonb, 'swapped', '[]'::jsonb,
+                              'leveled_up', '[]'::jsonb);
   end if;
 
   -- Garde-fou anti-abus
@@ -600,6 +632,19 @@ begin
   values (a.id, p_session, p_client_id, v_done, p_pain, p_neuro, nullif(trim(p_comment), ''),
           p_rpe, case when p_duration_min is null then null else greatest(0, least(p_duration_min, 240)) end)
   returning id into w_id;
+
+  -- Niveaux choisis par l'athlète pendant la séance (plus dur / plus facile) : appliqués avant le ressenti,
+  -- pour que celui-ci soit enregistré au niveau réellement fait. Sans effet si le coach garde la main.
+  if a.levelup_mode = 'self' and not a.frozen then
+    for lv in select value from jsonb_array_elements(p_levels) loop
+      begin
+        perform public._apply_level(a.id, lv ->> 'exercise_id', (lv ->> 'level')::int,
+                                    'Niveau choisi par l''athlète pendant la séance');
+      exception when others then
+        null; -- exercice retiré entre-temps, niveau hors limites... : n'annule pas la séance
+      end;
+    end loop;
+  end if;
 
   for it in select value from jsonb_array_elements(p_items) loop
     if jsonb_typeof(it) <> 'object' then
@@ -660,6 +705,61 @@ begin
     update public.athletes set frozen = true, frozen_at = now() where id = a.id;
   end if;
 
+  -- V3 : montée de niveau autonome, uniquement si le coach a choisi « l'athlète monte seule ».
+  -- Garde-fous : mêmes conditions que les propositions faites au coach (2 derniers ressentis « facile »
+  -- au niveau actuel, douleur <= 3, aucun symptôme, pas de changement depuis 7 jours), plus :
+  -- séance à douleur <= 3 sans symptôme, aucune douleur sur l'exercice depuis 14 jours,
+  -- et au plus 2 exercices qui montent par séance.
+  if a.levelup_mode = 'self' and not p_neuro and not a.frozen and p_pain <= 3 then
+    for cand in
+      select pi.exercise_id
+      from public.program_items pi
+      join public.exercises e on e.id = pi.exercise_id
+      join public.workout_items cur on cur.workout_id = w_id and cur.exercise_id = pi.exercise_id
+      where pi.athlete_id = a.id
+        and pi.active
+        and cur.feeling = 'facile'
+        and cur.level = pi.level
+        and pi.level < jsonb_array_length(e.levels)
+        and not exists (
+          select 1 from public.level_changes lc
+          where lc.athlete_id = pi.athlete_id and lc.exercise_id = pi.exercise_id
+            and lc.created_at > now() - interval '7 days'
+        )
+        and not exists (
+          select 1 from public.workout_items wi
+          join public.workouts w2 on w2.id = wi.workout_id
+          where w2.athlete_id = pi.athlete_id and wi.exercise_id = pi.exercise_id
+            and wi.feeling = 'douleur' and w2.done_at > now() - interval '14 days'
+        )
+        and (
+          select count(*) from (
+            select wi.feeling, wi.level, w3.pain, w3.neuro
+            from public.workout_items wi
+            join public.workouts w3 on w3.id = wi.workout_id
+            where w3.athlete_id = pi.athlete_id and wi.exercise_id = pi.exercise_id
+            order by w3.done_at desc
+            limit 2
+          ) last2
+          where last2.feeling = 'facile' and last2.level = pi.level and last2.pain <= 3 and not last2.neuro
+        ) = 2
+      group by pi.exercise_id
+      order by min(pi.session_key), min(pi.position)
+      limit 2
+    loop
+      select level into cur_level from public.program_items
+       where athlete_id = a.id and exercise_id = cand.exercise_id and active
+       order by position limit 1;
+      update public.program_items set level = level + 1
+       where athlete_id = a.id and exercise_id = cand.exercise_id;
+      insert into public.level_changes (athlete_id, exercise_id, from_level, to_level, source, reason)
+      values (a.id, cand.exercise_id, cur_level, cur_level + 1, 'self',
+              'Montée validée par l''athlète : 2 séances « trop facile », sans douleur ni symptôme');
+      leveled := leveled || jsonb_build_array(
+        jsonb_build_object('exercise_id', cand.exercise_id, 'to_level', cur_level + 1));
+    end loop;
+  end if;
+
   -- Remplacements demandés au bilan : un échec (exercice retiré, déjà remplacé...) n'annule pas la séance
   if not (p_neuro or a.frozen) then
     for sw in select value from jsonb_array_elements(p_swaps) loop
@@ -678,8 +778,105 @@ begin
     'status', 'ok',
     'frozen', (p_neuro or a.frozen),
     'regressed', regressed,
-    'swapped', swapped
+    'swapped', swapped,
+    'leveled_up', leveled
   );
+end;
+$$;
+
+-- V3 : changement de niveau choisi par l'athlète (dans les deux sens, sans condition).
+-- Interne : journalise « self » et applique à toutes les lignes de l'exercice.
+create or replace function public._apply_level(p_athlete uuid, p_exercise text, p_level int, p_reason text)
+returns void
+language plpgsql volatile
+set search_path = public
+as $$
+declare
+  cur int;
+  maxl int;
+begin
+  select pi.level, jsonb_array_length(e.levels) into cur, maxl
+  from public.program_items pi
+  join public.exercises e on e.id = pi.exercise_id
+  where pi.athlete_id = p_athlete and pi.exercise_id = p_exercise and pi.active
+  order by pi.position
+  limit 1;
+  if not found then
+    raise exception 'not_found' using errcode = 'P0002';
+  end if;
+  if p_level is null or p_level < 1 or p_level > maxl then
+    raise exception 'invalid_level' using errcode = '22023';
+  end if;
+  if p_level = cur then
+    return;
+  end if;
+  update public.program_items set level = p_level where athlete_id = p_athlete and exercise_id = p_exercise;
+  insert into public.level_changes (athlete_id, exercise_id, from_level, to_level, source, reason)
+  values (p_athlete, p_exercise, cur, p_level, 'self', p_reason);
+end;
+$$;
+
+create or replace function public.athlete_set_level(p_token text, p_exercise text, p_level int)
+returns void
+language plpgsql volatile security definer
+set search_path = public
+as $$
+declare
+  a public.athletes;
+begin
+  a := public._athlete_by_token(p_token);
+  if a.frozen then
+    raise exception 'program_frozen' using errcode = '42501';
+  end if;
+  if a.levelup_mode <> 'self' then
+    raise exception 'level_by_coach' using errcode = '42501';
+  end if;
+  perform public._apply_level(a.id, p_exercise, p_level, 'Niveau choisi par l''athlète');
+end;
+$$;
+
+-- V3 : l'athlète organise sa semaine type. Valeurs : A, B, M, C, R (repos), AB (A ou B selon la semaine).
+-- Garde-fou : au plus 4 jours de renforcement (A, B ou AB) par semaine ; le coach peut aller au-delà.
+-- p_plan null = retour à la semaine par défaut.
+create or replace function public._valid_week_plan(p_plan jsonb, p_max_strength int)
+returns void
+language plpgsql immutable
+as $$
+declare
+  v jsonb;
+  strength int := 0;
+begin
+  if p_plan is null or p_plan = 'null'::jsonb then
+    return;
+  end if;
+  if jsonb_typeof(p_plan) <> 'array' or jsonb_array_length(p_plan) <> 7 then
+    raise exception 'invalid_week_plan' using errcode = '22023';
+  end if;
+  for v in select value from jsonb_array_elements(p_plan) loop
+    if jsonb_typeof(v) <> 'string' or (v #>> '{}') not in ('A', 'B', 'M', 'C', 'R', 'AB') then
+      raise exception 'invalid_week_plan' using errcode = '22023';
+    end if;
+    if (v #>> '{}') in ('A', 'B', 'AB') then
+      strength := strength + 1;
+    end if;
+  end loop;
+  if p_max_strength is not null and strength > p_max_strength then
+    raise exception 'too_many_strength_days' using errcode = '22023';
+  end if;
+end;
+$$;
+
+create or replace function public.athlete_set_week_plan(p_token text, p_plan jsonb)
+returns void
+language plpgsql volatile security definer
+set search_path = public
+as $$
+declare
+  a public.athletes;
+begin
+  a := public._athlete_by_token(p_token);
+  perform public._valid_week_plan(p_plan, 4);
+  update public.athletes set week_plan = nullif(p_plan, 'null'::jsonb) where id = a.id;
 end;
 $$;
 
@@ -1029,6 +1226,37 @@ begin
 end;
 $$;
 
+-- V3 : semaine type et mode de montée de niveau, côté coach
+create or replace function public.coach_set_week_plan(p_athlete uuid, p_plan jsonb)
+returns void
+language plpgsql volatile security definer
+set search_path = public
+as $$
+begin
+  if not public.is_coach() then
+    raise exception 'forbidden' using errcode = '42501';
+  end if;
+  perform public._valid_week_plan(p_plan, null);
+  update public.athletes set week_plan = nullif(p_plan, 'null'::jsonb) where id = p_athlete;
+end;
+$$;
+
+create or replace function public.coach_set_levelup_mode(p_athlete uuid, p_mode text)
+returns void
+language plpgsql volatile security definer
+set search_path = public
+as $$
+begin
+  if not public.is_coach() then
+    raise exception 'forbidden' using errcode = '42501';
+  end if;
+  if p_mode is null or p_mode not in ('coach', 'self') then
+    raise exception 'invalid_mode' using errcode = '22023';
+  end if;
+  update public.athletes set levelup_mode = p_mode where id = p_athlete;
+end;
+$$;
+
 -- ---------------------------------------------------------------------
 -- Droits
 -- ---------------------------------------------------------------------
@@ -1039,7 +1267,8 @@ revoke execute on all functions in schema public from public, anon;
 grant select, insert, update, delete on all tables in schema public to authenticated;
 
 grant execute on function public.athlete_get(text) to anon, authenticated;
-grant execute on function public.athlete_submit_workout(text, text, text, int, boolean, jsonb, text, timestamptz, int, int, jsonb) to anon, authenticated;
+grant execute on function public.athlete_submit_workout(text, text, text, int, boolean, jsonb, text, timestamptz, int, int, jsonb, jsonb) to anon, authenticated;
+grant execute on function public.athlete_set_level(text, text, int) to anon, authenticated;
 grant execute on function public.athlete_swap_options(text, text, text, int) to anon, authenticated;
 grant execute on function public.athlete_library(text) to anon, authenticated;
 
@@ -1053,3 +1282,6 @@ grant execute on function public.coach_remove_exercise(uuid, text, text) to auth
 grant execute on function public.coach_set_sets(uuid, text, text, int) to authenticated;
 grant execute on function public.coach_move_exercise(uuid, text, text, int) to authenticated;
 grant execute on function public.coach_save_exercise(jsonb) to authenticated;
+grant execute on function public.athlete_set_week_plan(text, jsonb) to anon, authenticated;
+grant execute on function public.coach_set_week_plan(uuid, jsonb) to authenticated;
+grant execute on function public.coach_set_levelup_mode(uuid, text) to authenticated;

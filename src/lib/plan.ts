@@ -1,4 +1,4 @@
-import type { Block, SessionKey, ProgramSessionKey, ProgramItem, Level } from './types';
+import type { Block, SessionKey, ProgramSessionKey, ProgramItem, Level, WeekSlot } from './types';
 
 export const SESSION_META: Record<SessionKey, { title: string; subtitle: string; tone: 'sage' | 'rose' | 'sand' }> = {
   A: { title: 'Renforcement A', subtitle: 'Élastiques et gainage', tone: 'sage' },
@@ -11,32 +11,58 @@ export const DAY_NAMES = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'];
 export const DAY_NAMES_LONG = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
 
 export interface DayPlan {
-  session: SessionKey;
+  /** null = jour de repos. */
+  session: SessionKey | null;
   title: string;
   detail: string;
   minutes: string;
 }
 
-/** Semaine type : lundi A, mardi cardio, mercredi B, jeudi mobilité, vendredi A ou B, samedi cardio, dimanche léger. */
-export function planForDate(d: Date, week: number): DayPlan {
-  const day = d.getDay();
-  switch (day) {
-    case 1:
+/** Semaine par défaut, lundi en premier : A, cardio, B, mobilité, A ou B, cardio, cardio léger. */
+export const DEFAULT_WEEK: WeekSlot[] = ['A', 'C', 'B', 'M', 'AB', 'C', 'C'];
+
+export const SLOT_LABEL: Record<WeekSlot, string> = {
+  A: 'Renforcement A',
+  B: 'Renforcement B',
+  AB: 'Renforcement A ou B (on alterne)',
+  M: 'Mobilité et souplesse',
+  C: 'Cardio doux',
+  R: 'Repos',
+};
+
+/** Nombre maximum de jours de renforcement par semaine que l'athlète peut choisir seule. */
+export const MAX_STRENGTH_DAYS = 4;
+
+export function strengthDays(plan: WeekSlot[]): number {
+  return plan.filter((s) => s === 'A' || s === 'B' || s === 'AB').length;
+}
+
+export function currentWeekPlan(plan: WeekSlot[] | null | undefined): WeekSlot[] {
+  return plan && plan.length === 7 ? plan : DEFAULT_WEEK;
+}
+
+/** Séance du jour (null = repos), selon la semaine type de l'athlète. */
+export function planForDate(d: Date, week: number, weekPlan?: WeekSlot[] | null): DayPlan {
+  const day = d.getDay(); // 0 = dimanche
+  const slot = currentWeekPlan(weekPlan)[(day + 6) % 7];
+  const isDefault = !weekPlan || weekPlan.length !== 7;
+  switch (slot) {
+    case 'A':
       return { session: 'A', title: 'Renforcement A', detail: 'Élastiques et gainage', minutes: '30 min' };
-    case 2:
-      return { session: 'C', title: 'Marche douce', detail: 'Puis 5 min de mobilité', minutes: '30 min' };
-    case 3:
+    case 'B':
       return { session: 'B', title: 'Renforcement B', detail: 'Jambes et chaîne arrière', minutes: '30 min' };
-    case 4:
-      return { session: 'M', title: 'Mobilité et souplesse', detail: 'Séance douce complète', minutes: '30 min' };
-    case 5: {
+    case 'AB': {
       const s: SessionKey = week % 2 === 1 ? 'A' : 'B';
       return { session: s, title: `Renforcement ${s}`, detail: 'On alterne A et B chaque semaine', minutes: '30 min' };
     }
-    case 6:
-      return { session: 'C', title: 'Cardio doux', detail: 'Marche rapide, vélo ou natation', minutes: '30 min' };
+    case 'M':
+      return { session: 'M', title: 'Mobilité et souplesse', detail: 'Séance douce complète', minutes: '30 min' };
+    case 'R':
+      return { session: null, title: 'Jour de repos', detail: 'Le repos fait partie du plan', minutes: '' };
     default:
-      return { session: 'C', title: 'Marche et étirements', detail: 'Ou repos : c\'est aussi le plan', minutes: '20 à 30 min' };
+      if (isDefault && day === 2) return { session: 'C', title: 'Marche douce', detail: 'Puis 5 min de mobilité', minutes: '30 min' };
+      if (isDefault && day === 0) return { session: 'C', title: 'Marche et étirements', detail: "Ou repos : c'est aussi le plan", minutes: '20 à 30 min' };
+      return { session: 'C', title: 'Cardio doux', detail: 'Marche rapide, vélo ou natation', minutes: '30 min' };
   }
 }
 

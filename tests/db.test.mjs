@@ -35,6 +35,9 @@ await db.exec(`insert into public.coaches (user_id) values ('${COACH}')`);
 const { rows: [alice] } = await db.query(`select * from public.athletes where first_name = 'Alice'`);
 const { rows: [{ n: nAthletes }] } = await db.query(`select count(*)::int n from public.athletes`);
 assert.equal(nAthletes, 1, 'seed relancé : une seule Alice');
+assert.equal(alice.levelup_mode, 'self', 'par défaut, l\'athlète choisit librement son niveau');
+// les sections suivantes testent le circuit « le coach valide » : on le remet pour elles
+await db.exec(`update public.athletes set levelup_mode = 'coach'`);
 const TOKEN = alice.access_token;
 assert.equal(TOKEN.length, 48);
 
@@ -61,10 +64,11 @@ const submit = (args) => as('anon', null, async () =>
     args.pain ?? 1, args.neuro ?? false, JSON.stringify(args.items ?? []), args.comment ?? null,
   ])).rows[0].r);
 const submitX = (args) => as('anon', null, async () =>
-  (await db.query('select public.athlete_submit_workout($1,$2,$3,$4,$5,$6::jsonb,$7,$8,$9,$10,$11::jsonb) r', [
+  (await db.query('select public.athlete_submit_workout($1,$2,$3,$4,$5,$6::jsonb,$7,$8,$9,$10,$11::jsonb,$12::jsonb) r', [
     args.token ?? TOKEN, args.client_id ?? crypto.randomUUID(), args.session ?? 'A',
     args.pain ?? 1, args.neuro ?? false, JSON.stringify(args.items ?? []), args.comment ?? null,
     args.done_at ?? null, args.rpe ?? null, args.duration ?? null, JSON.stringify(args.swaps ?? []),
+    JSON.stringify(args.levels ?? []),
   ])).rows[0].r);
 const options = (session, exercise, limit = 2, token = TOKEN) => as('anon', null, async () =>
   (await db.query('select public.athlete_swap_options($1,$2,$3,$4) r', [token, session, exercise, limit])).rows[0].r);
@@ -452,6 +456,166 @@ console.log('Éditeur de programme (coach)');
   await rejects(asCoach(`select public.coach_save_exercise($1::jsonb)`, [JSON.stringify({ id: 'abcd', name: 'x', kind: 'force', levels: [] })]), /check/, 'aucun niveau');
   await rejects(asCoach(`select public.coach_save_exercise($1::jsonb)`, [JSON.stringify({ id: 'abcd', name: 'x', kind: 'force', levels: [{ label: 'a' }], video_url: 'http://x.fr' })]), /check/, 'vidéo non https');
   ok('le coach crée, modifie et retire de la bibliothèque un exercice ; les données invalides sont refusées');
+}
+
+console.log('V3 : montée de niveau autonome, semaine type, compteur');
+{
+  // état propre : plus aucune séance ni changement, niveaux à 1, programme dégelé
+  await db.exec(`delete from public.workouts; delete from public.level_changes;
+    update public.program_items set level = 1; update public.athletes set frozen = false, levelup_mode = 'coach'`);
+  const mainA = (await db.query(
+    `select exercise_id from public.program_items where athlete_id=$1 and session_key='A' and block='main' and active order by position`, [alice.id])).rows.map((r) => r.exercise_id);
+  assert.ok(mainA.length >= 3);
+  const [x, y, z] = mainA;
+  const facile = (...ids) => ids.map((id) => ({ exercise_id: id, feeling: 'facile' }));
+
+  // par défaut : le coach valide, rien ne monte seul
+  await submitX({ items: facile(x) }); await ageAll();
+  const r0 = await submitX({ items: facile(x) }); await ageAll();
+  assert.equal(await level(x), 1);
+  assert.deepEqual(r0.leveled_up, []);
+  assert.ok((await proposals()).some((p) => p.exercise_id === x));
+  ok('par défaut (validation coach), deux « trop facile » proposent une montée sans l\'appliquer');
+
+  await rejects(as('anon', null, () => db.query(`select public.coach_set_levelup_mode($1,'self')`, [alice.id])), /permission denied/, 'anon');
+  await rejects(as('authenticated', STRANGER, () => db.query(`select public.coach_set_levelup_mode($1,'self')`, [alice.id])), /forbidden/, 'non-coach');
+  await rejects(asCoach(`select public.coach_set_levelup_mode($1,'nimporte')`, [alice.id]), /invalid_mode/, 'mode inconnu');
+  await asCoach(`select public.coach_set_levelup_mode($1,'self')`, [alice.id]);
+  assert.equal((await get()).athlete.levelup_mode, 'self');
+  ok('seul le coach change le mode de montée de niveau');
+
+  // mode autonome : une 3e séance « facile » (les 2 dernières le sont) fait monter
+  const r1 = await submitX({ items: facile(x) }); await ageAll();
+  assert.equal(await level(x), 2);
+  assert.deepEqual(r1.leveled_up, [{ exercise_id: x, to_level: 2 }]);
+  const lc = await row(`select source, from_level, to_level from public.level_changes where exercise_id=$1`, [x]);
+  assert.deepEqual([lc.source, lc.from_level, lc.to_level], ['self', 1, 2]);
+  assert.ok((await get()).recent_changes.some((c) => c.exercise_id === x && c.source === 'self'));
+  ok('en mode autonome, la montée est appliquée, journalisée « self » et visible côté athlète');
+
+  // pas de nouvelle montée dans les 7 jours, même avec 2 nouveaux « facile » au nouveau niveau
+  await submitX({ items: facile(x) }); await ageAll();
+  const r2 = await submitX({ items: facile(x) }); await ageAll();
+  assert.equal(await level(x), 2);
+  assert.deepEqual(r2.leveled_up, []);
+  ok('pas de deuxième montée sur le même exercice avant 7 jours');
+
+  // douleur de la séance > 3 : aucune montée
+  await submitX({ items: facile(y) }); await ageAll();
+  const r3 = await submitX({ pain: 4, items: facile(y) }); await ageAll();
+  assert.equal(await level(y), 1);
+  assert.deepEqual(r3.leveled_up, []);
+  ok('douleur de séance au-dessus de 3 : pas de montée');
+
+  // symptôme : programme gelé, aucune montée
+  await db.exec(`delete from public.workouts; delete from public.level_changes; update public.program_items set level = 1`);
+  await submitX({ items: facile(z) }); await ageAll();
+  const r4 = await submitX({ neuro: true, items: facile(z) }); await ageAll();
+  assert.equal(await level(z), 1);
+  assert.deepEqual(r4.leveled_up, []);
+  assert.equal(r4.frozen, true);
+  await db.exec(`update public.athletes set frozen = false`);
+  ok('symptôme neurologique : programme gelé et aucune montée');
+
+  // douleur récente sur l'exercice : aucune montée
+  await db.exec(`delete from public.workouts; delete from public.level_changes; update public.program_items set level = 1`);
+  await submitX({ items: [{ exercise_id: x, feeling: 'douleur' }] }); await ageAll();
+  await submitX({ items: facile(x) }); await ageAll();
+  await submitX({ items: facile(x) }); await ageAll();
+  const r5 = await submitX({ items: facile(x) }); await ageAll();
+  assert.equal(await level(x), 1);
+  assert.deepEqual(r5.leveled_up, []);
+  ok('douleur sur l\'exercice dans les 14 jours : pas de montée');
+
+  // au plus 2 exercices qui montent par séance
+  await db.exec(`delete from public.workouts; delete from public.level_changes; update public.program_items set level = 1`);
+  await submitX({ items: facile(...mainA) }); await ageAll();
+  await submitX({ items: facile(...mainA) }); await ageAll();
+  const r6 = await submitX({ items: facile(...mainA) }); await ageAll();
+  assert.equal(r6.leveled_up.length, 2);
+  ok('au plus 2 exercices montent par séance');
+
+  // un exercice au niveau maximum ne monte pas
+  await db.exec(`delete from public.workouts; delete from public.level_changes;
+    update public.program_items set level = (select jsonb_array_length(levels) from public.exercises e where e.id = exercise_id) where exercise_id = '${x}'`);
+  const maxLevel = await level(x);
+  await submitX({ items: facile(x) }); await ageAll();
+  await submitX({ items: facile(x) }); await ageAll();
+  const r7 = await submitX({ items: facile(x) }); await ageAll();
+  assert.equal(await level(x), maxLevel);
+  assert.deepEqual(r7.leveled_up, []);
+  ok('un exercice déjà au dernier niveau ne monte pas');
+
+  // niveau choisi librement par l'athlète : dans les deux sens, sans condition, même sans séance
+  await db.exec(`delete from public.workouts; delete from public.level_changes; update public.program_items set level = 1;
+                 update public.athletes set frozen = false`);
+  const maxOf = async (ex) => (await row(`select jsonb_array_length(levels)::int n from public.exercises where id=$1`, [ex])).n;
+  const setLevel = (ex, lvl, token = TOKEN) => as('anon', null, () =>
+    db.query(`select public.athlete_set_level($1,$2,$3)`, [token, ex, lvl]));
+  await setLevel(x, await maxOf(x));
+  assert.equal(await level(x), await maxOf(x));
+  await setLevel(x, 2);
+  assert.equal(await level(x), 2);
+  const lcs = (await db.query(`select source, from_level, to_level from public.level_changes where exercise_id=$1 order by created_at`, [x])).rows;
+  assert.deepEqual(lcs.map((r) => r.source), ['self', 'self']);
+  assert.equal(lcs[0].from_level, 1);
+  ok('en mode libre, l\'athlète monte au dernier niveau puis redescend, sans condition ni délai, avec journal');
+  await rejects(setLevel(x, 99), /invalid_level/, 'niveau hors limites');
+  await rejects(setLevel('inconnu', 2), /not_found/, 'exercice inconnu');
+  await rejects(setLevel(x, 2, 'x'.repeat(48)), /invalid_token/, 'mauvais lien');
+  ok('niveau hors limites, exercice inconnu et mauvais lien sont refusés');
+
+  // niveau choisi en séance (plus dur) : appliqué avant le ressenti, qui est donc noté au niveau fait
+  await submitX({ items: [{ exercise_id: y, feeling: 'dur' }], levels: [{ exercise_id: y, level: 3 }] });
+  assert.equal(await level(y), 3);
+  assert.equal((await row(`select wi.level from public.workout_items wi where wi.exercise_id=$1`, [y])).level, 3);
+  assert.ok((await row(`select count(*)::int n from public.level_changes where exercise_id=$1 and source='self'`, [y])).n === 1);
+  ok('un niveau choisi pendant la séance est appliqué et le ressenti est enregistré à ce niveau');
+  // une douleur sur cet exercice le fait redescendre d'un niveau, comme toujours
+  await ageAll();
+  await submitX({ items: [{ exercise_id: y, feeling: 'douleur' }] });
+  assert.equal(await level(y), 2);
+  ok('la douleur fait toujours redescendre d\'un niveau, même après un choix libre');
+
+  // programme gelé : aucun choix de niveau
+  await db.exec(`update public.athletes set frozen = true`);
+  await rejects(setLevel(x, 1), /program_frozen/, 'gelé');
+  await db.exec(`update public.athletes set frozen = false`);
+
+  // le coach garde la main : l'athlète ne peut pas changer de niveau, ni en séance
+  await asCoach(`select public.coach_set_levelup_mode($1,'coach')`, [alice.id]);
+  assert.equal((await get()).athlete.levelup_mode, 'coach');
+  await rejects(setLevel(x, 1), /level_by_coach/, 'mode coach');
+  await ageAll();
+  await submitX({ items: facile(z), levels: [{ exercise_id: z, level: 3 }] });
+  assert.equal(await level(z), 1);
+  ok('quand le coach garde la main, ni le réglage ni la séance ne changent les niveaux');
+
+  // semaine type
+  assert.equal((await get()).athlete.week_plan, null);
+  const setPlan = (plan, token = TOKEN) => as('anon', null, () =>
+    db.query(`select public.athlete_set_week_plan($1,$2::jsonb)`, [token, JSON.stringify(plan)]));
+  await setPlan(['M', 'A', 'R', 'B', 'C', 'AB', 'R']);
+  assert.deepEqual((await get()).athlete.week_plan, ['M', 'A', 'R', 'B', 'C', 'AB', 'R']);
+  await rejects(setPlan(['A', 'B', 'A', 'B', 'A', 'R', 'R']), /too_many_strength_days/, '5 jours de renfo');
+  await rejects(setPlan(['A', 'X', 'R', 'R', 'R', 'R', 'R']), /invalid_week_plan/, 'valeur inconnue');
+  await rejects(setPlan(['A', 'R']), /invalid_week_plan|check/, 'pas 7 jours');
+  await rejects(setPlan(['M', 'A', 'R', 'B', 'C', 'AB', 'R'], 'x'.repeat(48)), /invalid_token/, 'mauvais lien');
+  await setPlan(null);
+  assert.equal((await get()).athlete.week_plan, null);
+  ok('l\'athlète organise sa semaine (4 jours de renfo maximum, valeurs contrôlées, retour au défaut possible)');
+
+  await asCoach(`select public.coach_set_week_plan($1,$2::jsonb)`, [alice.id, JSON.stringify(['A', 'B', 'A', 'B', 'A', 'R', 'R'])]);
+  assert.equal((await get()).athlete.week_plan[4], 'A');
+  await rejects(as('authenticated', STRANGER, () => db.query(`select public.coach_set_week_plan($1,'["A","A","A","A","A","A","A"]'::jsonb)`, [alice.id])), /forbidden/, 'non-coach');
+  await asCoach(`select public.coach_set_week_plan($1,null)`, [alice.id]);
+  ok('le coach fixe la semaine type sans la limite des 4 jours ; un non-coach ne peut pas');
+
+  // compteur
+  await db.exec(`delete from public.workouts`);
+  await submitX({ session: 'M' }); await submitX({ session: 'C' }); await ageAll();
+  assert.equal((await get()).athlete.workout_count, 2);
+  ok('athlete_get donne le nombre total de séances');
 }
 
 console.log('Lien secret');

@@ -54,7 +54,7 @@ export async function startMock(port = 54321) {
 
   const RPC_ARGS = {
     athlete_get: ['p_token'],
-    athlete_submit_workout: ['p_token', 'p_client_id', 'p_session', 'p_pain', 'p_neuro', 'p_items', 'p_comment', 'p_done_at', 'p_rpe', 'p_duration_min', 'p_swaps'],
+    athlete_submit_workout: ['p_token', 'p_client_id', 'p_session', 'p_pain', 'p_neuro', 'p_items', 'p_comment', 'p_done_at', 'p_rpe', 'p_duration_min', 'p_swaps', 'p_levels'],
     athlete_swap_options: ['p_token', 'p_session', 'p_exercise', 'p_limit'],
     athlete_library: ['p_token'],
     is_coach: [],
@@ -66,9 +66,13 @@ export async function startMock(port = 54321) {
     coach_set_sets: ['p_athlete', 'p_session', 'p_exercise', 'p_sets'],
     coach_move_exercise: ['p_athlete', 'p_session', 'p_exercise', 'p_dir'],
     coach_save_exercise: ['p_ex'],
+    athlete_set_level: ['p_token', 'p_exercise', 'p_level'],
+    athlete_set_week_plan: ['p_token', 'p_plan'],
+    coach_set_week_plan: ['p_athlete', 'p_plan'],
+    coach_set_levelup_mode: ['p_athlete', 'p_mode'],
   };
   // arguments reçus en JSON : le serveur les attend en jsonb
-  const JSONB_ARGS = new Set(['p_items', 'p_swaps', 'p_ex']);
+  const JSONB_ARGS = new Set(['p_items', 'p_swaps', 'p_ex', 'p_plan', 'p_levels']);
 
   function filters(url, allowed) {
     const where = [];
@@ -124,7 +128,7 @@ export async function startMock(port = 54321) {
       if (!names) return send(404, { message: 'unknown rpc' });
       // seuls les arguments envoyés sont passés : les valeurs par défaut de la base s'appliquent aux autres
       const given = names.filter((n) => n in args);
-      const vals = given.map((n) => (JSONB_ARGS.has(n) ? JSON.stringify(args[n] ?? []) : args[n] ?? null));
+      const vals = given.map((n) => (JSONB_ARGS.has(n) ? JSON.stringify(args[n] ?? (n === 'p_plan' ? null : [])) : args[n] ?? null));
       const sql = `select public.${fn}(${given.map((n, i) => `${n} => $${i + 1}${JSONB_ARGS.has(n) ? '::jsonb' : ''}`).join(', ')}) as r`;
       const r = await run(role, sub, async () => (await db.query(sql, vals)).rows[0].r);
       return send(200, r);
@@ -136,7 +140,7 @@ export async function startMock(port = 54321) {
       let f;
       if (table === 'athletes') {
         f = filters(url, ['id']);
-        sql = `select id, first_name, access_token, start_date, coach_message, frozen, frozen_at, allow_swaps from public.athletes ${f.where} order by created_at`;
+        sql = `select id, first_name, access_token, start_date, coach_message, frozen, frozen_at, allow_swaps, week_plan, levelup_mode from public.athletes ${f.where} order by created_at`;
       } else if (table === 'program_items') {
         f = filters(url, ['athlete_id', 'active']);
         sql = `select pi.athlete_id, pi.session_key, pi.block, pi.position, pi.level, pi.sets, pi.exercise_id,
