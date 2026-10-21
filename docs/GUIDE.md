@@ -61,7 +61,7 @@ Alternatives écartées : Notion (pas conçu comme base temps réel, difficile �
 
 1. Va sur `/coach`, connecte-toi.
 2. **Alertes** (douleur élevée, fourmillements) : à traiter en premier.
-3. **À valider** : propositions de montée de niveau. L'app ne monte **jamais** seule : c'est toi qui valides.
+3. **À valider** : propositions de montée de niveau. Par défaut l'app ne monte **jamais** seule : c'est toi qui valides (voir « Autonomie » ci-dessous pour changer ça).
 4. **Fiche d'Alice** : message pour elle, pause ou réactivation, niveaux par exercice, historique des séances, journal des niveaux, régularité sur 4 semaines, bouton pour changer le lien.
 
 ### Les règles automatiques
@@ -74,6 +74,18 @@ Alternatives écartées : Notion (pas conçu comme base temps réel, difficile �
 | « Trop facile » 2 séances de suite, douleur ≤ 3, aucun symptôme, aucun changement depuis 7 jours | Proposition « À valider » |
 
 Quand Alice est gelée, tu la réactives depuis sa fiche, **après** avis médical.
+
+### Autonomie d'Alice (fiche d'Alice, carte « Autonomie »)
+
+- **Changer un exercice elle-même** : case à cocher (V2).
+- **Qui choisit le niveau** : par défaut **Alice choisit librement**, sans aucune condition : depuis l'écran Progrès (− / +) ou pendant la séance (« Plus facile » / « Plus dur », le minuteur repart à la durée du nouveau niveau). Après 2 séances « trop facile » à ce niveau (douleur ≤ 3, aucun symptôme), l'app monte aussi toute seule. Restent deux protections automatiques : une douleur sur un exercice le fait redescendre d'un niveau, un symptôme gèle le programme. Tout est noté au journal des niveaux (« athlète (autonome) »). Tu peux repasser en « Moi, après proposition » : elle ne peut alors plus changer de niveau.
+- **Semaine type** : Alice peut organiser sa semaine (7 jours : renforcement A, B, A ou B en alternance, mobilité, cardio doux, repos), avec 4 jours de renforcement au maximum. Toi, tu n'as pas de limite. « Semaine par défaut » remet le plan d'origine.
+
+### Ce qu'Alice voit en plus (V3)
+
+- Une séance interrompue (page rechargée, téléphone verrouillé) peut être **reprise** là où elle en était ; une séance terminée dont le ressenti n'a pas été envoyé est retrouvée.
+- Un exercice n'est compté « fait » que si au moins la moitié de son temps a été effectuée : appuyer sur « Étape suivante » ne valide rien. La durée enregistrée est le temps actif (hors pauses).
+- Un **compteur** : séances au total, cette semaine, semaines de suite.
 
 ## 6. Modifier l'application
 
@@ -158,7 +170,8 @@ Pour reprendre avec Claude : donne-lui le dépôt GitHub et ce guide, ainsi que 
 | Version | Contenu |
 |---|---|
 | **V1** (livrée) | Niveaux, alertes, propositions, historique, message coach, régularité, hors ligne, changement de lien |
-| **V2** | Édition des exercices depuis le panneau, graphiques de douleur, export pour le kiné, modèles réutilisables, notification e-mail des alertes |
-| **V3** | Résumé hebdomadaire vers Notion (Suivi des Athlètes), plusieurs athlètes dans l'interface |
+| **V2** (livrée) | Remplacement d'exercice, bibliothèque (43 exercices), séances complètes, bilan fidèle |
+| **V3** (en cours) | Reprise de séance, vrai « fait », semaine personnalisable, compteur de séances, montée de niveau autonome (réglable), contrôle automatique des tests (GitHub Actions) |
+| **Ensuite** | « Roue libre » (séances HIT / renfo 30-40 min), page personnage évolutif, vidéos, graphiques et export pour le kiné, rappels. Le suivi détaillé est dans Notion (Application coach). |
 
 Pour ajouter une athlète plus tard : la base le permet déjà (une ligne `athletes`, son programme, son lien). L'interface coach multi-athlètes est prévue en V3.

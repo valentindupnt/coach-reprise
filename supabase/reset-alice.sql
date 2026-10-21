@@ -22,6 +22,8 @@ begin
   set frozen = false,
       frozen_at = null,
       coach_message = null,
+      week_plan = null,
+      levelup_mode = 'self',
       start_date = current_date,
       access_token = encode(gen_random_bytes(24), 'hex')
   where id = a_id;

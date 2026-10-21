@@ -194,3 +194,17 @@ table.history th { font-weight: 700; color: var(--muted); font-size: 13px; borde
 .lib-card { gap: 8px; }
 .lib-head { display: flex; align-items: center; gap: 10px; width: 100%; padding: 0; border: 0; background: transparent; text-align: left; min-height: 44px; }
 .tabbar button { font-size: 13px; }
+
+/* V3 : compteur de séances */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  text-align: center;
+}
+.stat-n {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--sage-ink);
+}

@@ -1,5 +1,7 @@
 export type SessionKey = 'A' | 'B' | 'M' | 'C';
 export type ProgramSessionKey = 'A' | 'B' | 'M';
+/** Un jour de la semaine type : une séance, un repos (R) ou « A ou B selon la semaine » (AB). */
+export type WeekSlot = SessionKey | 'R' | 'AB';
 export type Feeling = 'facile' | 'bien' | 'dur' | 'douleur';
 export type ExerciseKind = 'force' | 'gainage' | 'mobilite' | 'etirement' | 'respiration';
 export type Block = 'warmup' | 'main' | 'cooldown';
@@ -56,6 +58,12 @@ export interface AthleteData {
     coach_message: string | null;
     frozen: boolean;
     allow_swaps: boolean;
+    /** Semaine type personnalisée (lundi en premier) ; null = semaine par défaut. */
+    week_plan: WeekSlot[] | null;
+    /** Qui valide la montée de niveau : le coach ou l'athlète elle-même (avec garde-fous). */
+    levelup_mode: 'coach' | 'self';
+    /** Nombre total de séances enregistrées. */
+    workout_count: number;
   };
   program: ProgramItem[];
   workouts: { session_key: SessionKey; done_at: string; pain: number; rpe: number | null; duration_min: number | null }[];
@@ -63,7 +71,7 @@ export interface AthleteData {
     exercise_id: string;
     from_level: number;
     to_level: number;
-    source: 'auto' | 'coach';
+    source: 'auto' | 'coach' | 'self';
     created_at: string;
   }[];
 }
@@ -80,6 +88,8 @@ export interface WorkoutSubmission {
   rpe?: number | null;
   duration_min?: number | null;
   swaps?: { session: ProgramSessionKey; from: string; to: string }[];
+  /** Niveaux choisis par l'athlète pendant la séance (plus dur / plus facile). */
+  levels?: { exercise_id: string; level: number }[];
 }
 
 export interface SubmitResult {
@@ -87,4 +97,6 @@ export interface SubmitResult {
   frozen: boolean;
   regressed: { exercise_id: string; to_level: number }[];
   swapped?: { session: ProgramSessionKey; from: string; to: string }[];
+  /** Exercices montés d'un niveau automatiquement (mode « l'athlète monte seule »). */
+  leveled_up?: { exercise_id: string; to_level: number }[];
 }

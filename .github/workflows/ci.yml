@@ -1,0 +1,27 @@
+# Contrôle automatique : à chaque envoi sur GitHub, on vérifie que l'app compile
+# et que tous les tests passent. Un ✗ rouge = ne pas fusionner dans main.
+name: Tests
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Compilation (TypeScript + build)
+        run: npx tsc --noEmit && npm run build
+      - name: Règles de la base de données
+        run: npm run test:db
+      - name: Parcours complets dans un navigateur
+        run: |
+          npx playwright install --with-deps chromium
+          npm run test:e2e

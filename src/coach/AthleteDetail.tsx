@@ -2,11 +2,11 @@ import { useEffect, useMemo, useState } from 'react';
 import { readableError } from '../lib/supabase';
 import { SESSION_META, localDay, programWeek, phaseForWeek } from '../lib/plan';
 import ProgramEditor from './ProgramEditor';
+import AutonomyCard from './AutonomyCard';
 import {
   loadChanges,
   loadProgram,
   loadProgramChanges,
-  setAllowSwaps,
   loadWorkouts,
   markReviewed,
   rotateToken,
@@ -257,20 +257,7 @@ export default function AthleteDetail({ library, athlete, refreshKey, onChanged 
         act={act}
       />
 
-      <div className="card">
-        <label className="row" style={{ gap: 10 }}>
-          <input
-            type="checkbox"
-            checked={athlete.allow_swaps}
-            disabled={busy === 'allow'}
-            onChange={(e) => void act('allow', () => setAllowSwaps(athlete.id, e.target.checked))}
-          />
-          <span className="small">
-            <strong>{athlete.first_name} peut changer un exercice elle-même</strong> (propositions pendant et après la séance).
-            Décoche pour garder la main : elle pourra seulement passer l'exercice.
-          </span>
-        </label>
-      </div>
+      <AutonomyCard athlete={athlete} busy={busy} act={act} />
 
       <div className="card">
         <div className="row between wrap">
@@ -357,7 +344,7 @@ export default function AthleteDetail({ library, athlete, refreshKey, onChanged 
               <strong>{exName(c.exercise_id)}</strong> : {c.from_level} → {c.to_level}
               {c.reason ? ` · ${c.reason}` : ''}
             </span>
-            <span className={`pill ${c.source === 'auto' ? 'rose' : 'sage'}`}>{c.source === 'auto' ? 'auto' : 'coach'}</span>
+            <span className={`pill ${c.source === 'auto' ? 'rose' : 'sage'}`}>{c.source === 'auto' ? 'auto (douleur)' : c.source === 'self' ? 'athlète (autonome)' : 'coach'}</span>
           </div>
         ))}
       </div>

@@ -12,13 +12,22 @@ import {
   pendingWorkouts,
   readCache,
   readLibraryCache,
+  setLevel,
+  setWeekPlan,
   submitWorkout,
 } from '../lib/athleteApi';
+import { clearLive, readLive, type LiveSession } from '../lib/liveSession';
+import { sessionStats } from '../lib/stats';
 import { suggestSwaps } from '../lib/library';
 import { readableError } from '../lib/supabase';
-import type { AthleteData, Library, ProgramItem, ProgramSessionKey, SessionKey, SubmitResult, SwapOption } from '../lib/types';
+import type { AthleteData, Library, ProgramItem, ProgramSessionKey, SessionKey, SubmitResult, SwapOption, WeekSlot } from '../lib/types';
 import {
   DAY_NAMES,
+  DEFAULT_WEEK,
+  MAX_STRENGTH_DAYS,
+  SLOT_LABEL,
+  currentWeekPlan,
+  strengthDays,
   PHASES,
   SESSION_META,
   currentLevel,
@@ -33,10 +42,10 @@ import {
 type Tab = 'today' | 'week' | 'library' | 'progress';
 type Screen =
   | { name: 'tabs' }
-  | { name: 'player'; session: ProgramSessionKey }
+  | { name: 'player'; session: ProgramSessionKey; resume?: LiveSession }
   | { name: 'cardio' }
   | { name: 'feedback'; session: SessionKey; played: SessionResult | null }
-  | { name: 'result'; result: SubmitResult | null; queued: boolean; pain: number; swapNames: string[] };
+  | { name: 'result'; result: SubmitResult | null; queued: boolean; pain: number; swapNames: string[]; leveledNames: string[] };
 
 function startOfWeek(d: Date): Date {
   const x = new Date(d.getFullYear(), d.getMonth(), d.getDate());
@@ -55,6 +64,12 @@ export default function AthleteApp({ token }: { token: string }) {
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [pendingCount, setPendingCount] = useState(() => pendingWorkouts(token).length);
+  // séance interrompue (page rechargée) ou terminée sans ressenti envoyé
+  const [live, setLive] = useState<LiveSession | null>(() => readLive(token));
+  const [planDraft, setPlanDraft] = useState<WeekSlot[] | null>(null);
+  const [planError, setPlanError] = useState<string | null>(null);
+  const [planSaving, setPlanSaving] = useState(false);
+  const [levelError, setLevelError] = useState<string | null>(null);
 
   const refresh = useCallback(async () => {
     try {
@@ -96,7 +111,8 @@ export default function AthleteApp({ token }: { token: string }) {
   const now = new Date();
   const week = data ? programWeek(data.athlete.start_date, now) : 1;
   const phase = phaseForWeek(week);
-  const today = planForDate(now, week);
+  const today = planForDate(now, week, data?.athlete.week_plan);
+  const stats = useMemo(() => sessionStats((data?.workouts ?? []).map((w) => w.done_at), new Date()), [data]);
 
   const doneDays = useMemo(() => {
     const s = new Set<string>();
@@ -138,7 +154,7 @@ export default function AthleteApp({ token }: { token: string }) {
   const first = data.athlete.first_name;
   const frozen = data.athlete.frozen;
 
-  async function handleSubmit(session: SessionKey, v: FeedbackValue) {
+  async function handleSubmit(session: SessionKey, v: FeedbackValue, levels: SessionResult['levels'] = []) {
     setSubmitting(true);
     setSubmitError(null);
     try {
@@ -153,12 +169,16 @@ export default function AthleteApp({ token }: { token: string }) {
         rpe: v.rpe,
         duration_min: v.duration_min,
         swaps: v.swaps,
+        levels,
       });
       setPendingCount(pendingWorkouts(token).length);
+      clearLive(token);
+      setLive(null);
       const nameOf = (id: string) =>
         data?.program.find((p) => p.exercise.id === id)?.exercise.name ?? library?.exercises.find((e) => e.id === id)?.name ?? id;
       const swapNames = v.swaps.map((s) => `${nameOf(s.from)} → ${nameOf(s.to)}`);
-      setScreen({ name: 'result', result, queued, pain: v.pain, swapNames });
+      const leveledNames = (result?.leveled_up ?? []).map((l) => `${nameOf(l.exercise_id)} (niveau ${l.to_level})`);
+      setScreen({ name: 'result', result, queued, pain: v.pain, swapNames, leveledNames });
       if (v.neuro) setData((d) => (d ? { ...d, athlete: { ...d.athlete, frozen: true } } : d));
       if (!queued) void refresh();
     } catch (e) {
@@ -191,9 +211,11 @@ export default function AthleteApp({ token }: { token: string }) {
           token={token}
           session={screen.session}
           items={items}
-          rounds={phase.rounds}
+          rounds={screen.resume?.rounds ?? phase.rounds}
           library={library?.exercises ?? []}
           allowSwaps={data.athlete.allow_swaps}
+          canChangeLevel={data.athlete.levelup_mode === 'self'}
+          resume={screen.resume ?? null}
           onCancel={() => setScreen({ name: 'tabs' })}
           onFinish={(played) => setScreen({ name: 'feedback', session: screen.session, played })}
         />
@@ -234,7 +256,7 @@ export default function AthleteApp({ token }: { token: string }) {
           submitting={submitting}
           error={submitError}
           loadOptions={(item) => loadOptions(item.session_key, item)}
-          onSubmit={(v) => void handleSubmit(fbSession, v)}
+          onSubmit={(v) => void handleSubmit(fbSession, v, screen.played?.levels ?? [])}
         />
       </main>
     );
@@ -273,6 +295,15 @@ export default function AthleteApp({ token }: { token: string }) {
             <p className="small">{screen.swapNames.join(' · ')}. Ton coach est prévenu et peut revenir en arrière.</p>
           </div>
         )}
+        {screen.leveledNames.length > 0 && (
+          <div className="card sage">
+            <h3>Tu montes d'un niveau</h3>
+            <p className="small">
+              {screen.leveledNames.join(' · ')}. Tes deux dernières séances étaient « trop facile », sans douleur : on passe
+              à la suite. Si ça devient trop dur, dis-le au prochain bilan.
+            </p>
+          </div>
+        )}
         {regressedNames.length > 0 && (
           <div className="card rose">
             <h3>On allège un peu</h3>
@@ -291,7 +322,7 @@ export default function AthleteApp({ token }: { token: string }) {
             </p>
           </div>
         )}
-        {regressedNames.length === 0 && screen.pain <= 3 && (
+        {regressedNames.length === 0 && screen.leveledNames.length === 0 && screen.pain <= 3 && (
           <div className="card sage">
             <p>Une séance de plus. La régularité, c'est ce qui fait la différence.</p>
           </div>
@@ -314,7 +345,7 @@ export default function AthleteApp({ token }: { token: string }) {
     (c) => c.source === 'auto' && Date.now() - new Date(c.created_at).getTime() < 7 * 86_400_000,
   );
   const coachUps = data.recent_changes.filter(
-    (c) => c.source === 'coach' && c.to_level > c.from_level && Date.now() - new Date(c.created_at).getTime() < 7 * 86_400_000,
+    (c) => (c.source === 'coach' || c.source === 'self') && c.to_level > c.from_level && Date.now() - new Date(c.created_at).getTime() < 7 * 86_400_000,
   );
   const exName = (id: string) =>
     data.program.find((p) => p.exercise.id === id)?.exercise.name ?? library?.exercises.find((e) => e.id === id)?.name ?? id;
@@ -323,6 +354,48 @@ export default function AthleteApp({ token }: { token: string }) {
     s === 'C' ? fallback : `≈ ${estimateMinutes(data.program, s, phase.rounds)} min`;
 
   const startSession = (s: SessionKey) => (s === 'C' ? setScreen({ name: 'cardio' }) : setScreen({ name: 'player', session: s }));
+
+  const weekPlan = currentWeekPlan(data.athlete.week_plan);
+  const selfLevel = data.athlete.levelup_mode === 'self';
+
+  /** Reprend la séance interrompue, ou rouvre le ressenti d'une séance terminée. */
+  function resumeLive() {
+    if (!live) return;
+    if (live.finished) setScreen({ name: 'feedback', session: live.session, played: live.finished });
+    else setScreen({ name: 'player', session: live.session, resume: live });
+  }
+  function dropLive() {
+    clearLive(token);
+    setLive(null);
+  }
+
+  /** Niveau choisi par l'athlète depuis l'écran Progrès (dans les deux sens, sans condition). */
+  async function chooseLevel(exerciseId: string, level: number) {
+    setLevelError(null);
+    try {
+      await setLevel(token, exerciseId, level);
+      setData((d) => (d ? { ...d, program: d.program.map((p) => (p.exercise.id === exerciseId ? { ...p, level } : p)) } : d));
+      void refresh();
+    } catch (e) {
+      setLevelError(readableError(e));
+    }
+  }
+
+  async function savePlan() {
+    if (!planDraft) return;
+    setPlanSaving(true);
+    setPlanError(null);
+    try {
+      await setWeekPlan(token, planDraft);
+      setData((d) => (d ? { ...d, athlete: { ...d.athlete, week_plan: planDraft } } : d));
+      setPlanDraft(null);
+      void refresh();
+    } catch (e) {
+      setPlanError(readableError(e));
+    } finally {
+      setPlanSaving(false);
+    }
+  }
 
   return (
     <>
@@ -364,21 +437,72 @@ export default function AthleteApp({ token }: { token: string }) {
                 </div>
               )}
 
-              <div className="card">
-                <div className="row between">
-                  <span className={`pill ${SESSION_META[today.session].tone === 'rose' ? 'rose' : SESSION_META[today.session].tone === 'sage' ? 'sage' : ''}`}>
-                    Aujourd'hui · {minutesLabel(today.session, today.minutes)}
-                  </span>
-                  {doneToday && <span className="pill sage">Fait ✓</span>}
+              {live && (
+                <div className="card amber" role="status">
+                  <h3>{live.finished ? 'Ta séance est terminée' : 'Séance en cours'}</h3>
+                  <p className="small">
+                    {SESSION_META[live.session].title}
+                    {live.finished
+                      ? " : il manque ton ressenti pour l'enregistrer."
+                      : ' : tu peux la reprendre là où tu en étais.'}
+                  </p>
+                  <div className="row wrap">
+                    <button className="btn small" onClick={resumeLive}>
+                      {live.finished ? 'Donner mon ressenti' : 'Reprendre la séance'}
+                    </button>
+                    {!live.finished && (
+                      <button className="btn secondary small" onClick={dropLive}>Abandonner</button>
+                    )}
+                  </div>
                 </div>
-                <h2>{today.title}</h2>
-                <p className="muted small">{today.detail}</p>
-                {today.session !== 'C' && today.session !== 'M' && (
-                  <p className="small muted">{phase.rounds} tours · {phase.detail}</p>
-                )}
-                <button className="btn block" onClick={() => startSession(today.session)}>
-                  {doneToday ? 'Refaire une séance' : 'Commencer'}
-                </button>
+              )}
+
+              {today.session ? (
+                <div className="card">
+                  <div className="row between">
+                    <span className={`pill ${SESSION_META[today.session].tone === 'rose' ? 'rose' : SESSION_META[today.session].tone === 'sage' ? 'sage' : ''}`}>
+                      Aujourd'hui · {minutesLabel(today.session, today.minutes)}
+                    </span>
+                    {doneToday && <span className="pill sage">Fait ✓</span>}
+                  </div>
+                  <h2>{today.title}</h2>
+                  <p className="muted small">{today.detail}</p>
+                  {today.session !== 'C' && today.session !== 'M' && (
+                    <p className="small muted">{phase.rounds} tours · {phase.detail}</p>
+                  )}
+                  <button className="btn block" onClick={() => startSession(today.session!)}>
+                    {doneToday ? 'Refaire une séance' : 'Commencer'}
+                  </button>
+                </div>
+              ) : (
+                <div className="card">
+                  <div className="row between">
+                    <span className="pill">Aujourd'hui · repos</span>
+                    {doneToday && <span className="pill sage">Fait ✓</span>}
+                  </div>
+                  <h2>{today.title}</h2>
+                  <p className="muted small">{today.detail}</p>
+                  <button className="btn secondary block" onClick={() => setTab('week')}>
+                    J'ai quand même envie de bouger
+                  </button>
+                </div>
+              )}
+
+              <div className="card">
+                <div className="stats-row">
+                  <div>
+                    <div className="stat-n">{data.athlete.workout_count}</div>
+                    <div className="tiny muted">séance{data.athlete.workout_count > 1 ? 's' : ''} au total</div>
+                  </div>
+                  <div>
+                    <div className="stat-n">{stats.thisWeek}</div>
+                    <div className="tiny muted">cette semaine</div>
+                  </div>
+                  <div>
+                    <div className="stat-n">{stats.weeks}</div>
+                    <div className="tiny muted">semaine{stats.weeks > 1 ? 's' : ''} de suite</div>
+                  </div>
+                </div>
               </div>
 
               <div className="card">
@@ -411,21 +535,82 @@ export default function AthleteApp({ token }: { token: string }) {
             </div>
             <div className="stack">
               {weekDays.map((d) => {
-                const p = planForDate(d, week);
-                const tone = SESSION_META[p.session].tone;
+                const p = planForDate(d, week, data.athlete.week_plan);
                 const k = localDay(d);
+                if (!p.session) {
+                  return (
+                    <div key={k} className={`day-tile ${k === todayKey ? 'today' : ''}`}>
+                      <span className="day-badge tone-sand">{DAY_NAMES[d.getDay()]}</span>
+                      <span className="grow">
+                        <span style={{ display: 'block', fontWeight: 700 }}>{p.title}</span>
+                        <span className="small muted">{p.detail}</span>
+                      </span>
+                      <span className="tiny muted">{doneDays.has(k) ? '✓' : ''}</span>
+                    </div>
+                  );
+                }
+                const tone = SESSION_META[p.session].tone;
+                const sess = p.session;
                 return (
-                  <button key={k} className={`day-tile ${k === todayKey ? 'today' : ''}`} disabled={frozen} onClick={() => startSession(p.session)}>
+                  <button key={k} className={`day-tile ${k === todayKey ? 'today' : ''}`} disabled={frozen} onClick={() => startSession(sess)}>
                     <span className={`day-badge tone-${tone}`}>{DAY_NAMES[d.getDay()]}</span>
                     <span className="grow">
                       <span style={{ display: 'block', fontWeight: 700 }}>{p.title}</span>
                       <span className="small muted">{p.detail}</span>
                     </span>
-                    <span className="tiny muted">{doneDays.has(k) ? '✓' : minutesLabel(p.session, p.minutes)}</span>
+                    <span className="tiny muted">{doneDays.has(k) ? '✓' : minutesLabel(sess, p.minutes)}</span>
                   </button>
                 );
               })}
             </div>
+            {planDraft ? (
+              <div className="card amber" role="group" aria-label="Organiser ma semaine">
+                <h3>Organiser ma semaine</h3>
+                <p className="small">
+                  Choisis ce que tu fais chaque jour. Pour protéger ton dos : {MAX_STRENGTH_DAYS} jours de renforcement au maximum,
+                  et pense à garder un jour de repos.
+                </p>
+                {[1, 2, 3, 4, 5, 6, 0].map((dow, i) => (
+                  <label key={dow} className="field">
+                    {['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'][i]}
+                    <select
+                      className="input"
+                      value={planDraft[i]}
+                      onChange={(e) => setPlanDraft((pl) => (pl ? pl.map((x, j) => (j === i ? (e.target.value as WeekSlot) : x)) : pl))}
+                    >
+                      {(['A', 'B', 'AB', 'M', 'C', 'R'] as WeekSlot[]).map((o) => (
+                        <option key={o} value={o}>{SLOT_LABEL[o]}</option>
+                      ))}
+                    </select>
+                  </label>
+                ))}
+                {strengthDays(planDraft) > MAX_STRENGTH_DAYS && (
+                  <div className="banner warn" role="alert">
+                    {strengthDays(planDraft)} jours de renforcement : c'est trop pour le moment, {MAX_STRENGTH_DAYS} au maximum.
+                    Ton coach peut en ajouter si besoin.
+                  </div>
+                )}
+                {planError && <div className="banner error" role="alert">{planError}</div>}
+                <div className="row wrap">
+                  <button className="btn small" disabled={planSaving || strengthDays(planDraft) > MAX_STRENGTH_DAYS} onClick={() => void savePlan()}>
+                    Enregistrer ma semaine
+                  </button>
+                  <button className="btn secondary small" onClick={() => setPlanDraft(null)}>
+                    Annuler
+                  </button>
+                  <button
+                    className="btn ghost"
+                    onClick={() => setPlanDraft([...DEFAULT_WEEK])}
+                  >
+                    Remettre la semaine par défaut
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <button className="btn secondary block" disabled={frozen} onClick={() => { setPlanError(null); setPlanDraft([...weekPlan]); }}>
+                Organiser ma semaine
+              </button>
+            )}
             <h2 style={{ marginTop: 8 }}>Faire une autre séance</h2>
             <div className="stack">
               {(['A', 'B', 'M', 'C'] as SessionKey[]).map((s) => (
@@ -510,23 +695,41 @@ export default function AthleteApp({ token }: { token: string }) {
                       <div style={{ fontWeight: 700 }}>{it.exercise.name}</div>
                       <div className="small muted">{currentLevel(it).label}</div>
                     </div>
-                    <div className="levels" aria-label={`Niveau ${it.level} sur ${it.exercise.levels.length}`}>
-                      {it.exercise.levels.map((_, i) => (
-                        <span key={i} className={`level-dot ${i < it.level ? 'on' : ''}`}>{i + 1}</span>
-                      ))}
-                    </div>
+                    {selfLevel && !frozen ? (
+                      <div className="stepper" title="Niveau">
+                        <button aria-label={`Plus facile : ${it.exercise.name}`} disabled={it.level <= 1} onClick={() => void chooseLevel(it.exercise.id, it.level - 1)}>
+                          −
+                        </button>
+                        <output aria-live="polite">{it.level}/{it.exercise.levels.length}</output>
+                        <button aria-label={`Plus dur : ${it.exercise.name}`} disabled={it.level >= it.exercise.levels.length} onClick={() => void chooseLevel(it.exercise.id, it.level + 1)}>
+                          +
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="levels" aria-label={`Niveau ${it.level} sur ${it.exercise.levels.length}`}>
+                        {it.exercise.levels.map((_, i) => (
+                          <span key={i} className={`level-dot ${i < it.level ? 'on' : ''}`}>{i + 1}</span>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
             ))}
+            {levelError && <div className="banner error" role="alert">{levelError}</div>}
             <div className="card sage">
-              <h3>Prête pour le niveau suivant ?</h3>
+              <h3>{selfLevel ? 'Tu choisis ton niveau' : 'Prête pour le niveau suivant ?'}</h3>
+              {selfLevel && <p className="small">Nos repères pour monter :</p>}
               <ul className="small" style={{ margin: 0, paddingLeft: 18 }}>
                 <li>Douleur à 3 sur 10 maximum, normale le lendemain</li>
                 <li>Aucun fourmillement ni faiblesse</li>
                 <li>« Trop facile » sur 2 séances de suite</li>
               </ul>
-              <p className="small">Ton coach valide chaque nouveau niveau.</p>
+              <p className="small">
+                {selfLevel
+                  ? "Tu peux monter ou descendre quand tu veux, ici ou pendant la séance avec « Plus dur » et « Plus facile ». Si un exercice fait mal, l'app te redescend d'un niveau toute seule."
+                  : 'Ton coach valide chaque nouveau niveau.'}
+              </p>
             </div>
           </>
         )}

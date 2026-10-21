@@ -1,5 +1,5 @@
 import { supabase, isNetworkError } from './supabase';
-import type { AthleteData, Library, ProgramSessionKey, SubmitResult, SwapOption, WorkoutSubmission } from './types';
+import type { AthleteData, Library, ProgramSessionKey, SubmitResult, SwapOption, WeekSlot, WorkoutSubmission } from './types';
 
 const CACHE_KEY = (token: string) => `cr-cache-${token.slice(0, 12)}`;
 const QUEUE_KEY = (token: string) => `cr-queue-${token.slice(0, 12)}`;
@@ -63,6 +63,20 @@ export async function fetchSwapOptions(
   return (data ?? []) as SwapOption[];
 }
 
+/** L'athlète choisit le niveau d'un exercice (dans les deux sens, sans condition) quand son coach le permet. */
+export async function setLevel(token: string, exerciseId: string, level: number): Promise<void> {
+  if (!supabase) throw new Error('not_configured');
+  const { error } = await supabase.rpc('athlete_set_level', { p_token: token, p_exercise: exerciseId, p_level: level });
+  if (error) throw error;
+}
+
+/** Enregistre la semaine type choisie (null = retour à la semaine par défaut). */
+export async function setWeekPlan(token: string, plan: WeekSlot[] | null): Promise<void> {
+  if (!supabase) throw new Error('not_configured');
+  const { error } = await supabase.rpc('athlete_set_week_plan', { p_token: token, p_plan: plan });
+  if (error) throw error;
+}
+
 export function pendingWorkouts(token: string): WorkoutSubmission[] {
   return safeGet<WorkoutSubmission[]>(QUEUE_KEY(token)) ?? [];
 }
@@ -85,6 +99,7 @@ async function sendOne(token: string, w: WorkoutSubmission): Promise<SubmitResul
     p_rpe: w.rpe ?? null,
     p_duration_min: w.duration_min ?? null,
     p_swaps: w.swaps ?? [],
+    p_levels: w.levels ?? [],
   });
   if (error) throw error;
   return data as SubmitResult;
