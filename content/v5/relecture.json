@@ -1,0 +1,4181 @@
+{
+ "exercices": [
+  {
+   "id": "squat",
+   "statut": "Nouveau",
+   "nom": "Squat au poids du corps",
+   "type": "force",
+   "discipline": "renforcement",
+   "zones": "jambes, fessiers",
+   "objectifs": "renforcer, tonifier",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "12 répétitions",
+   "niveaux": "1. Amplitude confortable (10 rép.)\n2. Cuisses parallèles au sol (12 rép.)\n3. Descente lente en 3 s (12 rép.)\n4. Pause de 2 s en bas (15 rép.)",
+   "muscles_principaux": "Quadriceps, Grand fessier",
+   "muscles_secondaires": "Ischio-jambiers, Adducteurs, Bas du dos (lombaires)",
+   "met": "3 (code 02056, Renforcement au poids du corps, général)",
+   "consignes": "Debout, pieds un peu plus écartés que les hanches, pointes légèrement ouvertes.\nPousse les fesses en arrière et descends comme pour t'asseoir, poitrine ouverte.\nRemonte en poussant dans tout le pied, genoux dans l'axe des orteils.",
+   "precaution": "Descends seulement jusqu'où ton dos reste long et tes talons au sol.",
+   "respiration": "Inspire en descendant, expire en remontant.",
+   "erreurs": "Genoux qui rentrent vers l'intérieur.\nTalons qui décollent.\nDos qui s'arrondit en bas.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Bodyweight Squat",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Bodyweight_Squat.json"
+    },
+    {
+     "label": "NHS, Strength exercises",
+     "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/strength-exercises/"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "squat_sumo",
+   "statut": "Nouveau",
+   "nom": "Squat sumo",
+   "type": "force",
+   "discipline": "renforcement",
+   "zones": "jambes, fessiers",
+   "objectifs": "renforcer, tonifier",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "12 répétitions",
+   "niveaux": "1. Amplitude confortable (10 rép.)\n2. Cuisses parallèles au sol (12 rép.)\n3. Pause de 2 s en bas (12 rép.)\n4. Haltère tenu des deux mains (12 rép.)",
+   "muscles_principaux": "Adducteurs, Grand fessier, Quadriceps",
+   "muscles_secondaires": "Ischio-jambiers",
+   "met": "3 (code 02056, Renforcement au poids du corps, général)",
+   "consignes": "Pieds bien plus écartés que les épaules, pointes tournées vers l'extérieur.\nDescends le bassin à la verticale, buste droit, genoux ouverts vers les pieds.\nRemonte en serrant les fessiers.",
+   "precaution": "Les genoux suivent toujours la direction des pointes de pied.",
+   "respiration": "Inspire en descendant, expire en remontant.",
+   "erreurs": "Pencher le buste en avant.\nLaisser les genoux se refermer.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Plie Dumbbell Squat",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Plie_Dumbbell_Squat.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "chaise_mur",
+   "statut": "Nouveau",
+   "nom": "Chaise contre le mur",
+   "type": "force",
+   "discipline": "renforcement",
+   "zones": "jambes",
+   "objectifs": "renforcer, tonifier",
+   "intensite": 3,
+   "sauts": "non",
+   "materiel": "mur",
+   "mode": "30 s",
+   "niveaux": "1. Genoux peu fléchis (20 s)\n2. Genoux peu fléchis (30 s)\n3. Cuisses presque parallèles au sol (30 s)\n4. Cuisses parallèles au sol (45 s)",
+   "muscles_principaux": "Quadriceps",
+   "muscles_secondaires": "Grand fessier, Adducteurs",
+   "met": "3 (code 02056, Renforcement au poids du corps, général)",
+   "consignes": "Dos plaqué contre le mur, pieds à environ 50 cm du mur.\nGlisse vers le bas jusqu'à la hauteur choisie, genoux au-dessus des chevilles.\nTiens la position, mains sur les cuisses ou bras croisés.",
+   "precaution": "Si une douleur apparaît dans le genou, remonte un peu.",
+   "respiration": "Respire calmement, sans bloquer.",
+   "erreurs": "Genoux qui dépassent largement les orteils.\nAppuyer les mains sur les cuisses pour tricher.",
+   "sources": [
+    {
+     "label": "NHS, Strength exercises",
+     "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/strength-exercises/"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "fente_avant",
+   "statut": "Nouveau",
+   "nom": "Fente avant",
+   "type": "force",
+   "discipline": "renforcement",
+   "zones": "jambes, fessiers",
+   "objectifs": "renforcer, tonifier",
+   "intensite": 3,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "10 répétitions",
+   "niveaux": "1. Fente sur place, petite amplitude (8 rép.)\n2. Fente sur place (10 rép.)\n3. Pas en avant puis retour (10 rép.)\n4. Haltères en main (10 rép.)",
+   "muscles_principaux": "Quadriceps, Grand fessier",
+   "muscles_secondaires": "Ischio-jambiers, Adducteurs",
+   "met": "3.8 (code 02022, Callisthénie modérée (pompes, fentes))",
+   "consignes": "Debout, fais un grand pas en avant.\nDescends le genou arrière vers le sol, buste droit.\nPousse sur le pied avant pour revenir. Alterne les jambes.",
+   "precaution": "Le genou avant reste au-dessus de la cheville. Tiens-toi à une chaise si l'équilibre est difficile.",
+   "respiration": "Inspire en descendant, expire en remontant.",
+   "erreurs": "Pas trop court : le genou avant part loin devant.\nBuste penché vers l'avant.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Bodyweight Walking Lunge",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Bodyweight_Walking_Lunge.json"
+    },
+    {
+     "label": "NHS, Strength exercises",
+     "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/strength-exercises/"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "fente_arriere",
+   "statut": "Nouveau",
+   "nom": "Fente arrière",
+   "type": "force",
+   "discipline": "renforcement",
+   "zones": "jambes, fessiers",
+   "objectifs": "renforcer, tonifier",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "10 répétitions",
+   "niveaux": "1. Main sur une chaise, petite amplitude (8 rép.)\n2. Sans appui (10 rép.)\n3. Descente lente en 3 s (10 rép.)\n4. Haltères en main (10 rép.)",
+   "muscles_principaux": "Grand fessier, Quadriceps",
+   "muscles_secondaires": "Ischio-jambiers",
+   "met": "3.8 (code 02022, Callisthénie modérée (pompes, fentes))",
+   "consignes": "Debout, recule un pied d'un grand pas.\nFléchis les deux genoux, le genou arrière descend vers le sol.\nReviens en poussant sur le talon avant. Alterne.",
+   "precaution": "Plus facile pour les genoux que la fente avant : bon choix pour commencer.",
+   "respiration": "Inspire en reculant, expire en revenant.",
+   "erreurs": "Pieds sur la même ligne : on perd l'équilibre.\nGenou arrière qui tape le sol.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Dumbbell Rear Lunge",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Dumbbell_Rear_Lunge.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "fente_laterale",
+   "statut": "Nouveau",
+   "nom": "Fente latérale",
+   "type": "force",
+   "discipline": "renforcement",
+   "zones": "jambes, fessiers",
+   "objectifs": "renforcer, tonifier, mobilite",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "10 répétitions",
+   "niveaux": "1. Petite amplitude (8 rép.)\n2. Amplitude complète (10 rép.)\n3. Pause de 2 s en bas (10 rép.)",
+   "muscles_principaux": "Adducteurs, Quadriceps, Grand fessier",
+   "muscles_secondaires": "Moyen fessier",
+   "met": "3.8 (code 02022, Callisthénie modérée (pompes, fentes))",
+   "consignes": "Debout, pieds joints. Fais un grand pas sur le côté.\nPlie le genou de ce côté et pousse les fesses en arrière, l'autre jambe reste tendue.\nReviens au centre en poussant sur le pied. Alterne.",
+   "precaution": "Les deux pieds restent à plat et pointent vers l'avant.",
+   "respiration": "Inspire en descendant, expire en revenant.",
+   "erreurs": "Genou plié qui rentre vers l'intérieur.\nDos arrondi.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Barbell Side Split Squat",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Barbell_Side_Split_Squat.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "fente_bulgare",
+   "statut": "Nouveau",
+   "nom": "Fente bulgare (pied arrière sur une chaise)",
+   "type": "force",
+   "discipline": "renforcement",
+   "zones": "jambes, fessiers",
+   "objectifs": "renforcer, tonifier",
+   "intensite": 4,
+   "sauts": "non",
+   "materiel": "chaise",
+   "mode": "8 répétitions",
+   "niveaux": "1. Petite amplitude, main au mur (6 rép.)\n2. Amplitude complète (8 rép.)\n3. Descente lente en 3 s (8 rép.)\n4. Haltères en main (8 rép.)",
+   "muscles_principaux": "Quadriceps, Grand fessier",
+   "muscles_secondaires": "Ischio-jambiers, Adducteurs, Moyen fessier",
+   "met": "3.8 (code 02022, Callisthénie modérée (pompes, fentes))",
+   "consignes": "Dos à une chaise stable, pose le dessus du pied arrière sur l'assise.\nDescends à la verticale sur la jambe avant, buste légèrement penché.\nRemonte en poussant dans le talon avant. Fais toutes les répétitions, puis change.",
+   "precaution": "Chaise calée contre un mur pour qu'elle ne glisse pas.",
+   "respiration": "Inspire en descendant, expire en remontant.",
+   "erreurs": "Pied avant trop près de la chaise.\nPousser avec la jambe arrière.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Split Squats",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Split_Squats.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "pont_unilateral",
+   "statut": "Nouveau",
+   "nom": "Pont fessier sur une jambe",
+   "type": "force",
+   "discipline": "renforcement",
+   "zones": "fessiers, jambes",
+   "objectifs": "renforcer, tonifier",
+   "intensite": 3,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "10 répétitions",
+   "niveaux": "1. Jambe libre pliée (8 rép.)\n2. Jambe libre tendue (10 rép.)\n3. Pause de 2 s en haut (10 rép.)",
+   "muscles_principaux": "Grand fessier",
+   "muscles_secondaires": "Ischio-jambiers, Moyen fessier, Bas du dos (lombaires)",
+   "met": "3 (code 02056, Renforcement au poids du corps, général)",
+   "consignes": "Allonge-toi sur le dos, un pied à plat, l'autre jambe en l'air.\nPousse dans le talon au sol et monte le bassin bien droit.\nRedescends lentement. Change de jambe à mi-série.",
+   "precaution": "Le bassin reste horizontal : s'il penche, reviens au pont sur deux jambes.",
+   "respiration": "Expire en montant, inspire en redescendant.",
+   "erreurs": "Bassin qui penche du côté de la jambe levée.\nCambrer le dos en haut.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Single Leg Glute Bridge",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Single_Leg_Glute_Bridge.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "hip_thrust",
+   "statut": "Nouveau",
+   "nom": "Hip thrust, épaules sur le canapé",
+   "type": "force",
+   "discipline": "renforcement",
+   "zones": "fessiers",
+   "objectifs": "renforcer, tonifier",
+   "intensite": 3,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "12 répétitions",
+   "niveaux": "1. Poids du corps (10 rép.)\n2. Poids du corps, pause de 2 s (12 rép.)\n3. Haltère posé sur le bassin (12 rép.)\n4. Une jambe (8 rép.)",
+   "muscles_principaux": "Grand fessier",
+   "muscles_secondaires": "Ischio-jambiers, Quadriceps",
+   "met": "3 (code 02056, Renforcement au poids du corps, général)",
+   "consignes": "Assieds-toi au sol, le haut du dos appuyé contre le bord d'un canapé ou d'un lit.\nPieds à plat, pousse dans les talons pour monter le bassin jusqu'à l'horizontale.\nMenton rentré, serre les fessiers en haut, puis redescends.",
+   "precaution": "Le support doit être stable et bas (hauteur de genou environ).",
+   "respiration": "Expire en montant, inspire en redescendant.",
+   "erreurs": "Cambrer le bas du dos en haut.\nRegarder le plafond : la nuque se casse.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Barbell Hip Thrust",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Barbell_Hip_Thrust.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "ruade",
+   "statut": "Nouveau",
+   "nom": "Ruade (donkey kick)",
+   "type": "force",
+   "discipline": "renforcement",
+   "zones": "fessiers",
+   "objectifs": "tonifier, renforcer",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "12 répétitions",
+   "niveaux": "1. Petite amplitude (10 rép.)\n2. Amplitude complète (12 rép.)\n3. Élastique autour des cuisses (12 rép.)\n4. Pause de 2 s en haut (15 rép.)",
+   "muscles_principaux": "Grand fessier",
+   "muscles_secondaires": "Ischio-jambiers, Abdominaux profonds",
+   "met": "3 (code 02056, Renforcement au poids du corps, général)",
+   "consignes": "À quatre pattes, mains sous les épaules, genoux sous les hanches.\nGenou plié à angle droit, pousse la plante du pied vers le plafond.\nReviens sans poser le genou. Change de côté à mi-série.",
+   "precaution": "Monte seulement tant que le dos reste plat.",
+   "respiration": "Expire en poussant, inspire en revenant.",
+   "erreurs": "Creuser le dos pour monter plus haut.\nOuvrir la hanche sur le côté.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Glute Kickback",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Glute_Kickback.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "bouche_incendie",
+   "statut": "Nouveau",
+   "nom": "Bouche d'incendie (fire hydrant)",
+   "type": "force",
+   "discipline": "renforcement",
+   "zones": "fessiers",
+   "objectifs": "tonifier, renforcer",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "12 répétitions",
+   "niveaux": "1. Petite amplitude (10 rép.)\n2. Amplitude complète (12 rép.)\n3. Élastique autour des cuisses (12 rép.)",
+   "muscles_principaux": "Moyen fessier",
+   "muscles_secondaires": "Grand fessier, Abdominaux profonds",
+   "met": "3 (code 02056, Renforcement au poids du corps, général)",
+   "consignes": "À quatre pattes, dos plat.\nGarde le genou plié et ouvre la cuisse sur le côté, comme une porte.\nRedescends lentement. Change de côté à mi-série.",
+   "precaution": "Le buste ne bascule pas : seule la jambe bouge.",
+   "respiration": "Expire en ouvrant, inspire en refermant.",
+   "erreurs": "Pencher tout le corps du côté opposé.\nAller trop vite.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Thigh Abductor",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Thigh_Abductor.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "charniere_hanche",
+   "statut": "Nouveau",
+   "nom": "Charnière de hanche (good morning) au poids du corps",
+   "type": "force",
+   "discipline": "renforcement",
+   "zones": "jambes, dos, fessiers",
+   "objectifs": "renforcer, mobilite",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "12 répétitions",
+   "niveaux": "1. Mains sur les hanches (10 rép.)\n2. Mains derrière la tête (12 rép.)\n3. Élastique sous les pieds, sur la nuque (12 rép.)",
+   "muscles_principaux": "Ischio-jambiers, Grand fessier",
+   "muscles_secondaires": "Bas du dos (lombaires)",
+   "met": "3 (code 02056, Renforcement au poids du corps, général)",
+   "consignes": "Debout, pieds largeur de hanches, genoux légèrement fléchis.\nPousse les fesses loin en arrière, le buste descend dos plat.\nArrête quand tu sens l'arrière des cuisses tirer, puis remonte en serrant les fessiers.",
+   "precaution": "Le dos reste plat du début à la fin : c'est la hanche qui plie.",
+   "respiration": "Inspire en descendant, expire en remontant.",
+   "erreurs": "Arrondir le dos.\nPlier les genoux comme pour un squat.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Band Good Morning",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Band_Good_Morning.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "souleve_roumain",
+   "statut": "Nouveau",
+   "nom": "Soulevé de terre roumain aux haltères",
+   "type": "force",
+   "discipline": "renforcement",
+   "zones": "jambes, fessiers, dos",
+   "objectifs": "renforcer",
+   "intensite": 3,
+   "sauts": "non",
+   "materiel": "halteres",
+   "mode": "10 répétitions",
+   "niveaux": "1. Haltères légers (10 rép.)\n2. Haltères moyens (10 rép.)\n3. Descente lente en 3 s (10 rép.)\n4. Sur une jambe, main à la chaise (8 rép.)",
+   "muscles_principaux": "Ischio-jambiers, Grand fessier",
+   "muscles_secondaires": "Bas du dos (lombaires), Trapèzes, Avant-bras",
+   "met": "5 (code 02052, Squats et soulevés de terre)",
+   "consignes": "Debout, un haltère dans chaque main devant les cuisses.\nPousse les fesses en arrière et fais glisser les haltères le long des jambes.\nDescends jusqu'au milieu des tibias, dos plat, puis remonte en serrant les fessiers.",
+   "precaution": "Garde les haltères au contact des jambes : plus ils s'éloignent, plus le dos travaille.",
+   "respiration": "Inspire en descendant, expire en remontant.",
+   "erreurs": "Dos arrondi.\nHaltères qui partent vers l'avant.\nDescendre trop bas sans souplesse.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Romanian Deadlift",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Romanian_Deadlift.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Stiff-Legged Dumbbell Deadlift",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Stiff-Legged_Dumbbell_Deadlift.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "squat_goblet",
+   "statut": "Nouveau",
+   "nom": "Squat goblet à l'haltère",
+   "type": "force",
+   "discipline": "renforcement",
+   "zones": "jambes, fessiers",
+   "objectifs": "renforcer",
+   "intensite": 3,
+   "sauts": "non",
+   "materiel": "halteres",
+   "mode": "10 répétitions",
+   "niveaux": "1. Haltère léger (10 rép.)\n2. Haltère moyen (10 rép.)\n3. Pause de 2 s en bas (10 rép.)\n4. Haltère lourd (8 rép.)",
+   "muscles_principaux": "Quadriceps, Grand fessier",
+   "muscles_secondaires": "Adducteurs, Abdominaux profonds, Bas du dos (lombaires)",
+   "met": "5 (code 02052, Squats et soulevés de terre)",
+   "consignes": "Tiens un haltère vertical contre la poitrine, coudes vers le bas.\nDescends en squat, les coudes passent entre les genoux.\nRemonte en poussant dans les talons, buste droit.",
+   "precaution": "L'haltère reste collé à la poitrine pendant tout le mouvement.",
+   "respiration": "Inspire en descendant, expire en remontant.",
+   "erreurs": "Laisser l'haltère tirer le buste vers l'avant.\nTalons qui décollent.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Goblet Squat",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Goblet_Squat.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "releve_mollets_unipodal",
+   "statut": "Nouveau",
+   "nom": "Montée sur pointe, une jambe",
+   "type": "force",
+   "discipline": "renforcement",
+   "zones": "jambes",
+   "objectifs": "renforcer, tonifier",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "mur",
+   "mode": "12 répétitions",
+   "niveaux": "1. Main au mur, amplitude confortable (10 rép.)\n2. Descente lente en 3 s (12 rép.)\n3. Talon dans le vide, sur une marche (12 rép.)",
+   "muscles_principaux": "Mollets",
+   "muscles_secondaires": "",
+   "met": "3 (code 02056, Renforcement au poids du corps, général)",
+   "consignes": "Debout sur une jambe, une main au mur pour l'équilibre.\nMonte le plus haut possible sur la pointe du pied.\nRedescends lentement. Change de jambe.",
+   "precaution": "Le genou reste juste déverrouillé.",
+   "respiration": "Expire en montant, inspire en descendant.",
+   "erreurs": "Rebondir en bas.\nCheville qui part vers l'extérieur.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Standing Dumbbell Calf Raise",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Standing_Dumbbell_Calf_Raise.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "adducteurs_couche",
+   "statut": "Nouveau",
+   "nom": "Levée de jambe intérieure (adducteurs)",
+   "type": "force",
+   "discipline": "renforcement",
+   "zones": "jambes",
+   "objectifs": "tonifier, renforcer",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "15 répétitions",
+   "niveaux": "1. Petite amplitude (12 rép.)\n2. Pause de 2 s en haut (15 rép.)\n3. Élastique aux chevilles (15 rép.)",
+   "muscles_principaux": "Adducteurs",
+   "muscles_secondaires": "Abdominaux profonds",
+   "met": "3 (code 02056, Renforcement au poids du corps, général)",
+   "consignes": "Allonge-toi sur le côté, la jambe du dessus pliée et posée devant toi.\nMonte la jambe du dessous tendue, de quelques centimètres.\nRedescends sans poser complètement. Change de côté.",
+   "precaution": "Petit mouvement, sans élan.",
+   "respiration": "Expire en montant, inspire en descendant.",
+   "erreurs": "Rouler vers l'arrière.\nPointe du pied tournée vers le plafond.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Thigh Adductor",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Thigh_Adductor.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Band Hip Adductions",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Band_Hip_Adductions.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "pont_marche",
+   "statut": "Nouveau",
+   "nom": "Pont fessier en marche",
+   "type": "gainage",
+   "discipline": "gainage",
+   "zones": "fessiers, abdos",
+   "objectifs": "renforcer",
+   "intensite": 3,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "10 répétitions",
+   "niveaux": "1. Pied soulevé de 5 cm (8 rép.)\n2. Genou ramené vers la poitrine (10 rép.)\n3. Pause de 2 s par pas (10 rép.)",
+   "muscles_principaux": "Grand fessier, Abdominaux profonds",
+   "muscles_secondaires": "Ischio-jambiers, Obliques",
+   "met": "2.8 (code 02024, Callisthénie légère (crunchs, planche))",
+   "consignes": "En position de pont, bassin levé.\nSoulève un pied, puis l'autre, comme si tu marchais sur place.\nLe bassin reste haut et immobile.",
+   "precaution": "Si le bassin tourne ou descend, reviens au pont classique.",
+   "respiration": "Respire à chaque pas, sans bloquer.",
+   "erreurs": "Bassin qui s'affaisse.\nHanches qui basculent d'un côté à l'autre.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Butt Lift Bridge",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Butt_Lift_Bridge.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "squat_unipodal_chaise",
+   "statut": "Nouveau",
+   "nom": "Squat sur une jambe vers une chaise",
+   "type": "force",
+   "discipline": "calisthenie",
+   "zones": "jambes, fessiers",
+   "objectifs": "renforcer",
+   "intensite": 4,
+   "sauts": "non",
+   "materiel": "chaise",
+   "mode": "6 répétitions",
+   "niveaux": "1. Chaise haute, une main au mur (5 rép.)\n2. Chaise haute (6 rép.)\n3. Chaise basse (6 rép.)\n4. Descente lente en 4 s (6 rép.)",
+   "muscles_principaux": "Quadriceps, Grand fessier",
+   "muscles_secondaires": "Moyen fessier, Ischio-jambiers, Abdominaux profonds",
+   "met": "3.8 (code 02022, Callisthénie modérée (pompes, fentes))",
+   "consignes": "Debout devant une chaise, sur une jambe, l'autre tendue devant toi.\nDescends lentement jusqu'à t'asseoir, bras tendus devant pour l'équilibre.\nRelève-toi sur la même jambe. Change de jambe.",
+   "precaution": "Étape vers le pistol squat. Pose les deux pieds si le genou rentre vers l'intérieur.",
+   "respiration": "Inspire en descendant, expire en te relevant.",
+   "erreurs": "Se laisser tomber sur la chaise.\nGenou qui part vers l'intérieur.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Single-Leg High Box Squat",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Single-Leg_High_Box_Squat.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Kettlebell Pistol Squat",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Kettlebell_Pistol_Squat.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "pompe_mur",
+   "statut": "Nouveau",
+   "nom": "Pompe au mur",
+   "type": "force",
+   "discipline": "renforcement",
+   "zones": "bras, epaules",
+   "objectifs": "renforcer, tonifier",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "mur",
+   "mode": "12 répétitions",
+   "niveaux": "1. Pieds proches du mur (10 rép.)\n2. Pieds plus éloignés (12 rép.)\n3. Descente lente en 3 s (12 rép.)",
+   "muscles_principaux": "Pectoraux, Triceps",
+   "muscles_secondaires": "Épaules (avant), Abdominaux profonds",
+   "met": "3 (code 02056, Renforcement au poids du corps, général)",
+   "consignes": "Face au mur, mains à plat à hauteur d'épaules, un peu plus écartées.\nPlie les coudes pour approcher la poitrine du mur, corps gainé.\nRepousse le mur pour revenir.",
+   "precaution": "Plus les pieds sont loin du mur, plus c'est difficile.",
+   "respiration": "Inspire en descendant, expire en poussant.",
+   "erreurs": "Coudes ouverts à 90° du corps.\nFesses en arrière.",
+   "sources": [
+    {
+     "label": "NHS, Strength exercises",
+     "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/strength-exercises/"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Incline Push-Up",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Incline_Push-Up.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "pompe_inclinee",
+   "statut": "Nouveau",
+   "nom": "Pompe inclinée (mains sur une chaise)",
+   "type": "force",
+   "discipline": "renforcement",
+   "zones": "bras, epaules",
+   "objectifs": "renforcer, tonifier",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "chaise",
+   "mode": "10 répétitions",
+   "niveaux": "1. Mains sur un plan haut (table) (8 rép.)\n2. Mains sur l'assise (10 rép.)\n3. Descente lente en 3 s (10 rép.)",
+   "muscles_principaux": "Pectoraux, Triceps",
+   "muscles_secondaires": "Épaules (avant), Abdominaux profonds",
+   "met": "3.8 (code 02022, Callisthénie modérée (pompes, fentes))",
+   "consignes": "Mains sur l'assise d'une chaise calée contre le mur, corps en planche.\nDescends la poitrine vers la chaise, coudes à 45° du corps.\nPousse pour revenir, corps bien aligné.",
+   "precaution": "La chaise ne doit pas pouvoir glisser.",
+   "respiration": "Inspire en descendant, expire en poussant.",
+   "erreurs": "Bassin qui s'affaisse.\nTête qui avance vers la chaise.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Incline Push-Up",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Incline_Push-Up.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "pompe_genoux",
+   "statut": "Nouveau",
+   "nom": "Pompe sur les genoux",
+   "type": "force",
+   "discipline": "renforcement",
+   "zones": "bras, epaules",
+   "objectifs": "renforcer, tonifier",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "10 répétitions",
+   "niveaux": "1. Demi-amplitude (8 rép.)\n2. Amplitude complète (10 rép.)\n3. Descente lente en 3 s (10 rép.)",
+   "muscles_principaux": "Pectoraux, Triceps",
+   "muscles_secondaires": "Épaules (avant), Abdominaux profonds",
+   "met": "3.8 (code 02022, Callisthénie modérée (pompes, fentes))",
+   "consignes": "À genoux, mains au sol sous les épaules, un peu plus écartées.\nAligne genoux, hanches et épaules, puis descends la poitrine vers le sol.\nRepousse le sol pour remonter.",
+   "precaution": "Un coussin sous les genoux rend l'exercice plus confortable.",
+   "respiration": "Inspire en descendant, expire en poussant.",
+   "erreurs": "Fesses en l'air.\nCoudes ouverts sur les côtés.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Pushups",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Pushups.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "pompe",
+   "statut": "Nouveau",
+   "nom": "Pompe",
+   "type": "force",
+   "discipline": "calisthenie",
+   "zones": "bras, epaules, abdos",
+   "objectifs": "renforcer",
+   "intensite": 3,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "10 répétitions",
+   "niveaux": "1. 5 pompes propres (5 rép.)\n2. 8 pompes (8 rép.)\n3. 10 pompes (10 rép.)\n4. Descente lente en 3 s (10 rép.)",
+   "muscles_principaux": "Pectoraux, Triceps",
+   "muscles_secondaires": "Épaules (avant), Abdominaux (grand droit), Abdominaux profonds",
+   "met": "3.8 (code 02022, Callisthénie modérée (pompes, fentes))",
+   "consignes": "Mains au sol un peu plus larges que les épaules, corps droit de la tête aux talons.\nDescends la poitrine jusqu'à quelques centimètres du sol, coudes à 45°.\nPousse le sol pour revenir, sans casser l'alignement.",
+   "precaution": "Si le bassin s'affaisse, passe à la pompe sur les genoux.",
+   "respiration": "Inspire en descendant, expire en poussant.",
+   "erreurs": "Bassin qui s'affaisse.\nTête qui plonge vers le sol.\nCoudes à 90° du corps.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Pushups",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Pushups.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "pompe_serree",
+   "statut": "Nouveau",
+   "nom": "Pompe mains serrées (triceps)",
+   "type": "force",
+   "discipline": "calisthenie",
+   "zones": "bras",
+   "objectifs": "renforcer",
+   "intensite": 4,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "8 répétitions",
+   "niveaux": "1. Sur les genoux (8 rép.)\n2. Sur les pieds (6 rép.)\n3. Sur les pieds (8 rép.)",
+   "muscles_principaux": "Triceps",
+   "muscles_secondaires": "Pectoraux, Épaules (avant)",
+   "met": "3.8 (code 02022, Callisthénie modérée (pompes, fentes))",
+   "consignes": "En position de pompe, mains sous les épaules, rapprochées.\nDescends en gardant les coudes collés au corps.\nPousse pour remonter.",
+   "precaution": "Plus exigeant pour les poignets : écarte un peu les mains si besoin.",
+   "respiration": "Inspire en descendant, expire en poussant.",
+   "erreurs": "Coudes qui s'ouvrent.\nBassin qui s'affaisse.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Push-Ups - Close Triceps Position",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Push-Ups_-_Close_Triceps_Position.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "pompe_pike",
+   "statut": "Nouveau",
+   "nom": "Pompe en V (pike push-up)",
+   "type": "force",
+   "discipline": "calisthenie",
+   "zones": "epaules, bras",
+   "objectifs": "renforcer",
+   "intensite": 4,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "8 répétitions",
+   "niveaux": "1. Petite amplitude (6 rép.)\n2. Front vers le sol (8 rép.)\n3. Pieds surélevés sur une chaise (6 rép.)",
+   "muscles_principaux": "Épaules (avant), Triceps",
+   "muscles_secondaires": "Trapèzes, Pectoraux",
+   "met": "3.8 (code 02022, Callisthénie modérée (pompes, fentes))",
+   "consignes": "Mains au sol, fesses hautes : ton corps forme un V à l'envers.\nPlie les coudes pour descendre le sommet du crâne vers le sol, entre les mains.\nRepousse pour revenir.",
+   "precaution": "Descends lentement : le poids est sur les épaules et la tête approche du sol.",
+   "respiration": "Inspire en descendant, expire en poussant.",
+   "erreurs": "Coudes qui partent sur les côtés.\nFesses qui descendent : ça devient une pompe classique.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Handstand Push-Ups",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Handstand_Push-Ups.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "dips_chaise",
+   "statut": "Nouveau",
+   "nom": "Dips sur chaise",
+   "type": "force",
+   "discipline": "calisthenie",
+   "zones": "bras",
+   "objectifs": "renforcer, tonifier",
+   "intensite": 3,
+   "sauts": "non",
+   "materiel": "chaise",
+   "mode": "10 répétitions",
+   "niveaux": "1. Genoux pliés, petite amplitude (8 rép.)\n2. Genoux pliés (10 rép.)\n3. Jambes tendues (10 rép.)",
+   "muscles_principaux": "Triceps",
+   "muscles_secondaires": "Pectoraux, Épaules (avant)",
+   "met": "3.8 (code 02022, Callisthénie modérée (pompes, fentes))",
+   "consignes": "Dos à une chaise stable, mains sur le bord de l'assise, doigts vers l'avant.\nPlie les coudes vers l'arrière pour descendre les fesses.\nRemonte en tendant les bras.",
+   "precaution": "Descends jusqu'à ce que les bras soient à angle droit, pas plus bas.",
+   "respiration": "Inspire en descendant, expire en poussant.",
+   "erreurs": "Épaules qui remontent vers les oreilles.\nCoudes qui s'écartent.\nS'éloigner de la chaise.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Bench Dips",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Bench_Dips.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "rowing_haltere",
+   "statut": "Nouveau",
+   "nom": "Rowing à un bras à l'haltère",
+   "type": "force",
+   "discipline": "renforcement",
+   "zones": "dos, bras",
+   "objectifs": "renforcer, tonifier",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "halteres",
+   "mode": "12 répétitions",
+   "niveaux": "1. Haltère léger (12 rép.)\n2. Haltère moyen (10 rép.)\n3. Pause de 2 s coude en arrière (10 rép.)",
+   "muscles_principaux": "Grand dorsal, Haut du dos (rhomboïdes)",
+   "muscles_secondaires": "Biceps, Épaules (arrière)",
+   "met": "3.5 (code 02054, Renforcement, 8 à 15 répétitions, résistance variée)",
+   "consignes": "Une main et un genou sur une chaise, l'autre pied au sol, dos plat.\nTire l'haltère vers la hanche, coude près du corps.\nRedescends lentement. Change de côté.",
+   "precaution": "Le dos reste plat et immobile, sans rotation.",
+   "respiration": "Expire en tirant, inspire en descendant.",
+   "erreurs": "Tourner le buste pour monter l'haltère.\nTirer vers l'épaule au lieu de la hanche.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche One-Arm Dumbbell Row",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/One-Arm_Dumbbell_Row.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "developpe_epaules",
+   "statut": "Nouveau",
+   "nom": "Développé épaules aux haltères",
+   "type": "force",
+   "discipline": "renforcement",
+   "zones": "epaules, bras",
+   "objectifs": "renforcer, tonifier",
+   "intensite": 3,
+   "sauts": "non",
+   "materiel": "halteres",
+   "mode": "10 répétitions",
+   "niveaux": "1. Assis, haltères légers (10 rép.)\n2. Debout (10 rép.)\n3. Haltères moyens (10 rép.)",
+   "muscles_principaux": "Épaules (avant), Épaules (côté)",
+   "muscles_secondaires": "Triceps, Trapèzes",
+   "met": "3.5 (code 02054, Renforcement, 8 à 15 répétitions, résistance variée)",
+   "consignes": "Haltères à hauteur d'épaules, paumes vers l'avant, ventre gainé.\nPousse vers le haut jusqu'à tendre les bras.\nRedescends lentement à hauteur d'oreilles.",
+   "precaution": "Ne cambre pas le bas du dos pour pousser : allège la charge.",
+   "respiration": "Expire en poussant, inspire en descendant.",
+   "erreurs": "Cambrer le dos.\nDescendre trop vite.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Dumbbell Shoulder Press",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Dumbbell_Shoulder_Press.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "curl_marteau",
+   "statut": "Nouveau",
+   "nom": "Curl marteau aux haltères",
+   "type": "force",
+   "discipline": "renforcement",
+   "zones": "bras",
+   "objectifs": "renforcer, tonifier",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "halteres",
+   "mode": "12 répétitions",
+   "niveaux": "1. Haltères légers (12 rép.)\n2. Haltères moyens (10 rép.)\n3. Descente lente en 3 s (10 rép.)",
+   "muscles_principaux": "Biceps, Avant-bras",
+   "muscles_secondaires": "",
+   "met": "3.5 (code 02054, Renforcement, 8 à 15 répétitions, résistance variée)",
+   "consignes": "Debout, un haltère dans chaque main, paumes face à face.\nPlie les coudes pour monter les haltères vers les épaules.\nRedescends lentement, coudes collés au corps.",
+   "precaution": "Pas d'élan avec le dos.",
+   "respiration": "Expire en montant, inspire en descendant.",
+   "erreurs": "Balancer le buste.\nCoudes qui avancent.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Hammer Curls",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Hammer_Curls.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "extension_triceps_haltere",
+   "statut": "Nouveau",
+   "nom": "Extension des triceps au-dessus de la tête",
+   "type": "force",
+   "discipline": "renforcement",
+   "zones": "bras",
+   "objectifs": "renforcer, tonifier",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "halteres",
+   "mode": "12 répétitions",
+   "niveaux": "1. Assis, haltère léger (12 rép.)\n2. Debout (12 rép.)\n3. Haltère moyen (10 rép.)",
+   "muscles_principaux": "Triceps",
+   "muscles_secondaires": "",
+   "met": "3.5 (code 02054, Renforcement, 8 à 15 répétitions, résistance variée)",
+   "consignes": "Tiens un haltère à deux mains au-dessus de la tête.\nPlie les coudes pour descendre l'haltère derrière la nuque.\nTends les bras pour remonter, coudes pointés vers l'avant.",
+   "precaution": "Garde les côtes basses : pas de cambrure.",
+   "respiration": "Inspire en descendant, expire en tendant.",
+   "erreurs": "Coudes qui s'écartent.\nCambrer le dos.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Standing Dumbbell Triceps Extension",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Standing_Dumbbell_Triceps_Extension.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "oiseau_haltere",
+   "statut": "Nouveau",
+   "nom": "Oiseau aux haltères (arrière d'épaule)",
+   "type": "force",
+   "discipline": "renforcement",
+   "zones": "epaules, dos",
+   "objectifs": "renforcer, tonifier",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "halteres",
+   "mode": "12 répétitions",
+   "niveaux": "1. Haltères très légers (12 rép.)\n2. Pause de 2 s bras ouverts (12 rép.)\n3. Haltères légers (12 rép.)",
+   "muscles_principaux": "Épaules (arrière), Haut du dos (rhomboïdes)",
+   "muscles_secondaires": "Trapèzes",
+   "met": "3.5 (code 02054, Renforcement, 8 à 15 répétitions, résistance variée)",
+   "consignes": "Penché en avant, dos plat, genoux fléchis, haltères sous les épaules.\nOuvre les bras sur les côtés, coudes légèrement fléchis.\nSerre les omoplates en haut, puis redescends lentement.",
+   "precaution": "Des charges très légères suffisent.",
+   "respiration": "Expire en ouvrant, inspire en redescendant.",
+   "erreurs": "Se redresser pour monter les bras.\nHausser les épaules.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Bent Over Low-Pulley Side Lateral",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Bent_Over_Low-Pulley_Side_Lateral.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "developpe_sol",
+   "statut": "Nouveau",
+   "nom": "Développé au sol aux haltères",
+   "type": "force",
+   "discipline": "renforcement",
+   "zones": "bras, epaules",
+   "objectifs": "renforcer",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "halteres",
+   "mode": "12 répétitions",
+   "niveaux": "1. Haltères légers (12 rép.)\n2. Haltères moyens (10 rép.)\n3. Pause de 1 s coudes au sol (10 rép.)",
+   "muscles_principaux": "Pectoraux, Triceps",
+   "muscles_secondaires": "Épaules (avant)",
+   "met": "3.5 (code 02054, Renforcement, 8 à 15 répétitions, résistance variée)",
+   "consignes": "Allongé sur le dos, genoux pliés, un haltère dans chaque main.\nPousse les haltères vers le plafond jusqu'à tendre les bras.\nRedescends jusqu'à poser doucement les coudes au sol.",
+   "precaution": "Coudes à environ 45° du corps.",
+   "respiration": "Expire en poussant, inspire en descendant.",
+   "erreurs": "Laisser tomber les coudes au sol.\nCoudes à angle droit du corps.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Dumbbell Floor Press",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Dumbbell_Floor_Press.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "tirage_vertical_elastique",
+   "statut": "Nouveau",
+   "nom": "Tirage vertical à l'élastique",
+   "type": "force",
+   "discipline": "renforcement",
+   "zones": "dos, bras",
+   "objectifs": "renforcer, tonifier",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "elastique",
+   "mode": "12 répétitions",
+   "niveaux": "1. Élastique léger (12 rép.)\n2. Élastique moyen (12 rép.)\n3. Pause de 2 s en bas (10 rép.)",
+   "muscles_principaux": "Grand dorsal",
+   "muscles_secondaires": "Biceps, Haut du dos (rhomboïdes)",
+   "met": "3.5 (code 02054, Renforcement, 8 à 15 répétitions, résistance variée)",
+   "consignes": "Élastique fixé en haut d'une porte fermée, à genoux face à la porte.\nBras tendus vers le haut, tire les coudes vers les côtes.\nRemonte lentement en gardant les épaules basses.",
+   "precaution": "Vérifie que l'élastique est bien coincé dans une porte fermée à clé ou ouvrant vers l'extérieur.",
+   "respiration": "Expire en tirant, inspire en remontant.",
+   "erreurs": "Se pencher en arrière.\nHausser les épaules.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Band Assisted Pull-Up",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Band_Assisted_Pull-Up.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "developpe_elastique",
+   "statut": "Nouveau",
+   "nom": "Développé épaules à l'élastique",
+   "type": "force",
+   "discipline": "renforcement",
+   "zones": "epaules",
+   "objectifs": "renforcer, tonifier",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "elastique",
+   "mode": "12 répétitions",
+   "niveaux": "1. Élastique léger (12 rép.)\n2. Élastique moyen (12 rép.)\n3. Un bras à la fois (10 rép.)",
+   "muscles_principaux": "Épaules (avant), Épaules (côté)",
+   "muscles_secondaires": "Triceps",
+   "met": "3.5 (code 02054, Renforcement, 8 à 15 répétitions, résistance variée)",
+   "consignes": "Debout sur l'élastique, mains à hauteur d'épaules.\nPousse vers le haut jusqu'à tendre les bras.\nRedescends lentement.",
+   "precaution": "Ventre gainé, sans cambrer.",
+   "respiration": "Expire en poussant, inspire en descendant.",
+   "erreurs": "Cambrer le dos.\nPousser vers l'avant au lieu du haut.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Shoulder Press - With Bands",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Shoulder_Press_-_With_Bands.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "superman",
+   "statut": "Nouveau",
+   "nom": "Superman",
+   "type": "force",
+   "discipline": "renforcement",
+   "zones": "dos, fessiers",
+   "objectifs": "renforcer",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "10 répétitions",
+   "niveaux": "1. Bras seuls, puis jambes seules (8 rép.)\n2. Bras et jambes ensemble (10 rép.)\n3. Maintien de 3 s en haut (10 rép.)",
+   "muscles_principaux": "Bas du dos (lombaires), Grand fessier",
+   "muscles_secondaires": "Haut du dos (rhomboïdes), Ischio-jambiers",
+   "met": "3.5 (code 02030, Callisthénie légère à modérée (exercices du dos, se relever du sol))",
+   "consignes": "Allongé sur le ventre, bras tendus devant toi, front au sol.\nDécolle en même temps bras et jambes de quelques centimètres.\nRedescends lentement.",
+   "precaution": "Petite hauteur suffit : le regard reste vers le sol.",
+   "respiration": "Expire en montant, inspire en descendant.",
+   "erreurs": "Lever la tête vers l'avant.\nMonter trop haut en forçant sur le bas du dos.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Superman",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Superman.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "ytw",
+   "statut": "Nouveau",
+   "nom": "Y, T, W au sol",
+   "type": "force",
+   "discipline": "renforcement",
+   "zones": "dos, epaules",
+   "objectifs": "renforcer, mobilite",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "9 répétitions",
+   "niveaux": "1. 2 de chaque lettre (6 rép.)\n2. 3 de chaque lettre (9 rép.)\n3. 3 de chaque, pause de 2 s (9 rép.)",
+   "muscles_principaux": "Haut du dos (rhomboïdes), Trapèzes, Épaules (arrière)",
+   "muscles_secondaires": "Coiffe des rotateurs, Bas du dos (lombaires)",
+   "met": "3.5 (code 02030, Callisthénie légère à modérée (exercices du dos, se relever du sol))",
+   "consignes": "Allongé sur le ventre, front sur une serviette roulée.\nDécolle les bras en Y, puis en T, puis en W (coudes pliés, ramenés vers les côtes).\nPouces vers le plafond, serre les omoplates à chaque lettre.",
+   "precaution": "Mouvement lent, épaules loin des oreilles.",
+   "respiration": "Expire en décollant les bras, inspire en les reposant.",
+   "erreurs": "Décoller la poitrine en cambrant.\nAller trop vite.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Reverse Flyes With External Rotation",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Reverse_Flyes_With_External_Rotation.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "rowing_inverse_table",
+   "statut": "Nouveau",
+   "nom": "Rowing inversé sous une table",
+   "type": "force",
+   "discipline": "calisthenie",
+   "zones": "dos, bras",
+   "objectifs": "renforcer",
+   "intensite": 4,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "8 répétitions",
+   "niveaux": "1. Genoux pliés (6 rép.)\n2. Genoux pliés (8 rép.)\n3. Jambes tendues (8 rép.)",
+   "muscles_principaux": "Grand dorsal, Haut du dos (rhomboïdes)",
+   "muscles_secondaires": "Biceps, Épaules (arrière), Abdominaux profonds",
+   "met": "3.8 (code 02022, Callisthénie modérée (pompes, fentes))",
+   "consignes": "Allongé sous une table très solide, mains sur le bord, bras tendus.\nCorps gainé, tire la poitrine vers le bord de la table.\nRedescends lentement.",
+   "precaution": "Seulement avec une table lourde et stable qui ne peut pas basculer. Teste-la avant.",
+   "respiration": "Expire en tirant, inspire en redescendant.",
+   "erreurs": "Bassin qui s'affaisse.\nTirer avec le cou.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Inverted Row",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Inverted_Row.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "crunch",
+   "statut": "Nouveau",
+   "nom": "Crunch",
+   "type": "gainage",
+   "discipline": "renforcement",
+   "zones": "abdos",
+   "objectifs": "tonifier, renforcer",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "15 répétitions",
+   "niveaux": "1. Mains sur les cuisses (12 rép.)\n2. Mains croisées sur la poitrine (15 rép.)\n3. Pause de 2 s en haut (15 rép.)",
+   "muscles_principaux": "Abdominaux (grand droit)",
+   "muscles_secondaires": "Obliques",
+   "met": "2.8 (code 02024, Callisthénie légère (crunchs, planche))",
+   "consignes": "Allongé sur le dos, genoux pliés, pieds à plat.\nEnroule le haut du dos pour décoller les omoplates.\nRedescends lentement sans reposer complètement la tête.",
+   "precaution": "Ne tire pas sur la nuque avec les mains.",
+   "respiration": "Expire en montant, inspire en redescendant.",
+   "erreurs": "Tirer sur la tête.\nMonter trop haut avec élan.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Crunches",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Crunches.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "crunch_inverse",
+   "statut": "Nouveau",
+   "nom": "Crunch inversé",
+   "type": "gainage",
+   "discipline": "renforcement",
+   "zones": "abdos",
+   "objectifs": "tonifier, renforcer",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "12 répétitions",
+   "niveaux": "1. Petite amplitude (10 rép.)\n2. Bassin décollé (12 rép.)\n3. Descente lente en 3 s (12 rép.)",
+   "muscles_principaux": "Abdominaux (grand droit)",
+   "muscles_secondaires": "Obliques, Fléchisseurs de hanche",
+   "met": "2.8 (code 02024, Callisthénie légère (crunchs, planche))",
+   "consignes": "Allongé sur le dos, genoux pliés au-dessus des hanches, bras le long du corps.\nRamène les genoux vers la poitrine en décollant légèrement le bassin.\nRedescends lentement.",
+   "precaution": "On enroule le bassin, on ne balance pas les jambes.",
+   "respiration": "Expire en enroulant, inspire en revenant.",
+   "erreurs": "Prendre de l'élan.\nAppuyer fort sur les mains.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Reverse Crunch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Reverse_Crunch.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "crunch_velo",
+   "statut": "Nouveau",
+   "nom": "Crunch vélo",
+   "type": "gainage",
+   "discipline": "renforcement",
+   "zones": "abdos",
+   "objectifs": "tonifier, renforcer",
+   "intensite": 3,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "16 répétitions",
+   "niveaux": "1. Pieds proches du sol en alternance lente (12 rép.)\n2. 16 alternances (16 rép.)\n3. 20 alternances (20 rép.)",
+   "muscles_principaux": "Obliques, Abdominaux (grand droit)",
+   "muscles_secondaires": "Fléchisseurs de hanche",
+   "met": "2.8 (code 02024, Callisthénie légère (crunchs, planche))",
+   "consignes": "Allongé sur le dos, mains aux tempes, omoplates décollées.\nAmène un coude vers le genou opposé pendant que l'autre jambe s'allonge.\nAlterne lentement, comme un pédalage.",
+   "precaution": "Le bas du dos reste au sol.",
+   "respiration": "Expire à chaque rotation.",
+   "erreurs": "Tirer sur la nuque.\nAller vite et perdre le contrôle.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Cross-Body Crunch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Cross-Body_Crunch.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Elbow to Knee",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Elbow_to_Knee.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "releve_jambes",
+   "statut": "Nouveau",
+   "nom": "Relevé de jambes",
+   "type": "gainage",
+   "discipline": "renforcement",
+   "zones": "abdos",
+   "objectifs": "renforcer",
+   "intensite": 3,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "10 répétitions",
+   "niveaux": "1. Genoux pliés (10 rép.)\n2. Jambes tendues, petite amplitude (8 rép.)\n3. Jambes tendues (10 rép.)",
+   "muscles_principaux": "Abdominaux (grand droit), Fléchisseurs de hanche",
+   "muscles_secondaires": "Abdominaux profonds",
+   "met": "2.8 (code 02024, Callisthénie légère (crunchs, planche))",
+   "consignes": "Allongé sur le dos, mains sous les fesses.\nMonte les jambes jusqu'à la verticale.\nRedescends lentement sans que le bas du dos décolle.",
+   "precaution": "Arrête la descente avant que le dos ne se creuse.",
+   "respiration": "Expire en montant, inspire en descendant.",
+   "erreurs": "Dos qui se creuse en bas.\nJambes qui tombent.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Flat Bench Lying Leg Raise",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Flat_Bench_Lying_Leg_Raise.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "ciseaux",
+   "statut": "Nouveau",
+   "nom": "Battements de jambes (ciseaux)",
+   "type": "gainage",
+   "discipline": "gainage",
+   "zones": "abdos",
+   "objectifs": "tonifier, renforcer",
+   "intensite": 3,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "30 s",
+   "niveaux": "1. Jambes hautes (20 s)\n2. Jambes hautes (30 s)\n3. Jambes plus basses (30 s)",
+   "muscles_principaux": "Abdominaux (grand droit), Abdominaux profonds",
+   "muscles_secondaires": "Fléchisseurs de hanche",
+   "met": "2.8 (code 02024, Callisthénie légère (crunchs, planche))",
+   "consignes": "Allongé sur le dos, mains sous les fesses, jambes tendues levées.\nFais de petits battements de haut en bas, en alternant.\nLe bas du dos reste collé au sol.",
+   "precaution": "Plus les jambes sont hautes, plus c'est facile.",
+   "respiration": "Respire régulièrement, sans bloquer.",
+   "erreurs": "Dos qui se creuse.\nGrands battements trop rapides.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Flutter Kicks",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Flutter_Kicks.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Scissor Kick",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Scissor_Kick.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "toucher_talons",
+   "statut": "Nouveau",
+   "nom": "Touchers de talons",
+   "type": "gainage",
+   "discipline": "renforcement",
+   "zones": "abdos",
+   "objectifs": "tonifier",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "20 répétitions",
+   "niveaux": "1. 16 touchers (16 rép.)\n2. 20 touchers (20 rép.)\n3. 24 touchers (24 rép.)",
+   "muscles_principaux": "Obliques",
+   "muscles_secondaires": "Abdominaux (grand droit)",
+   "met": "2.8 (code 02024, Callisthénie légère (crunchs, planche))",
+   "consignes": "Allongé sur le dos, genoux pliés, pieds écartés, omoplates décollées.\nPenche-toi sur le côté pour toucher le talon avec la main.\nAlterne à droite et à gauche, sans reposer les épaules.",
+   "precaution": "Mouvement latéral, la nuque reste longue.",
+   "respiration": "Expire à chaque toucher.",
+   "erreurs": "Reposer la tête entre chaque toucher.\nTirer avec le cou.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Alternate Heel Touchers",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Alternate_Heel_Touchers.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "rotation_russe",
+   "statut": "Nouveau",
+   "nom": "Rotation russe",
+   "type": "gainage",
+   "discipline": "renforcement",
+   "zones": "abdos",
+   "objectifs": "tonifier, renforcer",
+   "intensite": 3,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "16 répétitions",
+   "niveaux": "1. Pieds au sol (12 rép.)\n2. Pieds au sol (16 rép.)\n3. Pieds décollés (16 rép.)\n4. Haltère en main (16 rép.)",
+   "muscles_principaux": "Obliques",
+   "muscles_secondaires": "Abdominaux (grand droit), Abdominaux profonds",
+   "met": "2.8 (code 02024, Callisthénie légère (crunchs, planche))",
+   "consignes": "Assis, genoux pliés, buste incliné en arrière, dos droit.\nMains jointes, tourne le buste pour amener les mains d'un côté puis de l'autre.\nLe regard suit les mains.",
+   "precaution": "C'est le buste qui tourne, pas seulement les bras.",
+   "respiration": "Expire à chaque rotation.",
+   "erreurs": "Dos arrondi.\nBouger seulement les bras.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Russian Twist",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Russian_Twist.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "hollow",
+   "statut": "Nouveau",
+   "nom": "Hollow hold (position creuse)",
+   "type": "gainage",
+   "discipline": "calisthenie",
+   "zones": "abdos",
+   "objectifs": "renforcer",
+   "intensite": 4,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "20 s",
+   "niveaux": "1. Genoux pliés, bras le long du corps (15 s)\n2. Jambes tendues hautes (20 s)\n3. Bras tendus derrière la tête (20 s)\n4. Bras derrière la tête (30 s)",
+   "muscles_principaux": "Abdominaux (grand droit), Abdominaux profonds",
+   "muscles_secondaires": "Fléchisseurs de hanche, Obliques",
+   "met": "2.8 (code 02024, Callisthénie légère (crunchs, planche))",
+   "consignes": "Allongé sur le dos, plaque le bas du dos au sol.\nDécolle les épaules et les jambes : ton corps forme une banane.\nTiens la position sans que le dos ne décolle.",
+   "precaution": "Dès que le bas du dos décolle, remonte les jambes ou plie les genoux.",
+   "respiration": "Respirations courtes et régulières.",
+   "erreurs": "Bas du dos décollé.\nMenton collé à la poitrine.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Plank",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Plank.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "planche_epaules",
+   "statut": "Nouveau",
+   "nom": "Planche, touchers d'épaule",
+   "type": "gainage",
+   "discipline": "gainage",
+   "zones": "abdos, epaules",
+   "objectifs": "renforcer",
+   "intensite": 3,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "16 répétitions",
+   "niveaux": "1. Sur les genoux (12 rép.)\n2. Sur les pieds, pieds écartés (16 rép.)\n3. Pieds serrés (16 rép.)",
+   "muscles_principaux": "Abdominaux profonds, Obliques",
+   "muscles_secondaires": "Épaules (avant), Pectoraux, Triceps",
+   "met": "2.8 (code 02024, Callisthénie légère (crunchs, planche))",
+   "consignes": "En planche bras tendus, mains sous les épaules.\nTouche une épaule avec la main opposée, repose, puis alterne.\nLe bassin ne bouge pas.",
+   "precaution": "Écarte davantage les pieds si le bassin se balance.",
+   "respiration": "Respire calmement à chaque toucher.",
+   "erreurs": "Bassin qui se balance de gauche à droite.\nFesses qui montent.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Plank",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Plank.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "planche_dynamique",
+   "statut": "Nouveau",
+   "nom": "Planche montante (coudes, puis mains)",
+   "type": "gainage",
+   "discipline": "gainage",
+   "zones": "abdos, bras, epaules",
+   "objectifs": "renforcer",
+   "intensite": 4,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "10 répétitions",
+   "niveaux": "1. Sur les genoux (8 rép.)\n2. Sur les pieds (8 rép.)\n3. Sur les pieds (12 rép.)",
+   "muscles_principaux": "Abdominaux profonds, Triceps",
+   "muscles_secondaires": "Épaules (avant), Pectoraux, Obliques",
+   "met": "3.8 (code 02022, Callisthénie modérée (pompes, fentes))",
+   "consignes": "En planche sur les avant-bras.\nPose une main puis l'autre pour monter en planche bras tendus.\nRedescends un coude après l'autre. Alterne le bras qui commence.",
+   "precaution": "Pieds écartés pour garder le bassin stable.",
+   "respiration": "Expire en montant, inspire en descendant.",
+   "erreurs": "Bassin qui oscille.\nFesses qui montent.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Plank",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Plank.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "planche_inverse",
+   "statut": "Nouveau",
+   "nom": "Planche inversée",
+   "type": "gainage",
+   "discipline": "gainage",
+   "zones": "dos, fessiers, bras",
+   "objectifs": "renforcer",
+   "intensite": 3,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "20 s",
+   "niveaux": "1. Genoux pliés (table) (20 s)\n2. Jambes tendues (15 s)\n3. Jambes tendues (25 s)",
+   "muscles_principaux": "Grand fessier, Bas du dos (lombaires), Triceps",
+   "muscles_secondaires": "Ischio-jambiers, Épaules (arrière)",
+   "met": "2.8 (code 02024, Callisthénie légère (crunchs, planche))",
+   "consignes": "Assis, mains au sol derrière les hanches, doigts vers les pieds.\nPousse dans les mains et les talons pour monter le bassin.\nCorps aligné, tiens la position.",
+   "precaution": "Épaules basses, poitrine ouverte.",
+   "respiration": "Respire calmement.",
+   "erreurs": "Bassin qui descend.\nTête qui tombe en arrière.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Butt-Ups",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Butt-Ups.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "ours_statique",
+   "statut": "Nouveau",
+   "nom": "Position de l'ours (bear hold)",
+   "type": "gainage",
+   "discipline": "gainage",
+   "zones": "abdos, epaules",
+   "objectifs": "renforcer",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "20 s",
+   "niveaux": "1. Genoux décollés de 2 cm (15 s)\n2. Genoux décollés (25 s)\n3. En levant une main en alternance (30 s)",
+   "muscles_principaux": "Abdominaux profonds, Abdominaux (grand droit)",
+   "muscles_secondaires": "Épaules (avant), Quadriceps",
+   "met": "2.8 (code 02024, Callisthénie légère (crunchs, planche))",
+   "consignes": "À quatre pattes, mains sous les épaules, genoux sous les hanches.\nDécolle les genoux de quelques centimètres, dos plat.\nTiens la position.",
+   "precaution": "Les genoux restent tout près du sol.",
+   "respiration": "Respire lentement par le nez.",
+   "erreurs": "Fesses qui montent.\nDos qui s'arrondit.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Plank",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Plank.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "planche_laterale_rotation",
+   "statut": "Nouveau",
+   "nom": "Planche latérale avec rotation",
+   "type": "gainage",
+   "discipline": "gainage",
+   "zones": "abdos",
+   "objectifs": "renforcer, tonifier",
+   "intensite": 4,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "8 répétitions",
+   "niveaux": "1. Sur le genou (8 rép.)\n2. Sur les pieds (8 rép.)\n3. Sur les pieds (10 rép.)",
+   "muscles_principaux": "Obliques",
+   "muscles_secondaires": "Abdominaux profonds, Épaules (côté), Moyen fessier",
+   "met": "2.8 (code 02024, Callisthénie légère (crunchs, planche))",
+   "consignes": "En planche latérale sur l'avant-bras, bras du dessus tendu vers le plafond.\nPasse la main sous ton buste en tournant, puis reviens ouvrir.\nLe bassin reste haut. Change de côté.",
+   "precaution": "Reviens à la planche latérale classique si le bassin descend.",
+   "respiration": "Expire en tournant, inspire en ouvrant.",
+   "erreurs": "Bassin qui chute.\nÉpaule d'appui qui remonte vers l'oreille.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Side Bridge",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Side_Bridge.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "v_up",
+   "statut": "Nouveau",
+   "nom": "V-up (relevé en V)",
+   "type": "gainage",
+   "discipline": "calisthenie",
+   "zones": "abdos",
+   "objectifs": "renforcer",
+   "intensite": 5,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "8 répétitions",
+   "niveaux": "1. Genoux pliés (tuck-up) (8 rép.)\n2. Une jambe tendue en alternance (8 rép.)\n3. Jambes tendues (8 rép.)",
+   "muscles_principaux": "Abdominaux (grand droit)",
+   "muscles_secondaires": "Fléchisseurs de hanche, Obliques",
+   "met": "7.5 (code 02020, Callisthénie intense (pompes, burpees, jumping jacks))",
+   "consignes": "Allongé sur le dos, bras tendus derrière la tête.\nLève en même temps buste et jambes pour toucher les pieds avec les mains.\nRedescends lentement, sans t'écraser au sol.",
+   "precaution": "Exercice avancé : maîtrise d'abord le hollow hold.",
+   "respiration": "Expire en montant, inspire en descendant.",
+   "erreurs": "Retomber lourdement.\nPrendre de l'élan avec les bras.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Jackknife Sit-Up",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Jackknife_Sit-Up.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "chenille",
+   "statut": "Nouveau",
+   "nom": "Chenille (inchworm)",
+   "type": "force",
+   "discipline": "calisthenie",
+   "zones": "corps_entier",
+   "objectifs": "renforcer, mobilite",
+   "intensite": 3,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "6 répétitions",
+   "niveaux": "1. Genoux fléchis (5 rép.)\n2. Jambes presque tendues (6 rép.)\n3. Avec une pompe en bas (6 rép.)",
+   "muscles_principaux": "Abdominaux profonds, Épaules (avant), Ischio-jambiers",
+   "muscles_secondaires": "Pectoraux, Triceps",
+   "met": "3.8 (code 02022, Callisthénie modérée (pompes, fentes))",
+   "consignes": "Debout, penche-toi pour poser les mains au sol, genoux fléchis si besoin.\nAvance les mains une à une jusqu'à la planche.\nRamène les mains vers les pieds en marchant, puis redresse-toi.",
+   "precaution": "Plie les genoux autant que nécessaire pour poser les mains.",
+   "respiration": "Expire en avançant vers la planche, inspire en revenant.",
+   "erreurs": "Bassin qui s'affaisse en planche.\nSe redresser trop vite.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Inchworm",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Inchworm.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "marche_ours",
+   "statut": "Nouveau",
+   "nom": "Marche de l'ours",
+   "type": "cardio",
+   "discipline": "calisthenie",
+   "zones": "corps_entier",
+   "objectifs": "renforcer, cardio",
+   "intensite": 3,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "30 s",
+   "niveaux": "1. Avant, arrière, lentement (20 s)\n2. 30 s (30 s)\n3. Plus rapide (30 s)",
+   "muscles_principaux": "Épaules (avant), Abdominaux profonds, Quadriceps",
+   "muscles_secondaires": "Triceps, Grand fessier",
+   "met": "7.5 (code 02020, Callisthénie intense (pompes, burpees, jumping jacks))",
+   "consignes": "À quatre pattes, genoux décollés de quelques centimètres.\nAvance main droite et pied gauche ensemble, puis l'inverse.\nFais quelques pas en avant, puis en arrière.",
+   "precaution": "Petits pas, dos plat, genoux proches du sol.",
+   "respiration": "Respire régulièrement.",
+   "erreurs": "Fesses en l'air.\nGrands pas qui déstabilisent.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Bear Crawl Sled Drags",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Bear_Crawl_Sled_Drags.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "marche_genoux_hauts",
+   "statut": "Nouveau",
+   "nom": "Marche sur place, genoux hauts",
+   "type": "cardio",
+   "discipline": "cardio",
+   "zones": "corps_entier, jambes",
+   "objectifs": "cardio",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "40 s",
+   "niveaux": "1. Rythme tranquille (30 s)\n2. Rythme soutenu (40 s)\n3. Avec bras actifs (45 s)",
+   "muscles_principaux": "Fléchisseurs de hanche, Quadriceps",
+   "muscles_secondaires": "Mollets, Abdominaux profonds",
+   "met": "3.5 (code 02030, Callisthénie légère à modérée (exercices du dos, se relever du sol))",
+   "consignes": "Debout, marche sur place en montant les genoux vers la hauteur des hanches.\nBalance les bras en opposition.\nGarde le buste droit et le ventre tenu.",
+   "precaution": "Version sans saut des montées de genoux.",
+   "respiration": "Respire librement, au rythme des pas.",
+   "erreurs": "Se pencher en arrière.\nGenoux qui montent à peine.",
+   "sources": [
+    {
+     "label": "OMS, recommandations 2020 sur l'activité physique (Bull et al., BJSM)",
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7719906/"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Step-up with Knee Raise",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Step-up_with_Knee_Raise.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "step_jacks",
+   "statut": "Nouveau",
+   "nom": "Jumping jacks sans saut",
+   "type": "cardio",
+   "discipline": "cardio",
+   "zones": "corps_entier",
+   "objectifs": "cardio",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "40 s",
+   "niveaux": "1. Rythme tranquille (30 s)\n2. Rythme soutenu (40 s)\n3. Rythme soutenu (45 s)",
+   "muscles_principaux": "Épaules (côté), Moyen fessier",
+   "muscles_secondaires": "Mollets, Adducteurs",
+   "met": "3.5 (code 02030, Callisthénie légère à modérée (exercices du dos, se relever du sol))",
+   "consignes": "Debout, pieds joints, bras le long du corps.\nPose un pied sur le côté en levant les bras au-dessus de la tête.\nReviens au centre, puis l'autre pied. Enchaîne sans t'arrêter.",
+   "precaution": "Aucun saut : idéal pour les voisins du dessous et les articulations.",
+   "respiration": "Respire au rythme des pas.",
+   "erreurs": "Bras qui ne montent qu'à mi-hauteur.\nRythme trop lent pour élever le cœur.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Star Jump",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Star_Jump.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "boxe_ombre",
+   "statut": "Nouveau",
+   "nom": "Boxe dans le vide",
+   "type": "cardio",
+   "discipline": "cardio",
+   "zones": "corps_entier, bras, epaules",
+   "objectifs": "cardio, tonifier",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "40 s",
+   "niveaux": "1. Directs alternés (30 s)\n2. Directs et crochets (40 s)\n3. En sautillant sur place (45 s)",
+   "muscles_principaux": "Épaules (avant), Triceps",
+   "muscles_secondaires": "Obliques, Pectoraux, Mollets",
+   "met": "6 (code 02032, Circuit au poids du corps)",
+   "consignes": "En garde, pieds décalés, genoux souples, poings devant le menton.\nEnvoie des directs alternés en tournant légèrement le buste.\nRamène toujours le poing en garde.",
+   "precaution": "Ne verrouille pas le coude au bout du coup.",
+   "respiration": "Expire à chaque coup.",
+   "erreurs": "Bras tendus à fond en claquant le coude.\nGarde qui descend.",
+   "sources": [
+    {
+     "label": "OMS, recommandations 2020 sur l'activité physique (Bull et al., BJSM)",
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7719906/"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "burpee_sans_saut",
+   "statut": "Nouveau",
+   "nom": "Burpee sans saut",
+   "type": "cardio",
+   "discipline": "hiit",
+   "zones": "corps_entier",
+   "objectifs": "cardio, renforcer",
+   "intensite": 3,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "8 répétitions",
+   "niveaux": "1. Pieds reculés un par un (6 rép.)\n2. 8 répétitions (8 rép.)\n3. Avec une pompe (8 rép.)",
+   "muscles_principaux": "Quadriceps, Pectoraux, Abdominaux profonds",
+   "muscles_secondaires": "Grand fessier, Triceps, Épaules (avant)",
+   "met": "6 (code 02032, Circuit au poids du corps)",
+   "consignes": "Debout, accroupis-toi et pose les mains au sol.\nRecule un pied puis l'autre pour arriver en planche.\nRamène les pieds un par un, puis relève-toi en tendant les bras.",
+   "precaution": "Version sans saut du burpee.",
+   "respiration": "Expire en te relevant.",
+   "erreurs": "Bassin qui s'affaisse en planche.\nDos arrondi en se relevant.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Push Up to Side Plank",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Push_Up_to_Side_Plank.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "mountain_climbers_lents",
+   "statut": "Nouveau",
+   "nom": "Mountain climbers lents",
+   "type": "cardio",
+   "discipline": "cardio",
+   "zones": "abdos, corps_entier",
+   "objectifs": "cardio, renforcer",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "30 s",
+   "niveaux": "1. Mains sur une chaise (30 s)\n2. Mains au sol (30 s)\n3. Mains au sol (40 s)",
+   "muscles_principaux": "Abdominaux profonds, Fléchisseurs de hanche",
+   "muscles_secondaires": "Épaules (avant), Quadriceps",
+   "met": "6 (code 02032, Circuit au poids du corps)",
+   "consignes": "En planche bras tendus.\nRamène un genou vers la poitrine, repose le pied, puis l'autre.\nRythme contrôlé, bassin stable.",
+   "precaution": "Version sans élan des mountain climbers.",
+   "respiration": "Expire à chaque genou ramené.",
+   "erreurs": "Fesses qui montent.\nÉpaules qui reculent derrière les mains.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Mountain Climbers",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Mountain_Climbers.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "patineur_sans_saut",
+   "statut": "Nouveau",
+   "nom": "Patineur sans saut",
+   "type": "cardio",
+   "discipline": "cardio",
+   "zones": "jambes, fessiers",
+   "objectifs": "cardio, tonifier",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "40 s",
+   "niveaux": "1. Petits pas (30 s)\n2. Grands pas (40 s)\n3. Grands pas, plus bas (45 s)",
+   "muscles_principaux": "Moyen fessier, Quadriceps",
+   "muscles_secondaires": "Grand fessier, Adducteurs",
+   "met": "6 (code 02032, Circuit au poids du corps)",
+   "consignes": "Fais un grand pas en diagonale arrière, la jambe croise derrière l'autre.\nPlie la jambe d'appui en balançant les bras comme un patineur.\nReviens et alterne les côtés.",
+   "precaution": "Version sans saut du patineur.",
+   "respiration": "Respire au rythme des pas.",
+   "erreurs": "Genou d'appui qui rentre vers l'intérieur.\nBuste trop penché.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Crossover Reverse Lunge",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Crossover_Reverse_Lunge.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "squat_coup_de_pied",
+   "statut": "Nouveau",
+   "nom": "Squat, coup de pied avant",
+   "type": "cardio",
+   "discipline": "cardio",
+   "zones": "jambes, abdos",
+   "objectifs": "cardio, tonifier",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "40 s",
+   "niveaux": "1. Squat léger (30 s)\n2. 40 s (40 s)\n3. Squat profond (45 s)",
+   "muscles_principaux": "Quadriceps, Grand fessier",
+   "muscles_secondaires": "Fléchisseurs de hanche, Abdominaux profonds",
+   "met": "6 (code 02032, Circuit au poids du corps)",
+   "consignes": "Fais un squat.\nEn te relevant, donne un coup de pied devant toi.\nRepose et enchaîne avec l'autre jambe.",
+   "precaution": "Coup de pied contrôlé, sans verrouiller le genou.",
+   "respiration": "Expire au coup de pied.",
+   "erreurs": "Se pencher en arrière en tapant.\nSquat bâclé.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Bodyweight Squat",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Bodyweight_Squat.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "fentes_alternees_rapides",
+   "statut": "Nouveau",
+   "nom": "Fentes arrière alternées, rythme rapide",
+   "type": "cardio",
+   "discipline": "cardio",
+   "zones": "jambes, fessiers",
+   "objectifs": "cardio, tonifier",
+   "intensite": 3,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "30 s",
+   "niveaux": "1. Petite amplitude (30 s)\n2. Amplitude complète (30 s)\n3. Rythme soutenu (40 s)",
+   "muscles_principaux": "Quadriceps, Grand fessier",
+   "muscles_secondaires": "Ischio-jambiers, Mollets",
+   "met": "6 (code 02032, Circuit au poids du corps)",
+   "consignes": "Debout, recule une jambe en fente, puis reviens.\nEnchaîne avec l'autre jambe sans pause, bras en balancier.\nGarde un rythme régulier tout au long de l'effort.",
+   "precaution": "Version sans saut de la fente sautée.",
+   "respiration": "Respire au rythme des fentes.",
+   "erreurs": "Genou avant qui rentre vers l'intérieur.\nBuste qui se penche.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Dumbbell Rear Lunge",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Dumbbell_Rear_Lunge.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "jumping_jacks",
+   "statut": "Nouveau",
+   "nom": "Jumping jacks",
+   "type": "cardio",
+   "discipline": "hiit",
+   "zones": "corps_entier",
+   "objectifs": "cardio",
+   "intensite": 3,
+   "sauts": "oui",
+   "materiel": "aucun",
+   "mode": "30 s",
+   "niveaux": "1. Rythme tranquille (20 s)\n2. 30 s (30 s)\n3. Rythme rapide (40 s)",
+   "muscles_principaux": "Mollets, Épaules (côté)",
+   "muscles_secondaires": "Moyen fessier, Adducteurs",
+   "met": "7.5 (code 02020, Callisthénie intense (pompes, burpees, jumping jacks))",
+   "consignes": "Pieds joints, bras le long du corps.\nSaute en écartant les pieds et en levant les bras au-dessus de la tête.\nSaute pour revenir. Réceptions souples sur l'avant du pied.",
+   "precaution": "Remplacé automatiquement par la version sans saut si les sauts sont exclus.",
+   "respiration": "Respire librement et régulièrement.",
+   "erreurs": "Atterrir talons tendus.\nGenoux raides.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Star Jump",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Star_Jump.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "montees_genoux",
+   "statut": "Nouveau",
+   "nom": "Montées de genoux",
+   "type": "cardio",
+   "discipline": "hiit",
+   "zones": "corps_entier, jambes",
+   "objectifs": "cardio",
+   "intensite": 4,
+   "sauts": "oui",
+   "materiel": "aucun",
+   "mode": "30 s",
+   "niveaux": "1. Rythme modéré (20 s)\n2. 30 s (30 s)\n3. Rythme maximal (30 s)",
+   "muscles_principaux": "Fléchisseurs de hanche, Quadriceps",
+   "muscles_secondaires": "Mollets, Abdominaux profonds",
+   "met": "7.5 (code 02020, Callisthénie intense (pompes, burpees, jumping jacks))",
+   "consignes": "Cours sur place en montant les genoux à hauteur de hanches.\nReste sur l'avant des pieds, bras actifs.\nGarde le buste droit.",
+   "precaution": "Commence plus doucement si tu sors d'une longue pause.",
+   "respiration": "Respire activement, sans bloquer.",
+   "erreurs": "Buste penché en arrière.\nAtterrir lourdement sur les talons.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Fast Skipping",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Fast_Skipping.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "talons_fesses",
+   "statut": "Nouveau",
+   "nom": "Talons-fesses",
+   "type": "cardio",
+   "discipline": "cardio",
+   "zones": "jambes, corps_entier",
+   "objectifs": "cardio",
+   "intensite": 3,
+   "sauts": "oui",
+   "materiel": "aucun",
+   "mode": "30 s",
+   "niveaux": "1. En marchant (30 s)\n2. En trottinant (30 s)\n3. Rythme rapide (40 s)",
+   "muscles_principaux": "Ischio-jambiers",
+   "muscles_secondaires": "Mollets, Quadriceps",
+   "met": "7.5 (code 02020, Callisthénie intense (pompes, burpees, jumping jacks))",
+   "consignes": "Trottine sur place en ramenant les talons vers les fesses.\nGenoux pointés vers le sol.\nBras qui accompagnent le mouvement.",
+   "precaution": "Le niveau 1 se fait en marchant : sans saut.",
+   "respiration": "Respire au rythme de la course.",
+   "erreurs": "Genoux qui avancent.\nBuste penché.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Single Leg Butt Kick",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Single_Leg_Butt_Kick.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "squat_saute",
+   "statut": "Nouveau",
+   "nom": "Squat sauté",
+   "type": "cardio",
+   "discipline": "hiit",
+   "zones": "jambes, fessiers",
+   "objectifs": "cardio, renforcer",
+   "intensite": 4,
+   "sauts": "oui",
+   "materiel": "aucun",
+   "mode": "10 répétitions",
+   "niveaux": "1. Petits sauts (8 rép.)\n2. 10 répétitions (10 rép.)\n3. Sauts hauts (12 rép.)",
+   "muscles_principaux": "Quadriceps, Grand fessier",
+   "muscles_secondaires": "Mollets, Ischio-jambiers",
+   "met": "11 (code 02214, Fractionné intense, effort vigoureux (Tabata))",
+   "consignes": "Descends en squat.\nPousse fort pour sauter en tendant les jambes.\nRéceptionne-toi en douceur en repliant directement dans le squat suivant.",
+   "precaution": "Réception silencieuse : si ça fait du bruit, les genoux encaissent trop.",
+   "respiration": "Expire en sautant.",
+   "erreurs": "Genoux qui rentrent à la réception.\nAtterrir jambes tendues.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Freehand Jump Squat",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Freehand_Jump_Squat.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "fente_sautee",
+   "statut": "Nouveau",
+   "nom": "Fente sautée",
+   "type": "cardio",
+   "discipline": "hiit",
+   "zones": "jambes, fessiers",
+   "objectifs": "cardio, renforcer",
+   "intensite": 5,
+   "sauts": "oui",
+   "materiel": "aucun",
+   "mode": "10 répétitions",
+   "niveaux": "1. Fente arrière alternée rapide, sans saut (10 rép.)\n2. Petits sauts (8 rép.)\n3. 10 sauts (10 rép.)",
+   "muscles_principaux": "Quadriceps, Grand fessier",
+   "muscles_secondaires": "Ischio-jambiers, Mollets",
+   "met": "11 (code 02214, Fractionné intense, effort vigoureux (Tabata))",
+   "consignes": "En position de fente.\nSaute et inverse les jambes en l'air.\nRéceptionne-toi en fente, genou arrière proche du sol.",
+   "precaution": "Exercice exigeant pour les genoux : à réserver aux niveaux avancés.",
+   "respiration": "Expire à chaque saut.",
+   "erreurs": "Pas trop étroit : perte d'équilibre.\nGenou arrière qui tape le sol.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Split Jump",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Split_Jump.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "patineur",
+   "statut": "Nouveau",
+   "nom": "Patineur sauté",
+   "type": "cardio",
+   "discipline": "hiit",
+   "zones": "jambes, fessiers",
+   "objectifs": "cardio",
+   "intensite": 4,
+   "sauts": "oui",
+   "materiel": "aucun",
+   "mode": "30 s",
+   "niveaux": "1. Petits bonds (20 s)\n2. 30 s (30 s)\n3. Grands bonds (30 s)",
+   "muscles_principaux": "Moyen fessier, Quadriceps",
+   "muscles_secondaires": "Grand fessier, Mollets",
+   "met": "11 (code 02214, Fractionné intense, effort vigoureux (Tabata))",
+   "consignes": "Bondis sur le côté pour atterrir sur un pied.\nL'autre jambe passe derrière sans toucher le sol.\nRepars de l'autre côté, bras en balancier.",
+   "precaution": "Réception genou fléchi, dans l'axe du pied.",
+   "respiration": "Respire activement.",
+   "erreurs": "Genou qui rentre à la réception.\nRéception jambe tendue.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Lateral Bound",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Lateral_Bound.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "burpee",
+   "statut": "Nouveau",
+   "nom": "Burpee",
+   "type": "cardio",
+   "discipline": "hiit",
+   "zones": "corps_entier",
+   "objectifs": "cardio, renforcer",
+   "intensite": 5,
+   "sauts": "oui",
+   "materiel": "aucun",
+   "mode": "8 répétitions",
+   "niveaux": "1. Sans pompe (6 rép.)\n2. 8 répétitions (8 rép.)\n3. Avec une pompe (8 rép.)\n4. 10 répétitions (10 rép.)",
+   "muscles_principaux": "Quadriceps, Pectoraux, Abdominaux profonds",
+   "muscles_secondaires": "Grand fessier, Triceps, Mollets",
+   "met": "11 (code 02214, Fractionné intense, effort vigoureux (Tabata))",
+   "consignes": "Accroupis-toi et pose les mains au sol.\nSaute en arrière pour arriver en planche, puis ramène les pieds en sautant.\nRelève-toi et saute, bras au-dessus de la tête.",
+   "precaution": "Garde la planche propre même quand la fatigue arrive.",
+   "respiration": "Expire au saut.",
+   "erreurs": "Bassin qui s'écrase au sol en planche.\nDos rond en se relevant.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Push Up to Side Plank",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Push_Up_to_Side_Plank.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Freehand Jump Squat",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Freehand_Jump_Squat.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "mountain_climbers",
+   "statut": "Nouveau",
+   "nom": "Mountain climbers",
+   "type": "cardio",
+   "discipline": "hiit",
+   "zones": "abdos, corps_entier",
+   "objectifs": "cardio, renforcer",
+   "intensite": 4,
+   "sauts": "oui",
+   "materiel": "aucun",
+   "mode": "30 s",
+   "niveaux": "1. Rythme modéré (20 s)\n2. 30 s (30 s)\n3. Rythme maximal (30 s)",
+   "muscles_principaux": "Abdominaux profonds, Fléchisseurs de hanche",
+   "muscles_secondaires": "Épaules (avant), Quadriceps, Obliques",
+   "met": "11 (code 02214, Fractionné intense, effort vigoureux (Tabata))",
+   "consignes": "En planche bras tendus.\nRamène rapidement les genoux vers la poitrine en alternance, comme si tu courais.\nÉpaules au-dessus des mains.",
+   "precaution": "Le bassin reste bas et stable.",
+   "respiration": "Respire activement, sans bloquer.",
+   "erreurs": "Fesses en l'air.\nPieds qui ne touchent pas le sol à chaque pas.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Mountain Climbers",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Mountain_Climbers.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "corde_imaginaire",
+   "statut": "Nouveau",
+   "nom": "Corde à sauter imaginaire",
+   "type": "cardio",
+   "discipline": "cardio",
+   "zones": "jambes, corps_entier",
+   "objectifs": "cardio",
+   "intensite": 3,
+   "sauts": "oui",
+   "materiel": "aucun",
+   "mode": "30 s",
+   "niveaux": "1. Sauts pieds joints (20 s)\n2. 30 s (30 s)\n3. Alternance des pieds, rapide (40 s)",
+   "muscles_principaux": "Mollets",
+   "muscles_secondaires": "Quadriceps, Épaules (côté)",
+   "met": "7.5 (code 02020, Callisthénie intense (pompes, burpees, jumping jacks))",
+   "consignes": "Fais tourner des poignets comme si tu tenais une corde.\nSaute à petite hauteur sur l'avant des pieds.\nGenoux souples à chaque réception.",
+   "precaution": "Petits sauts : quelques centimètres suffisent.",
+   "respiration": "Respire régulièrement.",
+   "erreurs": "Sauter trop haut.\nAtterrir sur les talons.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Rope Jumping",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Rope_Jumping.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "saut_etoile",
+   "statut": "Nouveau",
+   "nom": "Saut en étoile",
+   "type": "cardio",
+   "discipline": "hiit",
+   "zones": "corps_entier",
+   "objectifs": "cardio",
+   "intensite": 5,
+   "sauts": "oui",
+   "materiel": "aucun",
+   "mode": "8 répétitions",
+   "niveaux": "1. 6 sauts (6 rép.)\n2. 8 sauts (8 rép.)\n3. 10 sauts (10 rép.)",
+   "muscles_principaux": "Quadriceps, Mollets",
+   "muscles_secondaires": "Grand fessier, Épaules (côté)",
+   "met": "11 (code 02214, Fractionné intense, effort vigoureux (Tabata))",
+   "consignes": "Accroupis-toi légèrement.\nSaute en écartant bras et jambes en étoile.\nReviens pieds joints en réception souple.",
+   "precaution": "Exercice très intense : quelques répétitions suffisent.",
+   "respiration": "Expire au saut.",
+   "erreurs": "Réception jambes tendues.\nEnchaîner sans contrôle.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Star Jump",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Star_Jump.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "cercles_bras",
+   "statut": "Nouveau",
+   "nom": "Cercles de bras",
+   "type": "mobilite",
+   "discipline": "etirement",
+   "zones": "epaules",
+   "objectifs": "mobilite",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "30 s",
+   "niveaux": "1. Petits cercles (30 s)\n2. Petits puis grands cercles (30 s)",
+   "muscles_principaux": "Épaules (côté), Épaules (avant)",
+   "muscles_secondaires": "Trapèzes, Coiffe des rotateurs",
+   "met": "2.3 (code 02101, Étirements doux)",
+   "consignes": "Debout, bras tendus sur les côtés.\nFais des cercles vers l'avant, de petits à grands.\nChange de sens à mi-temps.",
+   "precaution": "Amplitude progressive, sans forcer.",
+   "respiration": "Respiration libre.",
+   "erreurs": "Hausser les épaules.\nCambrer le dos.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Arm Circles",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Arm_Circles.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "cercles_hanches",
+   "statut": "Nouveau",
+   "nom": "Cercles de hanches",
+   "type": "mobilite",
+   "discipline": "etirement",
+   "zones": "fessiers, dos",
+   "objectifs": "mobilite",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "30 s",
+   "niveaux": "1. Petits cercles (30 s)\n2. Grands cercles (30 s)",
+   "muscles_principaux": "Fléchisseurs de hanche, Obliques",
+   "muscles_secondaires": "Bas du dos (lombaires), Moyen fessier",
+   "met": "2.3 (code 02101, Étirements doux)",
+   "consignes": "Debout, mains sur les hanches, pieds largeur de bassin.\nDessine de grands cercles avec le bassin.\nChange de sens à mi-temps.",
+   "precaution": "Les épaules restent à peu près immobiles.",
+   "respiration": "Respiration libre.",
+   "erreurs": "Bouger les épaules plus que le bassin.\nGenoux verrouillés.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Standing Hip Circles",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Standing_Hip_Circles.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "balancier_jambes",
+   "statut": "Nouveau",
+   "nom": "Balanciers de jambe",
+   "type": "mobilite",
+   "discipline": "etirement",
+   "zones": "jambes, fessiers",
+   "objectifs": "mobilite",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "mur",
+   "mode": "40 s",
+   "niveaux": "1. Petite amplitude (30 s)\n2. Amplitude croissante (40 s)",
+   "muscles_principaux": "Ischio-jambiers, Fléchisseurs de hanche",
+   "muscles_secondaires": "Grand fessier, Adducteurs",
+   "met": "2.3 (code 02101, Étirements doux)",
+   "consignes": "Une main au mur, balance une jambe d'avant en arrière.\nAugmente l'amplitude progressivement, buste droit.\nChange de jambe à mi-temps.",
+   "precaution": "Mouvement de balancier relâché, sans lancer la jambe.",
+   "respiration": "Respiration libre.",
+   "erreurs": "Se pencher pour lever la jambe plus haut.\nLancer la jambe brutalement.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Front Leg Raises",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Front_Leg_Raises.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "rotations_buste",
+   "statut": "Nouveau",
+   "nom": "Rotations du buste",
+   "type": "mobilite",
+   "discipline": "etirement",
+   "zones": "dos, abdos",
+   "objectifs": "mobilite",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "30 s",
+   "niveaux": "1. Lentement (30 s)\n2. Plus d'amplitude (30 s)",
+   "muscles_principaux": "Obliques",
+   "muscles_secondaires": "Bas du dos (lombaires), Haut du dos (rhomboïdes)",
+   "met": "2.3 (code 02101, Étirements doux)",
+   "consignes": "Debout, pieds largeur de bassin, bras pliés devant la poitrine.\nTourne le buste d'un côté puis de l'autre.\nLe bassin reste face à l'avant.",
+   "precaution": "Rotation douce, sans à-coup.",
+   "respiration": "Expire à chaque rotation.",
+   "erreurs": "Tourner le bassin avec le buste.\nAller trop vite.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Torso Rotation",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Torso_Rotation.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "plus_grand_etirement",
+   "statut": "Nouveau",
+   "nom": "Le plus grand étirement du monde",
+   "type": "mobilite",
+   "discipline": "etirement",
+   "zones": "corps_entier, jambes, dos",
+   "objectifs": "mobilite",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "60 s",
+   "niveaux": "1. Main au sol, sans rotation (45 s)\n2. Avec rotation du buste (60 s)",
+   "muscles_principaux": "Fléchisseurs de hanche, Ischio-jambiers",
+   "muscles_secondaires": "Obliques, Adducteurs, Haut du dos (rhomboïdes)",
+   "met": "2.3 (code 02101, Étirements doux)",
+   "consignes": "Fente avant profonde, mains au sol à l'intérieur du pied avant.\nOuvre le bras côté jambe avant vers le plafond en tournant le buste.\nReviens, puis change de côté à mi-temps.",
+   "precaution": "Pose le genou arrière au sol si besoin.",
+   "respiration": "Inspire en ouvrant, expire en revenant.",
+   "erreurs": "Genou avant qui rentre vers l'intérieur.\nHanche arrière qui s'affaisse.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Worlds Greatest Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Worlds_Greatest_Stretch.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "montagne",
+   "statut": "Nouveau",
+   "nom": "Posture de la montagne",
+   "type": "mobilite",
+   "discipline": "yoga",
+   "zones": "corps_entier",
+   "objectifs": "detente, mobilite",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "30 s",
+   "niveaux": "1. 30 s (30 s)\n2. 45 s, yeux fermés (45 s)",
+   "muscles_principaux": "Abdominaux profonds",
+   "muscles_secondaires": "Quadriceps, Grand fessier, Mollets",
+   "met": "2.3 (code 02150, Yoga hatha)",
+   "consignes": "Debout, pieds parallèles, poids réparti sur tout le pied.\nGrandis-toi par le sommet du crâne, épaules relâchées, bras le long du corps.\nReste immobile et observe ta respiration.",
+   "precaution": "",
+   "respiration": "Respire lentement par le nez.",
+   "erreurs": "Verrouiller les genoux.\nPousser le ventre en avant.",
+   "sources": [
+    {
+     "label": "Yogamatters, bibliothèque de postures : Mountain Pose (Tadasana)",
+     "url": "https://www.yogamatters.com/blogs/pose-library/mountain-pose-tadasana"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "salutation_soleil",
+   "statut": "Nouveau",
+   "nom": "Salutation au soleil (version douce)",
+   "type": "mobilite",
+   "discipline": "yoga",
+   "zones": "corps_entier",
+   "objectifs": "mobilite, cardio",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "90 s",
+   "niveaux": "1. 2 cycles lents, genoux au sol (90 s)\n2. 3 cycles (120 s)\n3. 4 cycles, rythme fluide (150 s)",
+   "muscles_principaux": "Ischio-jambiers, Épaules (avant), Bas du dos (lombaires)",
+   "muscles_secondaires": "Pectoraux, Triceps, Fléchisseurs de hanche",
+   "met": "3.5 (code 02180, Salutation au soleil)",
+   "consignes": "Enchaîne les postures au rythme de ta respiration : une posture, un souffle.\nPlie les genoux autant que nécessaire en flexion avant.\nPose les genoux au sol pour la descente vers le cobra si les bras fatiguent.",
+   "precaution": "Va à ton rythme : la fluidité compte plus que l'amplitude.",
+   "respiration": "Inspire quand le corps s'ouvre, expire quand il se plie.",
+   "erreurs": "Bloquer sa respiration.\nLaisser le bas du dos s'effondrer en cobra.",
+   "sources": [
+    {
+     "label": "The Yoga Institute, Surya Namaskar step by step",
+     "url": "https://theyogainstitute.org/surya-namaskar-the-sun-salutation/"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "chien_tete_bas",
+   "statut": "Nouveau",
+   "nom": "Chien tête en bas",
+   "type": "etirement",
+   "discipline": "yoga",
+   "zones": "corps_entier, jambes, epaules",
+   "objectifs": "mobilite, renforcer",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "30 s",
+   "niveaux": "1. Genoux bien fléchis (20 s)\n2. 30 s (30 s)\n3. 45 s, talons vers le sol (45 s)",
+   "muscles_principaux": "Ischio-jambiers, Mollets, Épaules (avant)",
+   "muscles_secondaires": "Grand dorsal, Triceps",
+   "met": "2.3 (code 02150, Yoga hatha)",
+   "consignes": "À quatre pattes, orteils retournés.\nPousse le sol avec les mains et monte les fesses vers le plafond.\nDos long en priorité, genoux fléchis si besoin, talons vers le sol sans forcer.",
+   "precaution": "Un dos long compte plus que des jambes tendues.",
+   "respiration": "Respire lentement par le nez.",
+   "erreurs": "Dos arrondi pour tendre les jambes.\nÉpaules collées aux oreilles.",
+   "sources": [
+    {
+     "label": "Yoga Journal, Downward-Facing Dog",
+     "url": "https://www.yogajournal.com/poses/downward-facing-dog/"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "cobra",
+   "statut": "Nouveau",
+   "nom": "Cobra",
+   "type": "etirement",
+   "discipline": "yoga",
+   "zones": "dos, abdos",
+   "objectifs": "mobilite",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "20 s",
+   "niveaux": "1. Petite hauteur (15 s)\n2. 20 s (20 s)\n3. 30 s (30 s)",
+   "muscles_principaux": "Bas du dos (lombaires), Abdominaux (grand droit)",
+   "muscles_secondaires": "Pectoraux, Fléchisseurs de hanche",
+   "met": "2.3 (code 02150, Yoga hatha)",
+   "consignes": "À plat ventre, mains sous les épaules, coudes près du corps.\nPousse doucement dans les mains pour décoller la poitrine.\nÉpaules basses, regard vers l'avant, bassin au sol.",
+   "precaution": "Monte seulement jusqu'où le bas du dos reste confortable.",
+   "respiration": "Inspire en montant, puis respire calmement.",
+   "erreurs": "Tendre les bras à fond.\nHausser les épaules.",
+   "sources": [
+    {
+     "label": "Yoga Journal, Cobra Pose",
+     "url": "https://www.yogajournal.com/poses/types/cobra-pose-2/"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "sphinx",
+   "statut": "Nouveau",
+   "nom": "Sphinx",
+   "type": "etirement",
+   "discipline": "yoga",
+   "zones": "dos",
+   "objectifs": "mobilite, detente",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "45 s",
+   "niveaux": "1. 30 s (30 s)\n2. 45 s (45 s)\n3. 1 min (60 s)",
+   "muscles_principaux": "Bas du dos (lombaires)",
+   "muscles_secondaires": "Abdominaux (grand droit), Pectoraux",
+   "met": "2.3 (code 02150, Yoga hatha)",
+   "consignes": "À plat ventre, avant-bras au sol, coudes sous les épaules.\nLaisse la poitrine s'ouvrir, nuque longue.\nRelâche les fessiers et les jambes.",
+   "precaution": "Version plus douce du cobra.",
+   "respiration": "Respire lentement dans le ventre.",
+   "erreurs": "S'affaisser entre les épaules.\nSerrer fort les fessiers.",
+   "sources": [
+    {
+     "label": "Yoga Journal, Sphinx Pose",
+     "url": "https://www.yogajournal.com/poses/sphinx-pose/"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "guerrier_1",
+   "statut": "Nouveau",
+   "nom": "Guerrier I",
+   "type": "mobilite",
+   "discipline": "yoga",
+   "zones": "jambes, fessiers",
+   "objectifs": "renforcer, mobilite",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "40 s",
+   "niveaux": "1. 20 s par côté (40 s)\n2. 30 s par côté (60 s)",
+   "muscles_principaux": "Quadriceps, Grand fessier",
+   "muscles_secondaires": "Fléchisseurs de hanche, Épaules (avant)",
+   "met": "2.3 (code 02150, Yoga hatha)",
+   "consignes": "Grand pas en arrière, pied arrière tourné vers l'extérieur, talon au sol.\nPlie le genou avant au-dessus de la cheville, bassin face à l'avant.\nLève les bras au-dessus de la tête. Change de côté à mi-temps.",
+   "precaution": "Raccourcis le pas si le talon arrière décolle.",
+   "respiration": "Respire profondément par le nez.",
+   "erreurs": "Genou avant qui dépasse la cheville.\nCambrer le dos.",
+   "sources": [
+    {
+     "label": "Yoga Journal, Warrior I Pose",
+     "url": "https://www.yogajournal.com/pose/poses/warrior-i-pose/"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "guerrier_2",
+   "statut": "Nouveau",
+   "nom": "Guerrier II",
+   "type": "mobilite",
+   "discipline": "yoga",
+   "zones": "jambes, fessiers",
+   "objectifs": "renforcer, mobilite",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "40 s",
+   "niveaux": "1. 20 s par côté (40 s)\n2. 30 s par côté (60 s)",
+   "muscles_principaux": "Quadriceps, Adducteurs",
+   "muscles_secondaires": "Grand fessier, Épaules (côté)",
+   "met": "2.3 (code 02150, Yoga hatha)",
+   "consignes": "Jambes très écartées, pied avant tourné vers l'avant, pied arrière parallèle au tapis.\nPlie le genou avant au-dessus de la cheville.\nBras ouverts à l'horizontale, regard au-dessus de la main avant. Change de côté à mi-temps.",
+   "precaution": "Le genou avant pointe vers le petit orteil.",
+   "respiration": "Respire profondément et régulièrement.",
+   "erreurs": "Buste penché vers l'avant.\nGenou qui rentre vers l'intérieur.",
+   "sources": [
+    {
+     "label": "Yoga Journal, Warrior II Pose",
+     "url": "https://www.yogajournal.com/poses/warrior-ii-pose/"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "triangle",
+   "statut": "Nouveau",
+   "nom": "Triangle",
+   "type": "mobilite",
+   "discipline": "yoga",
+   "zones": "jambes, abdos",
+   "objectifs": "mobilite",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "40 s",
+   "niveaux": "1. Main sur le tibia, 20 s par côté (40 s)\n2. 30 s par côté (60 s)",
+   "muscles_principaux": "Ischio-jambiers, Obliques, Adducteurs",
+   "muscles_secondaires": "Quadriceps",
+   "met": "2.3 (code 02150, Yoga hatha)",
+   "consignes": "Jambes écartées, pied avant tourné vers l'avant, jambes tendues.\nAllonge le buste au-dessus de la jambe avant, puis pose la main sur le tibia.\nOuvre l'autre bras vers le plafond. Change de côté à mi-temps.",
+   "precaution": "Garde les deux côtés du buste longs plutôt que de descendre la main plus bas.",
+   "respiration": "Respire dans les côtes ouvertes.",
+   "erreurs": "Arrondir le côté du buste.\nVerrouiller le genou avant.",
+   "sources": [
+    {
+     "label": "Yoga Journal, Extended Triangle Pose",
+     "url": "https://www.yogajournal.com/poses/extended-triangle-pose/"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "arbre",
+   "statut": "Nouveau",
+   "nom": "Arbre",
+   "type": "mobilite",
+   "discipline": "yoga",
+   "zones": "jambes, fessiers",
+   "objectifs": "renforcer, detente",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "40 s",
+   "niveaux": "1. Pied contre la cheville, 20 s par côté (40 s)\n2. Pied contre le mollet ou la cuisse (40 s)\n3. 30 s par côté, bras levés (60 s)",
+   "muscles_principaux": "Moyen fessier, Mollets",
+   "muscles_secondaires": "Abdominaux profonds, Adducteurs",
+   "met": "2.3 (code 02150, Yoga hatha)",
+   "consignes": "Debout sur une jambe, pose la plante du pied libre contre la cheville, le mollet ou la cuisse.\nMains jointes devant la poitrine, regard fixé sur un point.\nChange de jambe à mi-temps.",
+   "precaution": "Jamais le pied contre le genou. Une main au mur au début, si besoin.",
+   "respiration": "Respiration calme et lente.",
+   "erreurs": "Pied appuyé sur le genou.\nHanche qui sort sur le côté.",
+   "sources": [
+    {
+     "label": "Yoga Journal, Tree Pose",
+     "url": "https://www.yogajournal.com/poses/types/tree-pose-2/"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "chaise_yoga",
+   "statut": "Nouveau",
+   "nom": "Posture de la chaise",
+   "type": "mobilite",
+   "discipline": "yoga",
+   "zones": "jambes, fessiers",
+   "objectifs": "renforcer",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "30 s",
+   "niveaux": "1. 20 s (20 s)\n2. 30 s (30 s)\n3. 45 s (45 s)",
+   "muscles_principaux": "Quadriceps, Grand fessier",
+   "muscles_secondaires": "Épaules (avant), Bas du dos (lombaires)",
+   "met": "2.3 (code 02150, Yoga hatha)",
+   "consignes": "Pieds joints, plie les genoux comme pour t'asseoir.\nLève les bras dans le prolongement du buste.\nPoids sur les talons, genoux derrière les orteils.",
+   "precaution": "Bras devant toi si les épaules sont raides.",
+   "respiration": "Respire profondément pendant le maintien.",
+   "erreurs": "Cambrer le bas du dos.\nGenoux qui dépassent largement les orteils.",
+   "sources": [
+    {
+     "label": "Yoga Journal, Chair Pose",
+     "url": "https://www.yogajournal.com/poses/chair-pose-2/"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "fente_basse",
+   "statut": "Nouveau",
+   "nom": "Fente basse (posture du croissant)",
+   "type": "etirement",
+   "discipline": "yoga",
+   "zones": "jambes, fessiers",
+   "objectifs": "mobilite",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "60 s",
+   "niveaux": "1. Mains sur la cuisse, 30 s par côté (60 s)\n2. Bras levés, 30 s par côté (60 s)\n3. 45 s par côté (90 s)",
+   "muscles_principaux": "Fléchisseurs de hanche, Quadriceps",
+   "muscles_secondaires": "Grand fessier, Épaules (avant)",
+   "met": "2.3 (code 02150, Yoga hatha)",
+   "consignes": "Genou arrière posé au sol, pied avant devant toi.\nAvance doucement le bassin vers l'avant.\nLève les bras si l'équilibre le permet. Change de côté à mi-temps.",
+   "precaution": "Une serviette pliée sous le genou arrière rend la posture plus confortable.",
+   "respiration": "Respire lentement, relâche à chaque expiration.",
+   "erreurs": "Cambrer le bas du dos.\nGenou avant qui dépasse la cheville.",
+   "sources": [
+    {
+     "label": "Yoga Journal, Low Lunge",
+     "url": "https://www.yogajournal.com/poses/low-lunge/"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "pigeon",
+   "statut": "Nouveau",
+   "nom": "Pigeon (version au sol)",
+   "type": "etirement",
+   "discipline": "yoga",
+   "zones": "fessiers",
+   "objectifs": "mobilite, detente",
+   "intensite": 2,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "60 s",
+   "niveaux": "1. Buste redressé, 30 s par côté (60 s)\n2. Buste allongé vers l'avant (60 s)\n3. 45 s par côté (90 s)",
+   "muscles_principaux": "Grand fessier, Moyen fessier",
+   "muscles_secondaires": "Fléchisseurs de hanche",
+   "met": "2.3 (code 02150, Yoga hatha)",
+   "consignes": "À quatre pattes, avance un genou derrière le poignet du même côté.\nAllonge l'autre jambe vers l'arrière, bassin le plus droit possible.\nReste buste droit ou allonge-le vers l'avant. Change de côté à mi-temps.",
+   "precaution": "Si le genou plié se plaint, fais plutôt l'étirement des fessiers en « 4 » sur le dos.",
+   "respiration": "Respire lentement dans la hanche étirée.",
+   "erreurs": "Bassin qui bascule sur le côté.\nForcer sur le genou.",
+   "sources": [
+    {
+     "label": "Yoga Journal, Sleeping Pigeon Pose",
+     "url": "https://www.yogajournal.com/article/yogapedia/master-sleeping-pigeon-pose-4-steps/"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "papillon",
+   "statut": "Nouveau",
+   "nom": "Papillon",
+   "type": "etirement",
+   "discipline": "yoga",
+   "zones": "jambes, fessiers",
+   "objectifs": "mobilite, detente",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "45 s",
+   "niveaux": "1. 30 s (30 s)\n2. 45 s (45 s)\n3. 1 min, buste incliné (60 s)",
+   "muscles_principaux": "Adducteurs",
+   "muscles_secondaires": "Bas du dos (lombaires)",
+   "met": "2.3 (code 02150, Yoga hatha)",
+   "consignes": "Assis, plantes des pieds l'une contre l'autre, genoux ouverts.\nTiens tes pieds et grandis-toi.\nLaisse les genoux descendre d'eux-mêmes, sans appuyer dessus.",
+   "precaution": "Assieds-toi sur un coussin si le dos s'arrondit.",
+   "respiration": "Respire lentement, relâche à chaque expiration.",
+   "erreurs": "Appuyer sur les genoux.\nDos arrondi.",
+   "sources": [
+    {
+     "label": "Yoga Journal, Bound Angle Pose",
+     "url": "https://www.yogajournal.com/poses/bound-angle-pose-2/"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "pince_assise",
+   "statut": "Nouveau",
+   "nom": "Pince assise",
+   "type": "etirement",
+   "discipline": "yoga",
+   "zones": "jambes, dos",
+   "objectifs": "mobilite, detente",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "45 s",
+   "niveaux": "1. Genoux fléchis (30 s)\n2. 45 s (45 s)\n3. 1 min (60 s)",
+   "muscles_principaux": "Ischio-jambiers",
+   "muscles_secondaires": "Bas du dos (lombaires), Mollets",
+   "met": "2.3 (code 02150, Yoga hatha)",
+   "consignes": "Assis, jambes tendues devant toi, genoux légèrement fléchis.\nGrandis-toi, puis penche le buste vers l'avant depuis les hanches.\nPose les mains où elles arrivent, sans tirer.",
+   "precaution": "L'objectif est l'étirement, pas de toucher les pieds.",
+   "respiration": "Inspire en te grandissant, expire en t'inclinant un peu plus.",
+   "erreurs": "Arrondir le dos pour aller plus loin.\nTirer sur les pieds.",
+   "sources": [
+    {
+     "label": "Yoga Journal, Seated Forward Bend",
+     "url": "https://www.yogajournal.com/poses/seated-forward-bend/"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "torsion_couchee",
+   "statut": "Nouveau",
+   "nom": "Torsion allongée",
+   "type": "etirement",
+   "discipline": "yoga",
+   "zones": "dos, fessiers",
+   "objectifs": "mobilite, detente",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "60 s",
+   "niveaux": "1. 30 s par côté (60 s)\n2. 45 s par côté (90 s)",
+   "muscles_principaux": "Obliques, Bas du dos (lombaires)",
+   "muscles_secondaires": "Grand fessier, Pectoraux",
+   "met": "2.3 (code 02150, Yoga hatha)",
+   "consignes": "Allongé sur le dos, bras ouverts en croix.\nRamène les genoux pliés vers la poitrine, puis laisse-les tomber d'un côté.\nTourne la tête de l'autre côté. Change de côté à mi-temps.",
+   "precaution": "Glisse un coussin sous les genoux s'ils ne touchent pas le sol.",
+   "respiration": "Respire lentement dans le ventre.",
+   "erreurs": "Décoller l'épaule opposée.\nForcer la rotation.",
+   "sources": [
+    {
+     "label": "Yogamatters, bibliothèque de postures : Supine Twist",
+     "url": "https://www.yogamatters.com/blogs/pose-library/supine-twist-supta-matsyendrasana"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "bebe_heureux",
+   "statut": "Nouveau",
+   "nom": "Bébé heureux",
+   "type": "etirement",
+   "discipline": "yoga",
+   "zones": "fessiers, dos",
+   "objectifs": "mobilite, detente",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "45 s",
+   "niveaux": "1. Mains sur les genoux (30 s)\n2. Mains sur les pieds (45 s)\n3. 1 min, léger balancement (60 s)",
+   "muscles_principaux": "Adducteurs, Grand fessier",
+   "muscles_secondaires": "Ischio-jambiers, Bas du dos (lombaires)",
+   "met": "2.3 (code 02150, Yoga hatha)",
+   "consignes": "Allongé sur le dos, ramène les genoux vers les aisselles.\nAttrape les pieds par l'extérieur, plantes vers le plafond.\nLaisse le bas du dos se poser au sol.",
+   "precaution": "Tiens tes genoux ou l'arrière des cuisses si tu n'atteins pas les pieds.",
+   "respiration": "Respire lentement.",
+   "erreurs": "Décoller la tête du sol.\nTirer fort sur les pieds.",
+   "sources": [
+    {
+     "label": "Yogamatters, bibliothèque de postures : Happy Baby Pose",
+     "url": "https://www.yogamatters.com/blogs/pose-library/happy-baby-pose-ananda-balasana"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "jambes_au_mur",
+   "statut": "Nouveau",
+   "nom": "Jambes contre le mur",
+   "type": "etirement",
+   "discipline": "yoga",
+   "zones": "jambes",
+   "objectifs": "detente",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "mur",
+   "mode": "120 s",
+   "niveaux": "1. 2 min (120 s)\n2. 3 min (180 s)\n3. 5 min (300 s)",
+   "muscles_principaux": "Ischio-jambiers",
+   "muscles_secondaires": "Mollets, Bas du dos (lombaires)",
+   "met": "2.3 (code 02150, Yoga hatha)",
+   "consignes": "Assieds-toi de côté contre un mur, puis bascule pour allonger les jambes contre le mur.\nFesses proches du mur, bras relâchés.\nFerme les yeux et laisse les jambes se détendre.",
+   "precaution": "Éloigne un peu les fesses du mur si l'arrière des cuisses tire trop.",
+   "respiration": "Respiration lente et longue.",
+   "erreurs": "Garder les jambes contractées.\nSe placer trop loin du mur.",
+   "sources": [
+    {
+     "label": "Yoga Journal, Legs Up the Wall Pose",
+     "url": "https://www.yogajournal.com/poses/legs-up-the-wall-pose-2/"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "quadriceps_debout",
+   "statut": "Nouveau",
+   "nom": "Étirement des quadriceps debout",
+   "type": "etirement",
+   "discipline": "etirement",
+   "zones": "jambes",
+   "objectifs": "mobilite",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "mur",
+   "mode": "60 s",
+   "niveaux": "1. 20 s par côté (40 s)\n2. 30 s par côté (60 s)",
+   "muscles_principaux": "Quadriceps",
+   "muscles_secondaires": "Fléchisseurs de hanche",
+   "met": "2.3 (code 02101, Étirements doux)",
+   "consignes": "Debout, une main au mur.\nAttrape ta cheville et ramène le talon vers la fesse.\nGenoux côte à côte, bassin légèrement rentré. Change de côté.",
+   "precaution": "Utilise une serviette autour de la cheville si tu ne l'attrapes pas.",
+   "respiration": "Respire lentement pendant le maintien.",
+   "erreurs": "Genou qui part vers l'avant ou sur le côté.\nCambrer le dos.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Quad Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Quad_Stretch.json"
+    },
+    {
+     "label": "NHS, Flexibility exercises",
+     "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "etirement_lateral",
+   "statut": "Nouveau",
+   "nom": "Étirement latéral debout",
+   "type": "etirement",
+   "discipline": "etirement",
+   "zones": "dos, abdos",
+   "objectifs": "mobilite",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "40 s",
+   "niveaux": "1. 15 s par côté (30 s)\n2. 20 s par côté (40 s)",
+   "muscles_principaux": "Obliques, Grand dorsal",
+   "muscles_secondaires": "",
+   "met": "2.3 (code 02101, Étirements doux)",
+   "consignes": "Debout, pieds largeur de hanches.\nLève un bras au-dessus de la tête et penche-toi doucement de l'autre côté.\nReviens au centre et change de côté.",
+   "precaution": "Penche-toi sur le côté, pas vers l'avant.",
+   "respiration": "Inspire en levant le bras, expire en t'inclinant.",
+   "erreurs": "Tourner le buste.\nHausser l'épaule.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Standing Lateral Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Standing_Lateral_Stretch.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "epaule_bras_croise",
+   "statut": "Nouveau",
+   "nom": "Étirement de l'épaule, bras croisé",
+   "type": "etirement",
+   "discipline": "etirement",
+   "zones": "epaules",
+   "objectifs": "mobilite",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "40 s",
+   "niveaux": "1. 20 s par côté (40 s)\n2. 30 s par côté (60 s)",
+   "muscles_principaux": "Épaules (arrière)",
+   "muscles_secondaires": "Haut du dos (rhomboïdes)",
+   "met": "2.3 (code 02101, Étirements doux)",
+   "consignes": "Amène un bras tendu devant la poitrine.\nAvec l'autre main, rapproche-le doucement du corps, au-dessus du coude.\nÉpaules basses. Change de côté.",
+   "precaution": "Appuie au-dessus du coude, jamais dessus.",
+   "respiration": "Respire calmement.",
+   "erreurs": "Hausser l'épaule étirée.\nTourner le buste.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Shoulder Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Shoulder_Stretch.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "triceps_etirement",
+   "statut": "Nouveau",
+   "nom": "Étirement des triceps",
+   "type": "etirement",
+   "discipline": "etirement",
+   "zones": "bras",
+   "objectifs": "mobilite",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "40 s",
+   "niveaux": "1. 20 s par côté (40 s)\n2. 30 s par côté (60 s)",
+   "muscles_principaux": "Triceps",
+   "muscles_secondaires": "Grand dorsal",
+   "met": "2.3 (code 02101, Étirements doux)",
+   "consignes": "Lève un bras et plie le coude pour poser la main entre les omoplates.\nAvec l'autre main, pousse doucement le coude vers l'arrière.\nChange de côté.",
+   "precaution": "Reste dans une amplitude confortable pour l'épaule.",
+   "respiration": "Respire calmement.",
+   "erreurs": "Cambrer le dos.\nPencher la tête vers l'avant.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Triceps Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Triceps_Stretch.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "torsion_assise",
+   "statut": "Nouveau",
+   "nom": "Torsion assise",
+   "type": "etirement",
+   "discipline": "etirement",
+   "zones": "dos",
+   "objectifs": "mobilite",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "40 s",
+   "niveaux": "1. 20 s par côté (40 s)\n2. 30 s par côté (60 s)",
+   "muscles_principaux": "Obliques, Bas du dos (lombaires)",
+   "muscles_secondaires": "Grand fessier",
+   "met": "2.3 (code 02101, Étirements doux)",
+   "consignes": "Assis, une jambe tendue, l'autre pied posé à l'extérieur du genou.\nGrandis-toi, puis tourne le buste vers le genou plié.\nCoude contre le genou, regard derrière toi. Change de côté.",
+   "precaution": "Grandis-toi à chaque inspiration, tourne un peu à chaque expiration.",
+   "respiration": "Inspire en te grandissant, expire en tournant.",
+   "erreurs": "Dos arrondi.\nForcer avec le bras.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Spinal Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Spinal_Stretch.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "genoux_poitrine",
+   "statut": "Nouveau",
+   "nom": "Genoux à la poitrine",
+   "type": "etirement",
+   "discipline": "etirement",
+   "zones": "dos",
+   "objectifs": "mobilite, detente",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "40 s",
+   "niveaux": "1. Une jambe à la fois (40 s)\n2. Deux jambes, léger balancement (40 s)",
+   "muscles_principaux": "Bas du dos (lombaires)",
+   "muscles_secondaires": "Grand fessier",
+   "met": "2.3 (code 02101, Étirements doux)",
+   "consignes": "Allongé sur le dos.\nRamène les genoux vers la poitrine, mains sous les genoux.\nBalance-toi doucement de gauche à droite si c'est agréable.",
+   "precaution": "",
+   "respiration": "Respire lentement dans le ventre.",
+   "erreurs": "Décoller la tête.\nTirer fort sur les genoux.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Hug Knees To Chest",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Hug_Knees_To_Chest.json"
+    },
+    {
+     "label": "NHS, Flexibility exercises",
+     "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "coherence_cardiaque",
+   "statut": "Nouveau",
+   "nom": "Respiration lente (6 cycles par minute)",
+   "type": "respiration",
+   "discipline": "meditation",
+   "zones": "",
+   "objectifs": "detente",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "180 s",
+   "niveaux": "1. 3 min (180 s)\n2. 5 min (300 s)",
+   "muscles_principaux": "Diaphragme",
+   "muscles_secondaires": "",
+   "met": "1 (code 07075, Méditation)",
+   "consignes": "Assis, dos droit, pieds au sol.\nInspire par le nez pendant 5 secondes, puis expire pendant 5 secondes.\nGarde ce rythme régulier jusqu'à la fin, sans forcer.",
+   "precaution": "Si tu te sens étourdi, reprends une respiration normale.",
+   "respiration": "5 s d'inspiration, 5 s d'expiration : 6 cycles par minute.",
+   "erreurs": "Gonfler la poitrine plutôt que le ventre.\nForcer l'inspiration.",
+   "sources": [
+    {
+     "label": "Respiration lente autour de 6 cycles par minute, revue systématique (Université de Berne)",
+     "url": "https://boris.unibe.ch/193198"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "respiration_carree",
+   "statut": "Nouveau",
+   "nom": "Respiration carrée",
+   "type": "respiration",
+   "discipline": "meditation",
+   "zones": "",
+   "objectifs": "detente",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "120 s",
+   "niveaux": "1. 2 min, carré de 3 s (120 s)\n2. 3 min, carré de 4 s (180 s)",
+   "muscles_principaux": "Diaphragme",
+   "muscles_secondaires": "",
+   "met": "1 (code 07075, Méditation)",
+   "consignes": "Assis confortablement, expire complètement.\nInspire 4 s, retiens 4 s, expire 4 s, retiens 4 s.\nRecommence en imaginant les quatre côtés d'un carré.",
+   "precaution": "Raccourcis les temps (3 s) si les pauses sont inconfortables.",
+   "respiration": "Quatre temps égaux : inspire, pause, expire, pause.",
+   "erreurs": "Contracter les épaules pendant les pauses.\nAccélérer le compte.",
+   "sources": [
+    {
+     "label": "University of Pittsburgh, Box Breathing",
+     "url": "https://sova.pitt.edu/box-breathing"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "meditation_souffle",
+   "statut": "Nouveau",
+   "nom": "Méditation : attention au souffle",
+   "type": "respiration",
+   "discipline": "meditation",
+   "zones": "",
+   "objectifs": "detente",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "300 s",
+   "niveaux": "1. 3 min (180 s)\n2. 5 min (300 s)\n3. 10 min (600 s)",
+   "muscles_principaux": "",
+   "muscles_secondaires": "",
+   "met": "1 (code 07075, Méditation)",
+   "consignes": "Assis, dos droit sans raideur, yeux fermés ou regard posé au sol.\nPorte ton attention sur les sensations du souffle, au niveau des narines ou du ventre.\nQuand ton esprit s'égare, remarque-le simplement et reviens au souffle.",
+   "precaution": "",
+   "respiration": "Respire naturellement, sans chercher à modifier le rythme.",
+   "erreurs": "Se reprocher d'avoir des pensées : c'est normal.\nContrôler la respiration.",
+   "sources": [
+    {
+     "label": "UCLA Mindful, méditations guidées gratuites",
+     "url": "https://www.uclahealth.org/uclamindful/guided-meditations"
+    },
+    {
+     "label": "NHS Torbay and South Devon, Mindfulness of breath",
+     "url": "https://www.torbayandsouthdevon.nhs.uk/uploads/mindfulness-of-breath-instructions.pdf"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "scan_corporel",
+   "statut": "Nouveau",
+   "nom": "Méditation : scan corporel",
+   "type": "respiration",
+   "discipline": "meditation",
+   "zones": "",
+   "objectifs": "detente",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "420 s",
+   "niveaux": "1. 5 min (300 s)\n2. 7 min (420 s)\n3. 10 min (600 s)",
+   "muscles_principaux": "",
+   "muscles_secondaires": "",
+   "met": "1 (code 07075, Méditation)",
+   "consignes": "Allongé sur le dos, bras le long du corps, yeux fermés.\nPromène ton attention des orteils jusqu'au sommet du crâne, zone par zone.\nObserve chaque sensation sans la juger, puis passe à la zone suivante.",
+   "precaution": "Idéal le soir : si tu t'endors, c'est que ton corps en avait besoin.",
+   "respiration": "Respire naturellement, en imaginant le souffle circuler jusqu'à la zone observée.",
+   "erreurs": "Vouloir détendre de force.\nAller trop vite d'une zone à l'autre.",
+   "sources": [
+    {
+     "label": "Greater Good in Action (UC Berkeley), Body Scan Meditation",
+     "url": "https://ggia.berkeley.edu/practice/body_scan_meditation"
+    },
+    {
+     "label": "UCLA Mindful, méditations guidées gratuites",
+     "url": "https://www.uclahealth.org/uclamindful/guided-meditations"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "relaxation_progressive",
+   "statut": "Nouveau",
+   "nom": "Relaxation musculaire progressive",
+   "type": "respiration",
+   "discipline": "meditation",
+   "zones": "",
+   "objectifs": "detente",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "420 s",
+   "niveaux": "1. 5 min, grandes zones (300 s)\n2. 7 min (420 s)\n3. 10 min, zone par zone (600 s)",
+   "muscles_principaux": "",
+   "muscles_secondaires": "",
+   "met": "1 (code 07075, Méditation)",
+   "consignes": "Allongé ou assis, yeux fermés.\nContracte un groupe de muscles 5 secondes (pieds, jambes, ventre, mains, épaules, visage), puis relâche d'un coup.\nObserve la détente 10 à 15 secondes avant de passer au groupe suivant.",
+   "precaution": "Contracte modérément, jamais jusqu'à la crampe ou la douleur.",
+   "respiration": "Inspire en contractant, expire en relâchant.",
+   "erreurs": "Contracter trop fort.\nEnchaîner sans observer la détente.",
+   "sources": [
+    {
+     "label": "University of Rochester, Progressive Muscle Relaxation",
+     "url": "https://www.rochester.edu/uhs/ucc/online-screening-resources/progressive-muscle-relaxation"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "rowing",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Rowing assis à l'élastique",
+   "type": null,
+   "discipline": "renforcement",
+   "zones": "dos, bras",
+   "objectifs": "renforcer, tonifier",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "elastique",
+   "mode": "12 répétitions",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Haut du dos (rhomboïdes), Grand dorsal",
+   "muscles_secondaires": "Biceps, Épaules (arrière), Trapèzes",
+   "met": "3.5 (code 02054, Renforcement, 8 à 15 répétitions, résistance variée)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Expire en tirant, inspire en relâchant.",
+   "erreurs": "Se pencher en arrière pour tirer.\nHausser les épaules vers les oreilles.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Seated Cable Rows",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Seated_Cable_Rows.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "pull_apart",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Écarté à l'élastique (band pull-apart)",
+   "type": null,
+   "discipline": "renforcement",
+   "zones": "dos, epaules",
+   "objectifs": "renforcer, tonifier",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "elastique",
+   "mode": "15 répétitions",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Épaules (arrière), Haut du dos (rhomboïdes)",
+   "muscles_secondaires": "Trapèzes, Coiffe des rotateurs",
+   "met": "3.5 (code 02054, Renforcement, 8 à 15 répétitions, résistance variée)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Expire en écartant, inspire en revenant.",
+   "erreurs": "Plier les coudes pour s'aider.\nCambrer le bas du dos en fin de mouvement.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Band Pull Apart",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Band_Pull_Apart.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "pallof",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Pallof press (anti-rotation)",
+   "type": null,
+   "discipline": "gainage",
+   "zones": "abdos",
+   "objectifs": "renforcer",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "elastique",
+   "mode": "40 s",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Obliques, Abdominaux profonds",
+   "muscles_secondaires": "Abdominaux (grand droit), Moyen fessier",
+   "met": "2.8 (code 02024, Callisthénie légère (crunchs, planche))",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Respire calmement pendant que les bras sont tendus, sans bloquer.",
+   "erreurs": "Laisser le buste tourner vers l'élastique.\nSe placer trop près du point d'attache : il n'y a plus de tension.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Pallof Press",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Pallof_Press.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "dead_bug",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Dead bug",
+   "type": null,
+   "discipline": "gainage",
+   "zones": "abdos",
+   "objectifs": "renforcer",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "10 répétitions",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Abdominaux profonds, Abdominaux (grand droit)",
+   "muscles_secondaires": "Obliques, Fléchisseurs de hanche",
+   "met": "2.8 (code 02024, Callisthénie légère (crunchs, planche))",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Expire pendant que le bras et la jambe s'éloignent, inspire en revenant.",
+   "erreurs": "Laisser le bas du dos décoller du sol.\nAller trop vite et perdre le contrôle.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Dead Bug",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Dead_Bug.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "bird_dog",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Bird-dog",
+   "type": null,
+   "discipline": "gainage",
+   "zones": "dos, abdos",
+   "objectifs": "renforcer, mobilite",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "10 répétitions",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Bas du dos (lombaires), Grand fessier",
+   "muscles_secondaires": "Abdominaux profonds, Épaules (avant)",
+   "met": "2.8 (code 02024, Callisthénie légère (crunchs, planche))",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Expire en allongeant, inspire en revenant au centre.",
+   "erreurs": "Lever la jambe trop haut et creuser le dos.\nLaisser le bassin basculer sur le côté.",
+   "sources": [
+    {
+     "label": "Harvard Health Publishing, « Big 3 » de Stuart McGill",
+     "url": "https://www.health.harvard.edu/staying-healthy/core-exercises-the-big-3"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "planche",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Planche",
+   "type": null,
+   "discipline": "gainage",
+   "zones": "abdos, epaules",
+   "objectifs": "renforcer, tonifier",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "30 s",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Abdominaux (grand droit), Abdominaux profonds",
+   "muscles_secondaires": "Épaules (avant), Grand fessier, Quadriceps",
+   "met": "2.8 (code 02024, Callisthénie légère (crunchs, planche))",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Respire lentement et régulièrement pendant tout le maintien.",
+   "erreurs": "Fesses trop hautes ou bassin qui s'affaisse.\nBloquer sa respiration.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Plank",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Plank.json"
+    },
+    {
+     "label": "NHS, Strength exercises",
+     "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/strength-exercises/"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "squat_chaise",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Squat sur chaise",
+   "type": null,
+   "discipline": "renforcement",
+   "zones": "jambes, fessiers",
+   "objectifs": "renforcer, tonifier",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "chaise",
+   "mode": "10 répétitions",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Quadriceps, Grand fessier",
+   "muscles_secondaires": "Ischio-jambiers, Adducteurs",
+   "met": "2.8 (code 02340, Se lever d'une chaise, 6 à 12 par minute)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Inspire en descendant, expire en te relevant.",
+   "erreurs": "Se laisser tomber sur la chaise.\nLaisser les genoux rentrer vers l'intérieur.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Chair Squat",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Chair_Squat.json"
+    },
+    {
+     "label": "NHS, Strength exercises",
+     "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/strength-exercises/"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "pont",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Pont fessier",
+   "type": null,
+   "discipline": "renforcement",
+   "zones": "fessiers, jambes",
+   "objectifs": "renforcer, tonifier",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "12 répétitions",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Grand fessier",
+   "muscles_secondaires": "Ischio-jambiers, Bas du dos (lombaires)",
+   "met": "3 (code 02056, Renforcement au poids du corps, général)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Expire en montant le bassin, inspire en redescendant.",
+   "erreurs": "Cambrer le dos en haut au lieu de serrer les fessiers.\nPousser sur la pointe des pieds.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Butt Lift Bridge",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Butt_Lift_Bridge.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "marche_laterale",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Marche latérale à l'élastique",
+   "type": null,
+   "discipline": "renforcement",
+   "zones": "fessiers",
+   "objectifs": "renforcer, tonifier",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "elastique",
+   "mode": "40 s",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Moyen fessier",
+   "muscles_secondaires": "Grand fessier, Quadriceps",
+   "met": "3.5 (code 02054, Renforcement, 8 à 15 répétitions, résistance variée)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Respiration libre et régulière.",
+   "erreurs": "Laisser les pieds se toucher : l'élastique se détend.\nBalancer le buste d'un côté à l'autre.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Monster Walk",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Monster_Walk.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "ext_hanche",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Extension de hanche à quatre pattes",
+   "type": null,
+   "discipline": "renforcement",
+   "zones": "fessiers",
+   "objectifs": "renforcer, tonifier",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "12 répétitions",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Grand fessier",
+   "muscles_secondaires": "Ischio-jambiers, Bas du dos (lombaires)",
+   "met": "3 (code 02056, Renforcement au poids du corps, général)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Expire en poussant le talon vers le plafond, inspire en revenant.",
+   "erreurs": "Monter trop haut et creuser le dos.\nTourner le bassin vers l'extérieur.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Glute Kickback",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Glute_Kickback.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "planche_laterale",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Planche latérale",
+   "type": null,
+   "discipline": "gainage",
+   "zones": "abdos",
+   "objectifs": "renforcer, tonifier",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "30 s",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Obliques",
+   "muscles_secondaires": "Abdominaux profonds, Moyen fessier, Épaules (côté)",
+   "met": "2.8 (code 02024, Callisthénie légère (crunchs, planche))",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Respire calmement, sans bloquer.",
+   "erreurs": "Laisser le bassin descendre.\nPencher le buste vers l'avant.",
+   "sources": [
+    {
+     "label": "Harvard Health Publishing, « Big 3 » de Stuart McGill",
+     "url": "https://www.health.harvard.edu/staying-healthy/core-exercises-the-big-3"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Side Bridge",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Side_Bridge.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "respiration",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Respiration costale",
+   "type": null,
+   "discipline": "meditation",
+   "zones": "abdos",
+   "objectifs": "detente",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "60 s",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Diaphragme",
+   "muscles_secondaires": "Abdominaux profonds",
+   "met": "1 (code 07075, Méditation)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Inspire 3 à 4 s par le nez, expire 5 à 6 s par la bouche.",
+   "erreurs": "Monter les épaules en inspirant.\nForcer l'inspiration.",
+   "sources": [
+    {
+     "label": "Respiration lente autour de 6 cycles par minute, revue systématique (Université de Berne)",
+     "url": "https://boris.unibe.ch/193198"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "bascule_bassin",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Bascule du bassin",
+   "type": null,
+   "discipline": "pilates",
+   "zones": "dos, abdos",
+   "objectifs": "mobilite",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "45 s",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Abdominaux profonds, Bas du dos (lombaires)",
+   "muscles_secondaires": "Abdominaux (grand droit)",
+   "met": "1.8 (code 02103, Pilates au sol)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Expire en plaquant le bas du dos, inspire en relâchant.",
+   "erreurs": "Pousser avec les jambes pour décoller les fesses.\nAller vite au lieu de suivre la respiration.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Pelvic Tilt Into Bridge",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Pelvic_Tilt_Into_Bridge.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "chat_vache",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Chat-vache",
+   "type": null,
+   "discipline": "yoga",
+   "zones": "dos",
+   "objectifs": "mobilite, detente",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "45 s",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Bas du dos (lombaires)",
+   "muscles_secondaires": "Abdominaux profonds, Trapèzes",
+   "met": "2.3 (code 02150, Yoga hatha)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Inspire en creusant, expire en arrondissant.",
+   "erreurs": "Forcer la cambrure.\nPlier les coudes.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Cat Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Cat_Stretch.json"
+    },
+    {
+     "label": "NHS, Flexibility exercises",
+     "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "omoplates",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Rapprochement des omoplates",
+   "type": null,
+   "discipline": "renforcement",
+   "zones": "dos",
+   "objectifs": "mobilite",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "45 s",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Haut du dos (rhomboïdes), Trapèzes",
+   "muscles_secondaires": "",
+   "met": "3.5 (code 02030, Callisthénie légère à modérée (exercices du dos, se relever du sol))",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Expire en serrant, inspire en relâchant.",
+   "erreurs": "Hausser les épaules.\nCambrer le bas du dos.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Upper Back Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Upper_Back_Stretch.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "wall_slides",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Glissés de bras au mur",
+   "type": null,
+   "discipline": "etirement",
+   "zones": "epaules, dos",
+   "objectifs": "mobilite",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "mur",
+   "mode": "45 s",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Trapèzes, Épaules (côté)",
+   "muscles_secondaires": "Coiffe des rotateurs, Haut du dos (rhomboïdes)",
+   "met": "2.3 (code 02101, Étirements doux)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Inspire en montant, expire en redescendant.",
+   "erreurs": "Décoller le bas du dos du mur.\nMonter les épaules vers les oreilles.",
+   "sources": [
+    {
+     "label": "NHS, Flexibility exercises",
+     "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "ext_thoracique",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Extension thoracique sur chaise",
+   "type": null,
+   "discipline": "etirement",
+   "zones": "dos",
+   "objectifs": "mobilite",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "chaise",
+   "mode": "45 s",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Haut du dos (rhomboïdes), Bas du dos (lombaires)",
+   "muscles_secondaires": "Pectoraux",
+   "met": "2.3 (code 02101, Étirements doux)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Inspire en ouvrant la poitrine, expire en revenant.",
+   "erreurs": "Cambrer le bas du dos au lieu du haut.\nPousser la tête en arrière.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Chair Upper Body Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Chair_Upper_Body_Stretch.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "chin_tuck",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Menton rentré",
+   "type": null,
+   "discipline": "etirement",
+   "zones": "dos",
+   "objectifs": "mobilite",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "45 s",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Cou",
+   "muscles_secondaires": "",
+   "met": "2.3 (code 02101, Étirements doux)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Respiration libre, sans bloquer pendant le maintien.",
+   "erreurs": "Baisser le menton vers la poitrine au lieu de le reculer.\nContracter les épaules.",
+   "sources": [
+    {
+     "label": "NHS, Flexibility exercises",
+     "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "pecs_porte",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Étirement des pectoraux (porte)",
+   "type": null,
+   "discipline": "etirement",
+   "zones": "bras, epaules",
+   "objectifs": "mobilite, detente",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "mur",
+   "mode": "60 s",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Pectoraux",
+   "muscles_secondaires": "Épaules (avant)",
+   "met": "2.3 (code 02101, Étirements doux)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Expire en avançant le buste, puis respire calmement.",
+   "erreurs": "Monter le coude au-dessus de l'épaule.\nCambrer le dos pour gagner de l'amplitude.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Chest And Front Of Shoulder Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Chest_And_Front_Of_Shoulder_Stretch.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "trapezes",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Étirement des trapèzes",
+   "type": null,
+   "discipline": "etirement",
+   "zones": "dos, epaules",
+   "objectifs": "mobilite, detente",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "60 s",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Trapèzes, Cou",
+   "muscles_secondaires": "",
+   "met": "2.3 (code 02101, Étirements doux)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Expire en relâchant l'épaule opposée vers le bas.",
+   "erreurs": "Tirer sur la tête avec la main.\nHausser l'épaule du côté étiré.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Side Neck Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Side_Neck_Stretch.json"
+    },
+    {
+     "label": "NHS, Flexibility exercises",
+     "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "enfant",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Posture de l'enfant",
+   "type": null,
+   "discipline": "yoga",
+   "zones": "dos",
+   "objectifs": "mobilite, detente",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "30 s",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Bas du dos (lombaires)",
+   "muscles_secondaires": "Grand dorsal, Grand fessier",
+   "met": "2.3 (code 02150, Yoga hatha)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Respire dans le dos : il se gonfle à l'inspiration.",
+   "erreurs": "Forcer les fesses vers les talons si les genoux tirent.\nRetenir sa respiration.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Childs Pose",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Childs_Pose.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "flechisseurs",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Étirement des fléchisseurs de hanche",
+   "type": null,
+   "discipline": "etirement",
+   "zones": "jambes, fessiers",
+   "objectifs": "mobilite",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "60 s",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Fléchisseurs de hanche",
+   "muscles_secondaires": "Quadriceps",
+   "met": "2.3 (code 02101, Étirements doux)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Expire en avançant le bassin, puis respire calmement.",
+   "erreurs": "Cambrer le bas du dos.\nAvancer le genou avant au-delà des orteils.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Kneeling Hip Flexor",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Kneeling_Hip_Flexor.json"
+    },
+    {
+     "label": "NHS, Flexibility exercises",
+     "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "ischios",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Étirement des ischio-jambiers",
+   "type": null,
+   "discipline": "etirement",
+   "zones": "jambes",
+   "objectifs": "mobilite",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "60 s",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Ischio-jambiers",
+   "muscles_secondaires": "Mollets",
+   "met": "2.3 (code 02101, Étirements doux)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Expire en rapprochant doucement la jambe.",
+   "erreurs": "Verrouiller le genou à tout prix.\nDécoller les fesses du sol.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Hamstring Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Hamstring_Stretch.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "fessiers_4",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Étirement des fessiers en « 4 »",
+   "type": null,
+   "discipline": "etirement",
+   "zones": "fessiers",
+   "objectifs": "mobilite, detente",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "60 s",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Grand fessier, Moyen fessier",
+   "muscles_secondaires": "",
+   "met": "2.3 (code 02101, Étirements doux)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Expire en rapprochant la jambe, puis respire calmement.",
+   "erreurs": "Tirer sur la tête et le cou pour attraper la jambe.\nForcer sur le genou croisé.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Ankle On The Knee",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Ankle_On_The_Knee.json"
+    },
+    {
+     "label": "NHS, Flexibility exercises",
+     "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "mollets",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Étirement des mollets",
+   "type": null,
+   "discipline": "etirement",
+   "zones": "jambes",
+   "objectifs": "mobilite",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "mur",
+   "mode": "60 s",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Mollets",
+   "muscles_secondaires": "",
+   "met": "2.3 (code 02101, Étirements doux)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Respiration lente pendant le maintien.",
+   "erreurs": "Décoller le talon arrière.\nTourner le pied arrière vers l'extérieur.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Calf Stretch Hands Against Wall",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Calf_Stretch_Hands_Against_Wall.json"
+    },
+    {
+     "label": "NHS, Flexibility exercises",
+     "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "glissement_talon",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Glissement de talon",
+   "type": null,
+   "discipline": "pilates",
+   "zones": "abdos",
+   "objectifs": "renforcer",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "10 répétitions",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Abdominaux profonds",
+   "muscles_secondaires": "Abdominaux (grand droit), Fléchisseurs de hanche",
+   "met": "1.8 (code 02103, Pilates au sol)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Expire en faisant glisser le talon, inspire en revenant.",
+   "erreurs": "Creuser le dos quand la jambe s'allonge.\nAller trop vite.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Flat Bench Lying Leg Raise",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Flat_Bench_Lying_Leg_Raise.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "planche_inclinee",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Planche inclinée, mains en appui",
+   "type": null,
+   "discipline": "gainage",
+   "zones": "abdos, epaules",
+   "objectifs": "renforcer",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "chaise",
+   "mode": "30 s",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Abdominaux (grand droit), Abdominaux profonds",
+   "muscles_secondaires": "Épaules (avant), Pectoraux",
+   "met": "2.8 (code 02024, Callisthénie légère (crunchs, planche))",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Respire lentement pendant tout le maintien.",
+   "erreurs": "Bassin qui s'affaisse.\nSupport instable qui glisse.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Plank",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Plank.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "pallof_genoux",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Pallof press à genoux",
+   "type": null,
+   "discipline": "gainage",
+   "zones": "abdos",
+   "objectifs": "renforcer",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "elastique",
+   "mode": "40 s",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Obliques, Abdominaux profonds",
+   "muscles_secondaires": "Grand fessier",
+   "met": "2.8 (code 02024, Callisthénie légère (crunchs, planche))",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Respire calmement bras tendus, sans bloquer.",
+   "erreurs": "Laisser le buste tourner.\nS'asseoir sur les talons.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Pallof Press",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Pallof_Press.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "rowing_debout",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Rowing debout à l'élastique",
+   "type": null,
+   "discipline": "renforcement",
+   "zones": "dos, bras",
+   "objectifs": "renforcer, tonifier",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "elastique",
+   "mode": "12 répétitions",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Haut du dos (rhomboïdes), Grand dorsal",
+   "muscles_secondaires": "Biceps, Épaules (arrière)",
+   "met": "3.5 (code 02054, Renforcement, 8 à 15 répétitions, résistance variée)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Expire en tirant, inspire en relâchant.",
+   "erreurs": "Balancer le buste.\nTirer avec les mains plutôt qu'avec les coudes.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Seated Cable Rows",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Seated_Cable_Rows.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "face_pull_bas",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Tirage coudes écartés à l'élastique",
+   "type": null,
+   "discipline": "renforcement",
+   "zones": "epaules, dos",
+   "objectifs": "renforcer",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "elastique",
+   "mode": "12 répétitions",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Épaules (arrière), Haut du dos (rhomboïdes)",
+   "muscles_secondaires": "Coiffe des rotateurs, Trapèzes",
+   "met": "3.5 (code 02054, Renforcement, 8 à 15 répétitions, résistance variée)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Expire en tirant, inspire en revenant.",
+   "erreurs": "Hausser les épaules.\nCambrer le dos pour finir le tirage.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Reverse Flyes",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Reverse_Flyes.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "rotation_externe",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Rotation externe d'épaule à l'élastique",
+   "type": null,
+   "discipline": "renforcement",
+   "zones": "epaules",
+   "objectifs": "renforcer",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "elastique",
+   "mode": "12 répétitions",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Coiffe des rotateurs",
+   "muscles_secondaires": "Épaules (arrière)",
+   "met": "3.5 (code 02054, Renforcement, 8 à 15 répétitions, résistance variée)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Expire en écartant l'avant-bras, inspire en revenant.",
+   "erreurs": "Décoller le coude du corps.\nÉlastique trop dur : le mouvement devient saccadé.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche External Rotation with Band",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/External_Rotation_with_Band.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "elevation_laterale",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Élévation latérale à l'élastique",
+   "type": null,
+   "discipline": "renforcement",
+   "zones": "epaules",
+   "objectifs": "renforcer, tonifier",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "elastique",
+   "mode": "12 répétitions",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Épaules (côté)",
+   "muscles_secondaires": "Trapèzes",
+   "met": "3.5 (code 02054, Renforcement, 8 à 15 répétitions, résistance variée)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Expire en montant, inspire en descendant.",
+   "erreurs": "Monter au-dessus des épaules.\nPrendre de l'élan avec le buste.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Lateral Raise - With Bands",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Lateral_Raise_-_With_Bands.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "curl_biceps",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Curl des biceps à l'élastique",
+   "type": null,
+   "discipline": "renforcement",
+   "zones": "bras",
+   "objectifs": "renforcer, tonifier",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "elastique",
+   "mode": "12 répétitions",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Biceps",
+   "muscles_secondaires": "Avant-bras",
+   "met": "3.5 (code 02054, Renforcement, 8 à 15 répétitions, résistance variée)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Expire en pliant les coudes, inspire en redescendant.",
+   "erreurs": "Avancer les coudes.\nSe cambrer pour finir la montée.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Close-Grip EZ-Bar Curl with Band",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Close-Grip_EZ-Bar_Curl_with_Band.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "triceps_elastique",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Extension des triceps à l'élastique",
+   "type": null,
+   "discipline": "renforcement",
+   "zones": "bras",
+   "objectifs": "renforcer, tonifier",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "elastique",
+   "mode": "12 répétitions",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Triceps",
+   "muscles_secondaires": "",
+   "met": "3.5 (code 02054, Renforcement, 8 à 15 répétitions, résistance variée)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Expire en tendant les bras, inspire en revenant.",
+   "erreurs": "Écarter les coudes du corps.\nSe pencher en avant pour pousser.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Triceps Pushdown",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Triceps_Pushdown.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "clamshell",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Clamshell (coquillage)",
+   "type": null,
+   "discipline": "renforcement",
+   "zones": "fessiers",
+   "objectifs": "renforcer, tonifier",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "15 répétitions",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Moyen fessier",
+   "muscles_secondaires": "Grand fessier",
+   "met": "3 (code 02056, Renforcement au poids du corps, général)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Expire en ouvrant le genou, inspire en refermant.",
+   "erreurs": "Rouler le bassin vers l'arrière.\nDécoller les pieds l'un de l'autre.",
+   "sources": [],
+   "video": null
+  },
+  {
+   "id": "abduction_couchee",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Levée de jambe sur le côté",
+   "type": null,
+   "discipline": "renforcement",
+   "zones": "fessiers, jambes",
+   "objectifs": "renforcer, tonifier",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "15 répétitions",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Moyen fessier",
+   "muscles_secondaires": "Grand fessier",
+   "met": "3 (code 02056, Renforcement au poids du corps, général)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Expire en montant la jambe, inspire en descendant.",
+   "erreurs": "Pointe du pied tournée vers le plafond.\nBassin qui bascule en arrière.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Side Leg Raises",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Side_Leg_Raises.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "squat_mur",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Squat partiel contre le mur",
+   "type": null,
+   "discipline": "renforcement",
+   "zones": "jambes, fessiers",
+   "objectifs": "renforcer, tonifier",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "mur",
+   "mode": "10 répétitions",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Quadriceps",
+   "muscles_secondaires": "Grand fessier, Adducteurs",
+   "met": "3 (code 02056, Renforcement au poids du corps, général)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Inspire en descendant, expire en remontant.",
+   "erreurs": "Pieds trop près du mur.\nGenoux qui rentrent vers l'intérieur.",
+   "sources": [
+    {
+     "label": "NHS, Strength exercises",
+     "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/strength-exercises/"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "montee_marche",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Montée sur marche basse",
+   "type": null,
+   "discipline": "renforcement",
+   "zones": "jambes, fessiers",
+   "objectifs": "renforcer, tonifier",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "10 répétitions",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Quadriceps, Grand fessier",
+   "muscles_secondaires": "Ischio-jambiers, Mollets",
+   "met": "3 (code 02056, Renforcement au poids du corps, général)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Expire en montant, inspire en redescendant.",
+   "erreurs": "Pousser avec la jambe d'en bas.\nLaisser le genou rentrer vers l'intérieur.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Dumbbell Step Ups",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Dumbbell_Step_Ups.json"
+    },
+    {
+     "label": "NHS, Strength exercises",
+     "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/strength-exercises/"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "pont_ischios",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Pont fessier, pieds éloignés (ischio-jambiers)",
+   "type": null,
+   "discipline": "renforcement",
+   "zones": "jambes, fessiers",
+   "objectifs": "renforcer, tonifier",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "12 répétitions",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Ischio-jambiers, Grand fessier",
+   "muscles_secondaires": "Bas du dos (lombaires)",
+   "met": "3 (code 02056, Renforcement au poids du corps, général)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Expire en montant, inspire en redescendant.",
+   "erreurs": "Cambrer en haut.\nPieds trop loin : crampe assurée.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Platform Hamstring Slides",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Platform_Hamstring_Slides.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "extension_hanche_debout",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Extension de hanche debout à l'élastique",
+   "type": null,
+   "discipline": "renforcement",
+   "zones": "fessiers",
+   "objectifs": "renforcer, tonifier",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "elastique",
+   "mode": "12 répétitions",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Grand fessier",
+   "muscles_secondaires": "Ischio-jambiers",
+   "met": "3.5 (code 02054, Renforcement, 8 à 15 répétitions, résistance variée)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Expire en poussant la jambe, inspire en revenant.",
+   "erreurs": "Se pencher en avant pour lever plus haut.\nCambrer le dos.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche One-Legged Cable Kickback",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/One-Legged_Cable_Kickback.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "releve_mollets",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Montée sur pointes de pieds",
+   "type": null,
+   "discipline": "renforcement",
+   "zones": "jambes",
+   "objectifs": "renforcer, tonifier",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "15 répétitions",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Mollets",
+   "muscles_secondaires": "",
+   "met": "3 (code 02056, Renforcement au poids du corps, général)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Expire en montant, inspire en redescendant.",
+   "erreurs": "Rebondir en bas.\nLaisser les chevilles partir vers l'extérieur.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Standing Calf Raises",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Standing_Calf_Raises.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "livre_ouvert",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Livre ouvert (rotation du haut du dos)",
+   "type": null,
+   "discipline": "etirement",
+   "zones": "dos",
+   "objectifs": "mobilite",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "60 s",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Haut du dos (rhomboïdes), Obliques",
+   "muscles_secondaires": "Pectoraux",
+   "met": "2.3 (code 02101, Étirements doux)",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Inspire en ouvrant le bras, expire en revenant.",
+   "erreurs": "Décoller les genoux.\nForcer l'épaule au sol.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Side-Lying Floor Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Side-Lying_Floor_Stretch.json"
+    }
+   ],
+   "video": null
+  },
+  {
+   "id": "curl_up_mcgill",
+   "statut": "Existant, ré-étiqueté",
+   "nom": "Curl-up de McGill",
+   "type": null,
+   "discipline": "gainage",
+   "zones": "abdos",
+   "objectifs": "renforcer",
+   "intensite": null,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "60 s",
+   "niveaux": "(inchangés)",
+   "muscles_principaux": "Abdominaux (grand droit)",
+   "muscles_secondaires": "Obliques, Abdominaux profonds",
+   "met": "2.8 (code 02024, Callisthénie légère (crunchs, planche))",
+   "consignes": "(inchangées)",
+   "precaution": "",
+   "respiration": "Respire normalement pendant les 10 s de maintien.",
+   "erreurs": "Rentrer le menton vers la poitrine.\nPlaquer le bas du dos au sol.",
+   "sources": [
+    {
+     "label": "Harvard Health Publishing, « Big 3 » de Stuart McGill",
+     "url": "https://www.health.harvard.edu/staying-healthy/core-exercises-the-big-3"
+    }
+   ],
+   "video": null
+  }
+ ],
+ "entrainements": [],
+ "programmes": []
+}
