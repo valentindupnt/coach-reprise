@@ -15,7 +15,7 @@ Faire de l'application une app de fitness à domicile, sur le modèle du parcour
 | Positionnement | Fitness à domicile. La blessure n'est plus le fil conducteur. |
 | Programme de départ | Généré par le questionnaire, il **démarre directement**, sans validation. |
 | Interface coach | **Supprimée.** Remplacée par un espace admin léger (section 9). |
-| Sécurité en séance | Bouton « Ça fait mal » conservé : il met l'exercice en pause et propose un remplacement. Pas d'écran d'alerte médicale au départ. |
+| Sécurité en séance | Seule règle conservée : le bouton « Ça fait mal » (section 4 bis). Le gel automatique du programme sur fourmillements ou faiblesse est **supprimé**, ainsi que la baisse de niveau automatique. Pas d'écran d'alerte médicale au départ. |
 | Montée de niveau | Libre, à l'initiative de l'utilisateur (déjà le cas en V3). |
 | Onglets | Plan, Entraînements, Découverte, Activité, plus une fiche profil. |
 | Vidéos | Un lien vers une vidéo existante, validé par Valentin. Aucun visuel repris d'une autre app. |
@@ -64,6 +64,14 @@ Toutes les réponses restent modifiables depuis la fiche profil, et le questionn
 8. **Projection** (perte de poids seulement) : rythme prudent, à sourcer au bloc 3 avant affichage.
 
 Ces règles sont un point de départ : elles seront ajustées au bloc 3, puis selon l'usage observé dans l'espace admin.
+
+## 4 bis. Bouton « Ça fait mal »
+
+1. En séance, l'exercice s'arrête et l'app propose un remplacement (règles de remplacement actuelles de `docs/BIBLIOTHEQUE.md`), ou de passer à l'exercice suivant.
+2. L'exercice reçoit un **tampon de 10 jours** pour cet utilisateur : pendant 10 jours, il n'est plus proposé nulle part (plan, démarrage rapide, Découverte, remplacements, génération). Ce délai remplace les 14 jours actuels de la règle des remplacements.
+3. Dans un entraînement du plan qui contient l'exercice tamponné, il est remplacé automatiquement à l'ouverture de la séance.
+4. Le tampon s'affiche sur la fiche de l'exercice avec sa date de fin. Il se lève tout seul après 10 jours, ou plus tôt depuis l'espace admin.
+5. Aucun gel du programme, aucune baisse de niveau automatique.
 
 ## 5. Étiquettes d'un exercice
 
@@ -130,7 +138,7 @@ Sources : Herrmann et al., 2024 Adult Compendium of Physical Activities (pacompe
 
 Aucune validation. Trois usages seulement :
 
-1. **Débloquer un utilisateur** : relancer un programme mis en pause, régénérer un lien perdu, déverrouiller un jour du plan.
+1. **Débloquer un utilisateur** : régénérer un lien perdu, déverrouiller un jour du plan, lever un tampon « Ça fait mal » avant ses 10 jours.
 2. **Savoir où en est chaque utilisateur** : programme suivi, jour atteint, dernière séance, régularité sur 4 semaines.
 3. **Vue d'ensemble de l'usage** : programmes, entraînements, exercices et habitudes les plus utilisés ; exercices les plus remplacés ou signalés douloureux.
 
