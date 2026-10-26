@@ -30,7 +30,11 @@
      "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/strength-exercises/"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=EMfbjJWIllU",
+    "title": "Comment faire des squats de la bonne façon au poids du corps ou avec charge",
+    "lang": "fr"
+   }
   },
   {
    "id": "squat_sumo",
@@ -58,7 +62,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Plie_Dumbbell_Squat.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=xnvkQeZ_XaE",
+    "title": "Comment faire un squat sumo",
+    "lang": "fr"
+   }
   },
   {
    "id": "chaise_mur",
@@ -86,7 +94,11 @@
      "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/strength-exercises/"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=-NuqBMIgrcc",
+    "title": "La chaise murale : endurance et cuisses sans matériel (tuto rapide)",
+    "lang": "fr"
+   }
   },
   {
    "id": "fente_avant",
@@ -118,7 +130,11 @@
      "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/strength-exercises/"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=HH9FQpjXw7A",
+    "title": "Comment faire les fentes : technique et erreurs à éviter",
+    "lang": "fr"
+   }
   },
   {
    "id": "fente_arriere",
@@ -146,7 +162,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Dumbbell_Rear_Lunge.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=Zz8DrsAUIZo",
+    "title": "Comment faire une fente arrière correctement ?",
+    "lang": "fr"
+   }
   },
   {
    "id": "fente_laterale",
@@ -174,7 +194,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Barbell_Side_Split_Squat.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=3EvkUQHvFkI",
+    "title": "Musculation des cuisses : fentes latérales",
+    "lang": "fr"
+   }
   },
   {
    "id": "fente_bulgare",
@@ -202,7 +226,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Split_Squats.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=M1xhRlf8poM",
+    "title": "Fentes bulgares sur chaise : exécution, technique, conseils et progression",
+    "lang": "fr"
+   }
   },
   {
    "id": "pont_unilateral",
@@ -230,7 +258,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Single_Leg_Glute_Bridge.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=43qFZebHGj8",
+    "title": "Pont fessier à une jambe : single leg glute bridge",
+    "lang": "fr"
+   }
   },
   {
    "id": "hip_thrust",
@@ -258,7 +290,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Barbell_Hip_Thrust.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=34xR5kn02xY",
+    "title": "Tuto : muscler les fessiers avec le hip thrust (Decathlon)",
+    "lang": "fr"
+   }
   },
   {
    "id": "ruade",
@@ -286,7 +322,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Glute_Kickback.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=vElEKAdulIE",
+    "title": "How To: Donkey Kicks for Glute Strength",
+    "lang": "en"
+   }
   },
   {
    "id": "bouche_incendie",
@@ -314,7 +354,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Thigh_Abductor.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=6yoip-ClM34",
+    "title": "Fire hydrants : exécution, technique, conseils et progression",
+    "lang": "fr"
+   }
   },
   {
    "id": "charniere_hanche",
@@ -342,7 +386,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Band_Good_Morning.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=9ylRcYLSz40",
+    "title": "How to Do a Good Morning Exercise (Perfect Hip Hinge Form for Beginners)",
+    "lang": "en"
+   }
   },
   {
    "id": "souleve_roumain",
@@ -374,7 +422,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Stiff-Legged_Dumbbell_Deadlift.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=hyBx3QViCw8",
+    "title": "Deadlift roumain avec haltères : exécution, technique, conseils et progression",
+    "lang": "fr"
+   }
   },
   {
    "id": "squat_goblet",
@@ -402,7 +454,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Goblet_Squat.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=QNPVhVsJS2A",
+    "title": "Goblet squat : exécution, technique, conseils et progression",
+    "lang": "fr"
+   }
   },
   {
    "id": "releve_mollets_unipodal",
@@ -430,7 +486,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Standing_Dumbbell_Calf_Raise.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=jGUplusFlEY",
+    "title": "Mollets : mollets debout à une jambe",
+    "lang": "fr"
+   }
   },
   {
    "id": "adducteurs_couche",
@@ -462,7 +522,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Band_Hip_Adductions.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=3EiBfcTLZDE",
+    "title": "Exercice intérieur des cuisses (adducteurs) : levé de jambe allongé",
+    "lang": "fr"
+   }
   },
   {
    "id": "pont_marche",
@@ -490,7 +554,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Butt_Lift_Bridge.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=8-invS7-Ugo",
+    "title": "How to Do a Glute Bridge March",
+    "lang": "en"
+   }
   },
   {
    "id": "squat_unipodal_chaise",
@@ -522,7 +590,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Kettlebell_Pistol_Squat.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=STa-MCOn3xM",
+    "title": "Pistol squat, squat à 1 jambe (alternatives et progression)",
+    "lang": "fr"
+   }
   },
   {
    "id": "pompe_mur",
@@ -554,7 +626,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Incline_Push-Up.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=emhF1efZ-38",
+    "title": "Pompes contre le mur pour débutants",
+    "lang": "fr"
+   }
   },
   {
    "id": "pompe_inclinee",
@@ -582,7 +658,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Incline_Push-Up.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=pH9hQDirfog",
+    "title": "Pompes inclinées",
+    "lang": "fr"
+   }
   },
   {
    "id": "pompe_genoux",
@@ -610,7 +690,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Pushups.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=SWUw2epT8P4",
+    "title": "Pompe sur les genoux : démonstration, explication et conseils",
+    "lang": "fr"
+   }
   },
   {
    "id": "pompe",
@@ -638,7 +722,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Pushups.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=V9TUK5IdRrY",
+    "title": "Comment bien faire les pompes (évitez les erreurs courantes et progressez)",
+    "lang": "fr"
+   }
   },
   {
    "id": "pompe_serree",
@@ -666,7 +754,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Push-Ups_-_Close_Triceps_Position.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=FvnPL4cYUQk",
+    "title": "Les pompes prise serrée pour les triceps (pour qui, comment, variantes)",
+    "lang": "fr"
+   }
   },
   {
    "id": "pompe_pike",
@@ -694,7 +786,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Handstand_Push-Ups.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=NrkGYnsgbOA",
+    "title": "Pike push up (niveau 1)",
+    "lang": "fr"
+   }
   },
   {
    "id": "dips_chaise",
@@ -722,7 +818,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Bench_Dips.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=hIB3YWZk834",
+    "title": "Dips sur chaise : exécution, technique, conseils et progression",
+    "lang": "fr"
+   }
   },
   {
    "id": "rowing_haltere",
@@ -750,7 +850,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/One-Arm_Dumbbell_Row.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=VLzDhlGdpS0",
+    "title": "Musculation du dos : le rowing haltère à 1 bras",
+    "lang": "fr"
+   }
   },
   {
    "id": "developpe_epaules",
@@ -778,7 +882,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Dumbbell_Shoulder_Press.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=CE9KiCPFw0E",
+    "title": "Technique du développé épaules aux haltères (assis ou debout)",
+    "lang": "fr"
+   }
   },
   {
    "id": "curl_marteau",
@@ -806,7 +914,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Hammer_Curls.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=CsZSbMuqDYw",
+    "title": "Comment faire un curl marteau : technique correcte pour les biceps",
+    "lang": "fr"
+   }
   },
   {
    "id": "extension_triceps_haltere",
@@ -834,7 +946,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Standing_Dumbbell_Triceps_Extension.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=Reitru3_Srk",
+    "title": "Extension triceps avec haltère : démonstration, muscles, variantes, conseils et progression",
+    "lang": "fr"
+   }
   },
   {
    "id": "oiseau_haltere",
@@ -862,7 +978,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Bent_Over_Low-Pulley_Side_Lateral.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=mzbY2Vd0Mts",
+    "title": "Oiseau buste penché avec haltères",
+    "lang": "fr"
+   }
   },
   {
    "id": "developpe_sol",
@@ -890,7 +1010,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Dumbbell_Floor_Press.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=WVfLGkuhHHU",
+    "title": "Développé couché au sol : un développé couché pas comme les autres",
+    "lang": "fr"
+   }
   },
   {
    "id": "tirage_vertical_elastique",
@@ -918,7 +1042,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Band_Assisted_Pull-Up.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=8rSNwrdPgN4",
+    "title": "Tirage vertical à l'élastique",
+    "lang": "fr"
+   }
   },
   {
    "id": "developpe_elastique",
@@ -946,7 +1074,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Shoulder_Press_-_With_Bands.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=Y28EDAb2ASY",
+    "title": "Développé militaire élastique : exercice debout pour les épaules",
+    "lang": "fr"
+   }
   },
   {
    "id": "superman",
@@ -974,7 +1106,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Superman.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=O-DOcsnwAQY",
+    "title": "Comment se muscler les lombaires et le bas du dos : superman",
+    "lang": "fr"
+   }
   },
   {
    "id": "ytw",
@@ -1002,7 +1138,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Reverse_Flyes_With_External_Rotation.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=G0nPXt_TgRg",
+    "title": "Posture : l'exercice des lettres I, Y, T, W, A",
+    "lang": "fr"
+   }
   },
   {
    "id": "rowing_inverse_table",
@@ -1030,7 +1170,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Inverted_Row.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=lcsEJQAbdiw",
+    "title": "Rowing inversé sous une table : exercice pour renforcer le dos",
+    "lang": "fr"
+   }
   },
   {
    "id": "crunch",
@@ -1058,7 +1202,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Crunches.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=LEb7Juw9tMo",
+    "title": "Comment bien faire les crunchs pour les abdos",
+    "lang": "fr"
+   }
   },
   {
    "id": "crunch_inverse",
@@ -1086,7 +1234,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Reverse_Crunch.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=0bq05pA3bkA",
+    "title": "Musculation des abdominaux : crunch inversé",
+    "lang": "fr"
+   }
   },
   {
    "id": "crunch_velo",
@@ -1118,7 +1270,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Elbow_to_Knee.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=rsX2MJPzXrE",
+    "title": "Crunch cycliste : un exercice pour la taille",
+    "lang": "fr"
+   }
   },
   {
    "id": "releve_jambes",
@@ -1146,7 +1302,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Flat_Bench_Lying_Leg_Raise.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=RNgWIsjj5U8",
+    "title": "Exercice abdos : relevé de jambes allongé",
+    "lang": "fr"
+   }
   },
   {
    "id": "ciseaux",
@@ -1178,7 +1338,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Scissor_Kick.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=a8Y_-YCnaUg",
+    "title": "L'exercice des ciseaux pour renforcer ses abdominaux",
+    "lang": "fr"
+   }
   },
   {
    "id": "toucher_talons",
@@ -1206,7 +1370,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Alternate_Heel_Touchers.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=yocM348hYfE",
+    "title": "Exercice fitness : touché de cheville",
+    "lang": "fr"
+   }
   },
   {
    "id": "rotation_russe",
@@ -1234,7 +1402,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Russian_Twist.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=RdUUAlWz1Qk",
+    "title": "Russian twist : exercice de gainage des obliques",
+    "lang": "fr"
+   }
   },
   {
    "id": "hollow",
@@ -1262,7 +1434,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Plank.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=G5i11cyxSL4",
+    "title": "Hollow body hold : muscles, variantes, conseils et progression",
+    "lang": "fr"
+   }
   },
   {
    "id": "planche_epaules",
@@ -1290,7 +1466,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Plank.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=S1FlmYy31jQ",
+    "title": "Planche tape épaule (et progression)",
+    "lang": "fr"
+   }
   },
   {
    "id": "planche_dynamique",
@@ -1318,7 +1498,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Plank.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=9rQvKBRBHhg",
+    "title": "Exercice fitness : gainage up and down",
+    "lang": "fr"
+   }
   },
   {
    "id": "planche_inverse",
@@ -1346,7 +1530,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Butt-Ups.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=d3B2ed1qI0o",
+    "title": "Planche inversée : 3 fautes à éviter",
+    "lang": "fr"
+   }
   },
   {
    "id": "ours_statique",
@@ -1374,7 +1562,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Plank.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=GkTNfd8zFPs",
+    "title": "How to Do a Bear Hold",
+    "lang": "en"
+   }
   },
   {
    "id": "planche_laterale_rotation",
@@ -1402,7 +1594,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Side_Bridge.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=OXte6nIofiM",
+    "title": "Planche latérale avec rotation (Guide Musculation)",
+    "lang": "fr"
+   }
   },
   {
    "id": "v_up",
@@ -1430,7 +1626,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Jackknife_Sit-Up.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=D51oisjL-aE",
+    "title": "Comment faire les V-ups",
+    "lang": "fr"
+   }
   },
   {
    "id": "chenille",
@@ -1458,7 +1658,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Inchworm.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=zeAm-lP_Ha0",
+    "title": "La chenille avec pompe (inchworm with push-up)",
+    "lang": "fr"
+   }
   },
   {
    "id": "marche_ours",
@@ -1486,7 +1690,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Bear_Crawl_Sled_Drags.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=D_4Vcp2d9_I",
+    "title": "Marche de l'ours : gainage dynamique et mobilité sans matériel",
+    "lang": "fr"
+   }
   },
   {
    "id": "marche_genoux_hauts",
@@ -1518,7 +1726,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Step-up_with_Knee_Raise.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=QilgMPG7OaA",
+    "title": "March in Place (HASfit, exercices sans impact)",
+    "lang": "en"
+   }
   },
   {
    "id": "step_jacks",
@@ -1546,7 +1758,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Star_Jump.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=doj3IIyhwvs",
+    "title": "Jumping jack sans saut",
+    "lang": "fr"
+   }
   },
   {
    "id": "boxe_ombre",
@@ -1574,7 +1790,11 @@
      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7719906/"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=bQeSUBjOlN8",
+    "title": "Apprendre le shadow boxing en 3 minutes",
+    "lang": "fr"
+   }
   },
   {
    "id": "burpee_sans_saut",
@@ -1602,7 +1822,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Push_Up_to_Side_Plank.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=gadl7yD6Img",
+    "title": "Burpees sans saut",
+    "lang": "fr"
+   }
   },
   {
    "id": "mountain_climbers_lents",
@@ -1630,7 +1854,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Mountain_Climbers.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=rtEJyD8fweo",
+    "title": "Mountain climbers lents et contrôlés",
+    "lang": "fr"
+   }
   },
   {
    "id": "patineur_sans_saut",
@@ -1658,7 +1886,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Crossover_Reverse_Lunge.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=2EyH9MN7hYE",
+    "title": "How To Do A Curtsy Lunge",
+    "lang": "en"
+   }
   },
   {
    "id": "squat_coup_de_pied",
@@ -1686,7 +1918,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Bodyweight_Squat.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=FGjCiK4alq4",
+    "title": "Squat with Front Kick (One Minute Exercises)",
+    "lang": "en"
+   }
   },
   {
    "id": "fentes_alternees_rapides",
@@ -1714,7 +1950,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Dumbbell_Rear_Lunge.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=9i4YcNHiKbU",
+    "title": "Fentes arrières alternées",
+    "lang": "fr"
+   }
   },
   {
    "id": "jumping_jacks",
@@ -1742,7 +1982,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Star_Jump.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=kefNHIKaNkU",
+    "title": "Tuto : les jumping jacks, exercice cardio (Decathlon)",
+    "lang": "fr"
+   }
   },
   {
    "id": "montees_genoux",
@@ -1770,7 +2014,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Fast_Skipping.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=RsVbI852C-o",
+    "title": "Comment faire des montées de genoux",
+    "lang": "fr"
+   }
   },
   {
    "id": "talons_fesses",
@@ -1798,7 +2046,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Single_Leg_Butt_Kick.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=XFknECYblwQ",
+    "title": "Talons-fesses (butt kicks) : exercice cardio simple",
+    "lang": "fr"
+   }
   },
   {
    "id": "squat_saute",
@@ -1826,7 +2078,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Freehand_Jump_Squat.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=Swf_f7SHdUI",
+    "title": "Squat sauté : muscles, variantes, conseils et progression",
+    "lang": "fr"
+   }
   },
   {
    "id": "fente_sautee",
@@ -1854,7 +2110,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Split_Jump.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=4_Sjotzszx4",
+    "title": "Fentes sautées : muscles, variantes, conseils et progression",
+    "lang": "fr"
+   }
   },
   {
    "id": "patineur",
@@ -1882,7 +2142,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Lateral_Bound.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=9_jLW6VkU8A",
+    "title": "Speed Skaters Exercise (Skater Hops): Proper Form",
+    "lang": "en"
+   }
   },
   {
    "id": "burpee",
@@ -1914,7 +2178,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Freehand_Jump_Squat.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=4YPWd8z090A",
+    "title": "Comment faire des burpees (Les Fitness Basics)",
+    "lang": "fr"
+   }
   },
   {
    "id": "mountain_climbers",
@@ -1942,7 +2210,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Mountain_Climbers.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=gXv9T1flQhU",
+    "title": "Mountain climber : exécution, technique, conseils et progression",
+    "lang": "fr"
+   }
   },
   {
    "id": "corde_imaginaire",
@@ -1970,7 +2242,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Rope_Jumping.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=2Qg1Mt-LVSI",
+    "title": "Étape 1 : corde à sauter sans corde",
+    "lang": "fr"
+   }
   },
   {
    "id": "saut_etoile",
@@ -1998,7 +2274,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Star_Jump.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=NkbiKuADX_M",
+    "title": "Comment faire les star jumps",
+    "lang": "fr"
+   }
   },
   {
    "id": "cercles_bras",
@@ -2026,7 +2306,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Arm_Circles.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=goaXpTMg3QI",
+    "title": "Cercles de bras",
+    "lang": "fr"
+   }
   },
   {
    "id": "cercles_hanches",
@@ -2054,7 +2338,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Standing_Hip_Circles.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=VcpoDKlvEkk",
+    "title": "Cercles des hanches (échauffement)",
+    "lang": "fr"
+   }
   },
   {
    "id": "balancier_jambes",
@@ -2082,7 +2370,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Front_Leg_Raises.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=_JWHy86izcw",
+    "title": "Balancements de jambes avant-arrière (échauffement)",
+    "lang": "fr"
+   }
   },
   {
    "id": "rotations_buste",
@@ -2110,7 +2402,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Torso_Rotation.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=I4NlqG57l4Q",
+    "title": "Rotations du buste",
+    "lang": "fr"
+   }
   },
   {
    "id": "plus_grand_etirement",
@@ -2138,7 +2434,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Worlds_Greatest_Stretch.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=_vfHhERqpbI",
+    "title": "World's Greatest Stretch (le meilleur étirement du monde)",
+    "lang": "fr"
+   }
   },
   {
    "id": "montagne",
@@ -2166,7 +2466,11 @@
      "url": "https://www.yogamatters.com/blogs/pose-library/mountain-pose-tadasana"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=ve_cJNhiQVA",
+    "title": "La posture de la montagne, Tadasana",
+    "lang": "fr"
+   }
   },
   {
    "id": "salutation_soleil",
@@ -2194,7 +2498,11 @@
      "url": "https://theyogainstitute.org/surya-namaskar-the-sun-salutation/"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=sFprTU_r38o",
+    "title": "Salutation au soleil pour débutants : 3 progressions",
+    "lang": "fr"
+   }
   },
   {
    "id": "chien_tete_bas",
@@ -2222,7 +2530,11 @@
      "url": "https://www.yogajournal.com/poses/downward-facing-dog/"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=Ei4a7kDbdlg",
+    "title": "Posture du chien tête en bas (Adho Mukha Svanasana) pour débuter",
+    "lang": "fr"
+   }
   },
   {
    "id": "cobra",
@@ -2250,7 +2562,11 @@
      "url": "https://www.yogajournal.com/poses/types/cobra-pose-2/"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=RGYgiC9319o",
+    "title": "Apprendre la posture du cobra, Bhujangasana",
+    "lang": "fr"
+   }
   },
   {
    "id": "sphinx",
@@ -2278,7 +2594,11 @@
      "url": "https://www.yogajournal.com/poses/sphinx-pose/"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=GjRvu1tYP7E",
+    "title": "La posture du sphinx guidée, débutants ou seniors",
+    "lang": "fr"
+   }
   },
   {
    "id": "guerrier_1",
@@ -2306,7 +2626,11 @@
      "url": "https://www.yogajournal.com/pose/poses/warrior-i-pose/"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=FSv689Hk49o",
+    "title": "Posture du guerrier 1 (Virabhadrasana) pour les débutants",
+    "lang": "fr"
+   }
   },
   {
    "id": "guerrier_2",
@@ -2334,7 +2658,11 @@
      "url": "https://www.yogajournal.com/poses/warrior-ii-pose/"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=rtfWanShIsc",
+    "title": "Tuto yoga : le guerrier 2 à la loupe",
+    "lang": "fr"
+   }
   },
   {
    "id": "triangle",
@@ -2362,7 +2690,11 @@
      "url": "https://www.yogajournal.com/poses/extended-triangle-pose/"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=zc1zqcH52yY",
+    "title": "Yoga : posture du triangle, Utthita Trikonasana",
+    "lang": "fr"
+   }
   },
   {
    "id": "arbre",
@@ -2390,7 +2722,11 @@
      "url": "https://www.yogajournal.com/poses/types/tree-pose-2/"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=t8KXifZclxM",
+    "title": "Yoga : posture de l'arbre, Vrikshasana",
+    "lang": "fr"
+   }
   },
   {
    "id": "chaise_yoga",
@@ -2418,7 +2754,11 @@
      "url": "https://www.yogajournal.com/poses/chair-pose-2/"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=h3anl2PgCHA",
+    "title": "Comment faire la posture de la chaise, Utkatasana",
+    "lang": "fr"
+   }
   },
   {
    "id": "fente_basse",
@@ -2446,7 +2786,11 @@
      "url": "https://www.yogajournal.com/poses/low-lunge/"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=A5wGqQ21l2o",
+    "title": "Yoga : posture du croissant de lune (Anjaneyasana)",
+    "lang": "fr"
+   }
   },
   {
    "id": "pigeon",
@@ -2474,7 +2818,11 @@
      "url": "https://www.yogajournal.com/article/yogapedia/master-sleeping-pigeon-pose-4-steps/"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=YqNO0ImMtEY",
+    "title": "Posture du pigeon (Yoga by Decathlon)",
+    "lang": "fr"
+   }
   },
   {
    "id": "papillon",
@@ -2502,7 +2850,11 @@
      "url": "https://www.yogajournal.com/poses/bound-angle-pose-2/"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=53WnXeu_Yuw",
+    "title": "Posture de yoga du papillon, Baddha Konasana",
+    "lang": "fr"
+   }
   },
   {
    "id": "pince_assise",
@@ -2530,7 +2882,11 @@
      "url": "https://www.yogajournal.com/poses/seated-forward-bend/"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=O5lSF1AgAqs",
+    "title": "Pince assise, Paschimottanasana",
+    "lang": "fr"
+   }
   },
   {
    "id": "torsion_couchee",
@@ -2558,7 +2914,11 @@
      "url": "https://www.yogamatters.com/blogs/pose-library/supine-twist-supta-matsyendrasana"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=cvCPeN6XjHs",
+    "title": "Posture de la torsion allongée au sol",
+    "lang": "fr"
+   }
   },
   {
    "id": "bebe_heureux",
@@ -2586,7 +2946,11 @@
      "url": "https://www.yogamatters.com/blogs/pose-library/happy-baby-pose-ananda-balasana"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=1FqB-qyeKAE",
+    "title": "Bébé heureux : 1 minute de yoga par jour",
+    "lang": "fr"
+   }
   },
   {
    "id": "jambes_au_mur",
@@ -2614,7 +2978,11 @@
      "url": "https://www.yogajournal.com/poses/legs-up-the-wall-pose-2/"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=aXd7u9MoI7E",
+    "title": "Viparita Karani : les jambes le long du mur",
+    "lang": "fr"
+   }
   },
   {
    "id": "quadriceps_debout",
@@ -2646,7 +3014,11 @@
      "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=4c5oLJxm2Nk",
+    "title": "Étirement des quadriceps en position debout (Masseo)",
+    "lang": "fr"
+   }
   },
   {
    "id": "etirement_lateral",
@@ -2674,7 +3046,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Standing_Lateral_Stretch.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=ML6zsqBPmPg",
+    "title": "Étirement latéral debout",
+    "lang": "fr"
+   }
   },
   {
    "id": "epaule_bras_croise",
@@ -2702,7 +3078,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Shoulder_Stretch.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=mlUh1XQikKM",
+    "title": "Étirement épaule : technique bras croisé devant la poitrine",
+    "lang": "fr"
+   }
   },
   {
    "id": "triceps_etirement",
@@ -2730,7 +3110,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Triceps_Stretch.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=V8nA6t_r8JM",
+    "title": "Étirement triceps : technique bras derrière la tête",
+    "lang": "fr"
+   }
   },
   {
    "id": "torsion_assise",
@@ -2758,7 +3142,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Spinal_Stretch.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=gsp1AZcEn54",
+    "title": "1 minute de yoga par jour : torsion assise",
+    "lang": "fr"
+   }
   },
   {
    "id": "genoux_poitrine",
@@ -2790,7 +3178,11 @@
      "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=KCiEleLODc8",
+    "title": "Un étirement pour détendre les lombaires",
+    "lang": "fr"
+   }
   },
   {
    "id": "coherence_cardiaque",
@@ -2818,7 +3210,11 @@
      "url": "https://boris.unibe.ch/193198"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=vs_8iqpGoEM",
+    "title": "Cohérence cardiaque 5:5, 5 minutes de respiration guidée",
+    "lang": "fr"
+   }
   },
   {
    "id": "respiration_carree",
@@ -2846,7 +3242,11 @@
      "url": "https://sova.pitt.edu/box-breathing"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=O6NKXExzkww",
+    "title": "Respiration carrée (exercice de 5 min)",
+    "lang": "fr"
+   }
   },
   {
    "id": "meditation_souffle",
@@ -2878,7 +3278,11 @@
      "url": "https://www.torbayandsouthdevon.nhs.uk/uploads/mindfulness-of-breath-instructions.pdf"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=VBSelbkOELA",
+    "title": "Méditation guidée courte spéciale débutant, 5 min de pleine conscience",
+    "lang": "fr"
+   }
   },
   {
    "id": "scan_corporel",
@@ -2910,7 +3314,11 @@
      "url": "https://www.uclahealth.org/uclamindful/guided-meditations"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=1WAXGcKi9i8",
+    "title": "Méditation guidée : balayage corporel 10 min",
+    "lang": "fr"
+   }
   },
   {
    "id": "relaxation_progressive",
@@ -2938,7 +3346,11 @@
      "url": "https://www.rochester.edu/uhs/ucc/online-screening-resources/progressive-muscle-relaxation"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=2KSp2uQsEH8",
+    "title": "Relaxation musculaire progressive, guidée par Isabelle Soucy, Ph. D.",
+    "lang": "fr"
+   }
   },
   {
    "id": "rowing",
@@ -2966,7 +3378,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Seated_Cable_Rows.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=mYdXe92a_EM",
+    "title": "Rowing assis avec élastiques",
+    "lang": "fr"
+   }
   },
   {
    "id": "pull_apart",
@@ -2994,7 +3410,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Band_Pull_Apart.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=MSJzslGuutU",
+    "title": "Exercice omoplates : band pull apart",
+    "lang": "fr"
+   }
   },
   {
    "id": "pallof",
@@ -3022,7 +3442,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Pallof_Press.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=I4SKLCM9lyo",
+    "title": "Comment réaliser le Pallof press",
+    "lang": "fr"
+   }
   },
   {
    "id": "dead_bug",
@@ -3050,7 +3474,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Dead_Bug.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=bG17b4f_4bg",
+    "title": "Gainage planche et dead bug : la bonne technique",
+    "lang": "fr"
+   }
   },
   {
    "id": "bird_dog",
@@ -3078,7 +3506,11 @@
      "url": "https://www.health.harvard.edu/staying-healthy/core-exercises-the-big-3"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=l2DXJoi0WYE",
+    "title": "Gainage bird dog : 1 min pour un dos solide",
+    "lang": "fr"
+   }
   },
   {
    "id": "planche",
@@ -3110,7 +3542,11 @@
      "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/strength-exercises/"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=ARCrsCnSB-k",
+    "title": "La planche sur les genoux : commence ici pour un gainage parfait",
+    "lang": "fr"
+   }
   },
   {
    "id": "squat_chaise",
@@ -3142,7 +3578,11 @@
      "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/strength-exercises/"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=bAiHLkX0iWo",
+    "title": "Squat sur chaise",
+    "lang": "fr"
+   }
   },
   {
    "id": "pont",
@@ -3170,7 +3610,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Butt_Lift_Bridge.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=9Wma4mC8wpw",
+    "title": "Comment faire un pont fessier",
+    "lang": "fr"
+   }
   },
   {
    "id": "marche_laterale",
@@ -3198,7 +3642,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Monster_Walk.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=mZ23K1ulW2A",
+    "title": "Banded Lateral Walk",
+    "lang": "en"
+   }
   },
   {
    "id": "ext_hanche",
@@ -3226,7 +3674,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Glute_Kickback.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=xwTFt_yWEkI",
+    "title": "Extension de la hanche, genou plié",
+    "lang": "fr"
+   }
   },
   {
    "id": "planche_laterale",
@@ -3258,7 +3710,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Side_Bridge.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=_H9lCamSHR0",
+    "title": "Comment bien faire son gainage latéral ? Tutoriel et progression par kiné",
+    "lang": "fr"
+   }
   },
   {
    "id": "respiration",
@@ -3286,7 +3742,11 @@
      "url": "https://boris.unibe.ch/193198"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=3Bb4ytM0ARA",
+    "title": "Comment maîtriser la respiration latérale costale en Pilates ?",
+    "lang": "fr"
+   }
   },
   {
    "id": "bascule_bassin",
@@ -3314,7 +3774,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Pelvic_Tilt_Into_Bridge.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=IEN7fe43K4o",
+    "title": "Pilates : rétroversion du bassin allongé",
+    "lang": "fr"
+   }
   },
   {
    "id": "chat_vache",
@@ -3346,7 +3810,11 @@
      "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=Sf0h4chQzis",
+    "title": "Chat-vache : soulage ton dos en 3 min (yoga débutant)",
+    "lang": "fr"
+   }
   },
   {
    "id": "omoplates",
@@ -3374,7 +3842,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Upper_Back_Stretch.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=pdI4HS138tc",
+    "title": "Exercice épaule : rapprocher les omoplates",
+    "lang": "fr"
+   }
   },
   {
    "id": "wall_slides",
@@ -3402,7 +3874,11 @@
      "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=K8TMa3-E2Is",
+    "title": "Wall slide exercice (Nxt Generation Physio)",
+    "lang": "fr"
+   }
   },
   {
    "id": "ext_thoracique",
@@ -3430,7 +3906,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Chair_Upper_Body_Stretch.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=4ZqOMX-18O0",
+    "title": "Thoracic Extension Over a Chair",
+    "lang": "en"
+   }
   },
   {
    "id": "chin_tuck",
@@ -3458,7 +3938,11 @@
      "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=tQYo15dpKdM",
+    "title": "Chin Tucks (Cervical Retractions)",
+    "lang": "en"
+   }
   },
   {
    "id": "pecs_porte",
@@ -3486,7 +3970,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Chest_And_Front_Of_Shoulder_Stretch.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=6pIDnFHUK8E",
+    "title": "Étirement du grand et du petit pectoral (Masseo)",
+    "lang": "fr"
+   }
   },
   {
    "id": "trapezes",
@@ -3518,7 +4006,11 @@
      "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=vfoWMKhx4v4",
+    "title": "Étirement du trapèze supérieur (Masseo)",
+    "lang": "fr"
+   }
   },
   {
    "id": "enfant",
@@ -3546,7 +4038,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Childs_Pose.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=8kGL8IghPbo",
+    "title": "Yoga : posture de l'enfant, Balasana",
+    "lang": "fr"
+   }
   },
   {
    "id": "flechisseurs",
@@ -3578,7 +4074,11 @@
      "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=5M6zv6hGskQ",
+    "title": "Étirement psoas : technique en fente genou au sol",
+    "lang": "fr"
+   }
   },
   {
    "id": "ischios",
@@ -3606,7 +4106,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Hamstring_Stretch.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=WTZQYMpSNJk",
+    "title": "Étirement des ischio-jambiers en position allongée",
+    "lang": "fr"
+   }
   },
   {
    "id": "fessiers_4",
@@ -3638,7 +4142,11 @@
      "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=_tvE9m9kkxM",
+    "title": "Étirement du muscle pyramidal en position allongée",
+    "lang": "fr"
+   }
   },
   {
    "id": "mollets",
@@ -3670,7 +4178,11 @@
      "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=zzNI5vxssTI",
+    "title": "Étirement mollets : technique debout contre le mur",
+    "lang": "fr"
+   }
   },
   {
    "id": "glissement_talon",
@@ -3698,7 +4210,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Flat_Bench_Lying_Leg_Raise.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=6-anByqnKp8",
+    "title": "Core Exercise: Heel Slide",
+    "lang": "en"
+   }
   },
   {
    "id": "planche_inclinee",
@@ -3726,7 +4242,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Plank.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=jLcQfXPMHXY",
+    "title": "Gainage à l'aide d'une chaise",
+    "lang": "fr"
+   }
   },
   {
    "id": "pallof_genoux",
@@ -3754,7 +4274,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Pallof_Press.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=LpBNsIv2olo",
+    "title": "How to do a Half Kneeling Pallof Press",
+    "lang": "en"
+   }
   },
   {
    "id": "rowing_debout",
@@ -3782,7 +4306,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Seated_Cable_Rows.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=OcYrtl3ZAMs",
+    "title": "Exercice dos à la bande élastique : tirage horizontal debout",
+    "lang": "fr"
+   }
   },
   {
    "id": "face_pull_bas",
@@ -3810,7 +4338,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Reverse_Flyes.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=i-hVYySziaU",
+    "title": "Resistance band face pull : exercice à l'élastique pour l'arrière des épaules",
+    "lang": "fr"
+   }
   },
   {
    "id": "rotation_externe",
@@ -3838,7 +4370,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/External_Rotation_with_Band.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=zUP5qcl9AeA",
+    "title": "Rotation externe d'épaule (coude au corps)",
+    "lang": "fr"
+   }
   },
   {
    "id": "elevation_laterale",
@@ -3866,7 +4402,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Lateral_Raise_-_With_Bands.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=zz9D2QulpBs",
+    "title": "Élévations latérales à l'élastique pour muscler les épaules",
+    "lang": "fr"
+   }
   },
   {
    "id": "curl_biceps",
@@ -3894,7 +4434,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Close-Grip_EZ-Bar_Curl_with_Band.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=L2QhFSJ-Jb4",
+    "title": "Curl biceps élastique",
+    "lang": "fr"
+   }
   },
   {
    "id": "triceps_elastique",
@@ -3922,7 +4466,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Triceps_Pushdown.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=IH3w7O5UWKU",
+    "title": "Triceps extension élastique",
+    "lang": "fr"
+   }
   },
   {
    "id": "clamshell",
@@ -3945,7 +4493,11 @@
    "respiration": "Expire en ouvrant le genou, inspire en refermant.",
    "erreurs": "Rouler le bassin vers l'arrière.\nDécoller les pieds l'un de l'autre.",
    "sources": [],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=0e4oPtPbqvQ",
+    "title": "Bien exécuter l'exercice du clamshell",
+    "lang": "fr"
+   }
   },
   {
    "id": "abduction_couchee",
@@ -3973,7 +4525,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Side_Leg_Raises.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=7IytTOalmio",
+    "title": "Musculation des fessiers : abduction de la hanche au sol",
+    "lang": "fr"
+   }
   },
   {
    "id": "squat_mur",
@@ -4001,7 +4557,11 @@
      "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/strength-exercises/"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=5R4D6zaokL0",
+    "title": "Squat au mur",
+    "lang": "fr"
+   }
   },
   {
    "id": "montee_marche",
@@ -4033,7 +4593,11 @@
      "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/strength-exercises/"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=6yF-VaStT_E",
+    "title": "Comment faire un step up",
+    "lang": "fr"
+   }
   },
   {
    "id": "pont_ischios",
@@ -4061,7 +4625,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Platform_Hamstring_Slides.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=-GUGUNyJv1U",
+    "title": "Renforcement ischio-jambiers : pont fessier (KOSS)",
+    "lang": "fr"
+   }
   },
   {
    "id": "extension_hanche_debout",
@@ -4089,7 +4657,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/One-Legged_Cable_Kickback.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=5-3LkHIlWzM",
+    "title": "Extensions de hanches debout avec élastique",
+    "lang": "fr"
+   }
   },
   {
    "id": "releve_mollets",
@@ -4117,7 +4689,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Standing_Calf_Raises.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=YXbHh4rlQGE",
+    "title": "Montées sur pointes de pied",
+    "lang": "fr"
+   }
   },
   {
    "id": "livre_ouvert",
@@ -4145,7 +4721,11 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Side-Lying_Floor_Stretch.json"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=rDviWORCWEw",
+    "title": "Open Books (Sidelying Thoracic Rotation)",
+    "lang": "en"
+   }
   },
   {
    "id": "curl_up_mcgill",
@@ -4173,7 +4753,11 @@
      "url": "https://www.health.harvard.edu/staying-healthy/core-exercises-the-big-3"
     }
    ],
-   "video": null
+   "video": {
+    "url": "https://www.youtube.com/watch?v=_tz9WGVH25g",
+    "title": "How To Correctly Perform The McGill Modified Curl Up",
+    "lang": "en"
+   }
   }
  ],
  "entrainements": [
