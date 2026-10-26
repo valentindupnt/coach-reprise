@@ -533,4 +533,1868 @@ update public.exercises set
 where id = 'curl_up_mcgill';
 
 -- ---------------------------------------------------------------- 3. Entraînements
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('prog_mobilite_s1', 'Mobilité douce', 'Une séance courte pour délier le dos, les hanches et les épaules entre deux renforcements.', 'programme', 1, array['corps_entier']::text[], 'etirement', 1, 10, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'prog_mobilite_s1'
+  and exists (select 1 from public.trainings where id = 'prog_mobilite_s1' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('prog_mobilite_s1', 'main', 1, 'chat_vache', 1, null, null),
+  ('prog_mobilite_s1', 'main', 2, 'cercles_hanches', 1, null, null),
+  ('prog_mobilite_s1', 'main', 3, 'livre_ouvert', 1, null, null),
+  ('prog_mobilite_s1', 'main', 4, 'plus_grand_etirement', 1, null, null),
+  ('prog_mobilite_s1', 'main', 5, 'enfant', 2, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'prog_mobilite_s1' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('prog_mobilite_s2', 'Mobilité du dos et des hanches', 'Mobilité active pour récupérer et bouger mieux.', 'programme', 1, array['corps_entier']::text[], 'etirement', 1, 10, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'prog_mobilite_s2'
+  and exists (select 1 from public.trainings where id = 'prog_mobilite_s2' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('prog_mobilite_s2', 'main', 1, 'chat_vache', 2, null, null),
+  ('prog_mobilite_s2', 'main', 2, 'cercles_bras', 1, null, null),
+  ('prog_mobilite_s2', 'main', 3, 'rotations_buste', 1, null, null),
+  ('prog_mobilite_s2', 'main', 4, 'plus_grand_etirement', 2, null, null),
+  ('prog_mobilite_s2', 'main', 5, 'fente_basse', 1, null, null),
+  ('prog_mobilite_s2', 'main', 6, 'enfant', 3, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'prog_mobilite_s2' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('prog_mobilite_s3', 'Mobilité et salutation au soleil', 'Mobilité puis deux salutations au soleil en douceur.', 'programme', 1, array['corps_entier']::text[], 'yoga', 1, 10, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'prog_mobilite_s3'
+  and exists (select 1 from public.trainings where id = 'prog_mobilite_s3' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('prog_mobilite_s3', 'main', 1, 'chat_vache', 2, null, null),
+  ('prog_mobilite_s3', 'main', 2, 'cercles_hanches', 1, null, null),
+  ('prog_mobilite_s3', 'main', 3, 'salutation_soleil', 1, null, null),
+  ('prog_mobilite_s3', 'main', 4, 'plus_grand_etirement', 2, null, null),
+  ('prog_mobilite_s3', 'main', 5, 'sphinx', 1, null, null),
+  ('prog_mobilite_s3', 'main', 6, 'torsion_couchee', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'prog_mobilite_s3' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('prog_mobilite_s4', 'Mobilité complète', 'Une séance de mobilité plus longue pour finir le mois en souplesse.', 'programme', 1, array['corps_entier']::text[], 'yoga', 1, 10, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'prog_mobilite_s4'
+  and exists (select 1 from public.trainings where id = 'prog_mobilite_s4' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('prog_mobilite_s4', 'main', 1, 'chat_vache', 3, null, null),
+  ('prog_mobilite_s4', 'main', 2, 'cercles_bras', 1, null, null),
+  ('prog_mobilite_s4', 'main', 3, 'salutation_soleil', 2, null, null),
+  ('prog_mobilite_s4', 'main', 4, 'plus_grand_etirement', 2, null, null),
+  ('prog_mobilite_s4', 'main', 5, 'fente_basse', 1, null, null),
+  ('prog_mobilite_s4', 'main', 6, 'pigeon', 1, null, null),
+  ('prog_mobilite_s4', 'main', 7, 'torsion_couchee', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'prog_mobilite_s4' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('prog_recup_s1', 'Récupération : étirements', 'Étirements doux de tout le corps pour finir la semaine.', 'programme', 1, array['corps_entier']::text[], 'etirement', 1, 10, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'prog_recup_s1'
+  and exists (select 1 from public.trainings where id = 'prog_recup_s1' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('prog_recup_s1', 'main', 1, 'genoux_poitrine', 1, null, null),
+  ('prog_recup_s1', 'main', 2, 'fessiers_4', 1, null, null),
+  ('prog_recup_s1', 'main', 3, 'ischios', 1, null, null),
+  ('prog_recup_s1', 'main', 4, 'torsion_couchee', 1, null, null),
+  ('prog_recup_s1', 'main', 5, 'enfant', 2, null, null),
+  ('prog_recup_s1', 'main', 6, 'respiration', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'prog_recup_s1' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('prog_recup_s2', 'Récupération : yoga doux', 'Postures de yoga au sol et respiration lente.', 'programme', 1, array['corps_entier']::text[], 'yoga', 1, 10, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'prog_recup_s2'
+  and exists (select 1 from public.trainings where id = 'prog_recup_s2' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('prog_recup_s2', 'main', 1, 'chat_vache', 2, null, null),
+  ('prog_recup_s2', 'main', 2, 'sphinx', 2, null, null),
+  ('prog_recup_s2', 'main', 3, 'enfant', 3, null, null),
+  ('prog_recup_s2', 'main', 4, 'papillon', 2, null, null),
+  ('prog_recup_s2', 'main', 5, 'torsion_couchee', 1, null, null),
+  ('prog_recup_s2', 'main', 6, 'coherence_cardiaque', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'prog_recup_s2' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('prog_recup_s3', 'Récupération : hanches et dos', 'Ouverture des hanches, détente du dos et quelques minutes de calme.', 'programme', 1, array['corps_entier']::text[], 'yoga', 1, 10, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'prog_recup_s3'
+  and exists (select 1 from public.trainings where id = 'prog_recup_s3' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('prog_recup_s3', 'main', 1, 'fente_basse', 1, null, null),
+  ('prog_recup_s3', 'main', 2, 'pigeon', 1, null, null),
+  ('prog_recup_s3', 'main', 3, 'papillon', 2, null, null),
+  ('prog_recup_s3', 'main', 4, 'bebe_heureux', 2, null, null),
+  ('prog_recup_s3', 'main', 5, 'torsion_couchee', 1, null, null),
+  ('prog_recup_s3', 'main', 6, 'jambes_au_mur', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'prog_recup_s3' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('prog_recup_s4', 'Récupération : bilan du mois', 'Étirements et scan corporel pour savourer le chemin parcouru.', 'programme', 1, array['corps_entier']::text[], 'yoga', 1, 10, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'prog_recup_s4'
+  and exists (select 1 from public.trainings where id = 'prog_recup_s4' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('prog_recup_s4', 'main', 1, 'chat_vache', 2, null, null),
+  ('prog_recup_s4', 'main', 2, 'pince_assise', 2, null, null),
+  ('prog_recup_s4', 'main', 3, 'papillon', 2, null, null),
+  ('prog_recup_s4', 'main', 4, 'torsion_couchee', 1, null, null),
+  ('prog_recup_s4', 'main', 5, 'scan_corporel', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'prog_recup_s4' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('rf_s1_a', 'Bas du corps et gainage', null, 'programme', 1, array['jambes', 'fessiers', 'abdos']::text[], null, 2, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'rf_s1_a'
+  and exists (select 1 from public.trainings where id = 'rf_s1_a' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('rf_s1_a', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
+  ('rf_s1_a', 'warmup', 2, 'cercles_bras', 1, null, null),
+  ('rf_s1_a', 'warmup', 3, 'cercles_hanches', 1, null, null),
+  ('rf_s1_a', 'warmup', 4, 'rotations_buste', 1, null, null),
+  ('rf_s1_a', 'main', 1, 'squat', 1, null, null),
+  ('rf_s1_a', 'main', 2, 'pont', 1, null, null),
+  ('rf_s1_a', 'main', 3, 'dead_bug', 1, null, null),
+  ('rf_s1_a', 'main', 4, 'planche', 1, null, null),
+  ('rf_s1_a', 'cooldown', 1, 'ischios', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'rf_s1_a' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('rf_s1_b', 'Haut du corps et dos', null, 'programme', 1, array['bras', 'epaules', 'dos']::text[], null, 2, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'rf_s1_b'
+  and exists (select 1 from public.trainings where id = 'rf_s1_b' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('rf_s1_b', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
+  ('rf_s1_b', 'warmup', 2, 'cercles_bras', 1, null, null),
+  ('rf_s1_b', 'warmup', 3, 'cercles_hanches', 1, null, null),
+  ('rf_s1_b', 'warmup', 4, 'rotations_buste', 1, null, null),
+  ('rf_s1_b', 'main', 1, 'pompe_genoux', 1, null, null),
+  ('rf_s1_b', 'main', 2, 'superman', 1, null, null),
+  ('rf_s1_b', 'main', 3, 'bird_dog', 3, null, null),
+  ('rf_s1_b', 'main', 4, 'ours_statique', 1, null, null),
+  ('rf_s1_b', 'cooldown', 1, 'enfant', 2, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'rf_s1_b' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('rf_s1_c', 'Cardio doux', null, 'programme', 1, array['corps_entier']::text[], 'cardio', 2, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'rf_s1_c'
+  and exists (select 1 from public.trainings where id = 'rf_s1_c' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('rf_s1_c', 'warmup', 1, 'cercles_bras', 1, null, null),
+  ('rf_s1_c', 'warmup', 2, 'cercles_hanches', 1, null, null),
+  ('rf_s1_c', 'main', 1, 'marche_genoux_hauts', 1, null, null),
+  ('rf_s1_c', 'main', 2, 'step_jacks', 1, null, null),
+  ('rf_s1_c', 'main', 3, 'squat_coup_de_pied', 1, null, null),
+  ('rf_s1_c', 'main', 4, 'boxe_ombre', 1, null, null),
+  ('rf_s1_c', 'cooldown', 1, 'mollets', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'rf_s1_c' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('rf_s2_a', 'Bas du corps et gainage', null, 'programme', 1, array['jambes', 'fessiers', 'abdos']::text[], null, 2, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'rf_s2_a'
+  and exists (select 1 from public.trainings where id = 'rf_s2_a' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('rf_s2_a', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
+  ('rf_s2_a', 'warmup', 2, 'cercles_bras', 1, null, null),
+  ('rf_s2_a', 'warmup', 3, 'cercles_hanches', 1, null, null),
+  ('rf_s2_a', 'warmup', 4, 'rotations_buste', 1, null, null),
+  ('rf_s2_a', 'main', 1, 'squat', 2, null, null),
+  ('rf_s2_a', 'main', 2, 'fente_arriere', 1, null, null),
+  ('rf_s2_a', 'main', 3, 'pont', 2, null, null),
+  ('rf_s2_a', 'main', 4, 'dead_bug', 2, null, null),
+  ('rf_s2_a', 'main', 5, 'planche', 2, null, null),
+  ('rf_s2_a', 'cooldown', 1, 'ischios', 1, null, null),
+  ('rf_s2_a', 'cooldown', 2, 'flechisseurs', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'rf_s2_a' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('rf_s2_b', 'Haut du corps et dos', null, 'programme', 1, array['bras', 'epaules', 'dos']::text[], null, 2, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'rf_s2_b'
+  and exists (select 1 from public.trainings where id = 'rf_s2_b' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('rf_s2_b', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
+  ('rf_s2_b', 'warmup', 2, 'cercles_bras', 1, null, null),
+  ('rf_s2_b', 'warmup', 3, 'cercles_hanches', 1, null, null),
+  ('rf_s2_b', 'warmup', 4, 'rotations_buste', 1, null, null),
+  ('rf_s2_b', 'main', 1, 'pompe_genoux', 2, null, null),
+  ('rf_s2_b', 'main', 2, 'superman', 2, null, null),
+  ('rf_s2_b', 'main', 3, 'planche_epaules', 1, null, null),
+  ('rf_s2_b', 'main', 4, 'ytw', 1, null, null),
+  ('rf_s2_b', 'main', 5, 'bird_dog', 3, null, null),
+  ('rf_s2_b', 'main', 6, 'planche_inverse', 1, null, null),
+  ('rf_s2_b', 'cooldown', 1, 'enfant', 2, null, null),
+  ('rf_s2_b', 'cooldown', 2, 'epaule_bras_croise', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'rf_s2_b' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('rf_s2_c', 'Cardio et renforcement', null, 'programme', 1, array['corps_entier']::text[], 'cardio', 2, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'rf_s2_c'
+  and exists (select 1 from public.trainings where id = 'rf_s2_c' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('rf_s2_c', 'warmup', 1, 'marche_genoux_hauts', 1, null, null),
+  ('rf_s2_c', 'warmup', 2, 'cercles_bras', 1, null, null),
+  ('rf_s2_c', 'warmup', 3, 'cercles_hanches', 1, null, null),
+  ('rf_s2_c', 'main', 1, 'step_jacks', 2, null, null),
+  ('rf_s2_c', 'main', 2, 'squat', 1, null, null),
+  ('rf_s2_c', 'main', 3, 'boxe_ombre', 2, null, null),
+  ('rf_s2_c', 'main', 4, 'mountain_climbers_lents', 2, null, null),
+  ('rf_s2_c', 'main', 5, 'patineur_sans_saut', 1, null, null),
+  ('rf_s2_c', 'cooldown', 1, 'quadriceps_debout', 1, null, null),
+  ('rf_s2_c', 'cooldown', 2, 'mollets', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'rf_s2_c' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('rf_s3_a', 'Bas du corps et gainage', null, 'programme', 1, array['jambes', 'fessiers', 'abdos']::text[], null, 3, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'rf_s3_a'
+  and exists (select 1 from public.trainings where id = 'rf_s3_a' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('rf_s3_a', 'warmup', 1, 'marche_genoux_hauts', 2, 45, null),
+  ('rf_s3_a', 'warmup', 2, 'cercles_bras', 1, null, null),
+  ('rf_s3_a', 'warmup', 3, 'cercles_hanches', 1, null, null),
+  ('rf_s3_a', 'warmup', 4, 'rotations_buste', 1, null, null),
+  ('rf_s3_a', 'warmup', 5, 'plus_grand_etirement', 1, 40, null),
+  ('rf_s3_a', 'main', 1, 'squat', 2, null, null),
+  ('rf_s3_a', 'main', 2, 'fente_arriere', 2, null, null),
+  ('rf_s3_a', 'main', 3, 'pont', 3, null, null),
+  ('rf_s3_a', 'main', 4, 'dead_bug', 2, null, null),
+  ('rf_s3_a', 'main', 5, 'planche', 2, null, null),
+  ('rf_s3_a', 'cooldown', 1, 'ischios', 2, null, null),
+  ('rf_s3_a', 'cooldown', 2, 'flechisseurs', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'rf_s3_a' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('rf_s3_b', 'Haut du corps et dos', null, 'programme', 1, array['bras', 'epaules', 'dos']::text[], null, 3, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'rf_s3_b'
+  and exists (select 1 from public.trainings where id = 'rf_s3_b' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('rf_s3_b', 'warmup', 1, 'marche_genoux_hauts', 2, 45, null),
+  ('rf_s3_b', 'warmup', 2, 'cercles_bras', 1, null, null),
+  ('rf_s3_b', 'warmup', 3, 'cercles_hanches', 1, null, null),
+  ('rf_s3_b', 'warmup', 4, 'rotations_buste', 1, null, null),
+  ('rf_s3_b', 'warmup', 5, 'plus_grand_etirement', 1, 40, null),
+  ('rf_s3_b', 'main', 1, 'pompe_genoux', 3, null, null),
+  ('rf_s3_b', 'main', 2, 'superman', 2, null, null),
+  ('rf_s3_b', 'main', 3, 'planche_epaules', 2, null, null),
+  ('rf_s3_b', 'main', 4, 'ytw', 2, null, null),
+  ('rf_s3_b', 'main', 5, 'planche_inverse', 1, null, null),
+  ('rf_s3_b', 'cooldown', 1, 'enfant', 2, null, null),
+  ('rf_s3_b', 'cooldown', 2, 'epaule_bras_croise', 2, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'rf_s3_b' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('rf_s3_c', 'Cardio et renforcement', null, 'programme', 1, array['corps_entier']::text[], 'cardio', 3, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'rf_s3_c'
+  and exists (select 1 from public.trainings where id = 'rf_s3_c' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('rf_s3_c', 'warmup', 1, 'marche_genoux_hauts', 2, null, null),
+  ('rf_s3_c', 'warmup', 2, 'cercles_bras', 1, null, null),
+  ('rf_s3_c', 'warmup', 3, 'cercles_hanches', 1, null, null),
+  ('rf_s3_c', 'warmup', 4, 'rotations_buste', 1, null, null),
+  ('rf_s3_c', 'main', 1, 'step_jacks', 3, null, null),
+  ('rf_s3_c', 'main', 2, 'squat', 2, null, null),
+  ('rf_s3_c', 'main', 3, 'boxe_ombre', 2, null, null),
+  ('rf_s3_c', 'main', 4, 'mountain_climbers_lents', 2, null, null),
+  ('rf_s3_c', 'main', 5, 'burpee_sans_saut', 1, null, null),
+  ('rf_s3_c', 'cooldown', 1, 'quadriceps_debout', 2, null, null),
+  ('rf_s3_c', 'cooldown', 2, 'mollets', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'rf_s3_c' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('rf_s4_a', 'Bas du corps et gainage', null, 'programme', 2, array['jambes', 'fessiers', 'abdos']::text[], null, 3, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'rf_s4_a'
+  and exists (select 1 from public.trainings where id = 'rf_s4_a' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('rf_s4_a', 'warmup', 1, 'marche_genoux_hauts', 2, 45, null),
+  ('rf_s4_a', 'warmup', 2, 'cercles_bras', 2, null, null),
+  ('rf_s4_a', 'warmup', 3, 'cercles_hanches', 2, null, null),
+  ('rf_s4_a', 'warmup', 4, 'rotations_buste', 2, null, null),
+  ('rf_s4_a', 'warmup', 5, 'plus_grand_etirement', 1, 40, null),
+  ('rf_s4_a', 'main', 1, 'squat', 3, null, null),
+  ('rf_s4_a', 'main', 2, 'fente_arriere', 2, null, null),
+  ('rf_s4_a', 'main', 3, 'pont', 3, null, null),
+  ('rf_s4_a', 'main', 4, 'fente_laterale', 2, null, null),
+  ('rf_s4_a', 'main', 5, 'dead_bug', 3, null, null),
+  ('rf_s4_a', 'main', 6, 'planche', 3, null, null),
+  ('rf_s4_a', 'cooldown', 1, 'ischios', 2, null, null),
+  ('rf_s4_a', 'cooldown', 2, 'flechisseurs', 2, null, null),
+  ('rf_s4_a', 'cooldown', 3, 'fessiers_4', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'rf_s4_a' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('rf_s4_b', 'Haut du corps et dos', null, 'programme', 2, array['bras', 'epaules', 'dos']::text[], null, 3, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'rf_s4_b'
+  and exists (select 1 from public.trainings where id = 'rf_s4_b' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('rf_s4_b', 'warmup', 1, 'marche_genoux_hauts', 2, 45, null),
+  ('rf_s4_b', 'warmup', 2, 'cercles_bras', 2, null, null),
+  ('rf_s4_b', 'warmup', 3, 'cercles_hanches', 2, null, null),
+  ('rf_s4_b', 'warmup', 4, 'rotations_buste', 2, null, null),
+  ('rf_s4_b', 'warmup', 5, 'plus_grand_etirement', 1, 40, null),
+  ('rf_s4_b', 'main', 1, 'pompe_genoux', 3, null, null),
+  ('rf_s4_b', 'main', 2, 'superman', 3, null, null),
+  ('rf_s4_b', 'main', 3, 'planche_epaules', 2, null, null),
+  ('rf_s4_b', 'main', 4, 'ytw', 3, null, null),
+  ('rf_s4_b', 'main', 5, 'planche_inverse', 2, null, null),
+  ('rf_s4_b', 'main', 6, 'chenille', 1, null, null),
+  ('rf_s4_b', 'main', 7, 'boxe_ombre', 3, null, null),
+  ('rf_s4_b', 'main', 8, 'ours_statique', 3, null, null),
+  ('rf_s4_b', 'cooldown', 1, 'enfant', 3, null, null),
+  ('rf_s4_b', 'cooldown', 2, 'epaule_bras_croise', 2, null, null),
+  ('rf_s4_b', 'cooldown', 3, 'triceps_etirement', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'rf_s4_b' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('rf_s4_c', 'Cardio et renforcement', null, 'programme', 2, array['corps_entier']::text[], 'cardio', 3, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'rf_s4_c'
+  and exists (select 1 from public.trainings where id = 'rf_s4_c' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('rf_s4_c', 'warmup', 1, 'marche_genoux_hauts', 2, null, null),
+  ('rf_s4_c', 'warmup', 2, 'cercles_bras', 2, null, null),
+  ('rf_s4_c', 'warmup', 3, 'cercles_hanches', 2, null, null),
+  ('rf_s4_c', 'warmup', 4, 'rotations_buste', 2, null, null),
+  ('rf_s4_c', 'warmup', 5, 'plus_grand_etirement', 1, 40, null),
+  ('rf_s4_c', 'main', 1, 'step_jacks', 3, null, null),
+  ('rf_s4_c', 'main', 2, 'squat', 3, null, null),
+  ('rf_s4_c', 'main', 3, 'boxe_ombre', 3, null, null),
+  ('rf_s4_c', 'main', 4, 'mountain_climbers_lents', 3, null, null),
+  ('rf_s4_c', 'main', 5, 'burpee_sans_saut', 2, null, null),
+  ('rf_s4_c', 'main', 6, 'patineur_sans_saut', 2, null, null),
+  ('rf_s4_c', 'cooldown', 1, 'quadriceps_debout', 2, null, null),
+  ('rf_s4_c', 'cooldown', 2, 'mollets', 1, null, null),
+  ('rf_s4_c', 'cooldown', 3, 'etirement_lateral', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'rf_s4_c' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('hf_s1_a', 'Fessiers : les bases', null, 'programme', 1, array['fessiers']::text[], null, 2, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'hf_s1_a'
+  and exists (select 1 from public.trainings where id = 'hf_s1_a' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('hf_s1_a', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
+  ('hf_s1_a', 'warmup', 2, 'cercles_hanches', 1, null, null),
+  ('hf_s1_a', 'warmup', 3, 'balancier_jambes', 1, 30, null),
+  ('hf_s1_a', 'warmup', 4, 'squat', 1, 8, null),
+  ('hf_s1_a', 'main', 1, 'pont', 1, null, null),
+  ('hf_s1_a', 'main', 2, 'clamshell', 1, null, null),
+  ('hf_s1_a', 'main', 3, 'ruade', 1, null, null),
+  ('hf_s1_a', 'main', 4, 'abduction_couchee', 1, null, null),
+  ('hf_s1_a', 'cooldown', 1, 'fessiers_4', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'hf_s1_a' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('hf_s1_b', 'Jambes et fessiers', null, 'programme', 1, array['jambes', 'fessiers']::text[], null, 2, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'hf_s1_b'
+  and exists (select 1 from public.trainings where id = 'hf_s1_b' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('hf_s1_b', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
+  ('hf_s1_b', 'warmup', 2, 'cercles_hanches', 1, null, null),
+  ('hf_s1_b', 'warmup', 3, 'balancier_jambes', 1, 30, null),
+  ('hf_s1_b', 'warmup', 4, 'squat', 1, 8, null),
+  ('hf_s1_b', 'main', 1, 'squat_sumo', 1, null, null),
+  ('hf_s1_b', 'main', 2, 'fente_arriere', 1, null, null),
+  ('hf_s1_b', 'main', 3, 'bouche_incendie', 1, null, null),
+  ('hf_s1_b', 'main', 4, 'releve_mollets', 1, null, null),
+  ('hf_s1_b', 'cooldown', 1, 'quadriceps_debout', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'hf_s1_b' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('hf_s1_c', 'Fessiers et abdos', null, 'programme', 1, array['fessiers', 'abdos']::text[], null, 2, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'hf_s1_c'
+  and exists (select 1 from public.trainings where id = 'hf_s1_c' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('hf_s1_c', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
+  ('hf_s1_c', 'warmup', 2, 'cercles_hanches', 1, null, null),
+  ('hf_s1_c', 'warmup', 3, 'rotations_buste', 1, null, null),
+  ('hf_s1_c', 'main', 1, 'pont_marche', 1, null, null),
+  ('hf_s1_c', 'main', 2, 'dead_bug', 1, null, null),
+  ('hf_s1_c', 'main', 3, 'adducteurs_couche', 1, null, null),
+  ('hf_s1_c', 'main', 4, 'crunch_inverse', 1, null, null),
+  ('hf_s1_c', 'cooldown', 1, 'papillon', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'hf_s1_c' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('hf_s2_a', 'Fessiers : volume', null, 'programme', 1, array['fessiers']::text[], null, 2, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'hf_s2_a'
+  and exists (select 1 from public.trainings where id = 'hf_s2_a' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('hf_s2_a', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
+  ('hf_s2_a', 'warmup', 2, 'cercles_hanches', 1, null, null),
+  ('hf_s2_a', 'warmup', 3, 'balancier_jambes', 1, 30, null),
+  ('hf_s2_a', 'warmup', 4, 'squat', 1, 8, null),
+  ('hf_s2_a', 'main', 1, 'pont', 2, null, null),
+  ('hf_s2_a', 'main', 2, 'hip_thrust', 1, null, null),
+  ('hf_s2_a', 'main', 3, 'clamshell', 2, null, null),
+  ('hf_s2_a', 'main', 4, 'ruade', 2, null, null),
+  ('hf_s2_a', 'main', 5, 'abduction_couchee', 2, null, null),
+  ('hf_s2_a', 'cooldown', 1, 'fessiers_4', 1, null, null),
+  ('hf_s2_a', 'cooldown', 2, 'flechisseurs', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'hf_s2_a' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('hf_s2_b', 'Jambes et fessiers', null, 'programme', 1, array['jambes', 'fessiers']::text[], null, 2, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'hf_s2_b'
+  and exists (select 1 from public.trainings where id = 'hf_s2_b' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('hf_s2_b', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
+  ('hf_s2_b', 'warmup', 2, 'cercles_hanches', 1, null, null),
+  ('hf_s2_b', 'warmup', 3, 'balancier_jambes', 1, 30, null),
+  ('hf_s2_b', 'warmup', 4, 'squat', 1, 8, null),
+  ('hf_s2_b', 'main', 1, 'squat_sumo', 1, null, null),
+  ('hf_s2_b', 'main', 2, 'fente_arriere', 2, null, null),
+  ('hf_s2_b', 'main', 3, 'charniere_hanche', 1, null, null),
+  ('hf_s2_b', 'main', 4, 'bouche_incendie', 2, null, null),
+  ('hf_s2_b', 'main', 5, 'releve_mollets', 2, null, null),
+  ('hf_s2_b', 'cooldown', 1, 'quadriceps_debout', 1, null, null),
+  ('hf_s2_b', 'cooldown', 2, 'ischios', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'hf_s2_b' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('hf_s2_c', 'Fessiers, abdos et cardio', null, 'programme', 1, array['fessiers', 'abdos']::text[], null, 2, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'hf_s2_c'
+  and exists (select 1 from public.trainings where id = 'hf_s2_c' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('hf_s2_c', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
+  ('hf_s2_c', 'warmup', 2, 'cercles_hanches', 1, null, null),
+  ('hf_s2_c', 'warmup', 3, 'rotations_buste', 1, null, null),
+  ('hf_s2_c', 'main', 1, 'pont_marche', 2, null, null),
+  ('hf_s2_c', 'main', 2, 'patineur_sans_saut', 1, null, null),
+  ('hf_s2_c', 'main', 3, 'dead_bug', 2, null, null),
+  ('hf_s2_c', 'main', 4, 'adducteurs_couche', 2, null, null),
+  ('hf_s2_c', 'main', 5, 'squat_coup_de_pied', 1, null, null),
+  ('hf_s2_c', 'cooldown', 1, 'papillon', 2, null, null),
+  ('hf_s2_c', 'cooldown', 2, 'fessiers_4', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'hf_s2_c' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('hf_s3_a', 'Fessiers : force', null, 'programme', 1, array['fessiers']::text[], null, 3, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'hf_s3_a'
+  and exists (select 1 from public.trainings where id = 'hf_s3_a' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('hf_s3_a', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
+  ('hf_s3_a', 'warmup', 2, 'cercles_hanches', 1, null, null),
+  ('hf_s3_a', 'warmup', 3, 'balancier_jambes', 1, 30, null),
+  ('hf_s3_a', 'warmup', 4, 'squat', 1, 8, null),
+  ('hf_s3_a', 'main', 1, 'hip_thrust', 2, null, null),
+  ('hf_s3_a', 'main', 2, 'pont_unilateral', 1, null, null),
+  ('hf_s3_a', 'main', 3, 'clamshell', 3, null, null),
+  ('hf_s3_a', 'main', 4, 'ruade', 3, null, null),
+  ('hf_s3_a', 'main', 5, 'abduction_couchee', 3, null, null),
+  ('hf_s3_a', 'cooldown', 1, 'fessiers_4', 2, null, null),
+  ('hf_s3_a', 'cooldown', 2, 'flechisseurs', 2, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'hf_s3_a' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('hf_s3_b', 'Jambes et fessiers', null, 'programme', 1, array['jambes', 'fessiers']::text[], null, 3, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'hf_s3_b'
+  and exists (select 1 from public.trainings where id = 'hf_s3_b' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('hf_s3_b', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
+  ('hf_s3_b', 'warmup', 2, 'cercles_hanches', 1, null, null),
+  ('hf_s3_b', 'warmup', 3, 'balancier_jambes', 1, 30, null),
+  ('hf_s3_b', 'warmup', 4, 'squat', 1, 8, null),
+  ('hf_s3_b', 'main', 1, 'squat_sumo', 2, null, null),
+  ('hf_s3_b', 'main', 2, 'fente_laterale', 2, null, null),
+  ('hf_s3_b', 'main', 3, 'charniere_hanche', 2, null, null),
+  ('hf_s3_b', 'main', 4, 'fente_arriere', 2, null, null),
+  ('hf_s3_b', 'main', 5, 'releve_mollets', 2, null, null),
+  ('hf_s3_b', 'cooldown', 1, 'quadriceps_debout', 2, null, null),
+  ('hf_s3_b', 'cooldown', 2, 'ischios', 2, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'hf_s3_b' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('hf_s3_c', 'Fessiers, abdos et cardio', null, 'programme', 1, array['fessiers', 'abdos']::text[], null, 3, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'hf_s3_c'
+  and exists (select 1 from public.trainings where id = 'hf_s3_c' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('hf_s3_c', 'warmup', 1, 'marche_genoux_hauts', 2, null, null),
+  ('hf_s3_c', 'warmup', 2, 'cercles_hanches', 1, null, null),
+  ('hf_s3_c', 'warmup', 3, 'rotations_buste', 1, null, null),
+  ('hf_s3_c', 'warmup', 4, 'balancier_jambes', 1, 30, null),
+  ('hf_s3_c', 'main', 1, 'pont_marche', 2, null, null),
+  ('hf_s3_c', 'main', 2, 'patineur_sans_saut', 2, null, null),
+  ('hf_s3_c', 'main', 3, 'dead_bug', 2, null, null),
+  ('hf_s3_c', 'main', 4, 'bouche_incendie', 2, null, null),
+  ('hf_s3_c', 'main', 5, 'squat_coup_de_pied', 2, null, null),
+  ('hf_s3_c', 'cooldown', 1, 'papillon', 2, null, null),
+  ('hf_s3_c', 'cooldown', 2, 'pigeon', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'hf_s3_c' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('hf_s4_a', 'Fessiers : force', null, 'programme', 2, array['fessiers']::text[], null, 3, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'hf_s4_a'
+  and exists (select 1 from public.trainings where id = 'hf_s4_a' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('hf_s4_a', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
+  ('hf_s4_a', 'warmup', 2, 'cercles_hanches', 2, null, null),
+  ('hf_s4_a', 'warmup', 3, 'balancier_jambes', 1, 30, null),
+  ('hf_s4_a', 'warmup', 4, 'squat', 1, 8, null),
+  ('hf_s4_a', 'main', 1, 'hip_thrust', 2, null, null),
+  ('hf_s4_a', 'main', 2, 'pont_unilateral', 2, null, null),
+  ('hf_s4_a', 'main', 3, 'clamshell', 3, null, null),
+  ('hf_s4_a', 'main', 4, 'ruade', 3, null, null),
+  ('hf_s4_a', 'main', 5, 'abduction_couchee', 3, null, null),
+  ('hf_s4_a', 'main', 6, 'bouche_incendie', 2, null, null),
+  ('hf_s4_a', 'cooldown', 1, 'fessiers_4', 2, null, null),
+  ('hf_s4_a', 'cooldown', 2, 'flechisseurs', 2, null, null),
+  ('hf_s4_a', 'cooldown', 3, 'pigeon', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'hf_s4_a' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('hf_s4_b', 'Jambes et fessiers', null, 'programme', 2, array['jambes', 'fessiers']::text[], null, 3, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'hf_s4_b'
+  and exists (select 1 from public.trainings where id = 'hf_s4_b' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('hf_s4_b', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
+  ('hf_s4_b', 'warmup', 2, 'cercles_hanches', 2, null, null),
+  ('hf_s4_b', 'warmup', 3, 'balancier_jambes', 1, 30, null),
+  ('hf_s4_b', 'warmup', 4, 'squat', 1, 8, null),
+  ('hf_s4_b', 'main', 1, 'squat_sumo', 3, null, null),
+  ('hf_s4_b', 'main', 2, 'fente_laterale', 3, null, null),
+  ('hf_s4_b', 'main', 3, 'charniere_hanche', 2, null, null),
+  ('hf_s4_b', 'main', 4, 'fente_arriere', 3, null, null),
+  ('hf_s4_b', 'main', 5, 'chaise_mur', 1, 30, null),
+  ('hf_s4_b', 'main', 6, 'releve_mollets', 3, null, null),
+  ('hf_s4_b', 'cooldown', 1, 'quadriceps_debout', 2, null, null),
+  ('hf_s4_b', 'cooldown', 2, 'ischios', 2, null, null),
+  ('hf_s4_b', 'cooldown', 3, 'mollets', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'hf_s4_b' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('hf_s4_c', 'Fessiers, abdos et cardio', null, 'programme', 2, array['fessiers', 'abdos']::text[], null, 3, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'hf_s4_c'
+  and exists (select 1 from public.trainings where id = 'hf_s4_c' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('hf_s4_c', 'warmup', 1, 'marche_genoux_hauts', 2, null, null),
+  ('hf_s4_c', 'warmup', 2, 'cercles_hanches', 2, null, null),
+  ('hf_s4_c', 'warmup', 3, 'rotations_buste', 2, null, null),
+  ('hf_s4_c', 'warmup', 4, 'balancier_jambes', 2, null, null),
+  ('hf_s4_c', 'main', 1, 'pont_marche', 3, null, null),
+  ('hf_s4_c', 'main', 2, 'patineur_sans_saut', 2, null, null),
+  ('hf_s4_c', 'main', 3, 'dead_bug', 3, null, null),
+  ('hf_s4_c', 'main', 4, 'bouche_incendie', 3, null, null),
+  ('hf_s4_c', 'main', 5, 'squat_coup_de_pied', 2, null, null),
+  ('hf_s4_c', 'main', 6, 'adducteurs_couche', 2, null, null),
+  ('hf_s4_c', 'main', 7, 'clamshell', 3, null, null),
+  ('hf_s4_c', 'cooldown', 1, 'papillon', 3, null, null),
+  ('hf_s4_c', 'cooldown', 2, 'pigeon', 1, null, null),
+  ('hf_s4_c', 'cooldown', 3, 'bebe_heureux', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'hf_s4_c' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('gc_s1_a', 'Gainage : les bases', null, 'programme', 1, array['abdos']::text[], 'gainage', 2, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'gc_s1_a'
+  and exists (select 1 from public.trainings where id = 'gc_s1_a' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('gc_s1_a', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
+  ('gc_s1_a', 'warmup', 2, 'cercles_bras', 1, null, null),
+  ('gc_s1_a', 'warmup', 3, 'cercles_hanches', 1, null, null),
+  ('gc_s1_a', 'warmup', 4, 'rotations_buste', 1, null, null),
+  ('gc_s1_a', 'main', 1, 'dead_bug', 1, null, null),
+  ('gc_s1_a', 'main', 2, 'planche', 1, null, null),
+  ('gc_s1_a', 'main', 3, 'bird_dog', 3, null, null),
+  ('gc_s1_a', 'main', 4, 'planche_laterale', 1, null, null),
+  ('gc_s1_a', 'cooldown', 1, 'cobra', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'gc_s1_a' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('gc_s1_b', 'Poussée et tirage au poids du corps', null, 'programme', 1, array['bras', 'dos', 'epaules']::text[], 'calisthenie', 2, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'gc_s1_b'
+  and exists (select 1 from public.trainings where id = 'gc_s1_b' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('gc_s1_b', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
+  ('gc_s1_b', 'warmup', 2, 'cercles_bras', 1, null, null),
+  ('gc_s1_b', 'warmup', 3, 'cercles_hanches', 1, null, null),
+  ('gc_s1_b', 'warmup', 4, 'rotations_buste', 1, null, null),
+  ('gc_s1_b', 'main', 1, 'pompe_genoux', 1, null, null),
+  ('gc_s1_b', 'main', 2, 'superman', 1, null, null),
+  ('gc_s1_b', 'main', 3, 'ours_statique', 1, null, null),
+  ('gc_s1_b', 'main', 4, 'squat', 1, null, null),
+  ('gc_s1_b', 'cooldown', 1, 'enfant', 2, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'gc_s1_b' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('gc_s1_c', 'Abdos et rotation', null, 'programme', 1, array['abdos']::text[], 'gainage', 2, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'gc_s1_c'
+  and exists (select 1 from public.trainings where id = 'gc_s1_c' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('gc_s1_c', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
+  ('gc_s1_c', 'warmup', 2, 'rotations_buste', 1, null, null),
+  ('gc_s1_c', 'warmup', 3, 'cercles_hanches', 1, null, null),
+  ('gc_s1_c', 'main', 1, 'crunch', 1, null, null),
+  ('gc_s1_c', 'main', 2, 'toucher_talons', 1, null, null),
+  ('gc_s1_c', 'main', 3, 'crunch_inverse', 1, null, null),
+  ('gc_s1_c', 'main', 4, 'mountain_climbers_lents', 1, null, null),
+  ('gc_s1_c', 'cooldown', 1, 'torsion_couchee', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'gc_s1_c' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('gc_s2_a', 'Gainage : anti-extension', null, 'programme', 1, array['abdos']::text[], 'gainage', 2, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'gc_s2_a'
+  and exists (select 1 from public.trainings where id = 'gc_s2_a' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('gc_s2_a', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
+  ('gc_s2_a', 'warmup', 2, 'cercles_bras', 1, null, null),
+  ('gc_s2_a', 'warmup', 3, 'cercles_hanches', 1, null, null),
+  ('gc_s2_a', 'warmup', 4, 'rotations_buste', 1, null, null),
+  ('gc_s2_a', 'main', 1, 'dead_bug', 2, null, null),
+  ('gc_s2_a', 'main', 2, 'planche', 2, null, null),
+  ('gc_s2_a', 'main', 3, 'hollow', 1, null, null),
+  ('gc_s2_a', 'main', 4, 'planche_laterale', 2, null, null),
+  ('gc_s2_a', 'main', 5, 'ours_statique', 2, null, null),
+  ('gc_s2_a', 'main', 6, 'crunch_inverse', 2, null, null),
+  ('gc_s2_a', 'cooldown', 1, 'cobra', 2, null, null),
+  ('gc_s2_a', 'cooldown', 2, 'enfant', 2, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'gc_s2_a' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('gc_s2_b', 'Poussée et tirage au poids du corps', null, 'programme', 1, array['bras', 'dos', 'epaules']::text[], 'calisthenie', 2, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'gc_s2_b'
+  and exists (select 1 from public.trainings where id = 'gc_s2_b' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('gc_s2_b', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
+  ('gc_s2_b', 'warmup', 2, 'cercles_bras', 1, null, null),
+  ('gc_s2_b', 'warmup', 3, 'cercles_hanches', 1, null, null),
+  ('gc_s2_b', 'warmup', 4, 'rotations_buste', 1, null, null),
+  ('gc_s2_b', 'main', 1, 'pompe_genoux', 2, null, null),
+  ('gc_s2_b', 'main', 2, 'superman', 2, null, null),
+  ('gc_s2_b', 'main', 3, 'planche_inverse', 1, null, null),
+  ('gc_s2_b', 'main', 4, 'ytw', 1, null, null),
+  ('gc_s2_b', 'main', 5, 'squat', 2, null, null),
+  ('gc_s2_b', 'main', 6, 'chenille', 1, null, null),
+  ('gc_s2_b', 'cooldown', 1, 'enfant', 2, null, null),
+  ('gc_s2_b', 'cooldown', 2, 'epaule_bras_croise', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'gc_s2_b' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('gc_s2_c', 'Abdos et rotation', null, 'programme', 1, array['abdos']::text[], 'gainage', 2, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'gc_s2_c'
+  and exists (select 1 from public.trainings where id = 'gc_s2_c' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('gc_s2_c', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
+  ('gc_s2_c', 'warmup', 2, 'rotations_buste', 1, null, null),
+  ('gc_s2_c', 'warmup', 3, 'cercles_hanches', 1, null, null),
+  ('gc_s2_c', 'main', 1, 'crunch_velo', 1, null, null),
+  ('gc_s2_c', 'main', 2, 'rotation_russe', 1, null, null),
+  ('gc_s2_c', 'main', 3, 'crunch_inverse', 2, null, null),
+  ('gc_s2_c', 'main', 4, 'planche_epaules', 1, null, null),
+  ('gc_s2_c', 'main', 5, 'mountain_climbers_lents', 2, null, null),
+  ('gc_s2_c', 'cooldown', 1, 'torsion_couchee', 1, null, null),
+  ('gc_s2_c', 'cooldown', 2, 'cobra', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'gc_s2_c' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('gc_s3_a', 'Gainage : anti-extension', null, 'programme', 1, array['abdos']::text[], 'gainage', 3, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'gc_s3_a'
+  and exists (select 1 from public.trainings where id = 'gc_s3_a' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('gc_s3_a', 'warmup', 1, 'marche_genoux_hauts', 2, 45, null),
+  ('gc_s3_a', 'warmup', 2, 'cercles_bras', 1, null, null),
+  ('gc_s3_a', 'warmup', 3, 'cercles_hanches', 1, null, null),
+  ('gc_s3_a', 'warmup', 4, 'rotations_buste', 1, null, null),
+  ('gc_s3_a', 'warmup', 5, 'plus_grand_etirement', 1, 40, null),
+  ('gc_s3_a', 'main', 1, 'dead_bug', 3, null, null),
+  ('gc_s3_a', 'main', 2, 'planche', 3, null, null),
+  ('gc_s3_a', 'main', 3, 'hollow', 2, null, null),
+  ('gc_s3_a', 'main', 4, 'planche_laterale', 3, null, null),
+  ('gc_s3_a', 'main', 5, 'ciseaux', 1, null, null),
+  ('gc_s3_a', 'main', 6, 'crunch_inverse', 3, null, null),
+  ('gc_s3_a', 'main', 7, 'planche_epaules', 2, null, null),
+  ('gc_s3_a', 'cooldown', 1, 'cobra', 2, null, null),
+  ('gc_s3_a', 'cooldown', 2, 'enfant', 2, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'gc_s3_a' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('gc_s3_b', 'Poussée et tirage au poids du corps', null, 'programme', 1, array['bras', 'dos', 'epaules']::text[], 'calisthenie', 3, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'gc_s3_b'
+  and exists (select 1 from public.trainings where id = 'gc_s3_b' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('gc_s3_b', 'warmup', 1, 'marche_genoux_hauts', 2, 45, null),
+  ('gc_s3_b', 'warmup', 2, 'cercles_bras', 1, null, null),
+  ('gc_s3_b', 'warmup', 3, 'cercles_hanches', 1, null, null),
+  ('gc_s3_b', 'warmup', 4, 'rotations_buste', 1, null, null),
+  ('gc_s3_b', 'warmup', 5, 'plus_grand_etirement', 1, 40, null),
+  ('gc_s3_b', 'main', 1, 'pompe', 1, null, null),
+  ('gc_s3_b', 'main', 2, 'superman', 3, null, null),
+  ('gc_s3_b', 'main', 3, 'planche_inverse', 2, null, null),
+  ('gc_s3_b', 'main', 4, 'ytw', 2, null, null),
+  ('gc_s3_b', 'main', 5, 'chenille', 1, null, null),
+  ('gc_s3_b', 'main', 6, 'squat', 3, null, null),
+  ('gc_s3_b', 'main', 7, 'planche_epaules', 2, null, null),
+  ('gc_s3_b', 'cooldown', 1, 'enfant', 3, null, null),
+  ('gc_s3_b', 'cooldown', 2, 'triceps_etirement', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'gc_s3_b' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('gc_s3_c', 'Abdos et rotation', null, 'programme', 1, array['abdos']::text[], 'gainage', 3, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'gc_s3_c'
+  and exists (select 1 from public.trainings where id = 'gc_s3_c' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('gc_s3_c', 'warmup', 1, 'marche_genoux_hauts', 2, null, null),
+  ('gc_s3_c', 'warmup', 2, 'rotations_buste', 1, null, null),
+  ('gc_s3_c', 'warmup', 3, 'cercles_hanches', 1, null, null),
+  ('gc_s3_c', 'warmup', 4, 'cercles_bras', 1, null, null),
+  ('gc_s3_c', 'main', 1, 'crunch_velo', 2, null, null),
+  ('gc_s3_c', 'main', 2, 'rotation_russe', 2, null, null),
+  ('gc_s3_c', 'main', 3, 'releve_jambes', 1, null, null),
+  ('gc_s3_c', 'main', 4, 'planche_dynamique', 1, null, null),
+  ('gc_s3_c', 'main', 5, 'mountain_climbers_lents', 2, null, null),
+  ('gc_s3_c', 'cooldown', 1, 'torsion_couchee', 1, null, null),
+  ('gc_s3_c', 'cooldown', 2, 'cobra', 2, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'gc_s3_c' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('gc_s4_a', 'Gainage : anti-extension', null, 'programme', 2, array['abdos']::text[], 'gainage', 3, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'gc_s4_a'
+  and exists (select 1 from public.trainings where id = 'gc_s4_a' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('gc_s4_a', 'warmup', 1, 'marche_genoux_hauts', 2, 45, null),
+  ('gc_s4_a', 'warmup', 2, 'cercles_bras', 2, null, null),
+  ('gc_s4_a', 'warmup', 3, 'cercles_hanches', 2, null, null),
+  ('gc_s4_a', 'warmup', 4, 'rotations_buste', 2, null, null),
+  ('gc_s4_a', 'warmup', 5, 'plus_grand_etirement', 1, 40, null),
+  ('gc_s4_a', 'main', 1, 'dead_bug', 4, null, null),
+  ('gc_s4_a', 'main', 2, 'planche', 4, null, null),
+  ('gc_s4_a', 'main', 3, 'hollow', 2, null, null),
+  ('gc_s4_a', 'main', 4, 'planche_laterale', 3, null, null),
+  ('gc_s4_a', 'main', 5, 'ciseaux', 2, null, null),
+  ('gc_s4_a', 'main', 6, 'ours_statique', 3, null, null),
+  ('gc_s4_a', 'main', 7, 'releve_jambes', 2, null, null),
+  ('gc_s4_a', 'main', 8, 'planche_laterale_rotation', 1, null, null),
+  ('gc_s4_a', 'cooldown', 1, 'cobra', 3, null, null),
+  ('gc_s4_a', 'cooldown', 2, 'enfant', 3, null, null),
+  ('gc_s4_a', 'cooldown', 3, 'genoux_poitrine', 2, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'gc_s4_a' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('gc_s4_b', 'Poussée et tirage au poids du corps', null, 'programme', 2, array['bras', 'dos', 'epaules']::text[], 'calisthenie', 3, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'gc_s4_b'
+  and exists (select 1 from public.trainings where id = 'gc_s4_b' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('gc_s4_b', 'warmup', 1, 'marche_genoux_hauts', 2, 45, null),
+  ('gc_s4_b', 'warmup', 2, 'cercles_bras', 2, null, null),
+  ('gc_s4_b', 'warmup', 3, 'cercles_hanches', 2, null, null),
+  ('gc_s4_b', 'warmup', 4, 'rotations_buste', 2, null, null),
+  ('gc_s4_b', 'warmup', 5, 'plus_grand_etirement', 1, 40, null),
+  ('gc_s4_b', 'main', 1, 'pompe', 2, null, null),
+  ('gc_s4_b', 'main', 2, 'superman', 3, null, null),
+  ('gc_s4_b', 'main', 3, 'planche_inverse', 2, null, null),
+  ('gc_s4_b', 'main', 4, 'pompe_pike', 1, null, null),
+  ('gc_s4_b', 'main', 5, 'ytw', 3, null, null),
+  ('gc_s4_b', 'main', 6, 'chenille', 2, null, null),
+  ('gc_s4_b', 'main', 7, 'squat', 3, null, null),
+  ('gc_s4_b', 'main', 8, 'ours_statique', 3, null, null),
+  ('gc_s4_b', 'cooldown', 1, 'enfant', 3, null, null),
+  ('gc_s4_b', 'cooldown', 2, 'triceps_etirement', 2, null, null),
+  ('gc_s4_b', 'cooldown', 3, 'epaule_bras_croise', 2, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'gc_s4_b' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('gc_s4_c', 'Abdos et rotation', null, 'programme', 2, array['abdos']::text[], 'gainage', 3, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'gc_s4_c'
+  and exists (select 1 from public.trainings where id = 'gc_s4_c' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('gc_s4_c', 'warmup', 1, 'marche_genoux_hauts', 2, null, null),
+  ('gc_s4_c', 'warmup', 2, 'rotations_buste', 2, null, null),
+  ('gc_s4_c', 'warmup', 3, 'cercles_hanches', 2, null, null),
+  ('gc_s4_c', 'warmup', 4, 'cercles_bras', 2, null, null),
+  ('gc_s4_c', 'warmup', 5, 'chat_vache', 1, null, null),
+  ('gc_s4_c', 'main', 1, 'crunch_velo', 3, null, null),
+  ('gc_s4_c', 'main', 2, 'rotation_russe', 3, null, null),
+  ('gc_s4_c', 'main', 3, 'releve_jambes', 2, null, null),
+  ('gc_s4_c', 'main', 4, 'planche_dynamique', 2, null, null),
+  ('gc_s4_c', 'main', 5, 'planche_laterale_rotation', 1, null, null),
+  ('gc_s4_c', 'main', 6, 'mountain_climbers_lents', 3, null, null),
+  ('gc_s4_c', 'cooldown', 1, 'torsion_couchee', 1, null, null),
+  ('gc_s4_c', 'cooldown', 2, 'cobra', 2, null, null),
+  ('gc_s4_c', 'cooldown', 3, 'genoux_poitrine', 2, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'gc_s4_c' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('rapide_corps_entier_1', 'Corps entier, débutant', null, 'rapide', 1, array['corps_entier']::text[], null, 2, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'rapide_corps_entier_1'
+  and exists (select 1 from public.trainings where id = 'rapide_corps_entier_1' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('rapide_corps_entier_1', 'warmup', 1, 'marche_genoux_hauts', 1, 30, null),
+  ('rapide_corps_entier_1', 'warmup', 2, 'cercles_bras', 1, null, null),
+  ('rapide_corps_entier_1', 'main', 1, 'squat', 1, null, null),
+  ('rapide_corps_entier_1', 'main', 2, 'pompe_genoux', 1, null, null),
+  ('rapide_corps_entier_1', 'main', 3, 'pont', 1, null, null),
+  ('rapide_corps_entier_1', 'main', 4, 'planche', 1, null, null),
+  ('rapide_corps_entier_1', 'cooldown', 1, 'enfant', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'rapide_corps_entier_1' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('rapide_corps_entier_2', 'Corps entier, intermédiaire', null, 'rapide', 2, array['corps_entier']::text[], null, 2, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'rapide_corps_entier_2'
+  and exists (select 1 from public.trainings where id = 'rapide_corps_entier_2' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('rapide_corps_entier_2', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
+  ('rapide_corps_entier_2', 'warmup', 2, 'cercles_bras', 2, null, null),
+  ('rapide_corps_entier_2', 'warmup', 3, 'cercles_hanches', 2, null, null),
+  ('rapide_corps_entier_2', 'warmup', 4, 'rotations_buste', 2, null, null),
+  ('rapide_corps_entier_2', 'main', 1, 'squat', 2, null, null),
+  ('rapide_corps_entier_2', 'main', 2, 'pompe_genoux', 3, null, null),
+  ('rapide_corps_entier_2', 'main', 3, 'fente_arriere', 2, null, null),
+  ('rapide_corps_entier_2', 'main', 4, 'mountain_climbers_lents', 2, null, null),
+  ('rapide_corps_entier_2', 'main', 5, 'superman', 2, null, null),
+  ('rapide_corps_entier_2', 'cooldown', 1, 'enfant', 2, null, null),
+  ('rapide_corps_entier_2', 'cooldown', 2, 'quadriceps_debout', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'rapide_corps_entier_2' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('rapide_corps_entier_3', 'Corps entier, avancé', null, 'rapide', 3, array['corps_entier']::text[], null, 3, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'rapide_corps_entier_3'
+  and exists (select 1 from public.trainings where id = 'rapide_corps_entier_3' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('rapide_corps_entier_3', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
+  ('rapide_corps_entier_3', 'warmup', 2, 'cercles_bras', 3, null, null),
+  ('rapide_corps_entier_3', 'warmup', 3, 'cercles_hanches', 3, null, null),
+  ('rapide_corps_entier_3', 'warmup', 4, 'rotations_buste', 3, null, null),
+  ('rapide_corps_entier_3', 'main', 1, 'squat_saute', 2, null, null),
+  ('rapide_corps_entier_3', 'main', 2, 'pompe', 2, null, null),
+  ('rapide_corps_entier_3', 'main', 3, 'fente_arriere', 3, null, null),
+  ('rapide_corps_entier_3', 'main', 4, 'burpee', 1, null, null),
+  ('rapide_corps_entier_3', 'main', 5, 'planche_dynamique', 2, null, null),
+  ('rapide_corps_entier_3', 'main', 6, 'jumping_jacks', 2, null, null),
+  ('rapide_corps_entier_3', 'cooldown', 1, 'enfant', 2, null, null),
+  ('rapide_corps_entier_3', 'cooldown', 2, 'quadriceps_debout', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'rapide_corps_entier_3' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('rapide_abdos_1', 'Abdos, débutant', null, 'rapide', 1, array['abdos']::text[], null, 2, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'rapide_abdos_1'
+  and exists (select 1 from public.trainings where id = 'rapide_abdos_1' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('rapide_abdos_1', 'warmup', 1, 'rotations_buste', 1, null, null),
+  ('rapide_abdos_1', 'warmup', 2, 'cercles_hanches', 1, null, null),
+  ('rapide_abdos_1', 'main', 1, 'dead_bug', 1, null, null),
+  ('rapide_abdos_1', 'main', 2, 'crunch', 1, null, null),
+  ('rapide_abdos_1', 'main', 3, 'planche', 1, null, null),
+  ('rapide_abdos_1', 'main', 4, 'crunch_inverse', 1, null, null),
+  ('rapide_abdos_1', 'cooldown', 1, 'cobra', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'rapide_abdos_1' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('rapide_abdos_2', 'Abdos, intermédiaire', null, 'rapide', 2, array['abdos']::text[], null, 2, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'rapide_abdos_2'
+  and exists (select 1 from public.trainings where id = 'rapide_abdos_2' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('rapide_abdos_2', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
+  ('rapide_abdos_2', 'warmup', 2, 'rotations_buste', 2, null, null),
+  ('rapide_abdos_2', 'warmup', 3, 'cercles_hanches', 2, null, null),
+  ('rapide_abdos_2', 'main', 1, 'crunch_velo', 2, null, null),
+  ('rapide_abdos_2', 'main', 2, 'planche', 3, null, null),
+  ('rapide_abdos_2', 'main', 3, 'rotation_russe', 2, null, null),
+  ('rapide_abdos_2', 'main', 4, 'ciseaux', 1, null, null),
+  ('rapide_abdos_2', 'main', 5, 'planche_laterale', 2, null, null),
+  ('rapide_abdos_2', 'cooldown', 1, 'cobra', 2, null, null),
+  ('rapide_abdos_2', 'cooldown', 2, 'torsion_couchee', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'rapide_abdos_2' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('rapide_abdos_3', 'Abdos, avancé', null, 'rapide', 3, array['abdos']::text[], null, 3, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'rapide_abdos_3'
+  and exists (select 1 from public.trainings where id = 'rapide_abdos_3' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('rapide_abdos_3', 'warmup', 1, 'marche_genoux_hauts', 2, null, null),
+  ('rapide_abdos_3', 'warmup', 2, 'rotations_buste', 3, null, null),
+  ('rapide_abdos_3', 'warmup', 3, 'cercles_hanches', 3, null, null),
+  ('rapide_abdos_3', 'main', 1, 'hollow', 3, null, null),
+  ('rapide_abdos_3', 'main', 2, 'v_up', 1, null, null),
+  ('rapide_abdos_3', 'main', 3, 'planche_dynamique', 2, null, null),
+  ('rapide_abdos_3', 'main', 4, 'rotation_russe', 3, null, null),
+  ('rapide_abdos_3', 'main', 5, 'releve_jambes', 3, null, null),
+  ('rapide_abdos_3', 'main', 6, 'mountain_climbers', 2, null, null),
+  ('rapide_abdos_3', 'cooldown', 1, 'cobra', 2, null, null),
+  ('rapide_abdos_3', 'cooldown', 2, 'torsion_couchee', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'rapide_abdos_3' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('rapide_jambes_1', 'Jambes, débutant', null, 'rapide', 1, array['jambes']::text[], null, 2, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'rapide_jambes_1'
+  and exists (select 1 from public.trainings where id = 'rapide_jambes_1' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('rapide_jambes_1', 'warmup', 1, 'marche_genoux_hauts', 1, 30, null),
+  ('rapide_jambes_1', 'warmup', 2, 'cercles_hanches', 1, null, null),
+  ('rapide_jambes_1', 'main', 1, 'squat', 1, null, null),
+  ('rapide_jambes_1', 'main', 2, 'fente_arriere', 1, null, null),
+  ('rapide_jambes_1', 'main', 3, 'releve_mollets', 1, null, null),
+  ('rapide_jambes_1', 'main', 4, 'pont', 1, null, null),
+  ('rapide_jambes_1', 'cooldown', 1, 'quadriceps_debout', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'rapide_jambes_1' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('rapide_jambes_2', 'Jambes, intermédiaire', null, 'rapide', 2, array['jambes']::text[], null, 2, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'rapide_jambes_2'
+  and exists (select 1 from public.trainings where id = 'rapide_jambes_2' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('rapide_jambes_2', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
+  ('rapide_jambes_2', 'warmup', 2, 'cercles_hanches', 2, null, null),
+  ('rapide_jambes_2', 'warmup', 3, 'balancier_jambes', 1, 30, null),
+  ('rapide_jambes_2', 'warmup', 4, 'squat', 1, 8, null),
+  ('rapide_jambes_2', 'main', 1, 'squat_sumo', 2, null, null),
+  ('rapide_jambes_2', 'main', 2, 'fente_laterale', 2, null, null),
+  ('rapide_jambes_2', 'main', 3, 'charniere_hanche', 2, null, null),
+  ('rapide_jambes_2', 'main', 4, 'pont_unilateral', 1, null, null),
+  ('rapide_jambes_2', 'main', 5, 'releve_mollets', 2, null, null),
+  ('rapide_jambes_2', 'cooldown', 1, 'quadriceps_debout', 1, null, null),
+  ('rapide_jambes_2', 'cooldown', 2, 'ischios', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'rapide_jambes_2' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('rapide_jambes_3', 'Jambes, avancé', null, 'rapide', 3, array['jambes']::text[], null, 3, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'rapide_jambes_3'
+  and exists (select 1 from public.trainings where id = 'rapide_jambes_3' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('rapide_jambes_3', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
+  ('rapide_jambes_3', 'warmup', 2, 'cercles_hanches', 3, null, null),
+  ('rapide_jambes_3', 'warmup', 3, 'balancier_jambes', 1, 30, null),
+  ('rapide_jambes_3', 'warmup', 4, 'squat', 1, 8, null),
+  ('rapide_jambes_3', 'main', 1, 'squat_saute', 2, null, null),
+  ('rapide_jambes_3', 'main', 2, 'fente_arriere', 3, null, null),
+  ('rapide_jambes_3', 'main', 3, 'fente_laterale', 3, null, null),
+  ('rapide_jambes_3', 'main', 4, 'pont_unilateral', 2, null, null),
+  ('rapide_jambes_3', 'main', 5, 'patineur', 2, null, null),
+  ('rapide_jambes_3', 'cooldown', 1, 'quadriceps_debout', 2, null, null),
+  ('rapide_jambes_3', 'cooldown', 2, 'ischios', 2, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'rapide_jambes_3' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('rapide_bras_1', 'Bras, débutant', null, 'rapide', 1, array['bras']::text[], null, 2, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'rapide_bras_1'
+  and exists (select 1 from public.trainings where id = 'rapide_bras_1' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('rapide_bras_1', 'warmup', 1, 'cercles_bras', 1, null, null),
+  ('rapide_bras_1', 'warmup', 2, 'marche_genoux_hauts', 1, 30, null),
+  ('rapide_bras_1', 'main', 1, 'pompe_genoux', 1, null, null),
+  ('rapide_bras_1', 'main', 2, 'planche_inverse', 1, null, null),
+  ('rapide_bras_1', 'main', 3, 'boxe_ombre', 1, null, null),
+  ('rapide_bras_1', 'main', 4, 'ours_statique', 1, null, null),
+  ('rapide_bras_1', 'cooldown', 1, 'triceps_etirement', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'rapide_bras_1' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('rapide_bras_2', 'Bras, intermédiaire', null, 'rapide', 2, array['bras']::text[], null, 2, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'rapide_bras_2'
+  and exists (select 1 from public.trainings where id = 'rapide_bras_2' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('rapide_bras_2', 'warmup', 1, 'cercles_bras', 2, null, null),
+  ('rapide_bras_2', 'warmup', 2, 'marche_genoux_hauts', 1, 40, null),
+  ('rapide_bras_2', 'warmup', 3, 'rotations_buste', 2, null, null),
+  ('rapide_bras_2', 'main', 1, 'pompe_genoux', 3, null, null),
+  ('rapide_bras_2', 'main', 2, 'planche_inverse', 2, null, null),
+  ('rapide_bras_2', 'main', 3, 'boxe_ombre', 2, null, null),
+  ('rapide_bras_2', 'main', 4, 'pompe', 1, null, null),
+  ('rapide_bras_2', 'main', 5, 'planche_dynamique', 1, null, null),
+  ('rapide_bras_2', 'main', 6, 'ours_statique', 2, null, null),
+  ('rapide_bras_2', 'cooldown', 1, 'triceps_etirement', 1, null, null),
+  ('rapide_bras_2', 'cooldown', 2, 'epaule_bras_croise', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'rapide_bras_2' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('rapide_bras_3', 'Bras, avancé', null, 'rapide', 3, array['bras']::text[], null, 3, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'rapide_bras_3'
+  and exists (select 1 from public.trainings where id = 'rapide_bras_3' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('rapide_bras_3', 'warmup', 1, 'cercles_bras', 3, null, null),
+  ('rapide_bras_3', 'warmup', 2, 'marche_genoux_hauts', 2, null, null),
+  ('rapide_bras_3', 'warmup', 3, 'rotations_buste', 3, null, null),
+  ('rapide_bras_3', 'main', 1, 'pompe', 3, null, null),
+  ('rapide_bras_3', 'main', 2, 'pompe_serree', 2, null, null),
+  ('rapide_bras_3', 'main', 3, 'planche_inverse', 3, null, null),
+  ('rapide_bras_3', 'main', 4, 'pompe_pike', 1, null, null),
+  ('rapide_bras_3', 'main', 5, 'planche_dynamique', 2, null, null),
+  ('rapide_bras_3', 'main', 6, 'boxe_ombre', 3, null, null),
+  ('rapide_bras_3', 'cooldown', 1, 'triceps_etirement', 2, null, null),
+  ('rapide_bras_3', 'cooldown', 2, 'epaule_bras_croise', 2, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'rapide_bras_3' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('rapide_epaules_1', 'Épaules, débutant', null, 'rapide', 1, array['epaules']::text[], null, 2, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'rapide_epaules_1'
+  and exists (select 1 from public.trainings where id = 'rapide_epaules_1' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('rapide_epaules_1', 'warmup', 1, 'cercles_bras', 1, null, null),
+  ('rapide_epaules_1', 'warmup', 2, 'rotations_buste', 1, null, null),
+  ('rapide_epaules_1', 'main', 1, 'ytw', 1, null, null),
+  ('rapide_epaules_1', 'main', 2, 'ours_statique', 1, null, null),
+  ('rapide_epaules_1', 'main', 3, 'boxe_ombre', 1, null, null),
+  ('rapide_epaules_1', 'main', 4, 'planche', 1, null, null),
+  ('rapide_epaules_1', 'cooldown', 1, 'epaule_bras_croise', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'rapide_epaules_1' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('rapide_epaules_2', 'Épaules, intermédiaire', null, 'rapide', 2, array['epaules']::text[], null, 2, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'rapide_epaules_2'
+  and exists (select 1 from public.trainings where id = 'rapide_epaules_2' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('rapide_epaules_2', 'warmup', 1, 'cercles_bras', 2, null, null),
+  ('rapide_epaules_2', 'warmup', 2, 'marche_genoux_hauts', 1, 40, null),
+  ('rapide_epaules_2', 'warmup', 3, 'rotations_buste', 2, null, null),
+  ('rapide_epaules_2', 'main', 1, 'ytw', 2, null, null),
+  ('rapide_epaules_2', 'main', 2, 'planche_epaules', 2, null, null),
+  ('rapide_epaules_2', 'main', 3, 'pompe_genoux', 2, null, null),
+  ('rapide_epaules_2', 'main', 4, 'boxe_ombre', 2, null, null),
+  ('rapide_epaules_2', 'main', 5, 'ours_statique', 2, null, null),
+  ('rapide_epaules_2', 'cooldown', 1, 'epaule_bras_croise', 1, null, null),
+  ('rapide_epaules_2', 'cooldown', 2, 'chien_tete_bas', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'rapide_epaules_2' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('rapide_epaules_3', 'Épaules, avancé', null, 'rapide', 3, array['epaules']::text[], null, 3, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'rapide_epaules_3'
+  and exists (select 1 from public.trainings where id = 'rapide_epaules_3' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('rapide_epaules_3', 'warmup', 1, 'cercles_bras', 3, null, null),
+  ('rapide_epaules_3', 'warmup', 2, 'marche_genoux_hauts', 2, null, null),
+  ('rapide_epaules_3', 'warmup', 3, 'rotations_buste', 3, null, null),
+  ('rapide_epaules_3', 'main', 1, 'pompe_pike', 2, null, null),
+  ('rapide_epaules_3', 'main', 2, 'ytw', 3, null, null),
+  ('rapide_epaules_3', 'main', 3, 'planche_epaules', 3, null, null),
+  ('rapide_epaules_3', 'main', 4, 'marche_ours', 2, null, null),
+  ('rapide_epaules_3', 'main', 5, 'pompe', 2, null, null),
+  ('rapide_epaules_3', 'main', 6, 'boxe_ombre', 3, null, null),
+  ('rapide_epaules_3', 'cooldown', 1, 'epaule_bras_croise', 2, null, null),
+  ('rapide_epaules_3', 'cooldown', 2, 'chien_tete_bas', 2, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'rapide_epaules_3' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('rapide_dos_1', 'Dos, débutant', null, 'rapide', 1, array['dos']::text[], null, 2, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'rapide_dos_1'
+  and exists (select 1 from public.trainings where id = 'rapide_dos_1' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('rapide_dos_1', 'warmup', 1, 'chat_vache', 1, null, null),
+  ('rapide_dos_1', 'warmup', 2, 'cercles_bras', 1, null, null),
+  ('rapide_dos_1', 'main', 1, 'bird_dog', 3, null, null),
+  ('rapide_dos_1', 'main', 2, 'superman', 1, null, null),
+  ('rapide_dos_1', 'main', 3, 'pont', 1, null, null),
+  ('rapide_dos_1', 'main', 4, 'ytw', 1, null, null),
+  ('rapide_dos_1', 'cooldown', 1, 'enfant', 2, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'rapide_dos_1' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('rapide_dos_2', 'Dos, intermédiaire', null, 'rapide', 2, array['dos']::text[], null, 2, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'rapide_dos_2'
+  and exists (select 1 from public.trainings where id = 'rapide_dos_2' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('rapide_dos_2', 'warmup', 1, 'chat_vache', 2, null, null),
+  ('rapide_dos_2', 'warmup', 2, 'cercles_bras', 2, null, null),
+  ('rapide_dos_2', 'warmup', 3, 'rotations_buste', 2, null, null),
+  ('rapide_dos_2', 'main', 1, 'superman', 2, null, null),
+  ('rapide_dos_2', 'main', 2, 'ytw', 2, null, null),
+  ('rapide_dos_2', 'main', 3, 'bird_dog', 4, null, null),
+  ('rapide_dos_2', 'main', 4, 'charniere_hanche', 1, null, null),
+  ('rapide_dos_2', 'main', 5, 'planche_inverse', 1, null, null),
+  ('rapide_dos_2', 'cooldown', 1, 'enfant', 2, null, null),
+  ('rapide_dos_2', 'cooldown', 2, 'sphinx', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'rapide_dos_2' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('rapide_dos_3', 'Dos, avancé', null, 'rapide', 3, array['dos']::text[], null, 3, 15, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'rapide_dos_3'
+  and exists (select 1 from public.trainings where id = 'rapide_dos_3' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('rapide_dos_3', 'warmup', 1, 'chat_vache', 2, null, null),
+  ('rapide_dos_3', 'warmup', 2, 'cercles_bras', 3, null, null),
+  ('rapide_dos_3', 'warmup', 3, 'rotations_buste', 3, null, null),
+  ('rapide_dos_3', 'warmup', 4, 'plus_grand_etirement', 1, 40, null),
+  ('rapide_dos_3', 'main', 1, 'superman', 3, null, null),
+  ('rapide_dos_3', 'main', 2, 'ytw', 3, null, null),
+  ('rapide_dos_3', 'main', 3, 'planche_inverse', 3, null, null),
+  ('rapide_dos_3', 'main', 4, 'charniere_hanche', 3, null, null),
+  ('rapide_dos_3', 'main', 5, 'chenille', 2, null, null),
+  ('rapide_dos_3', 'main', 6, 'bird_dog', 4, null, null),
+  ('rapide_dos_3', 'cooldown', 1, 'enfant', 3, null, null),
+  ('rapide_dos_3', 'cooldown', 2, 'sphinx', 2, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'rapide_dos_3' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('decouverte_yoga_matin', 'Yoga du matin', 'Une séquence douce pour réveiller le corps : salutation au soleil et postures debout.', 'decouverte', 1, array['corps_entier']::text[], 'yoga', 1, 5, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'decouverte_yoga_matin'
+  and exists (select 1 from public.trainings where id = 'decouverte_yoga_matin' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('decouverte_yoga_matin', 'main', 1, 'montagne', 1, null, null),
+  ('decouverte_yoga_matin', 'main', 2, 'chat_vache', 2, null, null),
+  ('decouverte_yoga_matin', 'main', 3, 'salutation_soleil', 1, null, null),
+  ('decouverte_yoga_matin', 'main', 4, 'chaise_yoga', 1, null, null),
+  ('decouverte_yoga_matin', 'main', 5, 'guerrier_1', 1, null, null),
+  ('decouverte_yoga_matin', 'main', 6, 'guerrier_2', 1, null, null),
+  ('decouverte_yoga_matin', 'main', 7, 'triangle', 1, null, null),
+  ('decouverte_yoga_matin', 'main', 8, 'arbre', 1, null, null),
+  ('decouverte_yoga_matin', 'main', 9, 'enfant', 2, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'decouverte_yoga_matin' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('decouverte_etirements_soir', 'Étirements du soir', 'Relâcher les tensions de la journée avant de dormir, tout en douceur.', 'decouverte', 1, array['corps_entier']::text[], 'etirement', 1, 5, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'decouverte_etirements_soir'
+  and exists (select 1 from public.trainings where id = 'decouverte_etirements_soir' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('decouverte_etirements_soir', 'main', 1, 'etirement_lateral', 1, null, null),
+  ('decouverte_etirements_soir', 'main', 2, 'quadriceps_debout', 1, null, null),
+  ('decouverte_etirements_soir', 'main', 3, 'sphinx', 1, null, null),
+  ('decouverte_etirements_soir', 'main', 4, 'genoux_poitrine', 1, null, null),
+  ('decouverte_etirements_soir', 'main', 5, 'fessiers_4', 1, null, null),
+  ('decouverte_etirements_soir', 'main', 6, 'ischios', 1, null, null),
+  ('decouverte_etirements_soir', 'main', 7, 'torsion_couchee', 1, null, null),
+  ('decouverte_etirements_soir', 'main', 8, 'papillon', 1, null, null),
+  ('decouverte_etirements_soir', 'main', 9, 'respiration', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'decouverte_etirements_soir' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('decouverte_meditation', 'Méditation guidée', 'Quelques minutes de respiration lente, puis d''attention au souffle.', 'decouverte', 1, '{}'::text[], 'meditation', 1, 5, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'decouverte_meditation'
+  and exists (select 1 from public.trainings where id = 'decouverte_meditation' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('decouverte_meditation', 'main', 1, 'coherence_cardiaque', 1, 120, null),
+  ('decouverte_meditation', 'main', 2, 'meditation_souffle', 2, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'decouverte_meditation' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('decouverte_gainage_express', 'Gainage express', 'Un gainage court et efficace, quand il ne reste que quelques minutes.', 'decouverte', 1, array['abdos']::text[], 'gainage', 2, 10, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'decouverte_gainage_express'
+  and exists (select 1 from public.trainings where id = 'decouverte_gainage_express' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('decouverte_gainage_express', 'main', 1, 'planche', 2, null, null),
+  ('decouverte_gainage_express', 'main', 2, 'dead_bug', 2, null, null),
+  ('decouverte_gainage_express', 'main', 3, 'planche_laterale', 1, null, null),
+  ('decouverte_gainage_express', 'main', 4, 'bird_dog', 3, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'decouverte_gainage_express' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('decouverte_detente_sommeil', 'Détente avant le sommeil', 'Jambes au mur, puis relaxation progressive pour préparer le sommeil.', 'decouverte', 1, '{}'::text[], 'meditation', 1, 5, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'decouverte_detente_sommeil'
+  and exists (select 1 from public.trainings where id = 'decouverte_detente_sommeil' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('decouverte_detente_sommeil', 'main', 1, 'jambes_au_mur', 1, null, null),
+  ('decouverte_detente_sommeil', 'main', 2, 'relaxation_progressive', 2, null, null),
+  ('decouverte_detente_sommeil', 'main', 3, 'coherence_cardiaque', 1, 120, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'decouverte_detente_sommeil' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('decouverte_yoga_hanches', 'Yoga des hanches', 'Ouvrir les hanches après une journée assise.', 'decouverte', 1, array['fessiers', 'jambes']::text[], 'yoga', 1, 5, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'decouverte_yoga_hanches'
+  and exists (select 1 from public.trainings where id = 'decouverte_yoga_hanches' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('decouverte_yoga_hanches', 'main', 1, 'chat_vache', 1, null, null),
+  ('decouverte_yoga_hanches', 'main', 2, 'fente_basse', 2, null, null),
+  ('decouverte_yoga_hanches', 'main', 3, 'guerrier_2', 2, null, null),
+  ('decouverte_yoga_hanches', 'main', 4, 'pigeon', 2, null, null),
+  ('decouverte_yoga_hanches', 'main', 5, 'papillon', 2, null, null),
+  ('decouverte_yoga_hanches', 'main', 6, 'pince_assise', 2, null, null),
+  ('decouverte_yoga_hanches', 'main', 7, 'bebe_heureux', 2, null, null),
+  ('decouverte_yoga_hanches', 'main', 8, 'torsion_couchee', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'decouverte_yoga_hanches' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('decouverte_scan_corporel', 'Scan corporel', 'Parcourir le corps de la tête aux pieds pour se poser.', 'decouverte', 1, '{}'::text[], 'meditation', 1, 5, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'decouverte_scan_corporel'
+  and exists (select 1 from public.trainings where id = 'decouverte_scan_corporel' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('decouverte_scan_corporel', 'main', 1, 'respiration', 1, null, null),
+  ('decouverte_scan_corporel', 'main', 2, 'scan_corporel', 2, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'decouverte_scan_corporel' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('express_reveil', 'Réveil en 4 minutes', 'Mobilité du matin, sans quitter la chambre.', 'express', 1, array['corps_entier']::text[], 'etirement', 1, 5, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'express_reveil'
+  and exists (select 1 from public.trainings where id = 'express_reveil' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('express_reveil', 'main', 1, 'cercles_bras', 1, null, null),
+  ('express_reveil', 'main', 2, 'rotations_buste', 1, null, null),
+  ('express_reveil', 'main', 3, 'cercles_hanches', 1, null, null),
+  ('express_reveil', 'main', 4, 'chat_vache', 1, null, null),
+  ('express_reveil', 'main', 5, 'squat', 1, 8, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'express_reveil' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('express_cardio', 'Coup de boost cardio', 'Quatre minutes pour se réchauffer, sans saut.', 'express', 1, array['corps_entier']::text[], 'cardio', 2, 10, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'express_cardio'
+  and exists (select 1 from public.trainings where id = 'express_cardio' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('express_cardio', 'main', 1, 'step_jacks', 2, 30, null),
+  ('express_cardio', 'main', 2, 'boxe_ombre', 1, 30, null),
+  ('express_cardio', 'main', 3, 'marche_genoux_hauts', 2, 30, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'express_cardio' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('express_abdos', 'Abdos express', 'Quatre exercices de gainage enchaînés deux fois.', 'express', 1, array['abdos']::text[], 'gainage', 2, 10, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'express_abdos'
+  and exists (select 1 from public.trainings where id = 'express_abdos' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('express_abdos', 'main', 1, 'planche', 2, 20, null),
+  ('express_abdos', 'main', 2, 'dead_bug', 1, 8, null),
+  ('express_abdos', 'main', 3, 'crunch', 1, 12, null),
+  ('express_abdos', 'main', 4, 'planche_laterale', 1, 20, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'express_abdos' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('express_jambes', 'Jambes express', 'Squats, fentes et pont : l''essentiel des jambes.', 'express', 1, array['jambes', 'fessiers']::text[], 'renforcement', 2, 10, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'express_jambes'
+  and exists (select 1 from public.trainings where id = 'express_jambes' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('express_jambes', 'main', 1, 'squat', 1, 8, null),
+  ('express_jambes', 'main', 2, 'fente_arriere', 1, 6, null),
+  ('express_jambes', 'main', 3, 'pont', 1, 10, null),
+  ('express_jambes', 'main', 4, 'releve_mollets', 1, 10, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'express_jambes' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('express_pause_bureau', 'Pause bureau', 'Dénouer la nuque, les épaules et le dos entre deux réunions.', 'express', 1, array['dos', 'epaules']::text[], 'etirement', 1, 5, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'express_pause_bureau'
+  and exists (select 1 from public.trainings where id = 'express_pause_bureau' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('express_pause_bureau', 'main', 1, 'chin_tuck', 1, null, null),
+  ('express_pause_bureau', 'main', 2, 'omoplates', 1, null, null),
+  ('express_pause_bureau', 'main', 3, 'trapezes', 1, 40, null),
+  ('express_pause_bureau', 'main', 4, 'epaule_bras_croise', 1, null, null),
+  ('express_pause_bureau', 'main', 5, 'etirement_lateral', 1, 30, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'express_pause_bureau' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
+insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
+values ('express_respiration', 'Trois minutes pour respirer', 'Respiration lente pour faire redescendre la pression.', 'express', 1, '{}'::text[], 'meditation', 1, 0, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
+  level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
+  rest_seconds = excluded.rest_seconds, source = excluded.source
+where public.trainings.approved = false;
+delete from public.training_items where training_id = 'express_respiration'
+  and exists (select 1 from public.trainings where id = 'express_respiration' and approved = false);
+insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
+select v.* from (values
+  ('express_respiration', 'main', 1, 'coherence_cardiaque', 1, null, null)
+) as v(training_id, phase, position, exercise_id, level, value, sets)
+where exists (select 1 from public.trainings where id = 'express_respiration' and approved = false)
+on conflict (training_id, phase, position) do nothing;
+
 -- ---------------------------------------------------------------- 4. Programmes
+insert into public.programs (id, title, description, goals, areas, level, approved, source)
+values ('remise_en_forme', 'Remise en forme', '28 jours pour retrouver la forme : bas du corps, haut du corps et cardio doux en alternance, sans matériel et sans saut. Les séances passent de 10 à 25 minutes au fil des semaines.', array['garder_la_forme', 'perdre_du_poids', 'renforcer']::text[], array['corps_entier']::text[], 1, false, 'Composé pour l''app (bloc 2 V5). Repères : OMS 2020 (renforcement au moins 2 jours par semaine, https://pmc.ncbi.nlm.nih.gov/articles/PMC7719906/) ; ACSM 2026, renforcement musculaire et progression (https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/).')
+on conflict (id) do update set title = excluded.title, description = excluded.description, goals = excluded.goals,
+  areas = excluded.areas, level = excluded.level, source = excluded.source
+where public.programs.approved = false;
+delete from public.program_days where program_id = 'remise_en_forme'
+  and exists (select 1 from public.programs where id = 'remise_en_forme' and approved = false);
+insert into public.program_days (program_id, day, training_id)
+select v.* from (values
+  ('remise_en_forme', 1, 'rf_s1_a'),
+  ('remise_en_forme', 2, 'rf_s1_b'),
+  ('remise_en_forme', 3, 'prog_mobilite_s1'),
+  ('remise_en_forme', 4, 'rf_s1_c'),
+  ('remise_en_forme', 5, 'rf_s1_a'),
+  ('remise_en_forme', 6, 'rf_s1_b'),
+  ('remise_en_forme', 7, 'prog_recup_s1'),
+  ('remise_en_forme', 8, 'rf_s2_a'),
+  ('remise_en_forme', 9, 'rf_s2_b'),
+  ('remise_en_forme', 10, 'prog_mobilite_s2'),
+  ('remise_en_forme', 11, 'rf_s2_c'),
+  ('remise_en_forme', 12, 'rf_s2_a'),
+  ('remise_en_forme', 13, 'rf_s2_b'),
+  ('remise_en_forme', 14, 'prog_recup_s2'),
+  ('remise_en_forme', 15, 'rf_s3_a'),
+  ('remise_en_forme', 16, 'rf_s3_b'),
+  ('remise_en_forme', 17, 'prog_mobilite_s3'),
+  ('remise_en_forme', 18, 'rf_s3_c'),
+  ('remise_en_forme', 19, 'rf_s3_a'),
+  ('remise_en_forme', 20, 'rf_s3_b'),
+  ('remise_en_forme', 21, 'prog_recup_s3'),
+  ('remise_en_forme', 22, 'rf_s4_a'),
+  ('remise_en_forme', 23, 'rf_s4_b'),
+  ('remise_en_forme', 24, 'prog_mobilite_s4'),
+  ('remise_en_forme', 25, 'rf_s4_c'),
+  ('remise_en_forme', 26, 'rf_s4_a'),
+  ('remise_en_forme', 27, 'rf_s4_b'),
+  ('remise_en_forme', 28, 'prog_recup_s4')
+) as v(program_id, day, training_id)
+where exists (select 1 from public.programs where id = 'remise_en_forme' and approved = false)
+on conflict (program_id, day) do nothing;
+
+insert into public.programs (id, title, description, goals, areas, level, approved, source)
+values ('hanches_fessiers', 'Hanches et fessiers', '28 jours pour tonifier les fessiers et les jambes : ponts, fentes, travail de hanche et un peu de cardio, sans matériel et sans saut. De 10 à 25 minutes par séance.', array['tonifier', 'renforcer']::text[], array['fessiers', 'jambes']::text[], 1, false, 'Composé pour l''app (bloc 2 V5). Repères : OMS 2020 (renforcement au moins 2 jours par semaine, https://pmc.ncbi.nlm.nih.gov/articles/PMC7719906/) ; ACSM 2026, renforcement musculaire et progression (https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/).')
+on conflict (id) do update set title = excluded.title, description = excluded.description, goals = excluded.goals,
+  areas = excluded.areas, level = excluded.level, source = excluded.source
+where public.programs.approved = false;
+delete from public.program_days where program_id = 'hanches_fessiers'
+  and exists (select 1 from public.programs where id = 'hanches_fessiers' and approved = false);
+insert into public.program_days (program_id, day, training_id)
+select v.* from (values
+  ('hanches_fessiers', 1, 'hf_s1_a'),
+  ('hanches_fessiers', 2, 'hf_s1_b'),
+  ('hanches_fessiers', 3, 'prog_mobilite_s1'),
+  ('hanches_fessiers', 4, 'hf_s1_c'),
+  ('hanches_fessiers', 5, 'hf_s1_a'),
+  ('hanches_fessiers', 6, 'hf_s1_b'),
+  ('hanches_fessiers', 7, 'prog_recup_s1'),
+  ('hanches_fessiers', 8, 'hf_s2_a'),
+  ('hanches_fessiers', 9, 'hf_s2_b'),
+  ('hanches_fessiers', 10, 'prog_mobilite_s2'),
+  ('hanches_fessiers', 11, 'hf_s2_c'),
+  ('hanches_fessiers', 12, 'hf_s2_a'),
+  ('hanches_fessiers', 13, 'hf_s2_b'),
+  ('hanches_fessiers', 14, 'prog_recup_s2'),
+  ('hanches_fessiers', 15, 'hf_s3_a'),
+  ('hanches_fessiers', 16, 'hf_s3_b'),
+  ('hanches_fessiers', 17, 'prog_mobilite_s3'),
+  ('hanches_fessiers', 18, 'hf_s3_c'),
+  ('hanches_fessiers', 19, 'hf_s3_a'),
+  ('hanches_fessiers', 20, 'hf_s3_b'),
+  ('hanches_fessiers', 21, 'prog_recup_s3'),
+  ('hanches_fessiers', 22, 'hf_s4_a'),
+  ('hanches_fessiers', 23, 'hf_s4_b'),
+  ('hanches_fessiers', 24, 'prog_mobilite_s4'),
+  ('hanches_fessiers', 25, 'hf_s4_c'),
+  ('hanches_fessiers', 26, 'hf_s4_a'),
+  ('hanches_fessiers', 27, 'hf_s4_b'),
+  ('hanches_fessiers', 28, 'prog_recup_s4')
+) as v(program_id, day, training_id)
+where exists (select 1 from public.programs where id = 'hanches_fessiers' and approved = false)
+on conflict (program_id, day) do nothing;
+
+insert into public.programs (id, title, description, goals, areas, level, approved, source)
+values ('gainage_calisthenie', 'Gainage et calisthénie', '28 jours pour un tronc solide et les bases de la calisthénie : planches, dead bug, pompes et travail du dos au poids du corps. De 10 à 25 minutes par séance.', array['renforcer', 'tonifier']::text[], array['abdos', 'bras', 'dos']::text[], 1, false, 'Composé pour l''app (bloc 2 V5). Repères : OMS 2020 (renforcement au moins 2 jours par semaine, https://pmc.ncbi.nlm.nih.gov/articles/PMC7719906/) ; ACSM 2026, renforcement musculaire et progression (https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/).')
+on conflict (id) do update set title = excluded.title, description = excluded.description, goals = excluded.goals,
+  areas = excluded.areas, level = excluded.level, source = excluded.source
+where public.programs.approved = false;
+delete from public.program_days where program_id = 'gainage_calisthenie'
+  and exists (select 1 from public.programs where id = 'gainage_calisthenie' and approved = false);
+insert into public.program_days (program_id, day, training_id)
+select v.* from (values
+  ('gainage_calisthenie', 1, 'gc_s1_a'),
+  ('gainage_calisthenie', 2, 'gc_s1_b'),
+  ('gainage_calisthenie', 3, 'prog_mobilite_s1'),
+  ('gainage_calisthenie', 4, 'gc_s1_c'),
+  ('gainage_calisthenie', 5, 'gc_s1_a'),
+  ('gainage_calisthenie', 6, 'gc_s1_b'),
+  ('gainage_calisthenie', 7, 'prog_recup_s1'),
+  ('gainage_calisthenie', 8, 'gc_s2_a'),
+  ('gainage_calisthenie', 9, 'gc_s2_b'),
+  ('gainage_calisthenie', 10, 'prog_mobilite_s2'),
+  ('gainage_calisthenie', 11, 'gc_s2_c'),
+  ('gainage_calisthenie', 12, 'gc_s2_a'),
+  ('gainage_calisthenie', 13, 'gc_s2_b'),
+  ('gainage_calisthenie', 14, 'prog_recup_s2'),
+  ('gainage_calisthenie', 15, 'gc_s3_a'),
+  ('gainage_calisthenie', 16, 'gc_s3_b'),
+  ('gainage_calisthenie', 17, 'prog_mobilite_s3'),
+  ('gainage_calisthenie', 18, 'gc_s3_c'),
+  ('gainage_calisthenie', 19, 'gc_s3_a'),
+  ('gainage_calisthenie', 20, 'gc_s3_b'),
+  ('gainage_calisthenie', 21, 'prog_recup_s3'),
+  ('gainage_calisthenie', 22, 'gc_s4_a'),
+  ('gainage_calisthenie', 23, 'gc_s4_b'),
+  ('gainage_calisthenie', 24, 'prog_mobilite_s4'),
+  ('gainage_calisthenie', 25, 'gc_s4_c'),
+  ('gainage_calisthenie', 26, 'gc_s4_a'),
+  ('gainage_calisthenie', 27, 'gc_s4_b'),
+  ('gainage_calisthenie', 28, 'prog_recup_s4')
+) as v(program_id, day, training_id)
+where exists (select 1 from public.programs where id = 'gainage_calisthenie' and approved = false)
+on conflict (program_id, day) do nothing;

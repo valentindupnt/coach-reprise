@@ -263,6 +263,7 @@ on conflict (program_id, day) do nothing;
 `);
 }
 
+if (args.includes('--durees')) for (const t of TRAININGS) console.log(`${t.id.padEnd(30)} ${String(trainingStats[t.id].minutes).padStart(3)} min (visé ${t.target ?? '-'})`);
 if (errors.length) {
   console.error(`${errors.length} problème(s) :\n  - ${errors.join('\n  - ')}`);
   process.exit(1);

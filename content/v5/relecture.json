@@ -4176,6 +4176,1708 @@
    "video": null
   }
  ],
- "entrainements": [],
- "programmes": []
+ "entrainements": [
+  {
+   "id": "prog_mobilite_s1",
+   "titre": "Mobilité douce",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "corps_entier",
+   "tours": 1,
+   "pause": 10,
+   "description": "Une séance courte pour délier le dos, les hanches et les épaules entre deux renforcements.",
+   "minutes": 5,
+   "metMinutes": 8.7,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Corps : Chat-vache\nCorps : Cercles de hanches\nCorps : Livre ouvert (rotation du haut du dos)\nCorps : Le plus grand étirement du monde\nCorps : Posture de l'enfant"
+  },
+  {
+   "id": "prog_mobilite_s2",
+   "titre": "Mobilité du dos et des hanches",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "corps_entier",
+   "tours": 1,
+   "pause": 10,
+   "description": "Mobilité active pour récupérer et bouger mieux.",
+   "minutes": 6,
+   "metMinutes": 11.8,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Corps : Chat-vache\nCorps : Cercles de bras\nCorps : Rotations du buste\nCorps : Le plus grand étirement du monde\nCorps : Fente basse (posture du croissant)\nCorps : Posture de l'enfant"
+  },
+  {
+   "id": "prog_mobilite_s3",
+   "titre": "Mobilité et salutation au soleil",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "corps_entier",
+   "tours": 1,
+   "pause": 10,
+   "description": "Mobilité puis deux salutations au soleil en douceur.",
+   "minutes": 7,
+   "metMinutes": 15.3,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Corps : Chat-vache\nCorps : Cercles de hanches\nCorps : Salutation au soleil (version douce)\nCorps : Le plus grand étirement du monde\nCorps : Sphinx\nCorps : Torsion allongée"
+  },
+  {
+   "id": "prog_mobilite_s4",
+   "titre": "Mobilité complète",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "corps_entier",
+   "tours": 1,
+   "pause": 10,
+   "description": "Une séance de mobilité plus longue pour finir le mois en souplesse.",
+   "minutes": 9,
+   "metMinutes": 20.7,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Corps : Chat-vache\nCorps : Cercles de bras\nCorps : Salutation au soleil (version douce)\nCorps : Le plus grand étirement du monde\nCorps : Fente basse (posture du croissant)\nCorps : Pigeon (version au sol)\nCorps : Torsion allongée"
+  },
+  {
+   "id": "prog_recup_s1",
+   "titre": "Récupération : étirements",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "corps_entier",
+   "tours": 1,
+   "pause": 10,
+   "description": "Étirements doux de tout le corps pour finir la semaine.",
+   "minutes": 7,
+   "metMinutes": 13,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Corps : Genoux à la poitrine\nCorps : Étirement des fessiers en « 4 »\nCorps : Étirement des ischio-jambiers\nCorps : Torsion allongée\nCorps : Posture de l'enfant\nCorps : Respiration costale"
+  },
+  {
+   "id": "prog_recup_s2",
+   "titre": "Récupération : yoga doux",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "corps_entier",
+   "tours": 1,
+   "pause": 10,
+   "description": "Postures de yoga au sol et respiration lente.",
+   "minutes": 9,
+   "metMinutes": 13.6,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Corps : Chat-vache\nCorps : Sphinx\nCorps : Posture de l'enfant\nCorps : Papillon\nCorps : Torsion allongée\nCorps : Respiration lente (6 cycles par minute)"
+  },
+  {
+   "id": "prog_recup_s3",
+   "titre": "Récupération : hanches et dos",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "corps_entier",
+   "tours": 1,
+   "pause": 10,
+   "description": "Ouverture des hanches, détente du dos et quelques minutes de calme.",
+   "minutes": 8,
+   "metMinutes": 15.8,
+   "equipment": [
+    "mur"
+   ],
+   "impact": false,
+   "contenu": "Corps : Fente basse (posture du croissant)\nCorps : Pigeon (version au sol)\nCorps : Papillon\nCorps : Bébé heureux\nCorps : Torsion allongée\nCorps : Jambes contre le mur"
+  },
+  {
+   "id": "prog_recup_s4",
+   "titre": "Récupération : bilan du mois",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "corps_entier",
+   "tours": 1,
+   "pause": 10,
+   "description": "Étirements et scan corporel pour savourer le chemin parcouru.",
+   "minutes": 10,
+   "metMinutes": 13.7,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Corps : Chat-vache\nCorps : Pince assise\nCorps : Papillon\nCorps : Torsion allongée\nCorps : Méditation : scan corporel"
+  },
+  {
+   "id": "rf_s1_a",
+   "titre": "Bas du corps et gainage",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "jambes, fessiers, abdos",
+   "tours": 2,
+   "pause": 15,
+   "description": "",
+   "minutes": 11,
+   "metMinutes": 22.7,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nCorps : Squat au poids du corps\nCorps : Pont fessier\nCorps : Dead bug\nCorps : Planche\nRetour au calme : Étirement des ischio-jambiers"
+  },
+  {
+   "id": "rf_s1_b",
+   "titre": "Haut du corps et dos",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "bras, epaules, dos",
+   "tours": 2,
+   "pause": 15,
+   "description": "",
+   "minutes": 9,
+   "metMinutes": 20,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nCorps : Pompe sur les genoux\nCorps : Superman\nCorps : Bird-dog\nCorps : Position de l'ours (bear hold)\nRetour au calme : Posture de l'enfant"
+  },
+  {
+   "id": "rf_s1_c",
+   "titre": "Cardio doux",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "corps_entier",
+   "tours": 2,
+   "pause": 15,
+   "description": "",
+   "minutes": 9,
+   "metMinutes": 26.9,
+   "equipment": [
+    "mur"
+   ],
+   "impact": false,
+   "contenu": "Échauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nCorps : Marche sur place, genoux hauts\nCorps : Jumping jacks sans saut\nCorps : Squat, coup de pied avant\nCorps : Boxe dans le vide\nRetour au calme : Étirement des mollets"
+  },
+  {
+   "id": "rf_s2_a",
+   "titre": "Bas du corps et gainage",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "jambes, fessiers, abdos",
+   "tours": 2,
+   "pause": 15,
+   "description": "",
+   "minutes": 14,
+   "metMinutes": 31.5,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nCorps : Squat au poids du corps\nCorps : Fente arrière\nCorps : Pont fessier\nCorps : Dead bug\nCorps : Planche\nRetour au calme : Étirement des ischio-jambiers\nRetour au calme : Étirement des fléchisseurs de hanche"
+  },
+  {
+   "id": "rf_s2_b",
+   "titre": "Haut du corps et dos",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "bras, epaules, dos",
+   "tours": 2,
+   "pause": 15,
+   "description": "",
+   "minutes": 14,
+   "metMinutes": 30.1,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nCorps : Pompe sur les genoux\nCorps : Superman\nCorps : Planche, touchers d'épaule\nCorps : Y, T, W au sol\nCorps : Bird-dog\nCorps : Planche inversée\nRetour au calme : Posture de l'enfant\nRetour au calme : Étirement de l'épaule, bras croisé"
+  },
+  {
+   "id": "rf_s2_c",
+   "titre": "Cardio et renforcement",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "corps_entier",
+   "tours": 2,
+   "pause": 15,
+   "description": "",
+   "minutes": 13,
+   "metMinutes": 39.8,
+   "equipment": [
+    "mur"
+   ],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nCorps : Jumping jacks sans saut\nCorps : Squat au poids du corps\nCorps : Boxe dans le vide\nCorps : Mountain climbers lents\nCorps : Patineur sans saut\nRetour au calme : Étirement des quadriceps debout\nRetour au calme : Étirement des mollets"
+  },
+  {
+   "id": "rf_s3_a",
+   "titre": "Bas du corps et gainage",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "jambes, fessiers, abdos",
+   "tours": 3,
+   "pause": 15,
+   "description": "",
+   "minutes": 20,
+   "metMinutes": 45.4,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nÉchauffement : Le plus grand étirement du monde\nCorps : Squat au poids du corps\nCorps : Fente arrière\nCorps : Pont fessier\nCorps : Dead bug\nCorps : Planche\nRetour au calme : Étirement des ischio-jambiers\nRetour au calme : Étirement des fléchisseurs de hanche"
+  },
+  {
+   "id": "rf_s3_b",
+   "titre": "Haut du corps et dos",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "bras, epaules, dos",
+   "tours": 3,
+   "pause": 15,
+   "description": "",
+   "minutes": 18,
+   "metMinutes": 41.5,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nÉchauffement : Le plus grand étirement du monde\nCorps : Pompe sur les genoux\nCorps : Superman\nCorps : Planche, touchers d'épaule\nCorps : Y, T, W au sol\nCorps : Planche inversée\nRetour au calme : Posture de l'enfant\nRetour au calme : Étirement de l'épaule, bras croisé"
+  },
+  {
+   "id": "rf_s3_c",
+   "titre": "Cardio et renforcement",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "corps_entier",
+   "tours": 3,
+   "pause": 15,
+   "description": "",
+   "minutes": 18,
+   "metMinutes": 55.8,
+   "equipment": [
+    "mur"
+   ],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nCorps : Jumping jacks sans saut\nCorps : Squat au poids du corps\nCorps : Boxe dans le vide\nCorps : Mountain climbers lents\nCorps : Burpee sans saut\nRetour au calme : Étirement des quadriceps debout\nRetour au calme : Étirement des mollets"
+  },
+  {
+   "id": "rf_s4_a",
+   "titre": "Bas du corps et gainage",
+   "type": "programme",
+   "niveau": 2,
+   "zones": "jambes, fessiers, abdos",
+   "tours": 3,
+   "pause": 15,
+   "description": "",
+   "minutes": 24,
+   "metMinutes": 54.6,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nÉchauffement : Le plus grand étirement du monde\nCorps : Squat au poids du corps\nCorps : Fente arrière\nCorps : Pont fessier\nCorps : Fente latérale\nCorps : Dead bug\nCorps : Planche\nRetour au calme : Étirement des ischio-jambiers\nRetour au calme : Étirement des fléchisseurs de hanche\nRetour au calme : Étirement des fessiers en « 4 »"
+  },
+  {
+   "id": "rf_s4_b",
+   "titre": "Haut du corps et dos",
+   "type": "programme",
+   "niveau": 2,
+   "zones": "bras, epaules, dos",
+   "tours": 3,
+   "pause": 15,
+   "description": "",
+   "minutes": 26,
+   "metMinutes": 66,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nÉchauffement : Le plus grand étirement du monde\nCorps : Pompe sur les genoux\nCorps : Superman\nCorps : Planche, touchers d'épaule\nCorps : Y, T, W au sol\nCorps : Planche inversée\nCorps : Chenille (inchworm)\nCorps : Boxe dans le vide\nCorps : Position de l'ours (bear hold)\nRetour au calme : Posture de l'enfant\nRetour au calme : Étirement de l'épaule, bras croisé\nRetour au calme : Étirement des triceps"
+  },
+  {
+   "id": "rf_s4_c",
+   "titre": "Cardio et renforcement",
+   "type": "programme",
+   "niveau": 2,
+   "zones": "corps_entier",
+   "tours": 3,
+   "pause": 15,
+   "description": "",
+   "minutes": 24,
+   "metMinutes": 78.1,
+   "equipment": [
+    "mur"
+   ],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nÉchauffement : Le plus grand étirement du monde\nCorps : Jumping jacks sans saut\nCorps : Squat au poids du corps\nCorps : Boxe dans le vide\nCorps : Mountain climbers lents\nCorps : Burpee sans saut\nCorps : Patineur sans saut\nRetour au calme : Étirement des quadriceps debout\nRetour au calme : Étirement des mollets\nRetour au calme : Étirement latéral debout"
+  },
+  {
+   "id": "hf_s1_a",
+   "titre": "Fessiers : les bases",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "fessiers",
+   "tours": 2,
+   "pause": 15,
+   "description": "",
+   "minutes": 12,
+   "metMinutes": 27.5,
+   "equipment": [
+    "mur"
+   ],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de hanches\nÉchauffement : Balanciers de jambe\nÉchauffement : Squat au poids du corps\nCorps : Pont fessier\nCorps : Clamshell (coquillage)\nCorps : Ruade (donkey kick)\nCorps : Levée de jambe sur le côté\nRetour au calme : Étirement des fessiers en « 4 »"
+  },
+  {
+   "id": "hf_s1_b",
+   "titre": "Jambes et fessiers",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "jambes, fessiers",
+   "tours": 2,
+   "pause": 15,
+   "description": "",
+   "minutes": 11,
+   "metMinutes": 23.9,
+   "equipment": [
+    "mur"
+   ],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de hanches\nÉchauffement : Balanciers de jambe\nÉchauffement : Squat au poids du corps\nCorps : Squat sumo\nCorps : Fente arrière\nCorps : Bouche d'incendie (fire hydrant)\nCorps : Montée sur pointes de pieds\nRetour au calme : Étirement des quadriceps debout"
+  },
+  {
+   "id": "hf_s1_c",
+   "titre": "Fessiers et abdos",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "fessiers, abdos",
+   "tours": 2,
+   "pause": 15,
+   "description": "",
+   "minutes": 9,
+   "metMinutes": 20,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nCorps : Pont fessier en marche\nCorps : Dead bug\nCorps : Levée de jambe intérieure (adducteurs)\nCorps : Crunch inversé\nRetour au calme : Papillon"
+  },
+  {
+   "id": "hf_s2_a",
+   "titre": "Fessiers : volume",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "fessiers",
+   "tours": 2,
+   "pause": 15,
+   "description": "",
+   "minutes": 15,
+   "metMinutes": 34.9,
+   "equipment": [
+    "mur"
+   ],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de hanches\nÉchauffement : Balanciers de jambe\nÉchauffement : Squat au poids du corps\nCorps : Pont fessier\nCorps : Hip thrust, épaules sur le canapé\nCorps : Clamshell (coquillage)\nCorps : Ruade (donkey kick)\nCorps : Levée de jambe sur le côté\nRetour au calme : Étirement des fessiers en « 4 »\nRetour au calme : Étirement des fléchisseurs de hanche"
+  },
+  {
+   "id": "hf_s2_b",
+   "titre": "Jambes et fessiers",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "jambes, fessiers",
+   "tours": 2,
+   "pause": 15,
+   "description": "",
+   "minutes": 14,
+   "metMinutes": 32.1,
+   "equipment": [
+    "mur"
+   ],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de hanches\nÉchauffement : Balanciers de jambe\nÉchauffement : Squat au poids du corps\nCorps : Squat sumo\nCorps : Fente arrière\nCorps : Charnière de hanche (good morning) au poids du corps\nCorps : Bouche d'incendie (fire hydrant)\nCorps : Montée sur pointes de pieds\nRetour au calme : Étirement des quadriceps debout\nRetour au calme : Étirement des ischio-jambiers"
+  },
+  {
+   "id": "hf_s2_c",
+   "titre": "Fessiers, abdos et cardio",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "fessiers, abdos",
+   "tours": 2,
+   "pause": 15,
+   "description": "",
+   "minutes": 13,
+   "metMinutes": 35,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nCorps : Pont fessier en marche\nCorps : Patineur sans saut\nCorps : Dead bug\nCorps : Levée de jambe intérieure (adducteurs)\nCorps : Squat, coup de pied avant\nRetour au calme : Papillon\nRetour au calme : Étirement des fessiers en « 4 »"
+  },
+  {
+   "id": "hf_s3_a",
+   "titre": "Fessiers : force",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "fessiers",
+   "tours": 3,
+   "pause": 15,
+   "description": "",
+   "minutes": 21,
+   "metMinutes": 47.9,
+   "equipment": [
+    "mur"
+   ],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de hanches\nÉchauffement : Balanciers de jambe\nÉchauffement : Squat au poids du corps\nCorps : Hip thrust, épaules sur le canapé\nCorps : Pont fessier sur une jambe\nCorps : Clamshell (coquillage)\nCorps : Ruade (donkey kick)\nCorps : Levée de jambe sur le côté\nRetour au calme : Étirement des fessiers en « 4 »\nRetour au calme : Étirement des fléchisseurs de hanche"
+  },
+  {
+   "id": "hf_s3_b",
+   "titre": "Jambes et fessiers",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "jambes, fessiers",
+   "tours": 3,
+   "pause": 15,
+   "description": "",
+   "minutes": 19,
+   "metMinutes": 46.7,
+   "equipment": [
+    "mur"
+   ],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de hanches\nÉchauffement : Balanciers de jambe\nÉchauffement : Squat au poids du corps\nCorps : Squat sumo\nCorps : Fente latérale\nCorps : Charnière de hanche (good morning) au poids du corps\nCorps : Fente arrière\nCorps : Montée sur pointes de pieds\nRetour au calme : Étirement des quadriceps debout\nRetour au calme : Étirement des ischio-jambiers"
+  },
+  {
+   "id": "hf_s3_c",
+   "titre": "Fessiers, abdos et cardio",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "fessiers, abdos",
+   "tours": 3,
+   "pause": 15,
+   "description": "",
+   "minutes": 18,
+   "metMinutes": 52.6,
+   "equipment": [
+    "mur"
+   ],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nÉchauffement : Balanciers de jambe\nCorps : Pont fessier en marche\nCorps : Patineur sans saut\nCorps : Dead bug\nCorps : Bouche d'incendie (fire hydrant)\nCorps : Squat, coup de pied avant\nRetour au calme : Papillon\nRetour au calme : Pigeon (version au sol)"
+  },
+  {
+   "id": "hf_s4_a",
+   "titre": "Fessiers : force",
+   "type": "programme",
+   "niveau": 2,
+   "zones": "fessiers",
+   "tours": 3,
+   "pause": 15,
+   "description": "",
+   "minutes": 25,
+   "metMinutes": 57.5,
+   "equipment": [
+    "mur"
+   ],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de hanches\nÉchauffement : Balanciers de jambe\nÉchauffement : Squat au poids du corps\nCorps : Hip thrust, épaules sur le canapé\nCorps : Pont fessier sur une jambe\nCorps : Clamshell (coquillage)\nCorps : Ruade (donkey kick)\nCorps : Levée de jambe sur le côté\nCorps : Bouche d'incendie (fire hydrant)\nRetour au calme : Étirement des fessiers en « 4 »\nRetour au calme : Étirement des fléchisseurs de hanche\nRetour au calme : Pigeon (version au sol)"
+  },
+  {
+   "id": "hf_s4_b",
+   "titre": "Jambes et fessiers",
+   "type": "programme",
+   "niveau": 2,
+   "zones": "jambes, fessiers",
+   "tours": 3,
+   "pause": 15,
+   "description": "",
+   "minutes": 23,
+   "metMinutes": 55.3,
+   "equipment": [
+    "mur"
+   ],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de hanches\nÉchauffement : Balanciers de jambe\nÉchauffement : Squat au poids du corps\nCorps : Squat sumo\nCorps : Fente latérale\nCorps : Charnière de hanche (good morning) au poids du corps\nCorps : Fente arrière\nCorps : Chaise contre le mur\nCorps : Montée sur pointes de pieds\nRetour au calme : Étirement des quadriceps debout\nRetour au calme : Étirement des ischio-jambiers\nRetour au calme : Étirement des mollets"
+  },
+  {
+   "id": "hf_s4_c",
+   "titre": "Fessiers, abdos et cardio",
+   "type": "programme",
+   "niveau": 2,
+   "zones": "fessiers, abdos",
+   "tours": 3,
+   "pause": 15,
+   "description": "",
+   "minutes": 25,
+   "metMinutes": 70,
+   "equipment": [
+    "mur"
+   ],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nÉchauffement : Balanciers de jambe\nCorps : Pont fessier en marche\nCorps : Patineur sans saut\nCorps : Dead bug\nCorps : Bouche d'incendie (fire hydrant)\nCorps : Squat, coup de pied avant\nCorps : Levée de jambe intérieure (adducteurs)\nCorps : Clamshell (coquillage)\nRetour au calme : Papillon\nRetour au calme : Pigeon (version au sol)\nRetour au calme : Bébé heureux"
+  },
+  {
+   "id": "gc_s1_a",
+   "titre": "Gainage : les bases",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "abdos",
+   "tours": 2,
+   "pause": 15,
+   "description": "",
+   "minutes": 9,
+   "metMinutes": 18.2,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nCorps : Dead bug\nCorps : Planche\nCorps : Bird-dog\nCorps : Planche latérale\nRetour au calme : Cobra"
+  },
+  {
+   "id": "gc_s1_b",
+   "titre": "Poussée et tirage au poids du corps",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "bras, dos, epaules",
+   "tours": 2,
+   "pause": 15,
+   "description": "",
+   "minutes": 9,
+   "metMinutes": 20.2,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nCorps : Pompe sur les genoux\nCorps : Superman\nCorps : Position de l'ours (bear hold)\nCorps : Squat au poids du corps\nRetour au calme : Posture de l'enfant"
+  },
+  {
+   "id": "gc_s1_c",
+   "titre": "Abdos et rotation",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "abdos",
+   "tours": 2,
+   "pause": 15,
+   "description": "",
+   "minutes": 11,
+   "metMinutes": 26.3,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Rotations du buste\nÉchauffement : Cercles de hanches\nCorps : Crunch\nCorps : Touchers de talons\nCorps : Crunch inversé\nCorps : Mountain climbers lents\nRetour au calme : Torsion allongée"
+  },
+  {
+   "id": "gc_s2_a",
+   "titre": "Gainage : anti-extension",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "abdos",
+   "tours": 2,
+   "pause": 15,
+   "description": "",
+   "minutes": 14,
+   "metMinutes": 28.4,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nCorps : Dead bug\nCorps : Planche\nCorps : Hollow hold (position creuse)\nCorps : Planche latérale\nCorps : Position de l'ours (bear hold)\nCorps : Crunch inversé\nRetour au calme : Cobra\nRetour au calme : Posture de l'enfant"
+  },
+  {
+   "id": "gc_s2_b",
+   "titre": "Poussée et tirage au poids du corps",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "bras, dos, epaules",
+   "tours": 2,
+   "pause": 15,
+   "description": "",
+   "minutes": 13,
+   "metMinutes": 29.5,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nCorps : Pompe sur les genoux\nCorps : Superman\nCorps : Planche inversée\nCorps : Y, T, W au sol\nCorps : Squat au poids du corps\nCorps : Chenille (inchworm)\nRetour au calme : Posture de l'enfant\nRetour au calme : Étirement de l'épaule, bras croisé"
+  },
+  {
+   "id": "gc_s2_c",
+   "titre": "Abdos et rotation",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "abdos",
+   "tours": 2,
+   "pause": 15,
+   "description": "",
+   "minutes": 13,
+   "metMinutes": 30.4,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Rotations du buste\nÉchauffement : Cercles de hanches\nCorps : Crunch vélo\nCorps : Rotation russe\nCorps : Crunch inversé\nCorps : Planche, touchers d'épaule\nCorps : Mountain climbers lents\nRetour au calme : Torsion allongée\nRetour au calme : Cobra"
+  },
+  {
+   "id": "gc_s3_a",
+   "titre": "Gainage : anti-extension",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "abdos",
+   "tours": 3,
+   "pause": 15,
+   "description": "",
+   "minutes": 21,
+   "metMinutes": 44.1,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nÉchauffement : Le plus grand étirement du monde\nCorps : Dead bug\nCorps : Planche\nCorps : Hollow hold (position creuse)\nCorps : Planche latérale\nCorps : Battements de jambes (ciseaux)\nCorps : Crunch inversé\nCorps : Planche, touchers d'épaule\nRetour au calme : Cobra\nRetour au calme : Posture de l'enfant"
+  },
+  {
+   "id": "gc_s3_b",
+   "titre": "Poussée et tirage au poids du corps",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "bras, dos, epaules",
+   "tours": 3,
+   "pause": 15,
+   "description": "",
+   "minutes": 21,
+   "metMinutes": 47.5,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nÉchauffement : Le plus grand étirement du monde\nCorps : Pompe\nCorps : Superman\nCorps : Planche inversée\nCorps : Y, T, W au sol\nCorps : Chenille (inchworm)\nCorps : Squat au poids du corps\nCorps : Planche, touchers d'épaule\nRetour au calme : Posture de l'enfant\nRetour au calme : Étirement des triceps"
+  },
+  {
+   "id": "gc_s3_c",
+   "titre": "Abdos et rotation",
+   "type": "programme",
+   "niveau": 1,
+   "zones": "abdos",
+   "tours": 3,
+   "pause": 15,
+   "description": "",
+   "minutes": 18,
+   "metMinutes": 45.1,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Rotations du buste\nÉchauffement : Cercles de hanches\nÉchauffement : Cercles de bras\nCorps : Crunch vélo\nCorps : Rotation russe\nCorps : Relevé de jambes\nCorps : Planche montante (coudes, puis mains)\nCorps : Mountain climbers lents\nRetour au calme : Torsion allongée\nRetour au calme : Cobra"
+  },
+  {
+   "id": "gc_s4_a",
+   "titre": "Gainage : anti-extension",
+   "type": "programme",
+   "niveau": 2,
+   "zones": "abdos",
+   "tours": 3,
+   "pause": 15,
+   "description": "",
+   "minutes": 24,
+   "metMinutes": 50.3,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nÉchauffement : Le plus grand étirement du monde\nCorps : Dead bug\nCorps : Planche\nCorps : Hollow hold (position creuse)\nCorps : Planche latérale\nCorps : Battements de jambes (ciseaux)\nCorps : Position de l'ours (bear hold)\nCorps : Relevé de jambes\nCorps : Planche latérale avec rotation\nRetour au calme : Cobra\nRetour au calme : Posture de l'enfant\nRetour au calme : Genoux à la poitrine"
+  },
+  {
+   "id": "gc_s4_b",
+   "titre": "Poussée et tirage au poids du corps",
+   "type": "programme",
+   "niveau": 2,
+   "zones": "bras, dos, epaules",
+   "tours": 3,
+   "pause": 15,
+   "description": "",
+   "minutes": 24,
+   "metMinutes": 54.8,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nÉchauffement : Le plus grand étirement du monde\nCorps : Pompe\nCorps : Superman\nCorps : Planche inversée\nCorps : Pompe en V (pike push-up)\nCorps : Y, T, W au sol\nCorps : Chenille (inchworm)\nCorps : Squat au poids du corps\nCorps : Position de l'ours (bear hold)\nRetour au calme : Posture de l'enfant\nRetour au calme : Étirement des triceps\nRetour au calme : Étirement de l'épaule, bras croisé"
+  },
+  {
+   "id": "gc_s4_c",
+   "titre": "Abdos et rotation",
+   "type": "programme",
+   "niveau": 2,
+   "zones": "abdos",
+   "tours": 3,
+   "pause": 15,
+   "description": "",
+   "minutes": 23,
+   "metMinutes": 56.8,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Rotations du buste\nÉchauffement : Cercles de hanches\nÉchauffement : Cercles de bras\nÉchauffement : Chat-vache\nCorps : Crunch vélo\nCorps : Rotation russe\nCorps : Relevé de jambes\nCorps : Planche montante (coudes, puis mains)\nCorps : Planche latérale avec rotation\nCorps : Mountain climbers lents\nRetour au calme : Torsion allongée\nRetour au calme : Cobra\nRetour au calme : Genoux à la poitrine"
+  },
+  {
+   "id": "rapide_corps_entier_1",
+   "titre": "Corps entier, débutant",
+   "type": "rapide",
+   "niveau": 1,
+   "zones": "corps_entier",
+   "tours": 2,
+   "pause": 15,
+   "description": "",
+   "minutes": 8,
+   "metMinutes": 17.2,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de bras\nCorps : Squat au poids du corps\nCorps : Pompe sur les genoux\nCorps : Pont fessier\nCorps : Planche\nRetour au calme : Posture de l'enfant"
+  },
+  {
+   "id": "rapide_corps_entier_2",
+   "titre": "Corps entier, intermédiaire",
+   "type": "rapide",
+   "niveau": 2,
+   "zones": "corps_entier",
+   "tours": 2,
+   "pause": 15,
+   "description": "",
+   "minutes": 13,
+   "metMinutes": 32.9,
+   "equipment": [
+    "mur"
+   ],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nCorps : Squat au poids du corps\nCorps : Pompe sur les genoux\nCorps : Fente arrière\nCorps : Mountain climbers lents\nCorps : Superman\nRetour au calme : Posture de l'enfant\nRetour au calme : Étirement des quadriceps debout"
+  },
+  {
+   "id": "rapide_corps_entier_3",
+   "titre": "Corps entier, avancé",
+   "type": "rapide",
+   "niveau": 3,
+   "zones": "corps_entier",
+   "tours": 3,
+   "pause": 15,
+   "description": "",
+   "minutes": 17,
+   "metMinutes": 66.7,
+   "equipment": [
+    "mur"
+   ],
+   "impact": true,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nCorps : Squat sauté\nCorps : Pompe\nCorps : Fente arrière\nCorps : Burpee\nCorps : Planche montante (coudes, puis mains)\nCorps : Jumping jacks\nRetour au calme : Posture de l'enfant\nRetour au calme : Étirement des quadriceps debout"
+  },
+  {
+   "id": "rapide_abdos_1",
+   "titre": "Abdos, débutant",
+   "type": "rapide",
+   "niveau": 1,
+   "zones": "abdos",
+   "tours": 2,
+   "pause": 15,
+   "description": "",
+   "minutes": 8,
+   "metMinutes": 15.7,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Rotations du buste\nÉchauffement : Cercles de hanches\nCorps : Dead bug\nCorps : Crunch\nCorps : Planche\nCorps : Crunch inversé\nRetour au calme : Cobra"
+  },
+  {
+   "id": "rapide_abdos_2",
+   "titre": "Abdos, intermédiaire",
+   "type": "rapide",
+   "niveau": 2,
+   "zones": "abdos",
+   "tours": 2,
+   "pause": 15,
+   "description": "",
+   "minutes": 13,
+   "metMinutes": 27.2,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Rotations du buste\nÉchauffement : Cercles de hanches\nCorps : Crunch vélo\nCorps : Planche\nCorps : Rotation russe\nCorps : Battements de jambes (ciseaux)\nCorps : Planche latérale\nRetour au calme : Cobra\nRetour au calme : Torsion allongée"
+  },
+  {
+   "id": "rapide_abdos_3",
+   "titre": "Abdos, avancé",
+   "type": "rapide",
+   "niveau": 3,
+   "zones": "abdos",
+   "tours": 3,
+   "pause": 15,
+   "description": "",
+   "minutes": 18,
+   "metMinutes": 57,
+   "equipment": [],
+   "impact": true,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Rotations du buste\nÉchauffement : Cercles de hanches\nCorps : Hollow hold (position creuse)\nCorps : V-up (relevé en V)\nCorps : Planche montante (coudes, puis mains)\nCorps : Rotation russe\nCorps : Relevé de jambes\nCorps : Mountain climbers\nRetour au calme : Cobra\nRetour au calme : Torsion allongée"
+  },
+  {
+   "id": "rapide_jambes_1",
+   "titre": "Jambes, débutant",
+   "type": "rapide",
+   "niveau": 1,
+   "zones": "jambes",
+   "tours": 2,
+   "pause": 15,
+   "description": "",
+   "minutes": 9,
+   "metMinutes": 21.1,
+   "equipment": [
+    "mur"
+   ],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de hanches\nCorps : Squat au poids du corps\nCorps : Fente arrière\nCorps : Montée sur pointes de pieds\nCorps : Pont fessier\nRetour au calme : Étirement des quadriceps debout"
+  },
+  {
+   "id": "rapide_jambes_2",
+   "titre": "Jambes, intermédiaire",
+   "type": "rapide",
+   "niveau": 2,
+   "zones": "jambes",
+   "tours": 2,
+   "pause": 15,
+   "description": "",
+   "minutes": 14,
+   "metMinutes": 32.1,
+   "equipment": [
+    "mur"
+   ],
+   "impact": false,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de hanches\nÉchauffement : Balanciers de jambe\nÉchauffement : Squat au poids du corps\nCorps : Squat sumo\nCorps : Fente latérale\nCorps : Charnière de hanche (good morning) au poids du corps\nCorps : Pont fessier sur une jambe\nCorps : Montée sur pointes de pieds\nRetour au calme : Étirement des quadriceps debout\nRetour au calme : Étirement des ischio-jambiers"
+  },
+  {
+   "id": "rapide_jambes_3",
+   "titre": "Jambes, avancé",
+   "type": "rapide",
+   "niveau": 3,
+   "zones": "jambes",
+   "tours": 3,
+   "pause": 15,
+   "description": "",
+   "minutes": 18,
+   "metMinutes": 66.6,
+   "equipment": [
+    "mur"
+   ],
+   "impact": true,
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de hanches\nÉchauffement : Balanciers de jambe\nÉchauffement : Squat au poids du corps\nCorps : Squat sauté\nCorps : Fente arrière\nCorps : Fente latérale\nCorps : Pont fessier sur une jambe\nCorps : Patineur sauté\nRetour au calme : Étirement des quadriceps debout\nRetour au calme : Étirement des ischio-jambiers"
+  },
+  {
+   "id": "rapide_bras_1",
+   "titre": "Bras, débutant",
+   "type": "rapide",
+   "niveau": 1,
+   "zones": "bras",
+   "tours": 2,
+   "pause": 15,
+   "description": "",
+   "minutes": 8,
+   "metMinutes": 19.2,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Cercles de bras\nÉchauffement : Marche sur place, genoux hauts\nCorps : Pompe sur les genoux\nCorps : Planche inversée\nCorps : Boxe dans le vide\nCorps : Position de l'ours (bear hold)\nRetour au calme : Étirement des triceps"
+  },
+  {
+   "id": "rapide_bras_2",
+   "titre": "Bras, intermédiaire",
+   "type": "rapide",
+   "niveau": 2,
+   "zones": "bras",
+   "tours": 2,
+   "pause": 15,
+   "description": "",
+   "minutes": 12,
+   "metMinutes": 32.2,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Cercles de bras\nÉchauffement : Marche sur place, genoux hauts\nÉchauffement : Rotations du buste\nCorps : Pompe sur les genoux\nCorps : Planche inversée\nCorps : Boxe dans le vide\nCorps : Pompe\nCorps : Planche montante (coudes, puis mains)\nCorps : Position de l'ours (bear hold)\nRetour au calme : Étirement des triceps\nRetour au calme : Étirement de l'épaule, bras croisé"
+  },
+  {
+   "id": "rapide_bras_3",
+   "titre": "Bras, avancé",
+   "type": "rapide",
+   "niveau": 3,
+   "zones": "bras",
+   "tours": 3,
+   "pause": 15,
+   "description": "",
+   "minutes": 18,
+   "metMinutes": 48.8,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Cercles de bras\nÉchauffement : Marche sur place, genoux hauts\nÉchauffement : Rotations du buste\nCorps : Pompe\nCorps : Pompe mains serrées (triceps)\nCorps : Planche inversée\nCorps : Pompe en V (pike push-up)\nCorps : Planche montante (coudes, puis mains)\nCorps : Boxe dans le vide\nRetour au calme : Étirement des triceps\nRetour au calme : Étirement de l'épaule, bras croisé"
+  },
+  {
+   "id": "rapide_epaules_1",
+   "titre": "Épaules, débutant",
+   "type": "rapide",
+   "niveau": 1,
+   "zones": "epaules",
+   "tours": 2,
+   "pause": 15,
+   "description": "",
+   "minutes": 7,
+   "metMinutes": 17.2,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Cercles de bras\nÉchauffement : Rotations du buste\nCorps : Y, T, W au sol\nCorps : Position de l'ours (bear hold)\nCorps : Boxe dans le vide\nCorps : Planche\nRetour au calme : Étirement de l'épaule, bras croisé"
+  },
+  {
+   "id": "rapide_epaules_2",
+   "titre": "Épaules, intermédiaire",
+   "type": "rapide",
+   "niveau": 2,
+   "zones": "epaules",
+   "tours": 2,
+   "pause": 15,
+   "description": "",
+   "minutes": 12,
+   "metMinutes": 32.2,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Cercles de bras\nÉchauffement : Marche sur place, genoux hauts\nÉchauffement : Rotations du buste\nCorps : Y, T, W au sol\nCorps : Planche, touchers d'épaule\nCorps : Pompe sur les genoux\nCorps : Boxe dans le vide\nCorps : Position de l'ours (bear hold)\nRetour au calme : Étirement de l'épaule, bras croisé\nRetour au calme : Chien tête en bas"
+  },
+  {
+   "id": "rapide_epaules_3",
+   "titre": "Épaules, avancé",
+   "type": "rapide",
+   "niveau": 3,
+   "zones": "epaules",
+   "tours": 3,
+   "pause": 15,
+   "description": "",
+   "minutes": 19,
+   "metMinutes": 58.9,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Cercles de bras\nÉchauffement : Marche sur place, genoux hauts\nÉchauffement : Rotations du buste\nCorps : Pompe en V (pike push-up)\nCorps : Y, T, W au sol\nCorps : Planche, touchers d'épaule\nCorps : Marche de l'ours\nCorps : Pompe\nCorps : Boxe dans le vide\nRetour au calme : Étirement de l'épaule, bras croisé\nRetour au calme : Chien tête en bas"
+  },
+  {
+   "id": "rapide_dos_1",
+   "titre": "Dos, débutant",
+   "type": "rapide",
+   "niveau": 1,
+   "zones": "dos",
+   "tours": 2,
+   "pause": 15,
+   "description": "",
+   "minutes": 8,
+   "metMinutes": 17.8,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Chat-vache\nÉchauffement : Cercles de bras\nCorps : Bird-dog\nCorps : Superman\nCorps : Pont fessier\nCorps : Y, T, W au sol\nRetour au calme : Posture de l'enfant"
+  },
+  {
+   "id": "rapide_dos_2",
+   "titre": "Dos, intermédiaire",
+   "type": "rapide",
+   "niveau": 2,
+   "zones": "dos",
+   "tours": 2,
+   "pause": 15,
+   "description": "",
+   "minutes": 12,
+   "metMinutes": 24.7,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Chat-vache\nÉchauffement : Cercles de bras\nÉchauffement : Rotations du buste\nCorps : Superman\nCorps : Y, T, W au sol\nCorps : Bird-dog\nCorps : Charnière de hanche (good morning) au poids du corps\nCorps : Planche inversée\nRetour au calme : Posture de l'enfant\nRetour au calme : Sphinx"
+  },
+  {
+   "id": "rapide_dos_3",
+   "titre": "Dos, avancé",
+   "type": "rapide",
+   "niveau": 3,
+   "zones": "dos",
+   "tours": 3,
+   "pause": 15,
+   "description": "",
+   "minutes": 19,
+   "metMinutes": 41.8,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Échauffement : Chat-vache\nÉchauffement : Cercles de bras\nÉchauffement : Rotations du buste\nÉchauffement : Le plus grand étirement du monde\nCorps : Superman\nCorps : Y, T, W au sol\nCorps : Planche inversée\nCorps : Charnière de hanche (good morning) au poids du corps\nCorps : Chenille (inchworm)\nCorps : Bird-dog\nRetour au calme : Posture de l'enfant\nRetour au calme : Sphinx"
+  },
+  {
+   "id": "decouverte_yoga_matin",
+   "titre": "Yoga du matin",
+   "type": "decouverte",
+   "niveau": 1,
+   "zones": "corps_entier",
+   "tours": 1,
+   "pause": 5,
+   "description": "Une séquence douce pour réveiller le corps : salutation au soleil et postures debout.",
+   "minutes": 8,
+   "metMinutes": 17.4,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Corps : Posture de la montagne\nCorps : Chat-vache\nCorps : Salutation au soleil (version douce)\nCorps : Posture de la chaise\nCorps : Guerrier I\nCorps : Guerrier II\nCorps : Triangle\nCorps : Arbre\nCorps : Posture de l'enfant"
+  },
+  {
+   "id": "decouverte_etirements_soir",
+   "titre": "Étirements du soir",
+   "type": "decouverte",
+   "niveau": 1,
+   "zones": "corps_entier",
+   "tours": 1,
+   "pause": 5,
+   "description": "Relâcher les tensions de la journée avant de dormir, tout en douceur.",
+   "minutes": 9,
+   "metMinutes": 16.6,
+   "equipment": [
+    "mur"
+   ],
+   "impact": false,
+   "contenu": "Corps : Étirement latéral debout\nCorps : Étirement des quadriceps debout\nCorps : Sphinx\nCorps : Genoux à la poitrine\nCorps : Étirement des fessiers en « 4 »\nCorps : Étirement des ischio-jambiers\nCorps : Torsion allongée\nCorps : Papillon\nCorps : Respiration costale"
+  },
+  {
+   "id": "decouverte_meditation",
+   "titre": "Méditation guidée",
+   "type": "decouverte",
+   "niveau": 1,
+   "zones": "",
+   "tours": 1,
+   "pause": 5,
+   "description": "Quelques minutes de respiration lente, puis d'attention au souffle.",
+   "minutes": 8,
+   "metMinutes": 7.1,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Corps : Respiration lente (6 cycles par minute)\nCorps : Méditation : attention au souffle"
+  },
+  {
+   "id": "decouverte_gainage_express",
+   "titre": "Gainage express",
+   "type": "decouverte",
+   "niveau": 1,
+   "zones": "abdos",
+   "tours": 2,
+   "pause": 10,
+   "description": "Un gainage court et efficace, quand il ne reste que quelques minutes.",
+   "minutes": 5,
+   "metMinutes": 11.4,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Corps : Planche\nCorps : Dead bug\nCorps : Planche latérale\nCorps : Bird-dog"
+  },
+  {
+   "id": "decouverte_detente_sommeil",
+   "titre": "Détente avant le sommeil",
+   "type": "decouverte",
+   "niveau": 1,
+   "zones": "",
+   "tours": 1,
+   "pause": 5,
+   "description": "Jambes au mur, puis relaxation progressive pour préparer le sommeil.",
+   "minutes": 12,
+   "metMinutes": 13.8,
+   "equipment": [
+    "mur"
+   ],
+   "impact": false,
+   "contenu": "Corps : Jambes contre le mur\nCorps : Relaxation musculaire progressive\nCorps : Respiration lente (6 cycles par minute)"
+  },
+  {
+   "id": "decouverte_yoga_hanches",
+   "titre": "Yoga des hanches",
+   "type": "decouverte",
+   "niveau": 1,
+   "zones": "fessiers, jambes",
+   "tours": 1,
+   "pause": 5,
+   "description": "Ouvrir les hanches après une journée assise.",
+   "minutes": 8,
+   "metMinutes": 16.7,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Corps : Chat-vache\nCorps : Fente basse (posture du croissant)\nCorps : Guerrier II\nCorps : Pigeon (version au sol)\nCorps : Papillon\nCorps : Pince assise\nCorps : Bébé heureux\nCorps : Torsion allongée"
+  },
+  {
+   "id": "decouverte_scan_corporel",
+   "titre": "Scan corporel",
+   "type": "decouverte",
+   "niveau": 1,
+   "zones": "",
+   "tours": 1,
+   "pause": 5,
+   "description": "Parcourir le corps de la tête aux pieds pour se poser.",
+   "minutes": 9,
+   "metMinutes": 8.1,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Corps : Respiration costale\nCorps : Méditation : scan corporel"
+  },
+  {
+   "id": "express_reveil",
+   "titre": "Réveil en 4 minutes",
+   "type": "express",
+   "niveau": 1,
+   "zones": "corps_entier",
+   "tours": 1,
+   "pause": 5,
+   "description": "Mobilité du matin, sans quitter la chambre.",
+   "minutes": 3,
+   "metMinutes": 6.7,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Corps : Cercles de bras\nCorps : Rotations du buste\nCorps : Cercles de hanches\nCorps : Chat-vache\nCorps : Squat au poids du corps"
+  },
+  {
+   "id": "express_cardio",
+   "titre": "Coup de boost cardio",
+   "type": "express",
+   "niveau": 1,
+   "zones": "corps_entier",
+   "tours": 2,
+   "pause": 10,
+   "description": "Quatre minutes pour se réchauffer, sans saut.",
+   "minutes": 4,
+   "metMinutes": 13.8,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Corps : Jumping jacks sans saut\nCorps : Boxe dans le vide\nCorps : Marche sur place, genoux hauts"
+  },
+  {
+   "id": "express_abdos",
+   "titre": "Abdos express",
+   "type": "express",
+   "niveau": 1,
+   "zones": "abdos",
+   "tours": 2,
+   "pause": 10,
+   "description": "Quatre exercices de gainage enchaînés deux fois.",
+   "minutes": 5,
+   "metMinutes": 10.5,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Corps : Planche\nCorps : Dead bug\nCorps : Crunch\nCorps : Planche latérale"
+  },
+  {
+   "id": "express_jambes",
+   "titre": "Jambes express",
+   "type": "express",
+   "niveau": 1,
+   "zones": "jambes, fessiers",
+   "tours": 2,
+   "pause": 10,
+   "description": "Squats, fentes et pont : l'essentiel des jambes.",
+   "minutes": 5,
+   "metMinutes": 11.8,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Corps : Squat au poids du corps\nCorps : Fente arrière\nCorps : Pont fessier\nCorps : Montée sur pointes de pieds"
+  },
+  {
+   "id": "express_pause_bureau",
+   "titre": "Pause bureau",
+   "type": "express",
+   "niveau": 1,
+   "zones": "dos, epaules",
+   "tours": 1,
+   "pause": 5,
+   "description": "Dénouer la nuque, les épaules et le dos entre deux réunions.",
+   "minutes": 4,
+   "metMinutes": 8.9,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Corps : Menton rentré\nCorps : Rapprochement des omoplates\nCorps : Étirement des trapèzes\nCorps : Étirement de l'épaule, bras croisé\nCorps : Étirement latéral debout"
+  },
+  {
+   "id": "express_respiration",
+   "titre": "Trois minutes pour respirer",
+   "type": "express",
+   "niveau": 1,
+   "zones": "",
+   "tours": 1,
+   "pause": 0,
+   "description": "Respiration lente pour faire redescendre la pression.",
+   "minutes": 3,
+   "metMinutes": 3,
+   "equipment": [],
+   "impact": false,
+   "contenu": "Corps : Respiration lente (6 cycles par minute)"
+  }
+ ],
+ "programmes": [
+  {
+   "id": "remise_en_forme",
+   "titre": "Remise en forme",
+   "description": "28 jours pour retrouver la forme : bas du corps, haut du corps et cardio doux en alternance, sans matériel et sans saut. Les séances passent de 10 à 25 minutes au fil des semaines.",
+   "niveau": 1,
+   "objectifs": "garder_la_forme, perdre_du_poids, renforcer",
+   "jours": [
+    {
+     "jour": 1,
+     "entrainement": "rf_s1_a",
+     "titre": "Bas du corps et gainage",
+     "minutes": 11
+    },
+    {
+     "jour": 2,
+     "entrainement": "rf_s1_b",
+     "titre": "Haut du corps et dos",
+     "minutes": 9
+    },
+    {
+     "jour": 3,
+     "entrainement": "prog_mobilite_s1",
+     "titre": "Mobilité douce",
+     "minutes": 5
+    },
+    {
+     "jour": 4,
+     "entrainement": "rf_s1_c",
+     "titre": "Cardio doux",
+     "minutes": 9
+    },
+    {
+     "jour": 5,
+     "entrainement": "rf_s1_a",
+     "titre": "Bas du corps et gainage",
+     "minutes": 11
+    },
+    {
+     "jour": 6,
+     "entrainement": "rf_s1_b",
+     "titre": "Haut du corps et dos",
+     "minutes": 9
+    },
+    {
+     "jour": 7,
+     "entrainement": "prog_recup_s1",
+     "titre": "Récupération : étirements",
+     "minutes": 7
+    },
+    {
+     "jour": 8,
+     "entrainement": "rf_s2_a",
+     "titre": "Bas du corps et gainage",
+     "minutes": 14
+    },
+    {
+     "jour": 9,
+     "entrainement": "rf_s2_b",
+     "titre": "Haut du corps et dos",
+     "minutes": 14
+    },
+    {
+     "jour": 10,
+     "entrainement": "prog_mobilite_s2",
+     "titre": "Mobilité du dos et des hanches",
+     "minutes": 6
+    },
+    {
+     "jour": 11,
+     "entrainement": "rf_s2_c",
+     "titre": "Cardio et renforcement",
+     "minutes": 13
+    },
+    {
+     "jour": 12,
+     "entrainement": "rf_s2_a",
+     "titre": "Bas du corps et gainage",
+     "minutes": 14
+    },
+    {
+     "jour": 13,
+     "entrainement": "rf_s2_b",
+     "titre": "Haut du corps et dos",
+     "minutes": 14
+    },
+    {
+     "jour": 14,
+     "entrainement": "prog_recup_s2",
+     "titre": "Récupération : yoga doux",
+     "minutes": 9
+    },
+    {
+     "jour": 15,
+     "entrainement": "rf_s3_a",
+     "titre": "Bas du corps et gainage",
+     "minutes": 20
+    },
+    {
+     "jour": 16,
+     "entrainement": "rf_s3_b",
+     "titre": "Haut du corps et dos",
+     "minutes": 18
+    },
+    {
+     "jour": 17,
+     "entrainement": "prog_mobilite_s3",
+     "titre": "Mobilité et salutation au soleil",
+     "minutes": 7
+    },
+    {
+     "jour": 18,
+     "entrainement": "rf_s3_c",
+     "titre": "Cardio et renforcement",
+     "minutes": 18
+    },
+    {
+     "jour": 19,
+     "entrainement": "rf_s3_a",
+     "titre": "Bas du corps et gainage",
+     "minutes": 20
+    },
+    {
+     "jour": 20,
+     "entrainement": "rf_s3_b",
+     "titre": "Haut du corps et dos",
+     "minutes": 18
+    },
+    {
+     "jour": 21,
+     "entrainement": "prog_recup_s3",
+     "titre": "Récupération : hanches et dos",
+     "minutes": 8
+    },
+    {
+     "jour": 22,
+     "entrainement": "rf_s4_a",
+     "titre": "Bas du corps et gainage",
+     "minutes": 24
+    },
+    {
+     "jour": 23,
+     "entrainement": "rf_s4_b",
+     "titre": "Haut du corps et dos",
+     "minutes": 26
+    },
+    {
+     "jour": 24,
+     "entrainement": "prog_mobilite_s4",
+     "titre": "Mobilité complète",
+     "minutes": 9
+    },
+    {
+     "jour": 25,
+     "entrainement": "rf_s4_c",
+     "titre": "Cardio et renforcement",
+     "minutes": 24
+    },
+    {
+     "jour": 26,
+     "entrainement": "rf_s4_a",
+     "titre": "Bas du corps et gainage",
+     "minutes": 24
+    },
+    {
+     "jour": 27,
+     "entrainement": "rf_s4_b",
+     "titre": "Haut du corps et dos",
+     "minutes": 26
+    },
+    {
+     "jour": 28,
+     "entrainement": "prog_recup_s4",
+     "titre": "Récupération : bilan du mois",
+     "minutes": 10
+    }
+   ]
+  },
+  {
+   "id": "hanches_fessiers",
+   "titre": "Hanches et fessiers",
+   "description": "28 jours pour tonifier les fessiers et les jambes : ponts, fentes, travail de hanche et un peu de cardio, sans matériel et sans saut. De 10 à 25 minutes par séance.",
+   "niveau": 1,
+   "objectifs": "tonifier, renforcer",
+   "jours": [
+    {
+     "jour": 1,
+     "entrainement": "hf_s1_a",
+     "titre": "Fessiers : les bases",
+     "minutes": 12
+    },
+    {
+     "jour": 2,
+     "entrainement": "hf_s1_b",
+     "titre": "Jambes et fessiers",
+     "minutes": 11
+    },
+    {
+     "jour": 3,
+     "entrainement": "prog_mobilite_s1",
+     "titre": "Mobilité douce",
+     "minutes": 5
+    },
+    {
+     "jour": 4,
+     "entrainement": "hf_s1_c",
+     "titre": "Fessiers et abdos",
+     "minutes": 9
+    },
+    {
+     "jour": 5,
+     "entrainement": "hf_s1_a",
+     "titre": "Fessiers : les bases",
+     "minutes": 12
+    },
+    {
+     "jour": 6,
+     "entrainement": "hf_s1_b",
+     "titre": "Jambes et fessiers",
+     "minutes": 11
+    },
+    {
+     "jour": 7,
+     "entrainement": "prog_recup_s1",
+     "titre": "Récupération : étirements",
+     "minutes": 7
+    },
+    {
+     "jour": 8,
+     "entrainement": "hf_s2_a",
+     "titre": "Fessiers : volume",
+     "minutes": 15
+    },
+    {
+     "jour": 9,
+     "entrainement": "hf_s2_b",
+     "titre": "Jambes et fessiers",
+     "minutes": 14
+    },
+    {
+     "jour": 10,
+     "entrainement": "prog_mobilite_s2",
+     "titre": "Mobilité du dos et des hanches",
+     "minutes": 6
+    },
+    {
+     "jour": 11,
+     "entrainement": "hf_s2_c",
+     "titre": "Fessiers, abdos et cardio",
+     "minutes": 13
+    },
+    {
+     "jour": 12,
+     "entrainement": "hf_s2_a",
+     "titre": "Fessiers : volume",
+     "minutes": 15
+    },
+    {
+     "jour": 13,
+     "entrainement": "hf_s2_b",
+     "titre": "Jambes et fessiers",
+     "minutes": 14
+    },
+    {
+     "jour": 14,
+     "entrainement": "prog_recup_s2",
+     "titre": "Récupération : yoga doux",
+     "minutes": 9
+    },
+    {
+     "jour": 15,
+     "entrainement": "hf_s3_a",
+     "titre": "Fessiers : force",
+     "minutes": 21
+    },
+    {
+     "jour": 16,
+     "entrainement": "hf_s3_b",
+     "titre": "Jambes et fessiers",
+     "minutes": 19
+    },
+    {
+     "jour": 17,
+     "entrainement": "prog_mobilite_s3",
+     "titre": "Mobilité et salutation au soleil",
+     "minutes": 7
+    },
+    {
+     "jour": 18,
+     "entrainement": "hf_s3_c",
+     "titre": "Fessiers, abdos et cardio",
+     "minutes": 18
+    },
+    {
+     "jour": 19,
+     "entrainement": "hf_s3_a",
+     "titre": "Fessiers : force",
+     "minutes": 21
+    },
+    {
+     "jour": 20,
+     "entrainement": "hf_s3_b",
+     "titre": "Jambes et fessiers",
+     "minutes": 19
+    },
+    {
+     "jour": 21,
+     "entrainement": "prog_recup_s3",
+     "titre": "Récupération : hanches et dos",
+     "minutes": 8
+    },
+    {
+     "jour": 22,
+     "entrainement": "hf_s4_a",
+     "titre": "Fessiers : force",
+     "minutes": 25
+    },
+    {
+     "jour": 23,
+     "entrainement": "hf_s4_b",
+     "titre": "Jambes et fessiers",
+     "minutes": 23
+    },
+    {
+     "jour": 24,
+     "entrainement": "prog_mobilite_s4",
+     "titre": "Mobilité complète",
+     "minutes": 9
+    },
+    {
+     "jour": 25,
+     "entrainement": "hf_s4_c",
+     "titre": "Fessiers, abdos et cardio",
+     "minutes": 25
+    },
+    {
+     "jour": 26,
+     "entrainement": "hf_s4_a",
+     "titre": "Fessiers : force",
+     "minutes": 25
+    },
+    {
+     "jour": 27,
+     "entrainement": "hf_s4_b",
+     "titre": "Jambes et fessiers",
+     "minutes": 23
+    },
+    {
+     "jour": 28,
+     "entrainement": "prog_recup_s4",
+     "titre": "Récupération : bilan du mois",
+     "minutes": 10
+    }
+   ]
+  },
+  {
+   "id": "gainage_calisthenie",
+   "titre": "Gainage et calisthénie",
+   "description": "28 jours pour un tronc solide et les bases de la calisthénie : planches, dead bug, pompes et travail du dos au poids du corps. De 10 à 25 minutes par séance.",
+   "niveau": 1,
+   "objectifs": "renforcer, tonifier",
+   "jours": [
+    {
+     "jour": 1,
+     "entrainement": "gc_s1_a",
+     "titre": "Gainage : les bases",
+     "minutes": 9
+    },
+    {
+     "jour": 2,
+     "entrainement": "gc_s1_b",
+     "titre": "Poussée et tirage au poids du corps",
+     "minutes": 9
+    },
+    {
+     "jour": 3,
+     "entrainement": "prog_mobilite_s1",
+     "titre": "Mobilité douce",
+     "minutes": 5
+    },
+    {
+     "jour": 4,
+     "entrainement": "gc_s1_c",
+     "titre": "Abdos et rotation",
+     "minutes": 11
+    },
+    {
+     "jour": 5,
+     "entrainement": "gc_s1_a",
+     "titre": "Gainage : les bases",
+     "minutes": 9
+    },
+    {
+     "jour": 6,
+     "entrainement": "gc_s1_b",
+     "titre": "Poussée et tirage au poids du corps",
+     "minutes": 9
+    },
+    {
+     "jour": 7,
+     "entrainement": "prog_recup_s1",
+     "titre": "Récupération : étirements",
+     "minutes": 7
+    },
+    {
+     "jour": 8,
+     "entrainement": "gc_s2_a",
+     "titre": "Gainage : anti-extension",
+     "minutes": 14
+    },
+    {
+     "jour": 9,
+     "entrainement": "gc_s2_b",
+     "titre": "Poussée et tirage au poids du corps",
+     "minutes": 13
+    },
+    {
+     "jour": 10,
+     "entrainement": "prog_mobilite_s2",
+     "titre": "Mobilité du dos et des hanches",
+     "minutes": 6
+    },
+    {
+     "jour": 11,
+     "entrainement": "gc_s2_c",
+     "titre": "Abdos et rotation",
+     "minutes": 13
+    },
+    {
+     "jour": 12,
+     "entrainement": "gc_s2_a",
+     "titre": "Gainage : anti-extension",
+     "minutes": 14
+    },
+    {
+     "jour": 13,
+     "entrainement": "gc_s2_b",
+     "titre": "Poussée et tirage au poids du corps",
+     "minutes": 13
+    },
+    {
+     "jour": 14,
+     "entrainement": "prog_recup_s2",
+     "titre": "Récupération : yoga doux",
+     "minutes": 9
+    },
+    {
+     "jour": 15,
+     "entrainement": "gc_s3_a",
+     "titre": "Gainage : anti-extension",
+     "minutes": 21
+    },
+    {
+     "jour": 16,
+     "entrainement": "gc_s3_b",
+     "titre": "Poussée et tirage au poids du corps",
+     "minutes": 21
+    },
+    {
+     "jour": 17,
+     "entrainement": "prog_mobilite_s3",
+     "titre": "Mobilité et salutation au soleil",
+     "minutes": 7
+    },
+    {
+     "jour": 18,
+     "entrainement": "gc_s3_c",
+     "titre": "Abdos et rotation",
+     "minutes": 18
+    },
+    {
+     "jour": 19,
+     "entrainement": "gc_s3_a",
+     "titre": "Gainage : anti-extension",
+     "minutes": 21
+    },
+    {
+     "jour": 20,
+     "entrainement": "gc_s3_b",
+     "titre": "Poussée et tirage au poids du corps",
+     "minutes": 21
+    },
+    {
+     "jour": 21,
+     "entrainement": "prog_recup_s3",
+     "titre": "Récupération : hanches et dos",
+     "minutes": 8
+    },
+    {
+     "jour": 22,
+     "entrainement": "gc_s4_a",
+     "titre": "Gainage : anti-extension",
+     "minutes": 24
+    },
+    {
+     "jour": 23,
+     "entrainement": "gc_s4_b",
+     "titre": "Poussée et tirage au poids du corps",
+     "minutes": 24
+    },
+    {
+     "jour": 24,
+     "entrainement": "prog_mobilite_s4",
+     "titre": "Mobilité complète",
+     "minutes": 9
+    },
+    {
+     "jour": 25,
+     "entrainement": "gc_s4_c",
+     "titre": "Abdos et rotation",
+     "minutes": 23
+    },
+    {
+     "jour": 26,
+     "entrainement": "gc_s4_a",
+     "titre": "Gainage : anti-extension",
+     "minutes": 24
+    },
+    {
+     "jour": 27,
+     "entrainement": "gc_s4_b",
+     "titre": "Poussée et tirage au poids du corps",
+     "minutes": 24
+    },
+    {
+     "jour": 28,
+     "entrainement": "prog_recup_s4",
+     "titre": "Récupération : bilan du mois",
+     "minutes": 10
+    }
+   ]
+  }
+ ]
 }
