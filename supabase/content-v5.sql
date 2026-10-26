@@ -66,9 +66,9 @@ insert into public.exercises (id, name, kind, illustration, video_url, cues, cau
 ('v_up', 'V-up (relevé en V)', 'gainage', null, 'https://www.youtube.com/watch?v=D51oisjL-aE', array['Allongé sur le dos, bras tendus derrière la tête.', 'Lève en même temps buste et jambes pour toucher les pieds avec les mains.', 'Redescends lentement, sans t''écraser au sol.']::text[], 'Exercice avancé : maîtrise d''abord le hollow hold.', '[{"label":"Genoux pliés (tuck-up)","reps":8},{"label":"Une jambe tendue en alternance","reps":8},{"label":"Jambes tendues","reps":8}]'::jsonb, array['abdos']::text[], array['aucun']::text[], 5, 'flexion-tronc', 'flexion-tronc', 3, false, 'free-exercise-db (domaine public), fiche Jackknife Sit-Up (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Jackknife_Sit-Up.json)', array['grand_droit']::text[], array['flechisseurs_hanche', 'obliques']::text[], array['abdos']::text[], array['renforcer']::text[], 'calisthenie', false, 'reps', 8, 7.5, '02020', '{"steps":["Allongé sur le dos, bras tendus derrière la tête.","Lève en même temps buste et jambes pour toucher les pieds avec les mains.","Redescends lentement, sans t''écraser au sol."],"breathing":"Expire en montant, inspire en descendant.","mistakes":["Retomber lourdement.","Prendre de l''élan avec les bras."]}'::jsonb),
 ('chenille', 'Chenille (inchworm)', 'force', null, 'https://www.youtube.com/watch?v=zeAm-lP_Ha0', array['Debout, penche-toi pour poser les mains au sol, genoux fléchis si besoin.', 'Avance les mains une à une jusqu''à la planche.', 'Ramène les mains vers les pieds en marchant, puis redresse-toi.']::text[], 'Plie les genoux autant que nécessaire pour poser les mains.', '[{"label":"Genoux fléchis","reps":5},{"label":"Jambes presque tendues","reps":6},{"label":"Avec une pompe en bas","reps":6}]'::jsonb, array['abdos', 'epaules', 'ischios']::text[], array['aucun']::text[], 3, 'chenille', 'corps-entier', 3, false, 'free-exercise-db (domaine public), fiche Inchworm (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Inchworm.json)', array['transverse', 'deltoides_anterieurs', 'ischio_jambiers']::text[], array['pectoraux', 'triceps']::text[], array['corps_entier']::text[], array['renforcer', 'mobilite']::text[], 'calisthenie', false, 'reps', 6, 3.8, '02022', '{"steps":["Debout, penche-toi pour poser les mains au sol, genoux fléchis si besoin.","Avance les mains une à une jusqu''à la planche.","Ramène les mains vers les pieds en marchant, puis redresse-toi."],"breathing":"Expire en avançant vers la planche, inspire en revenant.","mistakes":["Bassin qui s''affaisse en planche.","Se redresser trop vite."]}'::jsonb),
 ('marche_ours', 'Marche de l''ours', 'cardio', null, 'https://www.youtube.com/watch?v=D_4Vcp2d9_I', array['À quatre pattes, genoux décollés de quelques centimètres.', 'Avance main droite et pied gauche ensemble, puis l''inverse.', 'Fais quelques pas en avant, puis en arrière.']::text[], 'Petits pas, dos plat, genoux proches du sol.', '[{"label":"Avant, arrière, lentement","seconds":20},{"label":"30 s","seconds":30},{"label":"Plus rapide","seconds":30}]'::jsonb, array['epaules', 'abdos', 'cuisses']::text[], array['aucun']::text[], 3, 'quadrupedie', 'corps-entier', 3, false, 'free-exercise-db (domaine public), fiche Bear Crawl Sled Drags (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Bear_Crawl_Sled_Drags.json)', array['deltoides_anterieurs', 'transverse', 'quadriceps']::text[], array['triceps', 'grand_fessier']::text[], array['corps_entier']::text[], array['renforcer', 'cardio']::text[], 'calisthenie', false, 'time', 30, 7.5, '02020', '{"steps":["À quatre pattes, genoux décollés de quelques centimètres.","Avance main droite et pied gauche ensemble, puis l''inverse.","Fais quelques pas en avant, puis en arrière."],"breathing":"Respire régulièrement.","mistakes":["Fesses en l''air.","Grands pas qui déstabilisent."]}'::jsonb),
-('marche_genoux_hauts', 'Marche sur place, genoux hauts', 'cardio', null, 'https://www.youtube.com/watch?v=QilgMPG7OaA', array['Debout, marche sur place en montant les genoux vers la hauteur des hanches.', 'Balance les bras en opposition.', 'Garde le buste droit et le ventre tenu.']::text[], 'Version sans saut des montées de genoux.', '[{"label":"Rythme tranquille","seconds":30},{"label":"Rythme soutenu","seconds":40},{"label":"Avec bras actifs","seconds":45}]'::jsonb, array['hanches', 'cuisses']::text[], array['aucun']::text[], 2, 'course-sur-place', 'cardio', 4, false, 'OMS, recommandations 2020 sur l''activité physique (Bull et al., BJSM) (https://pmc.ncbi.nlm.nih.gov/articles/PMC7719906/) ; free-exercise-db (domaine public), fiche Step-up with Knee Raise (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Step-up_with_Knee_Raise.json)', array['flechisseurs_hanche', 'quadriceps']::text[], array['mollets', 'transverse']::text[], array['corps_entier', 'jambes']::text[], array['cardio']::text[], 'cardio', false, 'time', 40, 3.5, '02030', '{"steps":["Debout, marche sur place en montant les genoux vers la hauteur des hanches.","Balance les bras en opposition.","Garde le buste droit et le ventre tenu."],"breathing":"Respire librement, au rythme des pas.","mistakes":["Se pencher en arrière.","Genoux qui montent à peine."]}'::jsonb),
+('marche_genoux_hauts', 'Marche sur place, genoux hauts', 'cardio', null, 'https://www.youtube.com/watch?v=QilgMPG7OaA', array['Debout, marche sur place en montant les genoux vers la hauteur des hanches.', 'Balance les bras en opposition.', 'Garde le buste droit et le ventre tenu.']::text[], 'Version sans saut des montées de genoux.', '[{"label":"Rythme tranquille","seconds":30},{"label":"Rythme soutenu","seconds":40},{"label":"Avec bras actifs","seconds":45}]'::jsonb, array['hanches', 'cuisses']::text[], array['aucun']::text[], 2, 'course-sur-place', 'cardio', 4, false, 'OMS, recommandations 2020 sur l''activité physique (Bull et al., BJSM) (https://doi.org/10.1136/bjsports-2020-102955) ; free-exercise-db (domaine public), fiche Step-up with Knee Raise (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Step-up_with_Knee_Raise.json)', array['flechisseurs_hanche', 'quadriceps']::text[], array['mollets', 'transverse']::text[], array['corps_entier', 'jambes']::text[], array['cardio']::text[], 'cardio', false, 'time', 40, 3.5, '02030', '{"steps":["Debout, marche sur place en montant les genoux vers la hauteur des hanches.","Balance les bras en opposition.","Garde le buste droit et le ventre tenu."],"breathing":"Respire librement, au rythme des pas.","mistakes":["Se pencher en arrière.","Genoux qui montent à peine."]}'::jsonb),
 ('step_jacks', 'Jumping jacks sans saut', 'cardio', null, 'https://www.youtube.com/watch?v=doj3IIyhwvs', array['Debout, pieds joints, bras le long du corps.', 'Pose un pied sur le côté en levant les bras au-dessus de la tête.', 'Reviens au centre, puis l''autre pied. Enchaîne sans t''arrêter.']::text[], 'Aucun saut : idéal pour les voisins du dessous et les articulations.', '[{"label":"Rythme tranquille","seconds":30},{"label":"Rythme soutenu","seconds":40},{"label":"Rythme soutenu","seconds":45}]'::jsonb, array['epaules', 'hanches']::text[], array['aucun']::text[], 2, 'jumping-jacks', 'cardio', 4, false, 'free-exercise-db (domaine public), fiche Star Jump (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Star_Jump.json)', array['deltoides_lateraux', 'moyen_fessier']::text[], array['mollets', 'adducteurs']::text[], array['corps_entier']::text[], array['cardio']::text[], 'cardio', false, 'time', 40, 3.5, '02030', '{"steps":["Debout, pieds joints, bras le long du corps.","Pose un pied sur le côté en levant les bras au-dessus de la tête.","Reviens au centre, puis l''autre pied. Enchaîne sans t''arrêter."],"breathing":"Respire au rythme des pas.","mistakes":["Bras qui ne montent qu''à mi-hauteur.","Rythme trop lent pour élever le cœur."]}'::jsonb),
-('boxe_ombre', 'Boxe dans le vide', 'cardio', null, 'https://www.youtube.com/watch?v=bQeSUBjOlN8', array['En garde, pieds décalés, genoux souples, poings devant le menton.', 'Envoie des directs alternés en tournant légèrement le buste.', 'Ramène toujours le poing en garde.']::text[], 'Ne verrouille pas le coude au bout du coup.', '[{"label":"Directs alternés","seconds":30},{"label":"Directs et crochets","seconds":40},{"label":"En sautillant sur place","seconds":45}]'::jsonb, array['epaules', 'bras']::text[], array['aucun']::text[], 2, 'boxe', 'cardio', 4, false, 'OMS, recommandations 2020 sur l''activité physique (Bull et al., BJSM) (https://pmc.ncbi.nlm.nih.gov/articles/PMC7719906/)', array['deltoides_anterieurs', 'triceps']::text[], array['obliques', 'pectoraux', 'mollets']::text[], array['corps_entier', 'bras', 'epaules']::text[], array['cardio', 'tonifier']::text[], 'cardio', false, 'time', 40, 6.0, '02032', '{"steps":["En garde, pieds décalés, genoux souples, poings devant le menton.","Envoie des directs alternés en tournant légèrement le buste.","Ramène toujours le poing en garde."],"breathing":"Expire à chaque coup.","mistakes":["Bras tendus à fond en claquant le coude.","Garde qui descend."]}'::jsonb),
+('boxe_ombre', 'Boxe dans le vide', 'cardio', null, 'https://www.youtube.com/watch?v=bQeSUBjOlN8', array['En garde, pieds décalés, genoux souples, poings devant le menton.', 'Envoie des directs alternés en tournant légèrement le buste.', 'Ramène toujours le poing en garde.']::text[], 'Ne verrouille pas le coude au bout du coup.', '[{"label":"Directs alternés","seconds":30},{"label":"Directs et crochets","seconds":40},{"label":"En sautillant sur place","seconds":45}]'::jsonb, array['epaules', 'bras']::text[], array['aucun']::text[], 2, 'boxe', 'cardio', 4, false, 'OMS, recommandations 2020 sur l''activité physique (Bull et al., BJSM) (https://doi.org/10.1136/bjsports-2020-102955)', array['deltoides_anterieurs', 'triceps']::text[], array['obliques', 'pectoraux', 'mollets']::text[], array['corps_entier', 'bras', 'epaules']::text[], array['cardio', 'tonifier']::text[], 'cardio', false, 'time', 40, 6.0, '02032', '{"steps":["En garde, pieds décalés, genoux souples, poings devant le menton.","Envoie des directs alternés en tournant légèrement le buste.","Ramène toujours le poing en garde."],"breathing":"Expire à chaque coup.","mistakes":["Bras tendus à fond en claquant le coude.","Garde qui descend."]}'::jsonb),
 ('burpee_sans_saut', 'Burpee sans saut', 'cardio', null, 'https://www.youtube.com/watch?v=gadl7yD6Img', array['Debout, accroupis-toi et pose les mains au sol.', 'Recule un pied puis l''autre pour arriver en planche.', 'Ramène les pieds un par un, puis relève-toi en tendant les bras.']::text[], 'Version sans saut du burpee.', '[{"label":"Pieds reculés un par un","reps":6},{"label":"8 répétitions","reps":8},{"label":"Avec une pompe","reps":8}]'::jsonb, array['cuisses', 'pectoraux', 'abdos']::text[], array['aucun']::text[], 3, 'burpee', 'corps-entier', 3, false, 'free-exercise-db (domaine public), fiche Push Up to Side Plank (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Push_Up_to_Side_Plank.json)', array['quadriceps', 'pectoraux', 'transverse']::text[], array['grand_fessier', 'triceps', 'deltoides_anterieurs']::text[], array['corps_entier']::text[], array['cardio', 'renforcer']::text[], 'hiit', false, 'reps', 8, 6.0, '02032', '{"steps":["Debout, accroupis-toi et pose les mains au sol.","Recule un pied puis l''autre pour arriver en planche.","Ramène les pieds un par un, puis relève-toi en tendant les bras."],"breathing":"Expire en te relevant.","mistakes":["Bassin qui s''affaisse en planche.","Dos arrondi en se relevant."]}'::jsonb),
 ('mountain_climbers_lents', 'Mountain climbers lents', 'cardio', null, 'https://www.youtube.com/watch?v=rtEJyD8fweo', array['En planche bras tendus.', 'Ramène un genou vers la poitrine, repose le pied, puis l''autre.', 'Rythme contrôlé, bassin stable.']::text[], 'Version sans élan des mountain climbers.', '[{"label":"Mains sur une chaise","seconds":30},{"label":"Mains au sol","seconds":30},{"label":"Mains au sol","seconds":40}]'::jsonb, array['abdos', 'hanches']::text[], array['aucun']::text[], 2, 'mountain-climbers', 'anti-extension', 3, false, 'free-exercise-db (domaine public), fiche Mountain Climbers (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Mountain_Climbers.json)', array['transverse', 'flechisseurs_hanche']::text[], array['deltoides_anterieurs', 'quadriceps']::text[], array['abdos', 'corps_entier']::text[], array['cardio', 'renforcer']::text[], 'cardio', false, 'time', 30, 6.0, '02032', '{"steps":["En planche bras tendus.","Ramène un genou vers la poitrine, repose le pied, puis l''autre.","Rythme contrôlé, bassin stable."],"breathing":"Expire à chaque genou ramené.","mistakes":["Fesses qui montent.","Épaules qui reculent derrière les mains."]}'::jsonb),
 ('patineur_sans_saut', 'Patineur sans saut', 'cardio', null, 'https://www.youtube.com/watch?v=2EyH9MN7hYE', array['Fais un grand pas en diagonale arrière, la jambe croise derrière l''autre.', 'Plie la jambe d''appui en balançant les bras comme un patineur.', 'Reviens et alterne les côtés.']::text[], 'Version sans saut du patineur.', '[{"label":"Petits pas","seconds":30},{"label":"Grands pas","seconds":40},{"label":"Grands pas, plus bas","seconds":45}]'::jsonb, array['hanches', 'cuisses']::text[], array['aucun']::text[], 2, 'patineur', 'cardio', 3, false, 'free-exercise-db (domaine public), fiche Crossover Reverse Lunge (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Crossover_Reverse_Lunge.json)', array['moyen_fessier', 'quadriceps']::text[], array['grand_fessier', 'adducteurs']::text[], array['jambes', 'fessiers']::text[], array['cardio', 'tonifier']::text[], 'cardio', false, 'time', 40, 6.0, '02032', '{"steps":["Fais un grand pas en diagonale arrière, la jambe croise derrière l''autre.","Plie la jambe d''appui en balançant les bras comme un patineur.","Reviens et alterne les côtés."],"breathing":"Respire au rythme des pas.","mistakes":["Genou d''appui qui rentre vers l''intérieur.","Buste trop penché."]}'::jsonb),
@@ -86,7 +86,7 @@ insert into public.exercises (id, name, kind, illustration, video_url, cues, cau
 ('saut_etoile', 'Saut en étoile', 'cardio', null, 'https://www.youtube.com/watch?v=NkbiKuADX_M', array['Accroupis-toi légèrement.', 'Saute en écartant bras et jambes en étoile.', 'Reviens pieds joints en réception souple.']::text[], 'Exercice très intense : quelques répétitions suffisent.', '[{"label":"6 sauts","reps":6},{"label":"8 sauts","reps":8},{"label":"10 sauts","reps":10}]'::jsonb, array['cuisses', 'mollets']::text[], array['aucun']::text[], 5, 'jumping-jacks', 'cardio', 3, false, 'free-exercise-db (domaine public), fiche Star Jump (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Star_Jump.json)', array['quadriceps', 'mollets']::text[], array['grand_fessier', 'deltoides_lateraux']::text[], array['corps_entier']::text[], array['cardio']::text[], 'hiit', true, 'reps', 8, 11.0, '02214', '{"steps":["Accroupis-toi légèrement.","Saute en écartant bras et jambes en étoile.","Reviens pieds joints en réception souple."],"breathing":"Expire au saut.","mistakes":["Réception jambes tendues.","Enchaîner sans contrôle."]}'::jsonb),
 ('cercles_bras', 'Cercles de bras', 'mobilite', null, 'https://www.youtube.com/watch?v=goaXpTMg3QI', array['Debout, bras tendus sur les côtés.', 'Fais des cercles vers l''avant, de petits à grands.', 'Change de sens à mi-temps.']::text[], 'Amplitude progressive, sans forcer.', '[{"label":"Petits cercles","seconds":30},{"label":"Petits puis grands cercles","seconds":30}]'::jsonb, array['epaules']::text[], array['aucun']::text[], 1, 'echauffement-epaules', 'mobilite', 2, false, 'free-exercise-db (domaine public), fiche Arm Circles (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Arm_Circles.json)', array['deltoides_lateraux', 'deltoides_anterieurs']::text[], array['trapezes', 'coiffe_rotateurs']::text[], array['epaules']::text[], array['mobilite']::text[], 'etirement', false, 'time', 30, 2.3, '02101', '{"steps":["Debout, bras tendus sur les côtés.","Fais des cercles vers l''avant, de petits à grands.","Change de sens à mi-temps."],"breathing":"Respiration libre.","mistakes":["Hausser les épaules.","Cambrer le dos."]}'::jsonb),
 ('cercles_hanches', 'Cercles de hanches', 'mobilite', null, 'https://www.youtube.com/watch?v=VcpoDKlvEkk', array['Debout, mains sur les hanches, pieds largeur de bassin.', 'Dessine de grands cercles avec le bassin.', 'Change de sens à mi-temps.']::text[], 'Les épaules restent à peu près immobiles.', '[{"label":"Petits cercles","seconds":30},{"label":"Grands cercles","seconds":30}]'::jsonb, array['hanches', 'obliques']::text[], array['aucun']::text[], 1, 'echauffement-hanches', 'mobilite', 2, false, 'free-exercise-db (domaine public), fiche Standing Hip Circles (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Standing_Hip_Circles.json)', array['flechisseurs_hanche', 'obliques']::text[], array['lombaires', 'moyen_fessier']::text[], array['fessiers', 'dos']::text[], array['mobilite']::text[], 'etirement', false, 'time', 30, 2.3, '02101', '{"steps":["Debout, mains sur les hanches, pieds largeur de bassin.","Dessine de grands cercles avec le bassin.","Change de sens à mi-temps."],"breathing":"Respiration libre.","mistakes":["Bouger les épaules plus que le bassin.","Genoux verrouillés."]}'::jsonb),
-('balancier_jambes', 'Balanciers de jambe', 'mobilite', null, 'https://www.youtube.com/watch?v=_JWHy86izcw', array['Une main au mur, balance une jambe d''avant en arrière.', 'Augmente l''amplitude progressivement, buste droit.', 'Change de jambe à mi-temps.']::text[], 'Mouvement de balancier relâché, sans lancer la jambe.', '[{"label":"Petite amplitude","seconds":30},{"label":"Amplitude croissante","seconds":40}]'::jsonb, array['ischios', 'hanches']::text[], array['mur']::text[], 1, 'echauffement-hanches', 'mobilite', 2, false, 'free-exercise-db (domaine public), fiche Front Leg Raises (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Front_Leg_Raises.json)', array['ischio_jambiers', 'flechisseurs_hanche']::text[], array['grand_fessier', 'adducteurs']::text[], array['jambes', 'fessiers']::text[], array['mobilite']::text[], 'etirement', false, 'time', 40, 2.3, '02101', '{"steps":["Une main au mur, balance une jambe d''avant en arrière.","Augmente l''amplitude progressivement, buste droit.","Change de jambe à mi-temps."],"breathing":"Respiration libre.","mistakes":["Se pencher pour lever la jambe plus haut.","Lancer la jambe brutalement."]}'::jsonb),
+('balancier_jambes', 'Balanciers de jambe', 'mobilite', null, 'https://www.youtube.com/watch?v=_JWHy86izcw', array['Une main sur un appui (mur, dossier de chaise), balance une jambe d''avant en arrière.', 'Augmente l''amplitude progressivement, buste droit.', 'Change de jambe à mi-temps.']::text[], 'Mouvement de balancier relâché, sans lancer la jambe.', '[{"label":"Petite amplitude","seconds":30},{"label":"Amplitude croissante","seconds":40}]'::jsonb, array['ischios', 'hanches']::text[], array['aucun']::text[], 1, 'echauffement-hanches', 'mobilite', 2, false, 'free-exercise-db (domaine public), fiche Front Leg Raises (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Front_Leg_Raises.json)', array['ischio_jambiers', 'flechisseurs_hanche']::text[], array['grand_fessier', 'adducteurs']::text[], array['jambes', 'fessiers']::text[], array['mobilite']::text[], 'etirement', false, 'time', 40, 2.3, '02101', '{"steps":["Une main sur un appui (mur, dossier de chaise), balance une jambe d''avant en arrière.","Augmente l''amplitude progressivement, buste droit.","Change de jambe à mi-temps."],"breathing":"Respiration libre.","mistakes":["Se pencher pour lever la jambe plus haut.","Lancer la jambe brutalement."]}'::jsonb),
 ('rotations_buste', 'Rotations du buste', 'mobilite', null, 'https://www.youtube.com/watch?v=I4NlqG57l4Q', array['Debout, pieds largeur de bassin, bras pliés devant la poitrine.', 'Tourne le buste d''un côté puis de l''autre.', 'Le bassin reste face à l''avant.']::text[], 'Rotation douce, sans à-coup.', '[{"label":"Lentement","seconds":30},{"label":"Plus d''amplitude","seconds":30}]'::jsonb, array['obliques']::text[], array['aucun']::text[], 1, 'echauffement-dos', 'mobilite', 2, false, 'free-exercise-db (domaine public), fiche Torso Rotation (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Torso_Rotation.json)', array['obliques']::text[], array['lombaires', 'rhomboides']::text[], array['dos', 'abdos']::text[], array['mobilite']::text[], 'etirement', false, 'time', 30, 2.3, '02101', '{"steps":["Debout, pieds largeur de bassin, bras pliés devant la poitrine.","Tourne le buste d''un côté puis de l''autre.","Le bassin reste face à l''avant."],"breathing":"Expire à chaque rotation.","mistakes":["Tourner le bassin avec le buste.","Aller trop vite."]}'::jsonb),
 ('plus_grand_etirement', 'Le plus grand étirement du monde', 'mobilite', null, 'https://www.youtube.com/watch?v=_vfHhERqpbI', array['Fente avant profonde, mains au sol à l''intérieur du pied avant.', 'Ouvre le bras côté jambe avant vers le plafond en tournant le buste.', 'Reviens, puis change de côté à mi-temps.']::text[], 'Pose le genou arrière au sol si besoin.', '[{"label":"Main au sol, sans rotation","seconds":45},{"label":"Avec rotation du buste","seconds":60}]'::jsonb, array['hanches', 'ischios']::text[], array['aucun']::text[], 2, 'echauffement-hanches', 'mobilite', 2, false, 'free-exercise-db (domaine public), fiche Worlds Greatest Stretch (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Worlds_Greatest_Stretch.json)', array['flechisseurs_hanche', 'ischio_jambiers']::text[], array['obliques', 'adducteurs', 'rhomboides']::text[], array['corps_entier', 'jambes', 'dos']::text[], array['mobilite']::text[], 'etirement', false, 'time', 60, 2.3, '02101', '{"steps":["Fente avant profonde, mains au sol à l''intérieur du pied avant.","Ouvre le bras côté jambe avant vers le plafond en tournant le buste.","Reviens, puis change de côté à mi-temps."],"breathing":"Inspire en ouvrant, expire en revenant.","mistakes":["Genou avant qui rentre vers l''intérieur.","Hanche arrière qui s''affaisse."]}'::jsonb),
 ('montagne', 'Posture de la montagne', 'mobilite', null, 'https://www.youtube.com/watch?v=ve_cJNhiQVA', array['Debout, pieds parallèles, poids réparti sur tout le pied.', 'Grandis-toi par le sommet du crâne, épaules relâchées, bras le long du corps.', 'Reste immobile et observe ta respiration.']::text[], null, '[{"label":"30 s","seconds":30},{"label":"45 s, yeux fermés","seconds":45}]'::jsonb, array['abdos']::text[], array['aucun']::text[], 1, 'yoga-debout', 'yoga', 1, false, 'Yogamatters, bibliothèque de postures : Mountain Pose (Tadasana) (https://www.yogamatters.com/blogs/pose-library/mountain-pose-tadasana)', array['transverse']::text[], array['quadriceps', 'grand_fessier', 'mollets']::text[], array['corps_entier']::text[], array['detente', 'mobilite']::text[], 'yoga', false, 'time', 30, 2.3, '02150', '{"steps":["Debout, pieds parallèles, poids réparti sur tout le pied.","Grandis-toi par le sommet du crâne, épaules relâchées, bras le long du corps.","Reste immobile et observe ta respiration."],"breathing":"Respire lentement par le nez.","mistakes":["Verrouiller les genoux.","Pousser le ventre en avant."]}'::jsonb),
@@ -106,12 +106,12 @@ insert into public.exercises (id, name, kind, illustration, video_url, cues, cau
 ('torsion_couchee', 'Torsion allongée', 'etirement', null, 'https://www.youtube.com/watch?v=cvCPeN6XjHs', array['Allongé sur le dos, bras ouverts en croix.', 'Ramène les genoux pliés vers la poitrine, puis laisse-les tomber d''un côté.', 'Tourne la tête de l''autre côté. Change de côté à mi-temps.']::text[], 'Glisse un coussin sous les genoux s''ils ne touchent pas le sol.', '[{"label":"30 s par côté","seconds":60},{"label":"45 s par côté","seconds":90}]'::jsonb, array['obliques', 'lombaires']::text[], array['aucun']::text[], 1, 'yoga-torsion', 'yoga', 1, false, 'Yogamatters, bibliothèque de postures : Supine Twist (https://www.yogamatters.com/blogs/pose-library/supine-twist-supta-matsyendrasana)', array['obliques', 'lombaires']::text[], array['grand_fessier', 'pectoraux']::text[], array['dos', 'fessiers']::text[], array['mobilite', 'detente']::text[], 'yoga', false, 'time', 60, 2.3, '02150', '{"steps":["Allongé sur le dos, bras ouverts en croix.","Ramène les genoux pliés vers la poitrine, puis laisse-les tomber d''un côté.","Tourne la tête de l''autre côté. Change de côté à mi-temps."],"breathing":"Respire lentement dans le ventre.","mistakes":["Décoller l''épaule opposée.","Forcer la rotation."]}'::jsonb),
 ('bebe_heureux', 'Bébé heureux', 'etirement', null, 'https://www.youtube.com/watch?v=1FqB-qyeKAE', array['Allongé sur le dos, ramène les genoux vers les aisselles.', 'Attrape les pieds par l''extérieur, plantes vers le plafond.', 'Laisse le bas du dos se poser au sol.']::text[], 'Tiens tes genoux ou l''arrière des cuisses si tu n''atteins pas les pieds.', '[{"label":"Mains sur les genoux","seconds":30},{"label":"Mains sur les pieds","seconds":45},{"label":"1 min, léger balancement","seconds":60}]'::jsonb, array['cuisses', 'fessiers']::text[], array['aucun']::text[], 1, 'yoga-hanches', 'yoga', 1, false, 'Yogamatters, bibliothèque de postures : Happy Baby Pose (https://www.yogamatters.com/blogs/pose-library/happy-baby-pose-ananda-balasana)', array['adducteurs', 'grand_fessier']::text[], array['ischio_jambiers', 'lombaires']::text[], array['fessiers', 'dos']::text[], array['mobilite', 'detente']::text[], 'yoga', false, 'time', 45, 2.3, '02150', '{"steps":["Allongé sur le dos, ramène les genoux vers les aisselles.","Attrape les pieds par l''extérieur, plantes vers le plafond.","Laisse le bas du dos se poser au sol."],"breathing":"Respire lentement.","mistakes":["Décoller la tête du sol.","Tirer fort sur les pieds."]}'::jsonb),
 ('jambes_au_mur', 'Jambes contre le mur', 'etirement', null, 'https://www.youtube.com/watch?v=aXd7u9MoI7E', array['Assieds-toi de côté contre un mur, puis bascule pour allonger les jambes contre le mur.', 'Fesses proches du mur, bras relâchés.', 'Ferme les yeux et laisse les jambes se détendre.']::text[], 'Éloigne un peu les fesses du mur si l''arrière des cuisses tire trop.', '[{"label":"2 min","seconds":120},{"label":"3 min","seconds":180},{"label":"5 min","seconds":300}]'::jsonb, array['ischios']::text[], array['mur']::text[], 1, 'yoga-repos', 'yoga', 1, false, 'Yoga Journal, Legs Up the Wall Pose (https://www.yogajournal.com/poses/legs-up-the-wall-pose-2/)', array['ischio_jambiers']::text[], array['mollets', 'lombaires']::text[], array['jambes']::text[], array['detente']::text[], 'yoga', false, 'time', 120, 2.3, '02150', '{"steps":["Assieds-toi de côté contre un mur, puis bascule pour allonger les jambes contre le mur.","Fesses proches du mur, bras relâchés.","Ferme les yeux et laisse les jambes se détendre."],"breathing":"Respiration lente et longue.","mistakes":["Garder les jambes contractées.","Se placer trop loin du mur."]}'::jsonb),
-('quadriceps_debout', 'Étirement des quadriceps debout', 'etirement', null, 'https://www.youtube.com/watch?v=4c5oLJxm2Nk', array['Debout, une main au mur.', 'Attrape ta cheville et ramène le talon vers la fesse.', 'Genoux côte à côte, bassin légèrement rentré. Change de côté.']::text[], 'Utilise une serviette autour de la cheville si tu ne l''attrapes pas.', '[{"label":"20 s par côté","seconds":40},{"label":"30 s par côté","seconds":60}]'::jsonb, array['cuisses']::text[], array['mur']::text[], 1, 'etirement-quadriceps', 'etirement', 1, false, 'free-exercise-db (domaine public), fiche Quad Stretch (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Quad_Stretch.json) ; NHS, Flexibility exercises (https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/)', array['quadriceps']::text[], array['flechisseurs_hanche']::text[], array['jambes']::text[], array['mobilite']::text[], 'etirement', false, 'time', 60, 2.3, '02101', '{"steps":["Debout, une main au mur.","Attrape ta cheville et ramène le talon vers la fesse.","Genoux côte à côte, bassin légèrement rentré. Change de côté."],"breathing":"Respire lentement pendant le maintien.","mistakes":["Genou qui part vers l''avant ou sur le côté.","Cambrer le dos."]}'::jsonb),
+('quadriceps_debout', 'Étirement des quadriceps debout', 'etirement', null, 'https://www.youtube.com/watch?v=4c5oLJxm2Nk', array['Debout, une main sur un appui (mur, dossier de chaise).', 'Attrape ta cheville et ramène le talon vers la fesse.', 'Genoux côte à côte, bassin légèrement rentré. Change de côté.']::text[], 'Utilise une serviette autour de la cheville si tu ne l''attrapes pas.', '[{"label":"20 s par côté","seconds":40},{"label":"30 s par côté","seconds":60}]'::jsonb, array['cuisses']::text[], array['aucun']::text[], 1, 'etirement-quadriceps', 'etirement', 1, false, 'free-exercise-db (domaine public), fiche Quad Stretch (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Quad_Stretch.json) ; NHS, Flexibility exercises (https://www.nhs.uk/live-well/exercise/flexibility-exercises/)', array['quadriceps']::text[], array['flechisseurs_hanche']::text[], array['jambes']::text[], array['mobilite']::text[], 'etirement', false, 'time', 60, 2.3, '02101', '{"steps":["Debout, une main sur un appui (mur, dossier de chaise).","Attrape ta cheville et ramène le talon vers la fesse.","Genoux côte à côte, bassin légèrement rentré. Change de côté."],"breathing":"Respire lentement pendant le maintien.","mistakes":["Genou qui part vers l''avant ou sur le côté.","Cambrer le dos."]}'::jsonb),
 ('etirement_lateral', 'Étirement latéral debout', 'etirement', null, 'https://www.youtube.com/watch?v=ML6zsqBPmPg', array['Debout, pieds largeur de hanches.', 'Lève un bras au-dessus de la tête et penche-toi doucement de l''autre côté.', 'Reviens au centre et change de côté.']::text[], 'Penche-toi sur le côté, pas vers l''avant.', '[{"label":"15 s par côté","seconds":30},{"label":"20 s par côté","seconds":40}]'::jsonb, array['obliques', 'dos']::text[], array['aucun']::text[], 1, 'etirement-lateral', 'etirement', 1, false, 'free-exercise-db (domaine public), fiche Standing Lateral Stretch (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Standing_Lateral_Stretch.json)', array['obliques', 'grand_dorsal']::text[], '{}'::text[], array['dos', 'abdos']::text[], array['mobilite']::text[], 'etirement', false, 'time', 40, 2.3, '02101', '{"steps":["Debout, pieds largeur de hanches.","Lève un bras au-dessus de la tête et penche-toi doucement de l''autre côté.","Reviens au centre et change de côté."],"breathing":"Inspire en levant le bras, expire en t''inclinant.","mistakes":["Tourner le buste.","Hausser l''épaule."]}'::jsonb),
 ('epaule_bras_croise', 'Étirement de l''épaule, bras croisé', 'etirement', null, 'https://www.youtube.com/watch?v=mlUh1XQikKM', array['Amène un bras tendu devant la poitrine.', 'Avec l''autre main, rapproche-le doucement du corps, au-dessus du coude.', 'Épaules basses. Change de côté.']::text[], 'Appuie au-dessus du coude, jamais dessus.', '[{"label":"20 s par côté","seconds":40},{"label":"30 s par côté","seconds":60}]'::jsonb, array['epaules']::text[], array['aucun']::text[], 1, 'etirement-epaule', 'etirement', 1, false, 'free-exercise-db (domaine public), fiche Shoulder Stretch (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Shoulder_Stretch.json)', array['deltoides_posterieurs']::text[], array['rhomboides']::text[], array['epaules']::text[], array['mobilite']::text[], 'etirement', false, 'time', 40, 2.3, '02101', '{"steps":["Amène un bras tendu devant la poitrine.","Avec l''autre main, rapproche-le doucement du corps, au-dessus du coude.","Épaules basses. Change de côté."],"breathing":"Respire calmement.","mistakes":["Hausser l''épaule étirée.","Tourner le buste."]}'::jsonb),
 ('triceps_etirement', 'Étirement des triceps', 'etirement', null, 'https://www.youtube.com/watch?v=V8nA6t_r8JM', array['Lève un bras et plie le coude pour poser la main entre les omoplates.', 'Avec l''autre main, pousse doucement le coude vers l''arrière.', 'Change de côté.']::text[], 'Reste dans une amplitude confortable pour l''épaule.', '[{"label":"20 s par côté","seconds":40},{"label":"30 s par côté","seconds":60}]'::jsonb, array['bras']::text[], array['aucun']::text[], 1, 'etirement-bras', 'etirement', 1, false, 'free-exercise-db (domaine public), fiche Triceps Stretch (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Triceps_Stretch.json)', array['triceps']::text[], array['grand_dorsal']::text[], array['bras']::text[], array['mobilite']::text[], 'etirement', false, 'time', 40, 2.3, '02101', '{"steps":["Lève un bras et plie le coude pour poser la main entre les omoplates.","Avec l''autre main, pousse doucement le coude vers l''arrière.","Change de côté."],"breathing":"Respire calmement.","mistakes":["Cambrer le dos.","Pencher la tête vers l''avant."]}'::jsonb),
 ('torsion_assise', 'Torsion assise', 'etirement', null, 'https://www.youtube.com/watch?v=gsp1AZcEn54', array['Assis, une jambe tendue, l''autre pied posé à l''extérieur du genou.', 'Grandis-toi, puis tourne le buste vers le genou plié.', 'Coude contre le genou, regard derrière toi. Change de côté.']::text[], 'Grandis-toi à chaque inspiration, tourne un peu à chaque expiration.', '[{"label":"20 s par côté","seconds":40},{"label":"30 s par côté","seconds":60}]'::jsonb, array['obliques', 'lombaires']::text[], array['aucun']::text[], 1, 'yoga-torsion', 'etirement', 1, false, 'free-exercise-db (domaine public), fiche Spinal Stretch (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Spinal_Stretch.json)', array['obliques', 'lombaires']::text[], array['grand_fessier']::text[], array['dos']::text[], array['mobilite']::text[], 'etirement', false, 'time', 40, 2.3, '02101', '{"steps":["Assis, une jambe tendue, l''autre pied posé à l''extérieur du genou.","Grandis-toi, puis tourne le buste vers le genou plié.","Coude contre le genou, regard derrière toi. Change de côté."],"breathing":"Inspire en te grandissant, expire en tournant.","mistakes":["Dos arrondi.","Forcer avec le bras."]}'::jsonb),
-('genoux_poitrine', 'Genoux à la poitrine', 'etirement', null, 'https://www.youtube.com/watch?v=KCiEleLODc8', array['Allongé sur le dos.', 'Ramène les genoux vers la poitrine, mains sous les genoux.', 'Balance-toi doucement de gauche à droite si c''est agréable.']::text[], null, '[{"label":"Une jambe à la fois","seconds":40},{"label":"Deux jambes, léger balancement","seconds":40}]'::jsonb, array['lombaires']::text[], array['aucun']::text[], 1, 'etirement-dos', 'etirement', 1, false, 'free-exercise-db (domaine public), fiche Hug Knees To Chest (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Hug_Knees_To_Chest.json) ; NHS, Flexibility exercises (https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/)', array['lombaires']::text[], array['grand_fessier']::text[], array['dos']::text[], array['mobilite', 'detente']::text[], 'etirement', false, 'time', 40, 2.3, '02101', '{"steps":["Allongé sur le dos.","Ramène les genoux vers la poitrine, mains sous les genoux.","Balance-toi doucement de gauche à droite si c''est agréable."],"breathing":"Respire lentement dans le ventre.","mistakes":["Décoller la tête.","Tirer fort sur les genoux."]}'::jsonb),
+('genoux_poitrine', 'Genoux à la poitrine', 'etirement', null, 'https://www.youtube.com/watch?v=KCiEleLODc8', array['Allongé sur le dos.', 'Ramène les genoux vers la poitrine, mains sous les genoux.', 'Balance-toi doucement de gauche à droite si c''est agréable.']::text[], null, '[{"label":"Une jambe à la fois","seconds":40},{"label":"Deux jambes, léger balancement","seconds":40}]'::jsonb, array['lombaires']::text[], array['aucun']::text[], 1, 'etirement-dos', 'etirement', 1, false, 'free-exercise-db (domaine public), fiche Hug Knees To Chest (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Hug_Knees_To_Chest.json) ; NHS, Flexibility exercises (https://www.nhs.uk/live-well/exercise/flexibility-exercises/)', array['lombaires']::text[], array['grand_fessier']::text[], array['dos']::text[], array['mobilite', 'detente']::text[], 'etirement', false, 'time', 40, 2.3, '02101', '{"steps":["Allongé sur le dos.","Ramène les genoux vers la poitrine, mains sous les genoux.","Balance-toi doucement de gauche à droite si c''est agréable."],"breathing":"Respire lentement dans le ventre.","mistakes":["Décoller la tête.","Tirer fort sur les genoux."]}'::jsonb),
 ('coherence_cardiaque', 'Respiration lente (6 cycles par minute)', 'respiration', null, 'https://www.youtube.com/watch?v=vs_8iqpGoEM', array['Assis, dos droit, pieds au sol.', 'Inspire par le nez pendant 5 secondes, puis expire pendant 5 secondes.', 'Garde ce rythme régulier jusqu''à la fin, sans forcer.']::text[], 'Si tu te sens étourdi, reprends une respiration normale.', '[{"label":"3 min","seconds":180},{"label":"5 min","seconds":300}]'::jsonb, array['respiration']::text[], array['aucun']::text[], 1, 'respiration', 'respiration', 1, false, 'Respiration lente autour de 6 cycles par minute, revue systématique (Université de Berne) (https://boris.unibe.ch/193198)', array['diaphragme']::text[], '{}'::text[], '{}'::text[], array['detente']::text[], 'meditation', false, 'time', 180, 1.0, '07075', '{"steps":["Assis, dos droit, pieds au sol.","Inspire par le nez pendant 5 secondes, puis expire pendant 5 secondes.","Garde ce rythme régulier jusqu''à la fin, sans forcer."],"breathing":"5 s d''inspiration, 5 s d''expiration : 6 cycles par minute.","mistakes":["Gonfler la poitrine plutôt que le ventre.","Forcer l''inspiration."]}'::jsonb),
 ('respiration_carree', 'Respiration carrée', 'respiration', null, 'https://www.youtube.com/watch?v=O6NKXExzkww', array['Assis confortablement, expire complètement.', 'Inspire 4 s, retiens 4 s, expire 4 s, retiens 4 s.', 'Recommence en imaginant les quatre côtés d''un carré.']::text[], 'Raccourcis les temps (3 s) si les pauses sont inconfortables.', '[{"label":"2 min, carré de 3 s","seconds":120},{"label":"3 min, carré de 4 s","seconds":180}]'::jsonb, array['respiration']::text[], array['aucun']::text[], 1, 'respiration', 'respiration', 1, false, 'University of Pittsburgh, Box Breathing (https://sova.pitt.edu/box-breathing)', array['diaphragme']::text[], '{}'::text[], '{}'::text[], array['detente']::text[], 'meditation', false, 'time', 120, 1.0, '07075', '{"steps":["Assis confortablement, expire complètement.","Inspire 4 s, retiens 4 s, expire 4 s, retiens 4 s.","Recommence en imaginant les quatre côtés d''un carré."],"breathing":"Quatre temps égaux : inspire, pause, expire, pause.","mistakes":["Contracter les épaules pendant les pauses.","Accélérer le compte."]}'::jsonb),
 ('meditation_souffle', 'Méditation : attention au souffle', 'respiration', null, 'https://www.youtube.com/watch?v=VBSelbkOELA', array['Assis, dos droit sans raideur, yeux fermés ou regard posé au sol.', 'Porte ton attention sur les sensations du souffle, au niveau des narines ou du ventre.', 'Quand ton esprit s''égare, remarque-le simplement et reviens au souffle.']::text[], null, '[{"label":"3 min","seconds":180},{"label":"5 min","seconds":300},{"label":"10 min","seconds":600}]'::jsonb, '{}'::text[], array['aucun']::text[], 1, 'meditation', 'meditation', 1, false, 'UCLA Mindful, méditations guidées gratuites (https://www.uclahealth.org/uclamindful/guided-meditations) ; NHS Torbay and South Devon, Mindfulness of breath (https://www.torbayandsouthdevon.nhs.uk/uploads/mindfulness-of-breath-instructions.pdf)', '{}'::text[], '{}'::text[], '{}'::text[], array['detente']::text[], 'meditation', false, 'time', 300, 1.0, '07075', '{"steps":["Assis, dos droit sans raideur, yeux fermés ou regard posé au sol.","Porte ton attention sur les sensations du souffle, au niveau des narines ou du ventre.","Quand ton esprit s''égare, remarque-le simplement et reviens au souffle."],"breathing":"Respire naturellement, sans chercher à modifier le rythme.","mistakes":["Se reprocher d''avoir des pensées : c''est normal.","Contrôler la respiration."]}'::jsonb),
@@ -188,7 +188,7 @@ update public.exercises set
   met = 2.8, met_code = '02024',
   tutorial = jsonb_build_object('steps', to_jsonb(cues), 'breathing', 'Expire en allongeant, inspire en revenant au centre.', 'mistakes', '["Lever la jambe trop haut et creuser le dos.","Laisser le bassin basculer sur le côté."]'::jsonb),
   video_url = coalesce(video_url, 'https://www.youtube.com/watch?v=l2DXJoi0WYE'),
-  source = case when coalesce(source, '') like '%https://www.health.harvard.edu/staying-healthy/core-exercises-the-big-3%' then source else concat_ws(' ; ', source, 'Harvard Health Publishing, « Big 3 » de Stuart McGill (https://www.health.harvard.edu/staying-healthy/core-exercises-the-big-3)') end
+  source = case when coalesce(source, '') like '%https://www.health.harvard.edu/staying-healthy/three-moves-for-better-spine-health%' then source else concat_ws(' ; ', source, 'Harvard Health Publishing, Three moves for better spine health (« Big 3 » de Stuart McGill) (https://www.health.harvard.edu/staying-healthy/three-moves-for-better-spine-health)') end
 where id = 'bird_dog';
 update public.exercises set
   muscles_primary = array['grand_droit', 'transverse']::text[], muscles_secondary = array['deltoides_anterieurs', 'grand_fessier', 'quadriceps']::text[],
@@ -242,7 +242,7 @@ update public.exercises set
   met = 2.8, met_code = '02024',
   tutorial = jsonb_build_object('steps', to_jsonb(cues), 'breathing', 'Respire calmement, sans bloquer.', 'mistakes', '["Laisser le bassin descendre.","Pencher le buste vers l''avant."]'::jsonb),
   video_url = coalesce(video_url, 'https://www.youtube.com/watch?v=_H9lCamSHR0'),
-  source = case when coalesce(source, '') like '%https://www.health.harvard.edu/staying-healthy/core-exercises-the-big-3%' then source else concat_ws(' ; ', source, 'Harvard Health Publishing, « Big 3 » de Stuart McGill (https://www.health.harvard.edu/staying-healthy/core-exercises-the-big-3) ; free-exercise-db (domaine public), fiche Side Bridge (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Side_Bridge.json)') end
+  source = case when coalesce(source, '') like '%https://www.health.harvard.edu/staying-healthy/three-moves-for-better-spine-health%' then source else concat_ws(' ; ', source, 'Harvard Health Publishing, Three moves for better spine health (« Big 3 » de Stuart McGill) (https://www.health.harvard.edu/staying-healthy/three-moves-for-better-spine-health) ; free-exercise-db (domaine public), fiche Side Bridge (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Side_Bridge.json)') end
 where id = 'planche_laterale';
 update public.exercises set
   muscles_primary = array['diaphragme']::text[], muscles_secondary = array['transverse']::text[],
@@ -269,7 +269,7 @@ update public.exercises set
   met = 2.3, met_code = '02150',
   tutorial = jsonb_build_object('steps', to_jsonb(cues), 'breathing', 'Inspire en creusant, expire en arrondissant.', 'mistakes', '["Forcer la cambrure.","Plier les coudes."]'::jsonb),
   video_url = coalesce(video_url, 'https://www.youtube.com/watch?v=Sf0h4chQzis'),
-  source = case when coalesce(source, '') like '%https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Cat_Stretch.json%' then source else concat_ws(' ; ', source, 'free-exercise-db (domaine public), fiche Cat Stretch (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Cat_Stretch.json) ; NHS, Flexibility exercises (https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/)') end
+  source = case when coalesce(source, '') like '%https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Cat_Stretch.json%' then source else concat_ws(' ; ', source, 'free-exercise-db (domaine public), fiche Cat Stretch (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Cat_Stretch.json) ; NHS, Flexibility exercises (https://www.nhs.uk/live-well/exercise/flexibility-exercises/)') end
 where id = 'chat_vache';
 update public.exercises set
   muscles_primary = array['rhomboides', 'trapezes']::text[], muscles_secondary = '{}'::text[],
@@ -287,7 +287,7 @@ update public.exercises set
   met = 2.3, met_code = '02101',
   tutorial = jsonb_build_object('steps', to_jsonb(cues), 'breathing', 'Inspire en montant, expire en redescendant.', 'mistakes', '["Décoller le bas du dos du mur.","Monter les épaules vers les oreilles."]'::jsonb),
   video_url = coalesce(video_url, 'https://www.youtube.com/watch?v=K8TMa3-E2Is'),
-  source = case when coalesce(source, '') like '%https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/%' then source else concat_ws(' ; ', source, 'NHS, Flexibility exercises (https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/)') end
+  source = case when coalesce(source, '') like '%https://www.nhs.uk/live-well/exercise/flexibility-exercises/%' then source else concat_ws(' ; ', source, 'NHS, Flexibility exercises (https://www.nhs.uk/live-well/exercise/flexibility-exercises/)') end
 where id = 'wall_slides';
 update public.exercises set
   muscles_primary = array['rhomboides', 'lombaires']::text[], muscles_secondary = array['pectoraux']::text[],
@@ -305,7 +305,7 @@ update public.exercises set
   met = 2.3, met_code = '02101',
   tutorial = jsonb_build_object('steps', to_jsonb(cues), 'breathing', 'Respiration libre, sans bloquer pendant le maintien.', 'mistakes', '["Baisser le menton vers la poitrine au lieu de le reculer.","Contracter les épaules."]'::jsonb),
   video_url = coalesce(video_url, 'https://www.youtube.com/watch?v=tQYo15dpKdM'),
-  source = case when coalesce(source, '') like '%https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/%' then source else concat_ws(' ; ', source, 'NHS, Flexibility exercises (https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/)') end
+  source = case when coalesce(source, '') like '%https://www.nhs.uk/live-well/exercise/flexibility-exercises/%' then source else concat_ws(' ; ', source, 'NHS, Flexibility exercises (https://www.nhs.uk/live-well/exercise/flexibility-exercises/)') end
 where id = 'chin_tuck';
 update public.exercises set
   muscles_primary = array['pectoraux']::text[], muscles_secondary = array['deltoides_anterieurs']::text[],
@@ -323,7 +323,7 @@ update public.exercises set
   met = 2.3, met_code = '02101',
   tutorial = jsonb_build_object('steps', to_jsonb(cues), 'breathing', 'Expire en relâchant l''épaule opposée vers le bas.', 'mistakes', '["Tirer sur la tête avec la main.","Hausser l''épaule du côté étiré."]'::jsonb),
   video_url = coalesce(video_url, 'https://www.youtube.com/watch?v=vfoWMKhx4v4'),
-  source = case when coalesce(source, '') like '%https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Side_Neck_Stretch.json%' then source else concat_ws(' ; ', source, 'free-exercise-db (domaine public), fiche Side Neck Stretch (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Side_Neck_Stretch.json) ; NHS, Flexibility exercises (https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/)') end
+  source = case when coalesce(source, '') like '%https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Side_Neck_Stretch.json%' then source else concat_ws(' ; ', source, 'free-exercise-db (domaine public), fiche Side Neck Stretch (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Side_Neck_Stretch.json) ; NHS, Flexibility exercises (https://www.nhs.uk/live-well/exercise/flexibility-exercises/)') end
 where id = 'trapezes';
 update public.exercises set
   muscles_primary = array['lombaires']::text[], muscles_secondary = array['grand_dorsal', 'grand_fessier']::text[],
@@ -341,7 +341,7 @@ update public.exercises set
   met = 2.3, met_code = '02101',
   tutorial = jsonb_build_object('steps', to_jsonb(cues), 'breathing', 'Expire en avançant le bassin, puis respire calmement.', 'mistakes', '["Cambrer le bas du dos.","Avancer le genou avant au-delà des orteils."]'::jsonb),
   video_url = coalesce(video_url, 'https://www.youtube.com/watch?v=5M6zv6hGskQ'),
-  source = case when coalesce(source, '') like '%https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Kneeling_Hip_Flexor.json%' then source else concat_ws(' ; ', source, 'free-exercise-db (domaine public), fiche Kneeling Hip Flexor (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Kneeling_Hip_Flexor.json) ; NHS, Flexibility exercises (https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/)') end
+  source = case when coalesce(source, '') like '%https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Kneeling_Hip_Flexor.json%' then source else concat_ws(' ; ', source, 'free-exercise-db (domaine public), fiche Kneeling Hip Flexor (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Kneeling_Hip_Flexor.json) ; NHS, Flexibility exercises (https://www.nhs.uk/live-well/exercise/flexibility-exercises/)') end
 where id = 'flechisseurs';
 update public.exercises set
   muscles_primary = array['ischio_jambiers']::text[], muscles_secondary = array['mollets']::text[],
@@ -359,7 +359,7 @@ update public.exercises set
   met = 2.3, met_code = '02101',
   tutorial = jsonb_build_object('steps', to_jsonb(cues), 'breathing', 'Expire en rapprochant la jambe, puis respire calmement.', 'mistakes', '["Tirer sur la tête et le cou pour attraper la jambe.","Forcer sur le genou croisé."]'::jsonb),
   video_url = coalesce(video_url, 'https://www.youtube.com/watch?v=_tvE9m9kkxM'),
-  source = case when coalesce(source, '') like '%https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Ankle_On_The_Knee.json%' then source else concat_ws(' ; ', source, 'free-exercise-db (domaine public), fiche Ankle On The Knee (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Ankle_On_The_Knee.json) ; NHS, Flexibility exercises (https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/)') end
+  source = case when coalesce(source, '') like '%https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Ankle_On_The_Knee.json%' then source else concat_ws(' ; ', source, 'free-exercise-db (domaine public), fiche Ankle On The Knee (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Ankle_On_The_Knee.json) ; NHS, Flexibility exercises (https://www.nhs.uk/live-well/exercise/flexibility-exercises/)') end
 where id = 'fessiers_4';
 update public.exercises set
   muscles_primary = array['mollets']::text[], muscles_secondary = '{}'::text[],
@@ -368,7 +368,7 @@ update public.exercises set
   met = 2.3, met_code = '02101',
   tutorial = jsonb_build_object('steps', to_jsonb(cues), 'breathing', 'Respiration lente pendant le maintien.', 'mistakes', '["Décoller le talon arrière.","Tourner le pied arrière vers l''extérieur."]'::jsonb),
   video_url = coalesce(video_url, 'https://www.youtube.com/watch?v=zzNI5vxssTI'),
-  source = case when coalesce(source, '') like '%https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Calf_Stretch_Hands_Against_Wall.json%' then source else concat_ws(' ; ', source, 'free-exercise-db (domaine public), fiche Calf Stretch Hands Against Wall (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Calf_Stretch_Hands_Against_Wall.json) ; NHS, Flexibility exercises (https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/)') end
+  source = case when coalesce(source, '') like '%https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Calf_Stretch_Hands_Against_Wall.json%' then source else concat_ws(' ; ', source, 'free-exercise-db (domaine public), fiche Calf Stretch Hands Against Wall (https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Calf_Stretch_Hands_Against_Wall.json) ; NHS, Flexibility exercises (https://www.nhs.uk/live-well/exercise/flexibility-exercises/)') end
 where id = 'mollets';
 update public.exercises set
   muscles_primary = array['transverse']::text[], muscles_secondary = array['grand_droit', 'flechisseurs_hanche']::text[],
@@ -529,7 +529,7 @@ update public.exercises set
   met = 2.8, met_code = '02024',
   tutorial = jsonb_build_object('steps', to_jsonb(cues), 'breathing', 'Respire normalement pendant les 10 s de maintien.', 'mistakes', '["Rentrer le menton vers la poitrine.","Plaquer le bas du dos au sol."]'::jsonb),
   video_url = coalesce(video_url, 'https://www.youtube.com/watch?v=_tz9WGVH25g'),
-  source = case when coalesce(source, '') like '%https://www.health.harvard.edu/staying-healthy/core-exercises-the-big-3%' then source else concat_ws(' ; ', source, 'Harvard Health Publishing, « Big 3 » de Stuart McGill (https://www.health.harvard.edu/staying-healthy/core-exercises-the-big-3)') end
+  source = case when coalesce(source, '') like '%https://www.health.harvard.edu/staying-healthy/three-moves-for-better-spine-health%' then source else concat_ws(' ; ', source, 'Harvard Health Publishing, Three moves for better spine health (« Big 3 » de Stuart McGill) (https://www.health.harvard.edu/staying-healthy/three-moves-for-better-spine-health)') end
 where id = 'curl_up_mcgill';
 
 -- ---------------------------------------------------------------- 3. Entraînements
@@ -542,7 +542,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'prog_mobilite_s1'
   and exists (select 1 from public.trainings where id = 'prog_mobilite_s1' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('prog_mobilite_s1', 'main', 1, 'chat_vache', 1, null, null),
   ('prog_mobilite_s1', 'main', 2, 'cercles_hanches', 1, null, null),
   ('prog_mobilite_s1', 'main', 3, 'livre_ouvert', 1, null, null),
@@ -561,7 +561,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'prog_mobilite_s2'
   and exists (select 1 from public.trainings where id = 'prog_mobilite_s2' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('prog_mobilite_s2', 'main', 1, 'chat_vache', 2, null, null),
   ('prog_mobilite_s2', 'main', 2, 'cercles_bras', 1, null, null),
   ('prog_mobilite_s2', 'main', 3, 'rotations_buste', 1, null, null),
@@ -581,7 +581,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'prog_mobilite_s3'
   and exists (select 1 from public.trainings where id = 'prog_mobilite_s3' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('prog_mobilite_s3', 'main', 1, 'chat_vache', 2, null, null),
   ('prog_mobilite_s3', 'main', 2, 'cercles_hanches', 1, null, null),
   ('prog_mobilite_s3', 'main', 3, 'salutation_soleil', 1, null, null),
@@ -601,7 +601,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'prog_mobilite_s4'
   and exists (select 1 from public.trainings where id = 'prog_mobilite_s4' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('prog_mobilite_s4', 'main', 1, 'chat_vache', 3, null, null),
   ('prog_mobilite_s4', 'main', 2, 'cercles_bras', 1, null, null),
   ('prog_mobilite_s4', 'main', 3, 'salutation_soleil', 2, null, null),
@@ -622,7 +622,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'prog_recup_s1'
   and exists (select 1 from public.trainings where id = 'prog_recup_s1' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('prog_recup_s1', 'main', 1, 'genoux_poitrine', 1, null, null),
   ('prog_recup_s1', 'main', 2, 'fessiers_4', 1, null, null),
   ('prog_recup_s1', 'main', 3, 'ischios', 1, null, null),
@@ -642,7 +642,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'prog_recup_s2'
   and exists (select 1 from public.trainings where id = 'prog_recup_s2' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('prog_recup_s2', 'main', 1, 'chat_vache', 2, null, null),
   ('prog_recup_s2', 'main', 2, 'sphinx', 2, null, null),
   ('prog_recup_s2', 'main', 3, 'enfant', 3, null, null),
@@ -662,13 +662,14 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'prog_recup_s3'
   and exists (select 1 from public.trainings where id = 'prog_recup_s3' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('prog_recup_s3', 'main', 1, 'fente_basse', 1, null, null),
   ('prog_recup_s3', 'main', 2, 'pigeon', 1, null, null),
   ('prog_recup_s3', 'main', 3, 'papillon', 2, null, null),
   ('prog_recup_s3', 'main', 4, 'bebe_heureux', 2, null, null),
   ('prog_recup_s3', 'main', 5, 'torsion_couchee', 1, null, null),
-  ('prog_recup_s3', 'main', 6, 'jambes_au_mur', 1, null, null)
+  ('prog_recup_s3', 'main', 6, 'genoux_poitrine', 2, null, null),
+  ('prog_recup_s3', 'main', 7, 'coherence_cardiaque', 1, 120, null)
 ) as v(training_id, phase, position, exercise_id, level, value, sets)
 where exists (select 1 from public.trainings where id = 'prog_recup_s3' and approved = false)
 on conflict (training_id, phase, position) do nothing;
@@ -682,7 +683,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'prog_recup_s4'
   and exists (select 1 from public.trainings where id = 'prog_recup_s4' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('prog_recup_s4', 'main', 1, 'chat_vache', 2, null, null),
   ('prog_recup_s4', 'main', 2, 'pince_assise', 2, null, null),
   ('prog_recup_s4', 'main', 3, 'papillon', 2, null, null),
@@ -701,7 +702,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'rf_s1_a'
   and exists (select 1 from public.trainings where id = 'rf_s1_a' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('rf_s1_a', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
   ('rf_s1_a', 'warmup', 2, 'cercles_bras', 1, null, null),
   ('rf_s1_a', 'warmup', 3, 'cercles_hanches', 1, null, null),
@@ -724,7 +725,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'rf_s1_b'
   and exists (select 1 from public.trainings where id = 'rf_s1_b' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('rf_s1_b', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
   ('rf_s1_b', 'warmup', 2, 'cercles_bras', 1, null, null),
   ('rf_s1_b', 'warmup', 3, 'cercles_hanches', 1, null, null),
@@ -747,14 +748,14 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'rf_s1_c'
   and exists (select 1 from public.trainings where id = 'rf_s1_c' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('rf_s1_c', 'warmup', 1, 'cercles_bras', 1, null, null),
   ('rf_s1_c', 'warmup', 2, 'cercles_hanches', 1, null, null),
   ('rf_s1_c', 'main', 1, 'marche_genoux_hauts', 1, null, null),
   ('rf_s1_c', 'main', 2, 'step_jacks', 1, null, null),
   ('rf_s1_c', 'main', 3, 'squat_coup_de_pied', 1, null, null),
   ('rf_s1_c', 'main', 4, 'boxe_ombre', 1, null, null),
-  ('rf_s1_c', 'cooldown', 1, 'mollets', 1, null, null)
+  ('rf_s1_c', 'cooldown', 1, 'chien_tete_bas', 1, null, null)
 ) as v(training_id, phase, position, exercise_id, level, value, sets)
 where exists (select 1 from public.trainings where id = 'rf_s1_c' and approved = false)
 on conflict (training_id, phase, position) do nothing;
@@ -768,7 +769,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'rf_s2_a'
   and exists (select 1 from public.trainings where id = 'rf_s2_a' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('rf_s2_a', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
   ('rf_s2_a', 'warmup', 2, 'cercles_bras', 1, null, null),
   ('rf_s2_a', 'warmup', 3, 'cercles_hanches', 1, null, null),
@@ -793,7 +794,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'rf_s2_b'
   and exists (select 1 from public.trainings where id = 'rf_s2_b' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('rf_s2_b', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
   ('rf_s2_b', 'warmup', 2, 'cercles_bras', 1, null, null),
   ('rf_s2_b', 'warmup', 3, 'cercles_hanches', 1, null, null),
@@ -819,7 +820,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'rf_s2_c'
   and exists (select 1 from public.trainings where id = 'rf_s2_c' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('rf_s2_c', 'warmup', 1, 'marche_genoux_hauts', 1, null, null),
   ('rf_s2_c', 'warmup', 2, 'cercles_bras', 1, null, null),
   ('rf_s2_c', 'warmup', 3, 'cercles_hanches', 1, null, null),
@@ -828,8 +829,9 @@ select v.* from (values
   ('rf_s2_c', 'main', 3, 'boxe_ombre', 2, null, null),
   ('rf_s2_c', 'main', 4, 'mountain_climbers_lents', 2, null, null),
   ('rf_s2_c', 'main', 5, 'patineur_sans_saut', 1, null, null),
+  ('rf_s2_c', 'main', 6, 'squat_coup_de_pied', 1, null, null),
   ('rf_s2_c', 'cooldown', 1, 'quadriceps_debout', 1, null, null),
-  ('rf_s2_c', 'cooldown', 2, 'mollets', 1, null, null)
+  ('rf_s2_c', 'cooldown', 2, 'chien_tete_bas', 1, null, null)
 ) as v(training_id, phase, position, exercise_id, level, value, sets)
 where exists (select 1 from public.trainings where id = 'rf_s2_c' and approved = false)
 on conflict (training_id, phase, position) do nothing;
@@ -843,7 +845,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'rf_s3_a'
   and exists (select 1 from public.trainings where id = 'rf_s3_a' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('rf_s3_a', 'warmup', 1, 'marche_genoux_hauts', 2, 45, null),
   ('rf_s3_a', 'warmup', 2, 'cercles_bras', 1, null, null),
   ('rf_s3_a', 'warmup', 3, 'cercles_hanches', 1, null, null),
@@ -869,7 +871,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'rf_s3_b'
   and exists (select 1 from public.trainings where id = 'rf_s3_b' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('rf_s3_b', 'warmup', 1, 'marche_genoux_hauts', 2, 45, null),
   ('rf_s3_b', 'warmup', 2, 'cercles_bras', 1, null, null),
   ('rf_s3_b', 'warmup', 3, 'cercles_hanches', 1, null, null),
@@ -895,7 +897,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'rf_s3_c'
   and exists (select 1 from public.trainings where id = 'rf_s3_c' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('rf_s3_c', 'warmup', 1, 'marche_genoux_hauts', 2, null, null),
   ('rf_s3_c', 'warmup', 2, 'cercles_bras', 1, null, null),
   ('rf_s3_c', 'warmup', 3, 'cercles_hanches', 1, null, null),
@@ -905,8 +907,9 @@ select v.* from (values
   ('rf_s3_c', 'main', 3, 'boxe_ombre', 2, null, null),
   ('rf_s3_c', 'main', 4, 'mountain_climbers_lents', 2, null, null),
   ('rf_s3_c', 'main', 5, 'burpee_sans_saut', 1, null, null),
+  ('rf_s3_c', 'main', 6, 'squat_coup_de_pied', 2, null, null),
   ('rf_s3_c', 'cooldown', 1, 'quadriceps_debout', 2, null, null),
-  ('rf_s3_c', 'cooldown', 2, 'mollets', 1, null, null)
+  ('rf_s3_c', 'cooldown', 2, 'chien_tete_bas', 1, null, null)
 ) as v(training_id, phase, position, exercise_id, level, value, sets)
 where exists (select 1 from public.trainings where id = 'rf_s3_c' and approved = false)
 on conflict (training_id, phase, position) do nothing;
@@ -920,7 +923,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'rf_s4_a'
   and exists (select 1 from public.trainings where id = 'rf_s4_a' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('rf_s4_a', 'warmup', 1, 'marche_genoux_hauts', 2, 45, null),
   ('rf_s4_a', 'warmup', 2, 'cercles_bras', 2, null, null),
   ('rf_s4_a', 'warmup', 3, 'cercles_hanches', 2, null, null),
@@ -948,7 +951,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'rf_s4_b'
   and exists (select 1 from public.trainings where id = 'rf_s4_b' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('rf_s4_b', 'warmup', 1, 'marche_genoux_hauts', 2, 45, null),
   ('rf_s4_b', 'warmup', 2, 'cercles_bras', 2, null, null),
   ('rf_s4_b', 'warmup', 3, 'cercles_hanches', 2, null, null),
@@ -978,7 +981,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'rf_s4_c'
   and exists (select 1 from public.trainings where id = 'rf_s4_c' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('rf_s4_c', 'warmup', 1, 'marche_genoux_hauts', 2, null, null),
   ('rf_s4_c', 'warmup', 2, 'cercles_bras', 2, null, null),
   ('rf_s4_c', 'warmup', 3, 'cercles_hanches', 2, null, null),
@@ -991,7 +994,7 @@ select v.* from (values
   ('rf_s4_c', 'main', 5, 'burpee_sans_saut', 2, null, null),
   ('rf_s4_c', 'main', 6, 'patineur_sans_saut', 2, null, null),
   ('rf_s4_c', 'cooldown', 1, 'quadriceps_debout', 2, null, null),
-  ('rf_s4_c', 'cooldown', 2, 'mollets', 1, null, null),
+  ('rf_s4_c', 'cooldown', 2, 'chien_tete_bas', 2, null, null),
   ('rf_s4_c', 'cooldown', 3, 'etirement_lateral', 1, null, null)
 ) as v(training_id, phase, position, exercise_id, level, value, sets)
 where exists (select 1 from public.trainings where id = 'rf_s4_c' and approved = false)
@@ -1006,7 +1009,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'hf_s1_a'
   and exists (select 1 from public.trainings where id = 'hf_s1_a' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('hf_s1_a', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
   ('hf_s1_a', 'warmup', 2, 'cercles_hanches', 1, null, null),
   ('hf_s1_a', 'warmup', 3, 'balancier_jambes', 1, 30, null),
@@ -1029,7 +1032,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'hf_s1_b'
   and exists (select 1 from public.trainings where id = 'hf_s1_b' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('hf_s1_b', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
   ('hf_s1_b', 'warmup', 2, 'cercles_hanches', 1, null, null),
   ('hf_s1_b', 'warmup', 3, 'balancier_jambes', 1, 30, null),
@@ -1052,7 +1055,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'hf_s1_c'
   and exists (select 1 from public.trainings where id = 'hf_s1_c' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('hf_s1_c', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
   ('hf_s1_c', 'warmup', 2, 'cercles_hanches', 1, null, null),
   ('hf_s1_c', 'warmup', 3, 'rotations_buste', 1, null, null),
@@ -1074,7 +1077,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'hf_s2_a'
   and exists (select 1 from public.trainings where id = 'hf_s2_a' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('hf_s2_a', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
   ('hf_s2_a', 'warmup', 2, 'cercles_hanches', 1, null, null),
   ('hf_s2_a', 'warmup', 3, 'balancier_jambes', 1, 30, null),
@@ -1099,7 +1102,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'hf_s2_b'
   and exists (select 1 from public.trainings where id = 'hf_s2_b' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('hf_s2_b', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
   ('hf_s2_b', 'warmup', 2, 'cercles_hanches', 1, null, null),
   ('hf_s2_b', 'warmup', 3, 'balancier_jambes', 1, 30, null),
@@ -1124,7 +1127,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'hf_s2_c'
   and exists (select 1 from public.trainings where id = 'hf_s2_c' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('hf_s2_c', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
   ('hf_s2_c', 'warmup', 2, 'cercles_hanches', 1, null, null),
   ('hf_s2_c', 'warmup', 3, 'rotations_buste', 1, null, null),
@@ -1148,7 +1151,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'hf_s3_a'
   and exists (select 1 from public.trainings where id = 'hf_s3_a' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('hf_s3_a', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
   ('hf_s3_a', 'warmup', 2, 'cercles_hanches', 1, null, null),
   ('hf_s3_a', 'warmup', 3, 'balancier_jambes', 1, 30, null),
@@ -1173,7 +1176,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'hf_s3_b'
   and exists (select 1 from public.trainings where id = 'hf_s3_b' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('hf_s3_b', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
   ('hf_s3_b', 'warmup', 2, 'cercles_hanches', 1, null, null),
   ('hf_s3_b', 'warmup', 3, 'balancier_jambes', 1, 30, null),
@@ -1198,7 +1201,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'hf_s3_c'
   and exists (select 1 from public.trainings where id = 'hf_s3_c' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('hf_s3_c', 'warmup', 1, 'marche_genoux_hauts', 2, null, null),
   ('hf_s3_c', 'warmup', 2, 'cercles_hanches', 1, null, null),
   ('hf_s3_c', 'warmup', 3, 'rotations_buste', 1, null, null),
@@ -1223,7 +1226,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'hf_s4_a'
   and exists (select 1 from public.trainings where id = 'hf_s4_a' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('hf_s4_a', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
   ('hf_s4_a', 'warmup', 2, 'cercles_hanches', 2, null, null),
   ('hf_s4_a', 'warmup', 3, 'balancier_jambes', 1, 30, null),
@@ -1250,7 +1253,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'hf_s4_b'
   and exists (select 1 from public.trainings where id = 'hf_s4_b' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('hf_s4_b', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
   ('hf_s4_b', 'warmup', 2, 'cercles_hanches', 2, null, null),
   ('hf_s4_b', 'warmup', 3, 'balancier_jambes', 1, 30, null),
@@ -1259,11 +1262,12 @@ select v.* from (values
   ('hf_s4_b', 'main', 2, 'fente_laterale', 3, null, null),
   ('hf_s4_b', 'main', 3, 'charniere_hanche', 2, null, null),
   ('hf_s4_b', 'main', 4, 'fente_arriere', 3, null, null),
-  ('hf_s4_b', 'main', 5, 'chaise_mur', 1, 30, null),
+  ('hf_s4_b', 'main', 5, 'chaise_yoga', 2, null, null),
   ('hf_s4_b', 'main', 6, 'releve_mollets', 3, null, null),
+  ('hf_s4_b', 'main', 7, 'bouche_incendie', 3, null, null),
   ('hf_s4_b', 'cooldown', 1, 'quadriceps_debout', 2, null, null),
   ('hf_s4_b', 'cooldown', 2, 'ischios', 2, null, null),
-  ('hf_s4_b', 'cooldown', 3, 'mollets', 1, null, null)
+  ('hf_s4_b', 'cooldown', 3, 'chien_tete_bas', 1, null, null)
 ) as v(training_id, phase, position, exercise_id, level, value, sets)
 where exists (select 1 from public.trainings where id = 'hf_s4_b' and approved = false)
 on conflict (training_id, phase, position) do nothing;
@@ -1277,7 +1281,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'hf_s4_c'
   and exists (select 1 from public.trainings where id = 'hf_s4_c' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('hf_s4_c', 'warmup', 1, 'marche_genoux_hauts', 2, null, null),
   ('hf_s4_c', 'warmup', 2, 'cercles_hanches', 2, null, null),
   ('hf_s4_c', 'warmup', 3, 'rotations_buste', 2, null, null),
@@ -1305,7 +1309,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'gc_s1_a'
   and exists (select 1 from public.trainings where id = 'gc_s1_a' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('gc_s1_a', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
   ('gc_s1_a', 'warmup', 2, 'cercles_bras', 1, null, null),
   ('gc_s1_a', 'warmup', 3, 'cercles_hanches', 1, null, null),
@@ -1328,7 +1332,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'gc_s1_b'
   and exists (select 1 from public.trainings where id = 'gc_s1_b' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('gc_s1_b', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
   ('gc_s1_b', 'warmup', 2, 'cercles_bras', 1, null, null),
   ('gc_s1_b', 'warmup', 3, 'cercles_hanches', 1, null, null),
@@ -1351,7 +1355,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'gc_s1_c'
   and exists (select 1 from public.trainings where id = 'gc_s1_c' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('gc_s1_c', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
   ('gc_s1_c', 'warmup', 2, 'rotations_buste', 1, null, null),
   ('gc_s1_c', 'warmup', 3, 'cercles_hanches', 1, null, null),
@@ -1373,7 +1377,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'gc_s2_a'
   and exists (select 1 from public.trainings where id = 'gc_s2_a' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('gc_s2_a', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
   ('gc_s2_a', 'warmup', 2, 'cercles_bras', 1, null, null),
   ('gc_s2_a', 'warmup', 3, 'cercles_hanches', 1, null, null),
@@ -1399,7 +1403,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'gc_s2_b'
   and exists (select 1 from public.trainings where id = 'gc_s2_b' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('gc_s2_b', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
   ('gc_s2_b', 'warmup', 2, 'cercles_bras', 1, null, null),
   ('gc_s2_b', 'warmup', 3, 'cercles_hanches', 1, null, null),
@@ -1425,7 +1429,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'gc_s2_c'
   and exists (select 1 from public.trainings where id = 'gc_s2_c' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('gc_s2_c', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
   ('gc_s2_c', 'warmup', 2, 'rotations_buste', 1, null, null),
   ('gc_s2_c', 'warmup', 3, 'cercles_hanches', 1, null, null),
@@ -1449,7 +1453,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'gc_s3_a'
   and exists (select 1 from public.trainings where id = 'gc_s3_a' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('gc_s3_a', 'warmup', 1, 'marche_genoux_hauts', 2, 45, null),
   ('gc_s3_a', 'warmup', 2, 'cercles_bras', 1, null, null),
   ('gc_s3_a', 'warmup', 3, 'cercles_hanches', 1, null, null),
@@ -1477,7 +1481,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'gc_s3_b'
   and exists (select 1 from public.trainings where id = 'gc_s3_b' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('gc_s3_b', 'warmup', 1, 'marche_genoux_hauts', 2, 45, null),
   ('gc_s3_b', 'warmup', 2, 'cercles_bras', 1, null, null),
   ('gc_s3_b', 'warmup', 3, 'cercles_hanches', 1, null, null),
@@ -1505,7 +1509,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'gc_s3_c'
   and exists (select 1 from public.trainings where id = 'gc_s3_c' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('gc_s3_c', 'warmup', 1, 'marche_genoux_hauts', 2, null, null),
   ('gc_s3_c', 'warmup', 2, 'rotations_buste', 1, null, null),
   ('gc_s3_c', 'warmup', 3, 'cercles_hanches', 1, null, null),
@@ -1530,7 +1534,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'gc_s4_a'
   and exists (select 1 from public.trainings where id = 'gc_s4_a' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('gc_s4_a', 'warmup', 1, 'marche_genoux_hauts', 2, 45, null),
   ('gc_s4_a', 'warmup', 2, 'cercles_bras', 2, null, null),
   ('gc_s4_a', 'warmup', 3, 'cercles_hanches', 2, null, null),
@@ -1560,7 +1564,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'gc_s4_b'
   and exists (select 1 from public.trainings where id = 'gc_s4_b' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('gc_s4_b', 'warmup', 1, 'marche_genoux_hauts', 2, 45, null),
   ('gc_s4_b', 'warmup', 2, 'cercles_bras', 2, null, null),
   ('gc_s4_b', 'warmup', 3, 'cercles_hanches', 2, null, null),
@@ -1590,7 +1594,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'gc_s4_c'
   and exists (select 1 from public.trainings where id = 'gc_s4_c' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('gc_s4_c', 'warmup', 1, 'marche_genoux_hauts', 2, null, null),
   ('gc_s4_c', 'warmup', 2, 'rotations_buste', 2, null, null),
   ('gc_s4_c', 'warmup', 3, 'cercles_hanches', 2, null, null),
@@ -1618,7 +1622,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'rapide_corps_entier_1'
   and exists (select 1 from public.trainings where id = 'rapide_corps_entier_1' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('rapide_corps_entier_1', 'warmup', 1, 'marche_genoux_hauts', 1, 30, null),
   ('rapide_corps_entier_1', 'warmup', 2, 'cercles_bras', 1, null, null),
   ('rapide_corps_entier_1', 'main', 1, 'squat', 1, null, null),
@@ -1639,7 +1643,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'rapide_corps_entier_2'
   and exists (select 1 from public.trainings where id = 'rapide_corps_entier_2' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('rapide_corps_entier_2', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
   ('rapide_corps_entier_2', 'warmup', 2, 'cercles_bras', 2, null, null),
   ('rapide_corps_entier_2', 'warmup', 3, 'cercles_hanches', 2, null, null),
@@ -1664,7 +1668,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'rapide_corps_entier_3'
   and exists (select 1 from public.trainings where id = 'rapide_corps_entier_3' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('rapide_corps_entier_3', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
   ('rapide_corps_entier_3', 'warmup', 2, 'cercles_bras', 3, null, null),
   ('rapide_corps_entier_3', 'warmup', 3, 'cercles_hanches', 3, null, null),
@@ -1690,7 +1694,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'rapide_abdos_1'
   and exists (select 1 from public.trainings where id = 'rapide_abdos_1' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('rapide_abdos_1', 'warmup', 1, 'rotations_buste', 1, null, null),
   ('rapide_abdos_1', 'warmup', 2, 'cercles_hanches', 1, null, null),
   ('rapide_abdos_1', 'main', 1, 'dead_bug', 1, null, null),
@@ -1711,7 +1715,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'rapide_abdos_2'
   and exists (select 1 from public.trainings where id = 'rapide_abdos_2' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('rapide_abdos_2', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
   ('rapide_abdos_2', 'warmup', 2, 'rotations_buste', 2, null, null),
   ('rapide_abdos_2', 'warmup', 3, 'cercles_hanches', 2, null, null),
@@ -1735,7 +1739,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'rapide_abdos_3'
   and exists (select 1 from public.trainings where id = 'rapide_abdos_3' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('rapide_abdos_3', 'warmup', 1, 'marche_genoux_hauts', 2, null, null),
   ('rapide_abdos_3', 'warmup', 2, 'rotations_buste', 3, null, null),
   ('rapide_abdos_3', 'warmup', 3, 'cercles_hanches', 3, null, null),
@@ -1760,7 +1764,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'rapide_jambes_1'
   and exists (select 1 from public.trainings where id = 'rapide_jambes_1' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('rapide_jambes_1', 'warmup', 1, 'marche_genoux_hauts', 1, 30, null),
   ('rapide_jambes_1', 'warmup', 2, 'cercles_hanches', 1, null, null),
   ('rapide_jambes_1', 'main', 1, 'squat', 1, null, null),
@@ -1781,7 +1785,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'rapide_jambes_2'
   and exists (select 1 from public.trainings where id = 'rapide_jambes_2' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('rapide_jambes_2', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
   ('rapide_jambes_2', 'warmup', 2, 'cercles_hanches', 2, null, null),
   ('rapide_jambes_2', 'warmup', 3, 'balancier_jambes', 1, 30, null),
@@ -1806,7 +1810,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'rapide_jambes_3'
   and exists (select 1 from public.trainings where id = 'rapide_jambes_3' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('rapide_jambes_3', 'warmup', 1, 'marche_genoux_hauts', 1, 40, null),
   ('rapide_jambes_3', 'warmup', 2, 'cercles_hanches', 3, null, null),
   ('rapide_jambes_3', 'warmup', 3, 'balancier_jambes', 1, 30, null),
@@ -1831,7 +1835,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'rapide_bras_1'
   and exists (select 1 from public.trainings where id = 'rapide_bras_1' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('rapide_bras_1', 'warmup', 1, 'cercles_bras', 1, null, null),
   ('rapide_bras_1', 'warmup', 2, 'marche_genoux_hauts', 1, 30, null),
   ('rapide_bras_1', 'main', 1, 'pompe_genoux', 1, null, null),
@@ -1852,7 +1856,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'rapide_bras_2'
   and exists (select 1 from public.trainings where id = 'rapide_bras_2' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('rapide_bras_2', 'warmup', 1, 'cercles_bras', 2, null, null),
   ('rapide_bras_2', 'warmup', 2, 'marche_genoux_hauts', 1, 40, null),
   ('rapide_bras_2', 'warmup', 3, 'rotations_buste', 2, null, null),
@@ -1877,7 +1881,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'rapide_bras_3'
   and exists (select 1 from public.trainings where id = 'rapide_bras_3' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('rapide_bras_3', 'warmup', 1, 'cercles_bras', 3, null, null),
   ('rapide_bras_3', 'warmup', 2, 'marche_genoux_hauts', 2, null, null),
   ('rapide_bras_3', 'warmup', 3, 'rotations_buste', 3, null, null),
@@ -1902,7 +1906,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'rapide_epaules_1'
   and exists (select 1 from public.trainings where id = 'rapide_epaules_1' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('rapide_epaules_1', 'warmup', 1, 'cercles_bras', 1, null, null),
   ('rapide_epaules_1', 'warmup', 2, 'rotations_buste', 1, null, null),
   ('rapide_epaules_1', 'main', 1, 'ytw', 1, null, null),
@@ -1923,7 +1927,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'rapide_epaules_2'
   and exists (select 1 from public.trainings where id = 'rapide_epaules_2' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('rapide_epaules_2', 'warmup', 1, 'cercles_bras', 2, null, null),
   ('rapide_epaules_2', 'warmup', 2, 'marche_genoux_hauts', 1, 40, null),
   ('rapide_epaules_2', 'warmup', 3, 'rotations_buste', 2, null, null),
@@ -1947,7 +1951,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'rapide_epaules_3'
   and exists (select 1 from public.trainings where id = 'rapide_epaules_3' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('rapide_epaules_3', 'warmup', 1, 'cercles_bras', 3, null, null),
   ('rapide_epaules_3', 'warmup', 2, 'marche_genoux_hauts', 2, null, null),
   ('rapide_epaules_3', 'warmup', 3, 'rotations_buste', 3, null, null),
@@ -1972,7 +1976,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'rapide_dos_1'
   and exists (select 1 from public.trainings where id = 'rapide_dos_1' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('rapide_dos_1', 'warmup', 1, 'chat_vache', 1, null, null),
   ('rapide_dos_1', 'warmup', 2, 'cercles_bras', 1, null, null),
   ('rapide_dos_1', 'main', 1, 'bird_dog', 3, null, null),
@@ -1993,7 +1997,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'rapide_dos_2'
   and exists (select 1 from public.trainings where id = 'rapide_dos_2' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('rapide_dos_2', 'warmup', 1, 'chat_vache', 2, null, null),
   ('rapide_dos_2', 'warmup', 2, 'cercles_bras', 2, null, null),
   ('rapide_dos_2', 'warmup', 3, 'rotations_buste', 2, null, null),
@@ -2017,7 +2021,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'rapide_dos_3'
   and exists (select 1 from public.trainings where id = 'rapide_dos_3' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('rapide_dos_3', 'warmup', 1, 'chat_vache', 2, null, null),
   ('rapide_dos_3', 'warmup', 2, 'cercles_bras', 3, null, null),
   ('rapide_dos_3', 'warmup', 3, 'rotations_buste', 3, null, null),
@@ -2043,7 +2047,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'decouverte_yoga_matin'
   and exists (select 1 from public.trainings where id = 'decouverte_yoga_matin' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('decouverte_yoga_matin', 'main', 1, 'montagne', 1, null, null),
   ('decouverte_yoga_matin', 'main', 2, 'chat_vache', 2, null, null),
   ('decouverte_yoga_matin', 'main', 3, 'salutation_soleil', 1, null, null),
@@ -2066,7 +2070,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'decouverte_etirements_soir'
   and exists (select 1 from public.trainings where id = 'decouverte_etirements_soir' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('decouverte_etirements_soir', 'main', 1, 'etirement_lateral', 1, null, null),
   ('decouverte_etirements_soir', 'main', 2, 'quadriceps_debout', 1, null, null),
   ('decouverte_etirements_soir', 'main', 3, 'sphinx', 1, null, null),
@@ -2089,7 +2093,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'decouverte_meditation'
   and exists (select 1 from public.trainings where id = 'decouverte_meditation' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('decouverte_meditation', 'main', 1, 'coherence_cardiaque', 1, 120, null),
   ('decouverte_meditation', 'main', 2, 'meditation_souffle', 2, null, null)
 ) as v(training_id, phase, position, exercise_id, level, value, sets)
@@ -2105,7 +2109,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'decouverte_gainage_express'
   and exists (select 1 from public.trainings where id = 'decouverte_gainage_express' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('decouverte_gainage_express', 'main', 1, 'planche', 2, null, null),
   ('decouverte_gainage_express', 'main', 2, 'dead_bug', 2, null, null),
   ('decouverte_gainage_express', 'main', 3, 'planche_laterale', 1, null, null),
@@ -2123,7 +2127,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'decouverte_detente_sommeil'
   and exists (select 1 from public.trainings where id = 'decouverte_detente_sommeil' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('decouverte_detente_sommeil', 'main', 1, 'jambes_au_mur', 1, null, null),
   ('decouverte_detente_sommeil', 'main', 2, 'relaxation_progressive', 2, null, null),
   ('decouverte_detente_sommeil', 'main', 3, 'coherence_cardiaque', 1, 120, null)
@@ -2140,7 +2144,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'decouverte_yoga_hanches'
   and exists (select 1 from public.trainings where id = 'decouverte_yoga_hanches' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('decouverte_yoga_hanches', 'main', 1, 'chat_vache', 1, null, null),
   ('decouverte_yoga_hanches', 'main', 2, 'fente_basse', 2, null, null),
   ('decouverte_yoga_hanches', 'main', 3, 'guerrier_2', 2, null, null),
@@ -2162,7 +2166,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'decouverte_scan_corporel'
   and exists (select 1 from public.trainings where id = 'decouverte_scan_corporel' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('decouverte_scan_corporel', 'main', 1, 'respiration', 1, null, null),
   ('decouverte_scan_corporel', 'main', 2, 'scan_corporel', 2, null, null)
 ) as v(training_id, phase, position, exercise_id, level, value, sets)
@@ -2178,7 +2182,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'express_reveil'
   and exists (select 1 from public.trainings where id = 'express_reveil' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('express_reveil', 'main', 1, 'cercles_bras', 1, null, null),
   ('express_reveil', 'main', 2, 'rotations_buste', 1, null, null),
   ('express_reveil', 'main', 3, 'cercles_hanches', 1, null, null),
@@ -2197,7 +2201,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'express_cardio'
   and exists (select 1 from public.trainings where id = 'express_cardio' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('express_cardio', 'main', 1, 'step_jacks', 2, 30, null),
   ('express_cardio', 'main', 2, 'boxe_ombre', 1, 30, null),
   ('express_cardio', 'main', 3, 'marche_genoux_hauts', 2, 30, null)
@@ -2214,7 +2218,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'express_abdos'
   and exists (select 1 from public.trainings where id = 'express_abdos' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('express_abdos', 'main', 1, 'planche', 2, 20, null),
   ('express_abdos', 'main', 2, 'dead_bug', 1, 8, null),
   ('express_abdos', 'main', 3, 'crunch', 1, 12, null),
@@ -2232,7 +2236,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'express_jambes'
   and exists (select 1 from public.trainings where id = 'express_jambes' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('express_jambes', 'main', 1, 'squat', 1, 8, null),
   ('express_jambes', 'main', 2, 'fente_arriere', 1, 6, null),
   ('express_jambes', 'main', 3, 'pont', 1, 10, null),
@@ -2250,7 +2254,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'express_pause_bureau'
   and exists (select 1 from public.trainings where id = 'express_pause_bureau' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('express_pause_bureau', 'main', 1, 'chin_tuck', 1, null, null),
   ('express_pause_bureau', 'main', 2, 'omoplates', 1, null, null),
   ('express_pause_bureau', 'main', 3, 'trapezes', 1, 40, null),
@@ -2269,7 +2273,7 @@ where public.trainings.approved = false;
 delete from public.training_items where training_id = 'express_respiration'
   and exists (select 1 from public.trainings where id = 'express_respiration' and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('express_respiration', 'main', 1, 'coherence_cardiaque', 1, null, null)
 ) as v(training_id, phase, position, exercise_id, level, value, sets)
 where exists (select 1 from public.trainings where id = 'express_respiration' and approved = false)
@@ -2277,7 +2281,7 @@ on conflict (training_id, phase, position) do nothing;
 
 -- ---------------------------------------------------------------- 4. Programmes
 insert into public.programs (id, title, description, goals, areas, level, approved, source)
-values ('remise_en_forme', 'Remise en forme', '28 jours pour retrouver la forme : bas du corps, haut du corps et cardio doux en alternance, sans matériel et sans saut. Les séances passent de 10 à 25 minutes au fil des semaines.', array['garder_la_forme', 'perdre_du_poids', 'renforcer']::text[], array['corps_entier']::text[], 1, false, 'Composé pour l''app (bloc 2 V5). Repères : OMS 2020 (renforcement au moins 2 jours par semaine, https://pmc.ncbi.nlm.nih.gov/articles/PMC7719906/) ; ACSM 2026, renforcement musculaire et progression (https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/).')
+values ('remise_en_forme', 'Remise en forme', '28 jours pour retrouver la forme : bas du corps, haut du corps et cardio doux en alternance, sans matériel et sans saut. Les séances passent de 10 à 25 minutes au fil des semaines.', array['garder_la_forme', 'perdre_du_poids', 'renforcer']::text[], array['corps_entier']::text[], 1, false, 'Composé pour l''app (bloc 2 V5). Repères : OMS 2020 (renforcement au moins 2 jours par semaine, https://doi.org/10.1136/bjsports-2020-102955) ; ACSM 2026, renforcement musculaire et progression (https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/).')
 on conflict (id) do update set title = excluded.title, description = excluded.description, goals = excluded.goals,
   areas = excluded.areas, level = excluded.level, source = excluded.source
 where public.programs.approved = false;
@@ -2318,7 +2322,7 @@ where exists (select 1 from public.programs where id = 'remise_en_forme' and app
 on conflict (program_id, day) do nothing;
 
 insert into public.programs (id, title, description, goals, areas, level, approved, source)
-values ('hanches_fessiers', 'Hanches et fessiers', '28 jours pour tonifier les fessiers et les jambes : ponts, fentes, travail de hanche et un peu de cardio, sans matériel et sans saut. De 10 à 25 minutes par séance.', array['tonifier', 'renforcer']::text[], array['fessiers', 'jambes']::text[], 1, false, 'Composé pour l''app (bloc 2 V5). Repères : OMS 2020 (renforcement au moins 2 jours par semaine, https://pmc.ncbi.nlm.nih.gov/articles/PMC7719906/) ; ACSM 2026, renforcement musculaire et progression (https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/).')
+values ('hanches_fessiers', 'Hanches et fessiers', '28 jours pour tonifier les fessiers et les jambes : ponts, fentes, travail de hanche et un peu de cardio, sans matériel et sans saut. De 10 à 25 minutes par séance.', array['tonifier', 'renforcer']::text[], array['fessiers', 'jambes']::text[], 1, false, 'Composé pour l''app (bloc 2 V5). Repères : OMS 2020 (renforcement au moins 2 jours par semaine, https://doi.org/10.1136/bjsports-2020-102955) ; ACSM 2026, renforcement musculaire et progression (https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/).')
 on conflict (id) do update set title = excluded.title, description = excluded.description, goals = excluded.goals,
   areas = excluded.areas, level = excluded.level, source = excluded.source
 where public.programs.approved = false;
@@ -2359,7 +2363,7 @@ where exists (select 1 from public.programs where id = 'hanches_fessiers' and ap
 on conflict (program_id, day) do nothing;
 
 insert into public.programs (id, title, description, goals, areas, level, approved, source)
-values ('gainage_calisthenie', 'Gainage et calisthénie', '28 jours pour un tronc solide et les bases de la calisthénie : planches, dead bug, pompes et travail du dos au poids du corps. De 10 à 25 minutes par séance.', array['renforcer', 'tonifier']::text[], array['abdos', 'bras', 'dos']::text[], 1, false, 'Composé pour l''app (bloc 2 V5). Repères : OMS 2020 (renforcement au moins 2 jours par semaine, https://pmc.ncbi.nlm.nih.gov/articles/PMC7719906/) ; ACSM 2026, renforcement musculaire et progression (https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/).')
+values ('gainage_calisthenie', 'Gainage et calisthénie', '28 jours pour un tronc solide et les bases de la calisthénie : planches, dead bug, pompes et travail du dos au poids du corps. De 10 à 25 minutes par séance.', array['renforcer', 'tonifier']::text[], array['abdos', 'bras', 'dos']::text[], 1, false, 'Composé pour l''app (bloc 2 V5). Repères : OMS 2020 (renforcement au moins 2 jours par semaine, https://doi.org/10.1136/bjsports-2020-102955) ; ACSM 2026, renforcement musculaire et progression (https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/).')
 on conflict (id) do update set title = excluded.title, description = excluded.description, goals = excluded.goals,
   areas = excluded.areas, level = excluded.level, source = excluded.source
 where public.programs.approved = false;

@@ -62,7 +62,7 @@ export const SOURCES = {
   },
   nhs_souplesse: {
     label: 'NHS, Flexibility exercises',
-    url: 'https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/',
+    url: 'https://www.nhs.uk/live-well/exercise/flexibility-exercises/',
   },
   hse_force: {
     label: 'HSE (Irlande), Strength exercises at home',
@@ -73,8 +73,8 @@ export const SOURCES = {
     url: 'https://www2.hse.ie/living-well/exercise/exercise-at-home/flexibility-exercises/',
   },
   mcgill: {
-    label: 'Harvard Health Publishing, « Big 3 » de Stuart McGill',
-    url: 'https://www.health.harvard.edu/staying-healthy/core-exercises-the-big-3',
+    label: 'Harvard Health Publishing, Three moves for better spine health (« Big 3 » de Stuart McGill)',
+    url: 'https://www.health.harvard.edu/staying-healthy/three-moves-for-better-spine-health',
   },
   pmr: {
     label: 'University of Rochester, Progressive Muscle Relaxation',
@@ -98,7 +98,7 @@ export const SOURCES = {
   },
   who_2020: {
     label: 'OMS, recommandations 2020 sur l\'activité physique (Bull et al., BJSM)',
-    url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7719906/',
+    url: 'https://doi.org/10.1136/bjsports-2020-102955',
   },
 };
 

@@ -1719,7 +1719,7 @@
    "sources": [
     {
      "label": "OMS, recommandations 2020 sur l'activité physique (Bull et al., BJSM)",
-     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7719906/"
+     "url": "https://doi.org/10.1136/bjsports-2020-102955"
     },
     {
      "label": "free-exercise-db (domaine public), fiche Step-up with Knee Raise",
@@ -1787,7 +1787,7 @@
    "sources": [
     {
      "label": "OMS, recommandations 2020 sur l'activité physique (Bull et al., BJSM)",
-     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7719906/"
+     "url": "https://doi.org/10.1136/bjsports-2020-102955"
     }
    ],
    "video": {
@@ -2354,13 +2354,13 @@
    "objectifs": "mobilite",
    "intensite": 1,
    "sauts": "non",
-   "materiel": "mur",
+   "materiel": "aucun",
    "mode": "40 s",
    "niveaux": "1. Petite amplitude (30 s)\n2. Amplitude croissante (40 s)",
    "muscles_principaux": "Ischio-jambiers, Fléchisseurs de hanche",
    "muscles_secondaires": "Grand fessier, Adducteurs",
    "met": "2.3 (code 02101, Étirements doux)",
-   "consignes": "Une main au mur, balance une jambe d'avant en arrière.\nAugmente l'amplitude progressivement, buste droit.\nChange de jambe à mi-temps.",
+   "consignes": "Une main sur un appui (mur, dossier de chaise), balance une jambe d'avant en arrière.\nAugmente l'amplitude progressivement, buste droit.\nChange de jambe à mi-temps.",
    "precaution": "Mouvement de balancier relâché, sans lancer la jambe.",
    "respiration": "Respiration libre.",
    "erreurs": "Se pencher pour lever la jambe plus haut.\nLancer la jambe brutalement.",
@@ -2994,13 +2994,13 @@
    "objectifs": "mobilite",
    "intensite": 1,
    "sauts": "non",
-   "materiel": "mur",
+   "materiel": "aucun",
    "mode": "60 s",
    "niveaux": "1. 20 s par côté (40 s)\n2. 30 s par côté (60 s)",
    "muscles_principaux": "Quadriceps",
    "muscles_secondaires": "Fléchisseurs de hanche",
    "met": "2.3 (code 02101, Étirements doux)",
-   "consignes": "Debout, une main au mur.\nAttrape ta cheville et ramène le talon vers la fesse.\nGenoux côte à côte, bassin légèrement rentré. Change de côté.",
+   "consignes": "Debout, une main sur un appui (mur, dossier de chaise).\nAttrape ta cheville et ramène le talon vers la fesse.\nGenoux côte à côte, bassin légèrement rentré. Change de côté.",
    "precaution": "Utilise une serviette autour de la cheville si tu ne l'attrapes pas.",
    "respiration": "Respire lentement pendant le maintien.",
    "erreurs": "Genou qui part vers l'avant ou sur le côté.\nCambrer le dos.",
@@ -3011,7 +3011,7 @@
     },
     {
      "label": "NHS, Flexibility exercises",
-     "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/"
+     "url": "https://www.nhs.uk/live-well/exercise/flexibility-exercises/"
     }
    ],
    "video": {
@@ -3175,7 +3175,7 @@
     },
     {
      "label": "NHS, Flexibility exercises",
-     "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/"
+     "url": "https://www.nhs.uk/live-well/exercise/flexibility-exercises/"
     }
    ],
    "video": {
@@ -3502,8 +3502,8 @@
    "erreurs": "Lever la jambe trop haut et creuser le dos.\nLaisser le bassin basculer sur le côté.",
    "sources": [
     {
-     "label": "Harvard Health Publishing, « Big 3 » de Stuart McGill",
-     "url": "https://www.health.harvard.edu/staying-healthy/core-exercises-the-big-3"
+     "label": "Harvard Health Publishing, Three moves for better spine health (« Big 3 » de Stuart McGill)",
+     "url": "https://www.health.harvard.edu/staying-healthy/three-moves-for-better-spine-health"
     }
    ],
    "video": {
@@ -3702,8 +3702,8 @@
    "erreurs": "Laisser le bassin descendre.\nPencher le buste vers l'avant.",
    "sources": [
     {
-     "label": "Harvard Health Publishing, « Big 3 » de Stuart McGill",
-     "url": "https://www.health.harvard.edu/staying-healthy/core-exercises-the-big-3"
+     "label": "Harvard Health Publishing, Three moves for better spine health (« Big 3 » de Stuart McGill)",
+     "url": "https://www.health.harvard.edu/staying-healthy/three-moves-for-better-spine-health"
     },
     {
      "label": "free-exercise-db (domaine public), fiche Side Bridge",
@@ -3807,7 +3807,7 @@
     },
     {
      "label": "NHS, Flexibility exercises",
-     "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/"
+     "url": "https://www.nhs.uk/live-well/exercise/flexibility-exercises/"
     }
    ],
    "video": {
@@ -3871,7 +3871,7 @@
    "sources": [
     {
      "label": "NHS, Flexibility exercises",
-     "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/"
+     "url": "https://www.nhs.uk/live-well/exercise/flexibility-exercises/"
     }
    ],
    "video": {
@@ -3935,7 +3935,7 @@
    "sources": [
     {
      "label": "NHS, Flexibility exercises",
-     "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/"
+     "url": "https://www.nhs.uk/live-well/exercise/flexibility-exercises/"
     }
    ],
    "video": {
@@ -4003,7 +4003,7 @@
     },
     {
      "label": "NHS, Flexibility exercises",
-     "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/"
+     "url": "https://www.nhs.uk/live-well/exercise/flexibility-exercises/"
     }
    ],
    "video": {
@@ -4071,7 +4071,7 @@
     },
     {
      "label": "NHS, Flexibility exercises",
-     "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/"
+     "url": "https://www.nhs.uk/live-well/exercise/flexibility-exercises/"
     }
    ],
    "video": {
@@ -4139,7 +4139,7 @@
     },
     {
      "label": "NHS, Flexibility exercises",
-     "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/"
+     "url": "https://www.nhs.uk/live-well/exercise/flexibility-exercises/"
     }
    ],
    "video": {
@@ -4175,7 +4175,7 @@
     },
     {
      "label": "NHS, Flexibility exercises",
-     "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/flexibility-exercises/"
+     "url": "https://www.nhs.uk/live-well/exercise/flexibility-exercises/"
     }
    ],
    "video": {
@@ -4749,8 +4749,8 @@
    "erreurs": "Rentrer le menton vers la poitrine.\nPlaquer le bas du dos au sol.",
    "sources": [
     {
-     "label": "Harvard Health Publishing, « Big 3 » de Stuart McGill",
-     "url": "https://www.health.harvard.edu/staying-healthy/core-exercises-the-big-3"
+     "label": "Harvard Health Publishing, Three moves for better spine health (« Big 3 » de Stuart McGill)",
+     "url": "https://www.health.harvard.edu/staying-healthy/three-moves-for-better-spine-health"
     }
    ],
    "video": {
@@ -4860,13 +4860,11 @@
    "tours": 1,
    "pause": 10,
    "description": "Ouverture des hanches, détente du dos et quelques minutes de calme.",
-   "minutes": 8,
-   "metMinutes": 15.8,
-   "equipment": [
-    "mur"
-   ],
+   "minutes": 9,
+   "metMinutes": 14.9,
+   "equipment": [],
    "impact": false,
-   "contenu": "Corps : Fente basse (posture du croissant)\nCorps : Pigeon (version au sol)\nCorps : Papillon\nCorps : Bébé heureux\nCorps : Torsion allongée\nCorps : Jambes contre le mur"
+   "contenu": "Corps : Fente basse (posture du croissant)\nCorps : Pigeon (version au sol)\nCorps : Papillon\nCorps : Bébé heureux\nCorps : Torsion allongée\nCorps : Genoux à la poitrine\nCorps : Respiration lente (6 cycles par minute)"
   },
   {
    "id": "prog_recup_s4",
@@ -4922,13 +4920,11 @@
    "tours": 2,
    "pause": 15,
    "description": "",
-   "minutes": 9,
-   "metMinutes": 26.9,
-   "equipment": [
-    "mur"
-   ],
+   "minutes": 8,
+   "metMinutes": 24.6,
+   "equipment": [],
    "impact": false,
-   "contenu": "Échauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nCorps : Marche sur place, genoux hauts\nCorps : Jumping jacks sans saut\nCorps : Squat, coup de pied avant\nCorps : Boxe dans le vide\nRetour au calme : Étirement des mollets"
+   "contenu": "Échauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nCorps : Marche sur place, genoux hauts\nCorps : Jumping jacks sans saut\nCorps : Squat, coup de pied avant\nCorps : Boxe dans le vide\nRetour au calme : Chien tête en bas"
   },
   {
    "id": "rf_s2_a",
@@ -4969,13 +4965,11 @@
    "tours": 2,
    "pause": 15,
    "description": "",
-   "minutes": 13,
-   "metMinutes": 39.8,
-   "equipment": [
-    "mur"
-   ],
+   "minutes": 14,
+   "metMinutes": 44,
+   "equipment": [],
    "impact": false,
-   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nCorps : Jumping jacks sans saut\nCorps : Squat au poids du corps\nCorps : Boxe dans le vide\nCorps : Mountain climbers lents\nCorps : Patineur sans saut\nRetour au calme : Étirement des quadriceps debout\nRetour au calme : Étirement des mollets"
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nCorps : Jumping jacks sans saut\nCorps : Squat au poids du corps\nCorps : Boxe dans le vide\nCorps : Mountain climbers lents\nCorps : Patineur sans saut\nCorps : Squat, coup de pied avant\nRetour au calme : Étirement des quadriceps debout\nRetour au calme : Chien tête en bas"
   },
   {
    "id": "rf_s3_a",
@@ -5016,13 +5010,11 @@
    "tours": 3,
    "pause": 15,
    "description": "",
-   "minutes": 18,
-   "metMinutes": 55.8,
-   "equipment": [
-    "mur"
-   ],
+   "minutes": 20,
+   "metMinutes": 66.3,
+   "equipment": [],
    "impact": false,
-   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nCorps : Jumping jacks sans saut\nCorps : Squat au poids du corps\nCorps : Boxe dans le vide\nCorps : Mountain climbers lents\nCorps : Burpee sans saut\nRetour au calme : Étirement des quadriceps debout\nRetour au calme : Étirement des mollets"
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nCorps : Jumping jacks sans saut\nCorps : Squat au poids du corps\nCorps : Boxe dans le vide\nCorps : Mountain climbers lents\nCorps : Burpee sans saut\nCorps : Squat, coup de pied avant\nRetour au calme : Étirement des quadriceps debout\nRetour au calme : Chien tête en bas"
   },
   {
    "id": "rf_s4_a",
@@ -5063,13 +5055,11 @@
    "tours": 3,
    "pause": 15,
    "description": "",
-   "minutes": 24,
-   "metMinutes": 78.1,
-   "equipment": [
-    "mur"
-   ],
+   "minutes": 23,
+   "metMinutes": 76.1,
+   "equipment": [],
    "impact": false,
-   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nÉchauffement : Le plus grand étirement du monde\nCorps : Jumping jacks sans saut\nCorps : Squat au poids du corps\nCorps : Boxe dans le vide\nCorps : Mountain climbers lents\nCorps : Burpee sans saut\nCorps : Patineur sans saut\nRetour au calme : Étirement des quadriceps debout\nRetour au calme : Étirement des mollets\nRetour au calme : Étirement latéral debout"
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nÉchauffement : Le plus grand étirement du monde\nCorps : Jumping jacks sans saut\nCorps : Squat au poids du corps\nCorps : Boxe dans le vide\nCorps : Mountain climbers lents\nCorps : Burpee sans saut\nCorps : Patineur sans saut\nRetour au calme : Étirement des quadriceps debout\nRetour au calme : Chien tête en bas\nRetour au calme : Étirement latéral debout"
   },
   {
    "id": "hf_s1_a",
@@ -5082,9 +5072,7 @@
    "description": "",
    "minutes": 12,
    "metMinutes": 27.5,
-   "equipment": [
-    "mur"
-   ],
+   "equipment": [],
    "impact": false,
    "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de hanches\nÉchauffement : Balanciers de jambe\nÉchauffement : Squat au poids du corps\nCorps : Pont fessier\nCorps : Clamshell (coquillage)\nCorps : Ruade (donkey kick)\nCorps : Levée de jambe sur le côté\nRetour au calme : Étirement des fessiers en « 4 »"
   },
@@ -5099,9 +5087,7 @@
    "description": "",
    "minutes": 11,
    "metMinutes": 23.9,
-   "equipment": [
-    "mur"
-   ],
+   "equipment": [],
    "impact": false,
    "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de hanches\nÉchauffement : Balanciers de jambe\nÉchauffement : Squat au poids du corps\nCorps : Squat sumo\nCorps : Fente arrière\nCorps : Bouche d'incendie (fire hydrant)\nCorps : Montée sur pointes de pieds\nRetour au calme : Étirement des quadriceps debout"
   },
@@ -5131,9 +5117,7 @@
    "description": "",
    "minutes": 15,
    "metMinutes": 34.9,
-   "equipment": [
-    "mur"
-   ],
+   "equipment": [],
    "impact": false,
    "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de hanches\nÉchauffement : Balanciers de jambe\nÉchauffement : Squat au poids du corps\nCorps : Pont fessier\nCorps : Hip thrust, épaules sur le canapé\nCorps : Clamshell (coquillage)\nCorps : Ruade (donkey kick)\nCorps : Levée de jambe sur le côté\nRetour au calme : Étirement des fessiers en « 4 »\nRetour au calme : Étirement des fléchisseurs de hanche"
   },
@@ -5148,9 +5132,7 @@
    "description": "",
    "minutes": 14,
    "metMinutes": 32.1,
-   "equipment": [
-    "mur"
-   ],
+   "equipment": [],
    "impact": false,
    "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de hanches\nÉchauffement : Balanciers de jambe\nÉchauffement : Squat au poids du corps\nCorps : Squat sumo\nCorps : Fente arrière\nCorps : Charnière de hanche (good morning) au poids du corps\nCorps : Bouche d'incendie (fire hydrant)\nCorps : Montée sur pointes de pieds\nRetour au calme : Étirement des quadriceps debout\nRetour au calme : Étirement des ischio-jambiers"
   },
@@ -5180,9 +5162,7 @@
    "description": "",
    "minutes": 21,
    "metMinutes": 47.9,
-   "equipment": [
-    "mur"
-   ],
+   "equipment": [],
    "impact": false,
    "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de hanches\nÉchauffement : Balanciers de jambe\nÉchauffement : Squat au poids du corps\nCorps : Hip thrust, épaules sur le canapé\nCorps : Pont fessier sur une jambe\nCorps : Clamshell (coquillage)\nCorps : Ruade (donkey kick)\nCorps : Levée de jambe sur le côté\nRetour au calme : Étirement des fessiers en « 4 »\nRetour au calme : Étirement des fléchisseurs de hanche"
   },
@@ -5197,9 +5177,7 @@
    "description": "",
    "minutes": 19,
    "metMinutes": 46.7,
-   "equipment": [
-    "mur"
-   ],
+   "equipment": [],
    "impact": false,
    "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de hanches\nÉchauffement : Balanciers de jambe\nÉchauffement : Squat au poids du corps\nCorps : Squat sumo\nCorps : Fente latérale\nCorps : Charnière de hanche (good morning) au poids du corps\nCorps : Fente arrière\nCorps : Montée sur pointes de pieds\nRetour au calme : Étirement des quadriceps debout\nRetour au calme : Étirement des ischio-jambiers"
   },
@@ -5214,9 +5192,7 @@
    "description": "",
    "minutes": 18,
    "metMinutes": 52.6,
-   "equipment": [
-    "mur"
-   ],
+   "equipment": [],
    "impact": false,
    "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nÉchauffement : Balanciers de jambe\nCorps : Pont fessier en marche\nCorps : Patineur sans saut\nCorps : Dead bug\nCorps : Bouche d'incendie (fire hydrant)\nCorps : Squat, coup de pied avant\nRetour au calme : Papillon\nRetour au calme : Pigeon (version au sol)"
   },
@@ -5231,9 +5207,7 @@
    "description": "",
    "minutes": 25,
    "metMinutes": 57.5,
-   "equipment": [
-    "mur"
-   ],
+   "equipment": [],
    "impact": false,
    "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de hanches\nÉchauffement : Balanciers de jambe\nÉchauffement : Squat au poids du corps\nCorps : Hip thrust, épaules sur le canapé\nCorps : Pont fessier sur une jambe\nCorps : Clamshell (coquillage)\nCorps : Ruade (donkey kick)\nCorps : Levée de jambe sur le côté\nCorps : Bouche d'incendie (fire hydrant)\nRetour au calme : Étirement des fessiers en « 4 »\nRetour au calme : Étirement des fléchisseurs de hanche\nRetour au calme : Pigeon (version au sol)"
   },
@@ -5246,13 +5220,11 @@
    "tours": 3,
    "pause": 15,
    "description": "",
-   "minutes": 23,
-   "metMinutes": 55.3,
-   "equipment": [
-    "mur"
-   ],
+   "minutes": 25,
+   "metMinutes": 58.1,
+   "equipment": [],
    "impact": false,
-   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de hanches\nÉchauffement : Balanciers de jambe\nÉchauffement : Squat au poids du corps\nCorps : Squat sumo\nCorps : Fente latérale\nCorps : Charnière de hanche (good morning) au poids du corps\nCorps : Fente arrière\nCorps : Chaise contre le mur\nCorps : Montée sur pointes de pieds\nRetour au calme : Étirement des quadriceps debout\nRetour au calme : Étirement des ischio-jambiers\nRetour au calme : Étirement des mollets"
+   "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de hanches\nÉchauffement : Balanciers de jambe\nÉchauffement : Squat au poids du corps\nCorps : Squat sumo\nCorps : Fente latérale\nCorps : Charnière de hanche (good morning) au poids du corps\nCorps : Fente arrière\nCorps : Posture de la chaise\nCorps : Montée sur pointes de pieds\nCorps : Bouche d'incendie (fire hydrant)\nRetour au calme : Étirement des quadriceps debout\nRetour au calme : Étirement des ischio-jambiers\nRetour au calme : Chien tête en bas"
   },
   {
    "id": "hf_s4_c",
@@ -5265,9 +5237,7 @@
    "description": "",
    "minutes": 25,
    "metMinutes": 70,
-   "equipment": [
-    "mur"
-   ],
+   "equipment": [],
    "impact": false,
    "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nÉchauffement : Balanciers de jambe\nCorps : Pont fessier en marche\nCorps : Patineur sans saut\nCorps : Dead bug\nCorps : Bouche d'incendie (fire hydrant)\nCorps : Squat, coup de pied avant\nCorps : Levée de jambe intérieure (adducteurs)\nCorps : Clamshell (coquillage)\nRetour au calme : Papillon\nRetour au calme : Pigeon (version au sol)\nRetour au calme : Bébé heureux"
   },
@@ -5477,9 +5447,7 @@
    "description": "",
    "minutes": 13,
    "metMinutes": 32.9,
-   "equipment": [
-    "mur"
-   ],
+   "equipment": [],
    "impact": false,
    "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nCorps : Squat au poids du corps\nCorps : Pompe sur les genoux\nCorps : Fente arrière\nCorps : Mountain climbers lents\nCorps : Superman\nRetour au calme : Posture de l'enfant\nRetour au calme : Étirement des quadriceps debout"
   },
@@ -5494,9 +5462,7 @@
    "description": "",
    "minutes": 17,
    "metMinutes": 66.7,
-   "equipment": [
-    "mur"
-   ],
+   "equipment": [],
    "impact": true,
    "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de bras\nÉchauffement : Cercles de hanches\nÉchauffement : Rotations du buste\nCorps : Squat sauté\nCorps : Pompe\nCorps : Fente arrière\nCorps : Burpee\nCorps : Planche montante (coudes, puis mains)\nCorps : Jumping jacks\nRetour au calme : Posture de l'enfant\nRetour au calme : Étirement des quadriceps debout"
   },
@@ -5556,9 +5522,7 @@
    "description": "",
    "minutes": 9,
    "metMinutes": 21.1,
-   "equipment": [
-    "mur"
-   ],
+   "equipment": [],
    "impact": false,
    "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de hanches\nCorps : Squat au poids du corps\nCorps : Fente arrière\nCorps : Montée sur pointes de pieds\nCorps : Pont fessier\nRetour au calme : Étirement des quadriceps debout"
   },
@@ -5573,9 +5537,7 @@
    "description": "",
    "minutes": 14,
    "metMinutes": 32.1,
-   "equipment": [
-    "mur"
-   ],
+   "equipment": [],
    "impact": false,
    "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de hanches\nÉchauffement : Balanciers de jambe\nÉchauffement : Squat au poids du corps\nCorps : Squat sumo\nCorps : Fente latérale\nCorps : Charnière de hanche (good morning) au poids du corps\nCorps : Pont fessier sur une jambe\nCorps : Montée sur pointes de pieds\nRetour au calme : Étirement des quadriceps debout\nRetour au calme : Étirement des ischio-jambiers"
   },
@@ -5590,9 +5552,7 @@
    "description": "",
    "minutes": 18,
    "metMinutes": 66.6,
-   "equipment": [
-    "mur"
-   ],
+   "equipment": [],
    "impact": true,
    "contenu": "Échauffement : Marche sur place, genoux hauts\nÉchauffement : Cercles de hanches\nÉchauffement : Balanciers de jambe\nÉchauffement : Squat au poids du corps\nCorps : Squat sauté\nCorps : Fente arrière\nCorps : Fente latérale\nCorps : Pont fessier sur une jambe\nCorps : Patineur sauté\nRetour au calme : Étirement des quadriceps debout\nRetour au calme : Étirement des ischio-jambiers"
   },
@@ -5757,9 +5717,7 @@
    "description": "Relâcher les tensions de la journée avant de dormir, tout en douceur.",
    "minutes": 9,
    "metMinutes": 16.6,
-   "equipment": [
-    "mur"
-   ],
+   "equipment": [],
    "impact": false,
    "contenu": "Corps : Étirement latéral debout\nCorps : Étirement des quadriceps debout\nCorps : Sphinx\nCorps : Genoux à la poitrine\nCorps : Étirement des fessiers en « 4 »\nCorps : Étirement des ischio-jambiers\nCorps : Torsion allongée\nCorps : Papillon\nCorps : Respiration costale"
   },
@@ -5961,7 +5919,7 @@
      "jour": 4,
      "entrainement": "rf_s1_c",
      "titre": "Cardio doux",
-     "minutes": 9
+     "minutes": 8
     },
     {
      "jour": 5,
@@ -6003,7 +5961,7 @@
      "jour": 11,
      "entrainement": "rf_s2_c",
      "titre": "Cardio et renforcement",
-     "minutes": 13
+     "minutes": 14
     },
     {
      "jour": 12,
@@ -6045,7 +6003,7 @@
      "jour": 18,
      "entrainement": "rf_s3_c",
      "titre": "Cardio et renforcement",
-     "minutes": 18
+     "minutes": 20
     },
     {
      "jour": 19,
@@ -6063,7 +6021,7 @@
      "jour": 21,
      "entrainement": "prog_recup_s3",
      "titre": "Récupération : hanches et dos",
-     "minutes": 8
+     "minutes": 9
     },
     {
      "jour": 22,
@@ -6087,7 +6045,7 @@
      "jour": 25,
      "entrainement": "rf_s4_c",
      "titre": "Cardio et renforcement",
-     "minutes": 24
+     "minutes": 23
     },
     {
      "jour": 26,
@@ -6240,7 +6198,7 @@
      "jour": 21,
      "entrainement": "prog_recup_s3",
      "titre": "Récupération : hanches et dos",
-     "minutes": 8
+     "minutes": 9
     },
     {
      "jour": 22,
@@ -6252,7 +6210,7 @@
      "jour": 23,
      "entrainement": "hf_s4_b",
      "titre": "Jambes et fessiers",
-     "minutes": 23
+     "minutes": 25
     },
     {
      "jour": 24,
@@ -6276,7 +6234,7 @@
      "jour": 27,
      "entrainement": "hf_s4_b",
      "titre": "Jambes et fessiers",
-     "minutes": 23
+     "minutes": 25
     },
     {
      "jour": 28,
@@ -6417,7 +6375,7 @@
      "jour": 21,
      "entrainement": "prog_recup_s3",
      "titre": "Récupération : hanches et dos",
-     "minutes": 8
+     "minutes": 9
     },
     {
      "jour": 22,

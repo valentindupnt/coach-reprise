@@ -57,7 +57,7 @@ const COMMUNS = [
   T({ id: 'prog_recup_s3', kind: 'programme', title: 'Récupération : hanches et dos', target: 9, rest: 10, rounds: 1,
       areas: ['corps_entier'], discipline: 'yoga',
       description: 'Ouverture des hanches, détente du dos et quelques minutes de calme.',
-      main: ['fente_basse@1', 'pigeon@1', 'papillon@2', 'bebe_heureux@2', 'torsion_couchee@1', 'jambes_au_mur@1'] }),
+      main: ['fente_basse@1', 'pigeon@1', 'papillon@2', 'bebe_heureux@2', 'torsion_couchee@1', 'genoux_poitrine@2', 'coherence_cardiaque@1=120'] }),
   T({ id: 'prog_recup_s4', kind: 'programme', title: 'Récupération : bilan du mois', target: 11, rest: 10, rounds: 1,
       areas: ['corps_entier'], discipline: 'yoga',
       description: 'Étirements et scan corporel pour savourer le chemin parcouru.',
@@ -73,7 +73,7 @@ const REMISE = [
       warmup: ECHAUFFEMENT, main: ['pompe_genoux@1', 'superman@1', 'bird_dog@3', 'ours_statique@1'], cooldown: ['enfant@2'] }),
   T({ id: 'rf_s1_c', kind: 'programme', title: 'Cardio doux', target: 10, areas: ['corps_entier'], discipline: 'cardio',
       warmup: ['cercles_bras', 'cercles_hanches'], main: ['marche_genoux_hauts@1', 'step_jacks@1', 'squat_coup_de_pied@1', 'boxe_ombre@1'],
-      cooldown: ['mollets@1'] }),
+      cooldown: ['chien_tete_bas@1'] }),
   // Semaine 2 (vers 15 min)
   T({ id: 'rf_s2_a', kind: 'programme', title: 'Bas du corps et gainage', target: 15, areas: ['jambes', 'fessiers', 'abdos'],
       warmup: ECHAUFFEMENT, main: ['squat@2', 'fente_arriere@1', 'pont@2', 'dead_bug@2', 'planche@2'],
@@ -83,8 +83,8 @@ const REMISE = [
       cooldown: ['enfant@2', 'epaule_bras_croise@1'] }),
   T({ id: 'rf_s2_c', kind: 'programme', title: 'Cardio et renforcement', target: 15, areas: ['corps_entier'], discipline: 'cardio',
       warmup: ['marche_genoux_hauts@1', 'cercles_bras', 'cercles_hanches'],
-      main: ['step_jacks@2', 'squat@1', 'boxe_ombre@2', 'mountain_climbers_lents@2', 'patineur_sans_saut@1'],
-      cooldown: ['quadriceps_debout@1', 'mollets@1'] }),
+      main: ['step_jacks@2', 'squat@1', 'boxe_ombre@2', 'mountain_climbers_lents@2', 'patineur_sans_saut@1', 'squat_coup_de_pied@1'],
+      cooldown: ['quadriceps_debout@1', 'chien_tete_bas@1'] }),
   // Semaine 3 (vers 20 min)
   T({ id: 'rf_s3_a', kind: 'programme', title: 'Bas du corps et gainage', target: 20, rounds: 3, areas: ['jambes', 'fessiers', 'abdos'],
       warmup: ECHAUFFEMENT_LONG, main: ['squat@2', 'fente_arriere@2', 'pont@3', 'dead_bug@2', 'planche@2'],
@@ -94,8 +94,8 @@ const REMISE = [
       cooldown: ['enfant@2', 'epaule_bras_croise@2'] }),
   T({ id: 'rf_s3_c', kind: 'programme', title: 'Cardio et renforcement', target: 20, rounds: 3, areas: ['corps_entier'], discipline: 'cardio',
       warmup: ['marche_genoux_hauts@2', 'cercles_bras', 'cercles_hanches', 'rotations_buste'],
-      main: ['step_jacks@3', 'squat@2', 'boxe_ombre@2', 'mountain_climbers_lents@2', 'burpee_sans_saut@1'],
-      cooldown: ['quadriceps_debout@2', 'mollets@1'] }),
+      main: ['step_jacks@3', 'squat@2', 'boxe_ombre@2', 'mountain_climbers_lents@2', 'burpee_sans_saut@1', 'squat_coup_de_pied@2'],
+      cooldown: ['quadriceps_debout@2', 'chien_tete_bas@1'] }),
   // Semaine 4 (vers 25 min)
   T({ id: 'rf_s4_a', kind: 'programme', title: 'Bas du corps et gainage', target: 25, rounds: 3, level: 2, areas: ['jambes', 'fessiers', 'abdos'],
       warmup: ECHAUFFEMENT_LONG, main: ['squat@3', 'fente_arriere@2', 'pont@3', 'fente_laterale@2', 'dead_bug@3', 'planche@3'],
@@ -106,7 +106,7 @@ const REMISE = [
   T({ id: 'rf_s4_c', kind: 'programme', title: 'Cardio et renforcement', target: 25, rounds: 3, level: 2, areas: ['corps_entier'], discipline: 'cardio',
       warmup: ['marche_genoux_hauts@2', 'cercles_bras', 'cercles_hanches', 'rotations_buste', 'plus_grand_etirement@1=40'],
       main: ['step_jacks@3', 'squat@3', 'boxe_ombre@3', 'mountain_climbers_lents@3', 'burpee_sans_saut@2', 'patineur_sans_saut@2'],
-      cooldown: ['quadriceps_debout@2', 'mollets@1', 'etirement_lateral@1'] }),
+      cooldown: ['quadriceps_debout@2', 'chien_tete_bas@2', 'etirement_lateral@1'] }),
 ];
 
 // ------------------------------------------------------------------ Hanches et fessiers
@@ -145,8 +145,8 @@ const FESSIERS = [
       warmup: ECHAUFFEMENT_BAS, main: ['hip_thrust@2', 'pont_unilateral@2', 'clamshell@3', 'ruade@3', 'abduction_couchee@3', 'bouche_incendie@2'],
       cooldown: ['fessiers_4@2', 'flechisseurs@2', 'pigeon@1'] }),
   T({ id: 'hf_s4_b', kind: 'programme', title: 'Jambes et fessiers', target: 25, rounds: 3, level: 2, areas: ['jambes', 'fessiers'],
-      warmup: ECHAUFFEMENT_BAS, main: ['squat_sumo@3', 'fente_laterale@3', 'charniere_hanche@2', 'fente_arriere@3', 'chaise_mur@1=30', 'releve_mollets@3'],
-      cooldown: ['quadriceps_debout@2', 'ischios@2', 'mollets@1'] }),
+      warmup: ECHAUFFEMENT_BAS, main: ['squat_sumo@3', 'fente_laterale@3', 'charniere_hanche@2', 'fente_arriere@3', 'chaise_yoga@2', 'releve_mollets@3', 'bouche_incendie@3'],
+      cooldown: ['quadriceps_debout@2', 'ischios@2', 'chien_tete_bas@1'] }),
   T({ id: 'hf_s4_c', kind: 'programme', title: 'Fessiers, abdos et cardio', target: 25, rounds: 3, level: 2, areas: ['fessiers', 'abdos'],
       warmup: ['marche_genoux_hauts@2', 'cercles_hanches', 'rotations_buste', 'balancier_jambes@2'],
       main: ['pont_marche@3', 'patineur_sans_saut@2', 'dead_bug@3', 'bouche_incendie@3', 'squat_coup_de_pied@2', 'adducteurs_couche@2', 'clamshell@3'],
@@ -202,7 +202,7 @@ const semaine = (p, s) => [`${p}_s${s}_a`, `${p}_s${s}_b`, `prog_mobilite_s${s}`
 const mois = (p) => [1, 2, 3, 4].flatMap((s) => semaine(p, s));
 
 const SOURCE_PROG = 'Composé pour l\'app (bloc 2 V5). Repères : OMS 2020 (renforcement au moins 2 jours par semaine, '
-  + 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7719906/) ; ACSM 2026, renforcement musculaire et progression '
+  + 'https://doi.org/10.1136/bjsports-2020-102955) ; ACSM 2026, renforcement musculaire et progression '
   + '(https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/).';
 
 export const PROGRAMS = [

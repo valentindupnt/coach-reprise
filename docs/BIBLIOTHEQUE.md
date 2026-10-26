@@ -72,3 +72,7 @@ Tant que ces exercices ne sont pas validés, certaines propositions de remplacem
 3. Déployer le code (poussée sur `main`).
 
 Les deux scripts peuvent être relancés sans risque.
+
+## V5 (bloc 2) : matériel et étiquettes
+
+Le matériel des exercices suit désormais le vocabulaire du questionnaire (`aucun`, `tapis`, `elastique`, `halteres`, `chaise`, `mur`) et désigne le matériel **nécessaire** : `mini-band` devient `elastique` quand il est indispensable, `serviette` et `coussin` sont retirés. Détail, sources et vocabulaire des muscles : `docs/CONTENU-V5.md`.

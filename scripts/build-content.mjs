@@ -231,7 +231,7 @@ where public.trainings.approved = false;`);
   out.push(`delete from public.training_items where training_id = ${q(t.id)}
   and exists (select 1 from public.trainings where id = ${q(t.id)} and approved = false);
 insert into public.training_items (training_id, phase, position, exercise_id, level, value, sets)
-select v.* from (values
+select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ${items.join(',\n  ')}
 ) as v(training_id, phase, position, exercise_id, level, value, sets)
 where exists (select 1 from public.trainings where id = ${q(t.id)} and approved = false)

@@ -82,3 +82,7 @@ Les écrans qui utilisent ces fonctions arrivent aux blocs 3 (questionnaire), 4 
 3. Fusionner la branche dans `main` : Vercel redéploie l'app.
 
 L'ordre n'est pas bloquant : l'app tolère une base pas encore migrée, et l'ancienne app tolère la base migrée.
+
+## Bloc 2 : contenu
+
+Le contenu sourcé (146 exercices étiquetés, 75 entraînements, 3 programmes) est décrit dans `docs/CONTENU-V5.md`. Il s'importe avec `supabase/content-v5.sql`, après `schema.sql` et `seed.sql`, et remplace les étiquettes déduites par `_v5_backfill_exercise_tags` par des étiquettes sourcées.

@@ -8,7 +8,9 @@
     "build": "tsc -p tsconfig.json && vite build",
     "preview": "vite preview",
     "test:db": "node tests/db.test.mjs",
-    "test:e2e": "VITE_SUPABASE_URL=http://localhost:54321 VITE_SUPABASE_KEY=anon-test-key vite build --outDir dist && node tests/e2e.mjs"
+    "test:e2e": "VITE_SUPABASE_URL=http://localhost:54321 VITE_SUPABASE_KEY=anon-test-key vite build --outDir dist && node tests/e2e.mjs",
+    "content": "node scripts/build-content.mjs && python3 scripts/build-relecture.py",
+    "test:content": "node tests/content.test.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.118.0",
