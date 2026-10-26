@@ -8,6 +8,25 @@ Ce document est la référence de toutes les conversations de la refonte. La feu
 
 Faire de l'application une app de fitness à domicile, sur le modèle du parcours de l'app « Exercice à la maison » : un questionnaire de départ génère un programme adapté à la personne, qui démarre directement. Alice est la première utilisatrice ; l'app doit pouvoir accueillir d'autres personnes.
 
+## 1 bis. Principe directeur : zéro friction
+
+Réduire au maximum le temps entre l'ouverture de l'app et le premier exercice. Si la personne a la flemme, elle doit pouvoir bouger chez elle en quelques minutes, sans matériel, sans rien configurer. Toute décision d'écran se juge à cette aune.
+
+| Repère | Cible |
+|---|---|
+| Première ouverture, jusqu'au premier exercice | Moins de 60 secondes si on choisit « Commencer tout de suite », moins de 2 minutes avec le questionnaire essentiel |
+| Ouverture habituelle, jusqu'au premier exercice | Un seul appui depuis l'accueil |
+| Séance la plus courte disponible | 3 à 5 minutes, sans matériel |
+
+Ce que ça implique :
+
+- **Première ouverture** : deux boutons. « Commencer tout de suite » lance une séance de 5 minutes sans matériel, sans aucune question. « Créer mon programme » ouvre le questionnaire essentiel (4 questions).
+- **Accueil** : la séance du jour en grand, lancée d'un appui. Juste en dessous, un bouton permanent « Pas le temps ? 5 min sans matériel ».
+- **Lecteur** : la séance démarre sans écran de réglages obligatoire ; les réglages restent accessibles, jamais imposés.
+- **Matériel** : « aucun » par défaut. Chaque programme et chaque catégorie du démarrage rapide propose au moins une séance sans matériel.
+- **Questions** : on ne demande que ce qui sert tout de suite. Le reste est demandé plus tard, au bon moment, et toujours en option (section 3).
+- **Hors ligne** : la séance du jour et les séances express sont gardées sur le téléphone, pour démarrer même sans réseau.
+
 ## 2. Décisions
 
 | Sujet | Choix |
@@ -23,11 +42,35 @@ Faire de l'application une app de fitness à domicile, sur le modèle du parcour
 | Calories | Méthode MET du Compendium 2024 (section 8). Jamais de valeur par défaut sans méthode. |
 | Pas | Pas de lecture automatique (une web app n'accède pas à Apple Santé). Estimation depuis une habitude « marche ». |
 | Technique | Inchangée : GitHub + Vercel + Supabase, web app ajoutée à l'écran d'accueil. |
-| Accès | Lien personnel secret par utilisateur, comme aujourd'hui. Le questionnaire s'affiche à la première ouverture. |
+| Accès | Lien personnel secret par utilisateur, comme aujourd'hui. À la première ouverture : « Commencer tout de suite » ou « Créer mon programme ». |
 
 ## 3. Questionnaire de départ
 
-Chaque réponse sert à quelque chose. Les questions sans effet sur le programme sont gardées seulement quand elles nourrissent la motivation ou la projection, et le dit.
+Chaque réponse sert à quelque chose. Pour respecter le principe zéro friction, le questionnaire est découpé en deux temps.
+
+### 3.1 Essentiel : 4 questions, moins d'une minute, avant le premier programme
+
+| Question | Options | Défaut si on passe |
+|---|---|---|
+| Objectif principal | Perdre du poids, renforcer les muscles, se tonifier, garder la forme | Garder la forme |
+| Zones à travailler (plusieurs choix) | Bras, épaules, abdos, fessiers, jambes, dos, corps entier | Corps entier |
+| Niveau physique | Débutant, intermédiaire, avancé | Débutant |
+| Durée par séance | 5, 10, 15, 20, 30 min | 10 min |
+
+Matériel considéré comme « aucun » et un entraînement par jour, jusqu'à ce que la personne dise autre chose. Le programme est généré et la première séance peut démarrer aussitôt.
+
+### 3.2 Compléments : demandés plus tard, au bon moment, toujours facultatifs
+
+| Moment | Questions |
+|---|---|
+| Fin de la 1re séance | Matériel disponible, séances par semaine |
+| 1re ouverture de l'onglet Activité | Taille, poids, année de naissance (pour les calories), poids cible si l'objectif est de perdre du poids |
+| Après 3 séances | Disciplines aimées, style préféré, questionnaire d'adhésion |
+| Fiche profil, à tout moment | Toutes les questions, y compris motivation, morphologie, récompense et ressenti |
+
+Chaque complément ajuste le programme pour les séances suivantes, sans jamais bloquer une séance.
+
+### 3.3 Référentiel complet des questions
 
 | # | Question | Options | Sert à |
 |---|---|---|---|
@@ -42,7 +85,7 @@ Chaque réponse sert à quelque chose. Les questions sans effet sur le programme
 | 9 | Niveau physique | Débutant, intermédiaire, avancé | Niveau de départ |
 | 10 | Niveau d'activité | Sédentaire, peu actif, actif, très actif | Niveau de départ |
 | 11 | Séances par semaine | 2 à 7 | Rythme du plan |
-| 12 | Durée par séance | 10, 15, 20, 30 min | Durée cible du plan |
+| 12 | Durée par séance | 5, 10, 15, 20, 30 min | Durée cible du plan |
 | 13 | Matériel | Aucun, tapis, élastique, haltères, chaise, mur | Filtre des exercices |
 | 14 | Style préféré | Facile à commencer, transpiration légère, intense | Intensité, part de cardio |
 | 15 | Disciplines aimées (plusieurs choix) | Renforcement, étirements, pilates, yoga, HIIT, calisthénie, danse, marche, méditation | Suggestions et Découverte |
@@ -57,7 +100,7 @@ Toutes les réponses restent modifiables depuis la fiche profil, et le questionn
 1. **Programme** : fessiers ou jambes dominants, ou objectif « se tonifier » centré bas du corps, donnent Hanches et fessiers. Abdos dominants, ou objectif « renforcer » avec calisthénie aimée, donnent Gainage et calisthénie. Sinon, Remise en forme.
 2. **Niveau de départ** : le niveau déclaré, abaissé d'un cran si la personne est sédentaire ou n'a pas été en forme depuis plus de 3 ans.
 3. **Impact** : IMC ≥ 30, exercices à sauts exclus au départ.
-4. **Durée** : le plan démarre à 10 minutes et monte vers la durée cible choisie.
+4. **Durée** : le plan démarre à la plus courte des deux valeurs entre 10 minutes et la durée choisie, puis monte vers la durée cible.
 5. **Rythme** : un entraînement par jour dans le plan. Les jours au-delà du nombre de séances choisi deviennent des séances courtes de mobilité ou d'étirement.
 6. **Matériel** : un exercice qui demande un matériel absent n'est jamais proposé.
 7. **Adhésion** : « je m'ennuie » donne des séances plus courtes et une rotation plus forte des exercices ; « je me démotive » met en avant les séries de jours et l'onglet Activité.
@@ -94,7 +137,7 @@ Les champs actuels (famille de variantes, tours max, validé, source) sont conse
 
 ## 6. Structure de l'app
 
-- **Plan** : le programme du jour par jour, un entraînement par jour, les jours suivants verrouillés jusqu'à la séance du jour, durée croissante.
+- **Plan** (onglet d'accueil) : la séance du jour en grand, lancée d'un appui, et le bouton « Pas le temps ? 5 min sans matériel ». En dessous, le programme jour par jour, les jours suivants verrouillés jusqu'à la séance du jour, durée croissante.
 - **Entraînements** : catalogue des programmes (Remise en forme, Hanches et fessiers, Gainage et calisthénie) et démarrage rapide par zone (corps entier, abdos, jambes, bras, épaules, dos), en trois niveaux. Remplace la « roue libre ».
 - **Découverte** : moments pour soi (yoga matinal, étirements du soir, méditation, gainage express).
 - **Activité** : calendrier, calories par séance, objectifs du jour, habitudes et séries de jours.
