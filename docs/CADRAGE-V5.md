@@ -22,6 +22,7 @@ Faire de l'application une app de fitness à domicile, sur le modèle du parcour
 | Contenu | Recherché, rédigé et sourcé par Claude, validé par Valentin avant mise en ligne. |
 | Calories | Méthode MET du Compendium 2024 (section 8). Jamais de valeur par défaut sans méthode. |
 | Pas | Pas de lecture automatique (une web app n'accède pas à Apple Santé). Estimation depuis une habitude « marche ». |
+| Séances express | Des séances courtes sans matériel (3 à 5 min), disponibles hors ligne : gardées sur le téléphone pour être lancées même sans réseau. |
 | Technique | Inchangée : GitHub + Vercel + Supabase, web app ajoutée à l'écran d'accueil. |
 | Accès | Lien personnel secret par utilisateur, comme aujourd'hui. Le questionnaire s'affiche à la première ouverture. |
 
