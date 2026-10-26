@@ -1,7 +1,7 @@
 -- =====================================================================
 -- Remise à zéro d'Alice après tes tests (à lancer AVANT de lui donner le lien)
 -- Efface ses séances et ses journaux, rétablit le programme de départ (niveaux à 1,
--- remplacements annulés), enlève la pause, et génère un NOUVEAU lien (celui de tes tests ne marchera plus).
+-- remplacements annulés), efface profil, tampons et programmes suivis, enlève la pause, et génère un NOUVEAU lien (celui de tes tests ne marchera plus).
 -- =====================================================================
 do $$
 declare
@@ -13,6 +13,10 @@ begin
   end if;
 
   delete from public.workouts where athlete_id = a_id;
+  -- V5 : tampons « Ça fait mal », profil et programmes suivis
+  delete from public.exercise_blocks where athlete_id = a_id;
+  delete from public.athlete_profiles where athlete_id = a_id;
+  delete from public.athlete_programs where athlete_id = a_id;
   delete from public.level_changes where athlete_id = a_id;
   delete from public.program_changes where athlete_id = a_id;
   -- programme de départ rétabli (remplacements, ajouts, retraits et tours remis à zéro)

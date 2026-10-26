@@ -40,6 +40,7 @@ function rpeColor(n: number): string {
 
 export interface FeedbackValue {
   pain: number;
+  /** V5 : plus de question sur les symptômes (le gel est supprimé) ; toujours false. */
   neuro: boolean;
   rpe: number;
   duration_min: number;
@@ -77,13 +78,12 @@ export default function Feedback({ session, entries, durationMin, allowSwaps, su
     return init;
   });
   const [pain, setPain] = useState<number | null>(null);
-  const [neuro, setNeuro] = useState<boolean | null>(null);
   const [rpe, setRpe] = useState<number | null>(null);
   const [minutes, setMinutes] = useState<number>(durationMin ?? 30);
   const [comment, setComment] = useState('');
 
   const isProgram = session !== 'C';
-  const ready = pain !== null && neuro !== null && rpe !== null && !submitting;
+  const ready = pain !== null && rpe !== null && !submitting;
 
   function ensureOptions(item: ProgramItem) {
     const id = item.exercise.id;
@@ -135,7 +135,7 @@ export default function Feedback({ session, entries, durationMin, allowSwaps, su
     }
     onSubmit({
       pain: pain!,
-      neuro: neuro!,
+      neuro: false,
       rpe: rpe!,
       duration_min: minutes,
       items,
@@ -246,24 +246,6 @@ export default function Feedback({ session, entries, durationMin, allowSwaps, su
           <span>Aucune</span>
           <span>Très forte</span>
         </div>
-      </fieldset>
-
-      <fieldset className="card" style={{ border: 0, margin: 0 }}>
-        <legend className="sr-only">Symptômes</legend>
-        <h3>As-tu ressenti des fourmillements, un engourdissement ou une faiblesse ?</h3>
-        <div className="choice-grid">
-          <button type="button" className="choice" aria-pressed={neuro === false} onClick={() => setNeuro(false)}>
-            Non
-          </button>
-          <button type="button" className="choice warn" aria-pressed={neuro === true} onClick={() => setNeuro(true)}>
-            Oui
-          </button>
-        </div>
-        {neuro === true && (
-          <p className="small" style={{ color: 'var(--rose-ink)' }}>
-            Merci de l'avoir signalé. Ton programme sera mis en pause et on te dira quoi faire juste après.
-          </p>
-        )}
       </fieldset>
 
       {isProgram && (

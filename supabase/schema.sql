@@ -157,6 +157,188 @@ create table if not exists public.program_changes (
 );
 create index if not exists program_changes_athlete_idx on public.program_changes (athlete_id, created_at desc);
 
+-- =====================================================================
+-- V5, bloc 1 : socle de données de l'app fitness (voir docs/CADRAGE-V5.md)
+-- Tout est additif : aucune colonne ni table existante n'est supprimée.
+-- =====================================================================
+
+-- Fuseau de l'utilisateur, pour débloquer un jour de programme par jour calendaire
+alter table public.athletes add column if not exists timezone text not null default 'Europe/Paris';
+
+-- 1.1 Étiquettes des exercices
+--   muscles_primary / muscles_secondary : muscles affichés sur la silhouette (couleur vive / atténuée)
+--   areas      : zones du questionnaire et du démarrage rapide
+--   goals      : objectifs servis par l'exercice
+--   discipline : famille d'entraînement (sert aux filtres, aux préférences et aux remplacements)
+--   impact     : true = avec sauts (exclus au départ si IMC >= 30)
+--   mode       : 'time' (secondes) ou 'reps' (répétitions) ; default_value = valeur par défaut dans ce mode
+--   met / met_code : valeur MET et code d'activité du Compendium 2024 (calcul des calories)
+--   tutorial   : {"steps": [...], "breathing": "...", "mistakes": [...]}
+alter table public.exercises add column if not exists muscles_primary text[] not null default '{}';
+alter table public.exercises add column if not exists muscles_secondary text[] not null default '{}';
+alter table public.exercises add column if not exists areas text[] not null default '{}';
+alter table public.exercises add column if not exists goals text[] not null default '{}';
+alter table public.exercises add column if not exists discipline text;
+alter table public.exercises add column if not exists impact boolean not null default false;
+alter table public.exercises add column if not exists mode text not null default 'time';
+alter table public.exercises add column if not exists default_value int;
+alter table public.exercises add column if not exists met numeric(4,1);
+alter table public.exercises add column if not exists met_code text;
+alter table public.exercises add column if not exists tutorial jsonb;
+do $$
+begin
+  -- 'cardio' rejoint les types historiques (jumping jacks, montées de genoux...)
+  alter table public.exercises drop constraint if exists exercises_kind_check;
+  alter table public.exercises add constraint exercises_kind_check
+    check (kind in ('force', 'gainage', 'mobilite', 'etirement', 'respiration', 'cardio'));
+  alter table public.exercises drop constraint if exists exercises_areas_check;
+  alter table public.exercises add constraint exercises_areas_check
+    check (areas <@ array['bras', 'epaules', 'abdos', 'fessiers', 'jambes', 'dos', 'corps_entier']);
+  alter table public.exercises drop constraint if exists exercises_goals_check;
+  alter table public.exercises add constraint exercises_goals_check
+    check (goals <@ array['renforcer', 'tonifier', 'mobilite', 'cardio', 'detente']);
+  alter table public.exercises drop constraint if exists exercises_discipline_check;
+  alter table public.exercises add constraint exercises_discipline_check
+    check (discipline is null or discipline in ('renforcement', 'gainage', 'calisthenie', 'cardio', 'hiit',
+                                                'yoga', 'etirement', 'pilates', 'meditation'));
+  alter table public.exercises drop constraint if exists exercises_mode_check;
+  alter table public.exercises add constraint exercises_mode_check check (mode in ('time', 'reps'));
+  alter table public.exercises drop constraint if exists exercises_default_value_check;
+  alter table public.exercises add constraint exercises_default_value_check
+    check (default_value is null or default_value between 1 and 600);
+  alter table public.exercises drop constraint if exists exercises_met_check;
+  alter table public.exercises add constraint exercises_met_check check (met is null or met between 0.9 and 20);
+  alter table public.exercises drop constraint if exists exercises_met_code_check;
+  alter table public.exercises add constraint exercises_met_code_check check (met_code is null or met_code ~ '^[0-9]{5}$');
+  alter table public.exercises drop constraint if exists exercises_tutorial_check;
+  alter table public.exercises add constraint exercises_tutorial_check
+    check (tutorial is null or jsonb_typeof(tutorial) = 'object');
+end $$;
+
+-- 1.2 Entraînements : une suite d'exercices en trois phases.
+--   kind   : 'programme' (jour d'un programme), 'rapide' (démarrage rapide par zone),
+--            'decouverte' (moments pour soi), 'express' (3 à 5 min sans matériel, gardé hors ligne)
+--   level  : 1 débutant, 2 intermédiaire, 3 avancé
+--   rounds : tours du corps de séance ; rest_seconds : pause entre deux exercices
+create table if not exists public.trainings (
+  id text primary key check (id ~ '^[a-z0-9_]{2,60}$'),
+  title text not null check (char_length(title) between 1 and 80),
+  description text check (description is null or char_length(description) <= 500),
+  kind text not null check (kind in ('programme', 'rapide', 'decouverte', 'express')),
+  level int not null default 1 check (level between 1 and 3),
+  areas text[] not null default '{}'
+    check (areas <@ array['bras', 'epaules', 'abdos', 'fessiers', 'jambes', 'dos', 'corps_entier']),
+  discipline text,
+  rounds int not null default 2 check (rounds between 1 and 6),
+  rest_seconds int not null default 15 check (rest_seconds between 0 and 180),
+  approved boolean not null default false,
+  source text,
+  created_at timestamptz not null default now()
+);
+
+-- value : durée (s) ou répétitions imposées pour cet exercice ; null = valeur du niveau ou de l'exercice
+-- sets  : tours propres à l'exercice dans le corps de séance ; null = rounds de l'entraînement
+create table if not exists public.training_items (
+  id uuid primary key default gen_random_uuid(),
+  training_id text not null references public.trainings(id) on delete cascade,
+  phase text not null check (phase in ('warmup', 'main', 'cooldown')),
+  position int not null check (position >= 1),
+  exercise_id text not null references public.exercises(id),
+  level int not null default 1 check (level >= 1),
+  value int check (value is null or value between 1 and 600),
+  sets int check (sets is null or sets between 1 and 6),
+  unique (training_id, phase, position)
+);
+create index if not exists training_items_exercise_idx on public.training_items (exercise_id);
+
+-- 1.3 Programmes : un entraînement par jour, débloqué jour après jour
+create table if not exists public.programs (
+  id text primary key check (id ~ '^[a-z0-9_]{2,60}$'),
+  title text not null check (char_length(title) between 1 and 80),
+  description text check (description is null or char_length(description) <= 500),
+  goals text[] not null default '{}'
+    check (goals <@ array['perdre_du_poids', 'renforcer', 'tonifier', 'garder_la_forme']),
+  areas text[] not null default '{}'
+    check (areas <@ array['bras', 'epaules', 'abdos', 'fessiers', 'jambes', 'dos', 'corps_entier']),
+  level int not null default 1 check (level between 1 and 3),
+  approved boolean not null default false,
+  source text,
+  created_at timestamptz not null default now()
+);
+
+create table if not exists public.program_days (
+  program_id text not null references public.programs(id) on delete cascade,
+  day int not null check (day between 1 and 120),
+  training_id text not null references public.trainings(id),
+  primary key (program_id, day)
+);
+
+-- Programme suivi par un utilisateur. Un seul programme actif à la fois.
+--   unlocked_through : jour débloqué à la main depuis l'espace admin (0 = aucun)
+create table if not exists public.athlete_programs (
+  id uuid primary key default gen_random_uuid(),
+  athlete_id uuid not null references public.athletes(id) on delete cascade,
+  program_id text not null references public.programs(id),
+  started_on date not null default current_date,
+  status text not null default 'actif' check (status in ('actif', 'termine', 'abandonne')),
+  unlocked_through int not null default 0 check (unlocked_through between 0 and 120),
+  ended_at timestamptz,
+  created_at timestamptz not null default now()
+);
+create unique index if not exists athlete_programs_one_active on public.athlete_programs (athlete_id) where status = 'actif';
+
+-- Une séance peut désormais être un entraînement V5 (session_key 'T'), rattaché ou non à un jour de programme
+do $$
+begin
+  alter table public.workouts drop constraint if exists workouts_session_key_check;
+  alter table public.workouts add constraint workouts_session_key_check check (session_key in ('A', 'B', 'M', 'C', 'T'));
+end $$;
+alter table public.workouts add column if not exists training_id text references public.trainings(id);
+alter table public.workouts add column if not exists athlete_program_id uuid references public.athlete_programs(id) on delete set null;
+alter table public.workouts add column if not exists program_day int check (program_day is null or program_day between 1 and 120);
+create unique index if not exists workouts_program_day_once
+  on public.workouts (athlete_program_id, program_day) where athlete_program_id is not null and program_day is not null;
+
+-- 1.4 Profil sportif : réponses du questionnaire et données corporelles. Tout est facultatif et modifiable.
+create table if not exists public.athlete_profiles (
+  athlete_id uuid primary key references public.athletes(id) on delete cascade,
+  sex text check (sex in ('femme', 'homme')),
+  goal text check (goal in ('perdre_du_poids', 'renforcer', 'tonifier', 'garder_la_forme')),
+  areas text[] not null default '{}'
+    check (areas <@ array['bras', 'epaules', 'abdos', 'fessiers', 'jambes', 'dos', 'corps_entier']),
+  motivation text check (motivation in ('confiance', 'vitalite', 'douleurs', 'sommeil', 'bien_etre')),
+  morphology text check (morphology in ('mince', 'moyenne', 'enveloppee', 'musclee')),
+  height_cm int check (height_cm between 120 and 230),
+  weight_kg numeric(5,1) check (weight_kg between 30 and 250),
+  birth_year int check (birth_year between 1920 and 2016),
+  target_weight_kg numeric(5,1) check (target_weight_kg between 30 and 250),
+  last_fit text check (last_fit in ('en_ce_moment', 'moins_1_an', '1_3_ans', 'plus_3_ans', 'jamais')),
+  level text check (level in ('debutant', 'intermediaire', 'avance')),
+  activity text check (activity in ('sedentaire', 'peu_actif', 'actif', 'tres_actif')),
+  sessions_per_week int check (sessions_per_week between 2 and 7),
+  session_minutes int check (session_minutes in (10, 15, 20, 30)),
+  equipment text[] not null default '{}'
+    check (equipment <@ array['aucun', 'tapis', 'elastique', 'halteres', 'chaise', 'mur']),
+  style text check (style in ('facile', 'transpiration_legere', 'intense')),
+  disciplines text[] not null default '{}'
+    check (disciplines <@ array['renforcement', 'etirement', 'pilates', 'yoga', 'hiit', 'calisthenie', 'danse', 'marche', 'meditation']),
+  -- questionnaire d'adhésion : {"choisir": bool, "ennui": bool, "demotive": bool}
+  adherence jsonb not null default '{}'::jsonb check (jsonb_typeof(adherence) = 'object'),
+  reward text check (reward in ('vetements', 'cadeau', 'voyage', 'partager', 'autre')),
+  feeling text check (feeling in ('heureux', 'en_forme', 'confiant', 'fier', 'energie', 'rassure')),
+  completed_at timestamptz,
+  updated_at timestamptz not null default now()
+);
+
+-- 1.4 bis Tampon « Ça fait mal » : l'exercice n'est plus proposé à cet utilisateur jusqu'à « until » (10 jours)
+create table if not exists public.exercise_blocks (
+  athlete_id uuid not null references public.athletes(id) on delete cascade,
+  exercise_id text not null references public.exercises(id) on delete cascade,
+  blocked_at timestamptz not null default now(),
+  until timestamptz not null,
+  primary key (athlete_id, exercise_id)
+);
+
 -- ---------------------------------------------------------------------
 -- Sécurité : seul un coach connecté lit et écrit les tables.
 -- L'athlète passe uniquement par les deux fonctions athlete_* ci-dessous,
@@ -212,6 +394,20 @@ drop policy if exists coach_all on public.program_changes;
 create policy coach_all on public.program_changes for all to authenticated
   using (public.is_coach()) with check (public.is_coach());
 
+-- V5 : mêmes règles pour les nouvelles tables (l'utilisateur passe uniquement par les fonctions athlete_*)
+do $$
+declare
+  t text;
+begin
+  foreach t in array array['trainings', 'training_items', 'programs', 'program_days',
+                           'athlete_programs', 'athlete_profiles', 'exercise_blocks'] loop
+    execute format('alter table public.%I enable row level security', t);
+    execute format('drop policy if exists coach_all on public.%I', t);
+    execute format('create policy coach_all on public.%I for all to authenticated
+                      using (public.is_coach()) with check (public.is_coach())', t);
+  end loop;
+end $$;
+
 -- ---------------------------------------------------------------------
 -- Fonctions côté athlète (lien secret)
 -- ---------------------------------------------------------------------
@@ -259,13 +455,38 @@ as $$
     'intensity', e.intensity,
     'family', e.family,
     'pattern', e.pattern,
-    'max_sets', e.max_sets
+    'max_sets', e.max_sets,
+    -- V5 : étiquettes
+    'muscles_primary', to_jsonb(e.muscles_primary),
+    'muscles_secondary', to_jsonb(e.muscles_secondary),
+    'areas', to_jsonb(e.areas),
+    'goals', to_jsonb(e.goals),
+    'discipline', e.discipline,
+    'impact', e.impact,
+    'mode', e.mode,
+    'default_value', e.default_value,
+    'met', e.met,
+    'met_code', e.met_code,
+    'tutorial', e.tutorial,
+    'source', e.source
+  );
+$$;
+
+-- V5 : tampon « Ça fait mal » actif sur cet exercice pour cet utilisateur
+create or replace function public._is_blocked(p_athlete uuid, p_exercise text)
+returns boolean
+language sql stable security definer
+set search_path = public
+as $$
+  select exists (
+    select 1 from public.exercise_blocks b
+    where b.athlete_id = p_athlete and b.exercise_id = p_exercise and b.until > now()
   );
 $$;
 
 -- Exercices qui peuvent en remplacer un autre dans une séance :
 -- validés par le coach, du même type, d'intensité voisine (± 1), pas déjà dans la séance,
--- et pas signalés douloureux par l'athlète ces 14 derniers jours.
+-- et sans tampon « Ça fait mal » en cours (V5 : 10 jours, remplace l'ancienne règle des 14 jours).
 create or replace function public._swap_candidates(p_athlete uuid, p_session text, p_exercise text)
 returns table (id text, gap int, is_variant boolean, other_zone boolean)
 language sql stable security definer
@@ -287,11 +508,8 @@ as $$
         and pi.exercise_id = e.id and pi.active
     )
     and not exists (
-      select 1
-      from public.workout_items wi
-      join public.workouts w on w.id = wi.workout_id
-      where w.athlete_id = p_athlete and wi.exercise_id = e.id
-        and wi.feeling = 'douleur' and w.done_at > now() - interval '14 days'
+      select 1 from public.exercise_blocks b
+      where b.athlete_id = p_athlete and b.exercise_id = e.id and b.until > now()
     );
 $$;
 
@@ -443,7 +661,9 @@ begin
     'in_program', coalesce((
       select jsonb_agg(distinct pi.exercise_id)
       from public.program_items pi where pi.athlete_id = a.id and pi.active
-    ), '[]'::jsonb)
+    ), '[]'::jsonb),
+    -- V5 : tampons « Ça fait mal » en cours, avec leur date de fin (affichés sur la fiche de l'exercice)
+    'blocks', public._blocks_json(a.id)
   );
 end;
 $$;
@@ -468,8 +688,13 @@ begin
       'allow_swaps', a.allow_swaps,
       'week_plan', a.week_plan,
       'levelup_mode', a.levelup_mode,
-      'workout_count', (select count(*) from public.workouts where athlete_id = a.id)
+      'workout_count', (select count(*) from public.workouts where athlete_id = a.id),
+      'timezone', a.timezone
     ),
+    -- V5 : profil sportif, programme suivi jour par jour, tampons « Ça fait mal » en cours
+    'profile', public._profile_json(a.id),
+    'plan', public._plan_json(a.id),
+    'blocks', public._blocks_json(a.id),
     'program', coalesce((
       select jsonb_agg(jsonb_build_object(
         'session_key', pi.session_key,
@@ -519,10 +744,10 @@ begin
 end;
 $$;
 
--- Enregistre une séance et applique les règles de sécurité :
---  * « douleur » sur un exercice  -> cet exercice descend d'un niveau (auto)
---  * fourmillements / faiblesse    -> programme gelé jusqu'à déblocage coach
--- La montée de niveau n'est JAMAIS automatique : voir coach_proposals().
+-- Enregistre une séance et applique la règle de sécurité :
+--  * V5 : « douleur » sur un exercice (bouton « Ça fait mal » ou bilan) : tampon de 10 jours sur l'exercice
+--    pour cet utilisateur. Plus de baisse de niveau automatique, plus de gel du programme
+--    (p_neuro est encore accepté pour les anciennes versions de l'app, sans effet sur le programme).
 -- V2 : date et durée réelles, effort ressenti (RPE), préférence par exercice
 -- (« aime » / « à changer ») et remplacements demandés au bilan (p_swaps).
 drop function if exists public.athlete_submit_workout(text, text, text, int, boolean, jsonb, text);
@@ -559,6 +784,8 @@ declare
   regressed jsonb := '[]'::jsonb;
   swapped jsonb := '[]'::jsonb;
   leveled jsonb := '[]'::jsonb;
+  blocked jsonb := '[]'::jsonb;
+  v_until timestamptz;
   cand record;
   lv jsonb;
   cur_level int;
@@ -609,7 +836,7 @@ begin
   ) then
     return jsonb_build_object('status', 'duplicate', 'frozen', a.frozen,
                               'regressed', '[]'::jsonb, 'swapped', '[]'::jsonb,
-                              'leveled_up', '[]'::jsonb);
+                              'leveled_up', '[]'::jsonb, 'blocked', '[]'::jsonb);
   end if;
 
   -- Garde-fou anti-abus
@@ -675,6 +902,10 @@ begin
          where athlete_id = a.id and exercise_id = ex.id and active;
         insert into public.workout_items (workout_id, exercise_id, level, feeling, preference)
         values (w_id, ex.id, least(v_lvl, jsonb_array_length(ex.levels)), v_feeling, v_pref);
+        if v_feeling = 'douleur' then
+          v_until := public._block_exercise(a.id, ex.id, v_done);
+          blocked := blocked || jsonb_build_array(jsonb_build_object('exercise_id', ex.id, 'until', v_until));
+        end if;
       end if;
       continue; -- sinon : exercice retiré du programme entre-temps, ignoré
     end if;
@@ -687,23 +918,12 @@ begin
     insert into public.workout_items (workout_id, exercise_id, level, feeling, preference)
     values (w_id, item.exercise_id, item.level, v_feeling, v_pref);
 
-    if v_feeling = 'douleur' and item.level > 1 then
-      update public.program_items
-      set level = item.level - 1
-      where athlete_id = a.id and exercise_id = item.exercise_id;
-
-      insert into public.level_changes (athlete_id, exercise_id, from_level, to_level, source, reason)
-      values (a.id, item.exercise_id, item.level, item.level - 1, 'auto', 'Douleur signalée sur l''exercice');
-
-      regressed := regressed || jsonb_build_array(
-        jsonb_build_object('exercise_id', item.exercise_id, 'to_level', item.level - 1)
-      );
+    -- V5 : tampon de 10 jours, sans toucher au niveau
+    if v_feeling = 'douleur' then
+      v_until := public._block_exercise(a.id, item.exercise_id, v_done);
+      blocked := blocked || jsonb_build_array(jsonb_build_object('exercise_id', item.exercise_id, 'until', v_until));
     end if;
   end loop;
-
-  if p_neuro then
-    update public.athletes set frozen = true, frozen_at = now() where id = a.id;
-  end if;
 
   -- V3 : montée de niveau autonome, uniquement si le coach a choisi « l'athlète monte seule ».
   -- Garde-fous : mêmes conditions que les propositions faites au coach (2 derniers ressentis « facile »
@@ -761,7 +981,7 @@ begin
   end if;
 
   -- Remplacements demandés au bilan : un échec (exercice retiré, déjà remplacé...) n'annule pas la séance
-  if not (p_neuro or a.frozen) then
+  if not a.frozen then
     for sw in select value from jsonb_array_elements(p_swaps) loop
       begin
         perform public._apply_swap(a.id, sw ->> 'session', sw ->> 'from', sw ->> 'to',
@@ -776,10 +996,11 @@ begin
 
   return jsonb_build_object(
     'status', 'ok',
-    'frozen', (p_neuro or a.frozen),
+    'frozen', a.frozen,
     'regressed', regressed,
     'swapped', swapped,
-    'leveled_up', leveled
+    'leveled_up', leveled,
+    'blocked', blocked
   );
 end;
 $$;
@@ -1222,6 +1443,8 @@ begin
     max_sets = excluded.max_sets,
     approved = excluded.approved,
     source = excluded.source;
+  -- V5 : un exercice créé sans étiquettes reçoit celles déduites de son type et de ses zones
+  perform public._v5_backfill_exercise_tags();
   return v_id;
 end;
 $$;
@@ -1257,6 +1480,709 @@ begin
 end;
 $$;
 
+-- =====================================================================
+-- V5, bloc 1 : fonctions (voir docs/CADRAGE-V5.md et docs/MODELE-V5.md)
+-- =====================================================================
+
+-- Décision du 26/10/2026 : plus de gel du programme. Les utilisateurs gelés auparavant sont libérés.
+update public.athletes set frozen = false, frozen_at = null where frozen;
+
+-- 1.1 Étiquettes déduites des descriptions V2 pour les exercices pas encore étiquetés.
+-- MET (Compendium 2024) : renfo poids du corps 02056 = 3,0 ; gainage léger 02024 = 2,8 ;
+-- étirements doux 02101 = 2,3 ; méditation 07075 = 1,0 ; effort intense 02020 = 7,5.
+-- Relançable : ne touche qu'aux exercices sans discipline.
+create or replace function public._v5_backfill_exercise_tags()
+returns void
+language sql volatile
+set search_path = public
+as $$
+  update public.exercises e set
+    discipline = case e.kind
+      when 'force' then 'renforcement' when 'gainage' then 'gainage' when 'mobilite' then 'etirement'
+      when 'etirement' then 'etirement' when 'respiration' then 'meditation' when 'cardio' then 'cardio' end,
+    goals = case when e.goals <> '{}' then e.goals else case e.kind
+      when 'force' then array['renforcer', 'tonifier'] when 'gainage' then array['renforcer', 'tonifier']
+      when 'mobilite' then array['mobilite'] when 'etirement' then array['mobilite', 'detente']
+      when 'respiration' then array['detente'] when 'cardio' then array['cardio'] end end,
+    areas = case when e.areas <> '{}' then e.areas else coalesce((
+      select array_agg(distinct m.a order by m.a)
+      from unnest(e.zones) z
+      cross join lateral (select case z
+        when 'dos' then 'dos' when 'lombaires' then 'dos' when 'thorax' then 'dos' when 'cou' then 'dos'
+        when 'epaules' then 'epaules' when 'bras' then 'bras' when 'pectoraux' then 'bras'
+        when 'abdos' then 'abdos' when 'obliques' then 'abdos'
+        when 'fessiers' then 'fessiers' when 'hanches' then 'fessiers'
+        when 'cuisses' then 'jambes' when 'ischios' then 'jambes' when 'mollets' then 'jambes' end as a) m
+      where m.a is not null
+    ), array['corps_entier']) end,
+    muscles_primary = case when e.muscles_primary <> '{}' then e.muscles_primary else e.zones end,
+    met = coalesce(e.met, case e.kind when 'force' then 3.0 when 'gainage' then 2.8 when 'mobilite' then 2.3
+      when 'etirement' then 2.3 when 'respiration' then 1.0 when 'cardio' then 7.5 end),
+    met_code = coalesce(e.met_code, case e.kind when 'force' then '02056' when 'gainage' then '02024'
+      when 'mobilite' then '02101' when 'etirement' then '02101' when 'respiration' then '07075'
+      when 'cardio' then '02020' end)
+  where e.discipline is null;
+$$;
+select public._v5_backfill_exercise_tags();
+
+-- ---------------------------------------------------------------------
+-- 1.4 bis Tampon « Ça fait mal »
+-- ---------------------------------------------------------------------
+
+-- Pose (ou prolonge) un tampon de 10 jours à partir du moment de la douleur
+create or replace function public._block_exercise(p_athlete uuid, p_exercise text, p_from timestamptz default now())
+returns timestamptz
+language plpgsql volatile security definer
+set search_path = public
+as $$
+declare
+  v_until timestamptz;
+begin
+  insert into public.exercise_blocks (athlete_id, exercise_id, blocked_at, until)
+  values (p_athlete, p_exercise, coalesce(p_from, now()), coalesce(p_from, now()) + interval '10 days')
+  on conflict (athlete_id, exercise_id) do update
+    set blocked_at = greatest(public.exercise_blocks.blocked_at, excluded.blocked_at),
+        until = greatest(public.exercise_blocks.until, excluded.until)
+  returning until into v_until;
+  return v_until;
+end;
+$$;
+
+create or replace function public._blocks_json(p_athlete uuid)
+returns jsonb
+language sql stable security definer
+set search_path = public
+as $$
+  select coalesce(jsonb_agg(jsonb_build_object('exercise_id', b.exercise_id, 'until', b.until)
+                            order by b.until), '[]'::jsonb)
+  from public.exercise_blocks b
+  where b.athlete_id = p_athlete and b.until > now();
+$$;
+
+-- Bouton « Ça fait mal » en séance (en ligne) : tampon immédiat. Hors ligne, le bilan le pose à l'envoi.
+create or replace function public.athlete_flag_pain(p_token text, p_exercise text)
+returns jsonb
+language plpgsql volatile security definer
+set search_path = public
+as $$
+declare
+  a public.athletes;
+  v_until timestamptz;
+begin
+  a := public._athlete_by_token(p_token);
+  if not exists (select 1 from public.exercises where id = p_exercise) then
+    raise exception 'not_found' using errcode = 'P0002';
+  end if;
+  v_until := public._block_exercise(a.id, p_exercise, now());
+  return jsonb_build_object('exercise_id', p_exercise, 'until', v_until);
+end;
+$$;
+
+-- Remplaçant d'un exercice tamponné dans un entraînement : validé, même type, intensité ± 1,
+-- sans tampon, pas déjà dans l'entraînement, matériel disponible (si le profil le précise).
+-- Préférence : même famille, puis mêmes zones, puis intensité la plus proche.
+create or replace function public._substitute_exercise(p_athlete uuid, p_exercise text, p_exclude text[])
+returns text
+language sql stable security definer
+set search_path = public
+as $$
+  select e.id
+  from public.exercises o
+  join public.exercises e on e.id <> o.id
+  left join public.athlete_profiles p on p.athlete_id = p_athlete
+  where o.id = p_exercise
+    and e.approved
+    and e.kind = o.kind
+    and abs(e.intensity - o.intensity) <= 1
+    and not (e.id = any(coalesce(p_exclude, '{}')))
+    and not public._is_blocked(p_athlete, e.id)
+    and (p.equipment is null or p.equipment = '{}' or e.equipment <@ (p.equipment || array['aucun']))
+  order by (o.family is not null and e.family = o.family) desc,
+           (e.areas && o.areas) desc,
+           abs(e.intensity - o.intensity),
+           e.id
+  limit 1;
+$$;
+
+-- ---------------------------------------------------------------------
+-- 1.2 Entraînements
+-- ---------------------------------------------------------------------
+
+-- Durée d'une exécution d'un exercice, en secondes.
+-- Temps : valeur imposée, sinon secondes du niveau, sinon valeur par défaut, sinon 45 s (comme le lecteur).
+-- Répétitions : 3 s par répétition (tempo moyen retenu pour estimer la durée).
+create or replace function public._item_seconds(e public.exercises, p_level int, p_value int)
+returns int
+language sql immutable
+set search_path = public
+as $$
+  select case when e.mode = 'reps' then
+    3 * coalesce(p_value,
+                 (e.levels -> (least(greatest(coalesce(p_level, 1), 1), jsonb_array_length(e.levels)) - 1) ->> 'reps')::int,
+                 e.default_value, 12)
+  else
+    coalesce(p_value,
+             (e.levels -> (least(greatest(coalesce(p_level, 1), 1), jsonb_array_length(e.levels)) - 1) ->> 'seconds')::int,
+             e.default_value, 45)
+  end;
+$$;
+
+-- Durée totale, MET-minutes (pour les calories : kcal = met_minutes x poids / 60), matériel et impact.
+-- Échauffement et retour au calme : 1 passage ; corps de séance : sets de l'exercice, sinon rounds.
+-- Pauses comptées à 1 MET.
+create or replace function public._training_stats(p_training text)
+returns jsonb
+language plpgsql stable security definer
+set search_path = public
+as $$
+declare
+  t public.trainings;
+  r record;
+  n int;
+  sec int;
+  active int := 0;
+  execs int := 0;
+  met_sec numeric := 0;
+  rest int;
+begin
+  select * into t from public.trainings where id = p_training;
+  if not found then
+    return null;
+  end if;
+  for r in
+    select ti.phase, ti.sets, ti.level, ti.value, e as ex
+    from public.training_items ti
+    join public.exercises e on e.id = ti.exercise_id
+    where ti.training_id = p_training
+  loop
+    n := case when r.phase = 'main' then coalesce(r.sets, t.rounds) else 1 end;
+    sec := public._item_seconds(r.ex, r.level, r.value);
+    active := active + n * sec;
+    execs := execs + n;
+    met_sec := met_sec + n * sec * coalesce((r.ex).met, 3.0);
+  end loop;
+  rest := greatest(execs - 1, 0) * t.rest_seconds;
+  return jsonb_build_object(
+    'duration_min', ceil((active + rest) / 60.0)::int,
+    'active_seconds', active,
+    'rest_seconds_total', rest,
+    'met_minutes', round(met_sec / 60.0 + rest / 60.0, 1),
+    'exercise_count', (select count(distinct ti.exercise_id) from public.training_items ti where ti.training_id = p_training),
+    'equipment', coalesce((
+      select jsonb_agg(distinct q order by q)
+      from public.training_items ti
+      join public.exercises e on e.id = ti.exercise_id
+      cross join unnest(e.equipment) q
+      where ti.training_id = p_training and q <> 'aucun'
+    ), '[]'::jsonb),
+    'impact', coalesce((
+      select bool_or(e.impact) from public.training_items ti
+      join public.exercises e on e.id = ti.exercise_id where ti.training_id = p_training
+    ), false)
+  );
+end;
+$$;
+
+create or replace function public._training_summary(p_training text)
+returns jsonb
+language sql stable security definer
+set search_path = public
+as $$
+  select jsonb_build_object(
+    'id', t.id, 'title', t.title, 'description', t.description, 'kind', t.kind, 'level', t.level,
+    'areas', to_jsonb(t.areas), 'discipline', t.discipline, 'rounds', t.rounds, 'rest_seconds', t.rest_seconds
+  ) || coalesce(public._training_stats(t.id), '{}'::jsonb)
+  from public.trainings t where t.id = p_training;
+$$;
+
+-- Entraînement complet. Avec un utilisateur : chaque exercice tamponné est remplacé à l'ouverture
+-- (replaced_from = exercice d'origine) ; sans remplaçant possible, il est retiré de la séance.
+create or replace function public._training_json(p_training text, p_athlete uuid default null)
+returns jsonb
+language plpgsql stable security definer
+set search_path = public
+as $$
+declare
+  base jsonb;
+  r record;
+  ex public.exercises;
+  sub text;
+  used text[];
+  items jsonb := '[]'::jsonb;
+begin
+  base := public._training_summary(p_training);
+  if base is null then
+    return null;
+  end if;
+  select array_agg(ti.exercise_id) into used from public.training_items ti where ti.training_id = p_training;
+  for r in
+    select ti.* from public.training_items ti
+    where ti.training_id = p_training
+    order by case ti.phase when 'warmup' then 0 when 'main' then 1 else 2 end, ti.position
+  loop
+    select * into ex from public.exercises where id = r.exercise_id;
+    if p_athlete is not null and public._is_blocked(p_athlete, ex.id) then
+      sub := public._substitute_exercise(p_athlete, ex.id, used);
+      if sub is null then
+        continue;
+      end if;
+      used := used || sub;
+      items := items || jsonb_build_array(jsonb_build_object(
+        'phase', r.phase, 'position', r.position, 'sets', r.sets, 'value', null,
+        'level', least(r.level, (select jsonb_array_length(levels) from public.exercises where id = sub)),
+        'replaced_from', ex.id,
+        'exercise', (select public._exercise_json(e) from public.exercises e where e.id = sub)));
+    else
+      items := items || jsonb_build_array(jsonb_build_object(
+        'phase', r.phase, 'position', r.position, 'sets', r.sets, 'value', r.value,
+        'level', least(r.level, jsonb_array_length(ex.levels)),
+        'replaced_from', null,
+        'exercise', public._exercise_json(ex)));
+    end if;
+  end loop;
+  return base || jsonb_build_object('items', items);
+end;
+$$;
+
+-- ---------------------------------------------------------------------
+-- 1.3 Programmes
+-- ---------------------------------------------------------------------
+
+create or replace function public._program_summary(p_program text)
+returns jsonb
+language sql stable security definer
+set search_path = public
+as $$
+  select jsonb_build_object(
+    'id', p.id, 'title', p.title, 'description', p.description, 'goals', to_jsonb(p.goals),
+    'areas', to_jsonb(p.areas), 'level', p.level,
+    'days', (select count(*) from public.program_days d where d.program_id = p.id),
+    'min_minutes', (select min((public._training_stats(d.training_id) ->> 'duration_min')::int)
+                      from public.program_days d where d.program_id = p.id),
+    'max_minutes', (select max((public._training_stats(d.training_id) ->> 'duration_min')::int)
+                      from public.program_days d where d.program_id = p.id)
+  )
+  from public.programs p where p.id = p_program;
+$$;
+
+-- Dernier jour débloqué d'un programme suivi, vu depuis la date locale p_ref.
+-- Règle : le jour suivant se débloque le lendemain (date locale) du dernier jour fait.
+-- Le jour 1 est toujours ouvert. L'espace admin peut débloquer plus loin (unlocked_through).
+create or replace function public._unlocked_through(p_ap uuid, p_ref date)
+returns int
+language plpgsql stable security definer
+set search_path = public
+as $$
+declare
+  ap public.athlete_programs;
+  tz text;
+  maxd int;
+  last_date date;
+  total int;
+  base int;
+begin
+  select * into ap from public.athlete_programs where id = p_ap;
+  if not found then
+    return 0;
+  end if;
+  select a.timezone into tz from public.athletes a where a.id = ap.athlete_id;
+  select max(w.program_day), max((w.done_at at time zone coalesce(tz, 'Europe/Paris'))::date)
+    into maxd, last_date
+  from public.workouts w where w.athlete_program_id = p_ap and w.program_day is not null;
+  select count(*) into total from public.program_days d where d.program_id = ap.program_id;
+  base := case
+    when maxd is null then 1
+    when last_date < p_ref then maxd + 1
+    else maxd
+  end;
+  return least(greatest(base, ap.unlocked_through), total);
+end;
+$$;
+
+-- Le programme suivi, jour par jour : fait, disponible ou verrouillé
+create or replace function public._plan_json(p_athlete uuid)
+returns jsonb
+language plpgsql stable security definer
+set search_path = public
+as $$
+declare
+  ap public.athlete_programs;
+  tz text;
+  today date;
+  unlocked int;
+  days jsonb;
+begin
+  select * into ap from public.athlete_programs where athlete_id = p_athlete and status = 'actif';
+  if not found then
+    return null;
+  end if;
+  select a.timezone into tz from public.athletes a where a.id = p_athlete;
+  today := (now() at time zone coalesce(tz, 'Europe/Paris'))::date;
+  unlocked := public._unlocked_through(ap.id, today);
+  select jsonb_agg(jsonb_build_object(
+           'day', d.day,
+           'status', case when w.id is not null then 'fait' when d.day <= unlocked then 'disponible' else 'verrouille' end,
+           'done_at', w.done_at,
+           'training', jsonb_build_object(
+             'id', t.id, 'title', t.title, 'areas', to_jsonb(t.areas), 'level', t.level,
+             'duration_min', (public._training_stats(t.id) ->> 'duration_min')::int)
+         ) order by d.day)
+    into days
+  from public.program_days d
+  join public.trainings t on t.id = d.training_id
+  left join public.workouts w on w.athlete_program_id = ap.id and w.program_day = d.day
+  where d.program_id = ap.program_id;
+  return jsonb_build_object(
+    'athlete_program_id', ap.id,
+    'program', public._program_summary(ap.program_id),
+    'started_on', ap.started_on,
+    'unlocked_through', unlocked,
+    'today_day', (select min((x ->> 'day')::int) from jsonb_array_elements(coalesce(days, '[]'::jsonb)) x
+                   where x ->> 'status' = 'disponible'),
+    'done_count', (select count(*) from jsonb_array_elements(coalesce(days, '[]'::jsonb)) x where x ->> 'status' = 'fait'),
+    'days', coalesce(days, '[]'::jsonb)
+  );
+end;
+$$;
+
+-- Catalogue : programmes et entraînements hors programme (démarrage rapide, découverte, express), validés
+create or replace function public.athlete_catalog(p_token text)
+returns jsonb
+language plpgsql stable security definer
+set search_path = public
+as $$
+declare
+  a public.athletes;
+begin
+  a := public._athlete_by_token(p_token);
+  return jsonb_build_object(
+    'programs', coalesce((
+      select jsonb_agg(public._program_summary(p.id) order by p.level, p.title)
+      from public.programs p
+      where p.approved and exists (select 1 from public.program_days d where d.program_id = p.id)
+    ), '[]'::jsonb),
+    'trainings', coalesce((
+      select jsonb_agg(public._training_summary(t.id) order by t.kind, t.level, t.title)
+      from public.trainings t where t.approved and t.kind <> 'programme'
+    ), '[]'::jsonb)
+  );
+end;
+$$;
+
+-- Un entraînement prêt à lancer, exercices tamponnés déjà remplacés
+create or replace function public.athlete_training(p_token text, p_training text)
+returns jsonb
+language plpgsql stable security definer
+set search_path = public
+as $$
+declare
+  a public.athletes;
+begin
+  a := public._athlete_by_token(p_token);
+  if not exists (select 1 from public.trainings where id = p_training and approved) then
+    raise exception 'not_found' using errcode = 'P0002';
+  end if;
+  return public._training_json(p_training, a.id);
+end;
+$$;
+
+-- Démarre un programme (le programme en cours, s'il y en a un, est marqué abandonné)
+create or replace function public.athlete_start_program(p_token text, p_program text)
+returns jsonb
+language plpgsql volatile security definer
+set search_path = public
+as $$
+declare
+  a public.athletes;
+begin
+  a := public._athlete_by_token(p_token);
+  if not exists (select 1 from public.programs p where p.id = p_program and p.approved
+                   and exists (select 1 from public.program_days d where d.program_id = p.id)) then
+    raise exception 'not_found' using errcode = 'P0002';
+  end if;
+  update public.athlete_programs set status = 'abandonne', ended_at = now()
+   where athlete_id = a.id and status = 'actif';
+  insert into public.athlete_programs (athlete_id, program_id, started_on)
+  values (a.id, p_program, (now() at time zone a.timezone)::date);
+  return public._plan_json(a.id);
+end;
+$$;
+
+-- Enregistre un entraînement V5 (programme, démarrage rapide, découverte ou express).
+-- Rattaché au jour de programme s'il correspond au programme suivi, n'est pas déjà fait et est débloqué
+-- à la date de la séance ; sinon la séance est enregistrée quand même, sans rattachement.
+-- « douleur » sur un exercice : tampon de 10 jours.
+create or replace function public.athlete_submit_training(
+  p_token text,
+  p_client_id text,
+  p_training text,
+  p_program_day int default null,
+  p_items jsonb default '[]'::jsonb,
+  p_done_at timestamptz default null,
+  p_rpe int default null,
+  p_duration_min int default null,
+  p_comment text default null
+)
+returns jsonb
+language plpgsql volatile security definer
+set search_path = public
+as $$
+declare
+  a public.athletes;
+  ap public.athlete_programs;
+  w_id uuid;
+  it jsonb;
+  ex public.exercises;
+  v_feeling text;
+  v_pref text;
+  v_done timestamptz;
+  v_until timestamptz;
+  blocked jsonb := '[]'::jsonb;
+  linked boolean := false;
+  today_count int;
+  total int;
+  done int;
+begin
+  a := public._athlete_by_token(p_token);
+  if not exists (select 1 from public.trainings where id = p_training) then
+    raise exception 'not_found' using errcode = 'P0002';
+  end if;
+  if p_rpe is not null and (p_rpe < 0 or p_rpe > 10) then
+    raise exception 'invalid_rpe' using errcode = '22023';
+  end if;
+  if p_items is null then
+    p_items := '[]'::jsonb;
+  end if;
+  if jsonb_typeof(p_items) <> 'array' or jsonb_array_length(p_items) > 60 then
+    raise exception 'invalid_items' using errcode = '22023';
+  end if;
+  if p_client_id is not null and char_length(p_client_id) > 64 then
+    raise exception 'invalid_client_id' using errcode = '22023';
+  end if;
+
+  if p_client_id is not null and exists (
+    select 1 from public.workouts where client_id = p_client_id and athlete_id = a.id
+  ) then
+    return jsonb_build_object('status', 'duplicate', 'linked', false, 'blocked', '[]'::jsonb,
+                              'plan', public._plan_json(a.id));
+  end if;
+
+  select count(*) into today_count from public.workouts
+   where athlete_id = a.id and done_at > now() - interval '24 hours';
+  if today_count >= 12 then
+    raise exception 'too_many_workouts' using errcode = '54000';
+  end if;
+
+  v_done := case
+    when p_done_at is null then now()
+    when p_done_at > now() + interval '5 minutes' then now()
+    when p_done_at < now() - interval '14 days' then now()
+    else p_done_at
+  end;
+
+  if p_program_day is not null then
+    select * into ap from public.athlete_programs where athlete_id = a.id and status = 'actif';
+    if found
+       and exists (select 1 from public.program_days d
+                    where d.program_id = ap.program_id and d.day = p_program_day and d.training_id = p_training)
+       and not exists (select 1 from public.workouts w
+                        where w.athlete_program_id = ap.id and w.program_day = p_program_day)
+       and p_program_day <= public._unlocked_through(ap.id, (v_done at time zone a.timezone)::date) then
+      linked := true;
+    end if;
+  end if;
+
+  insert into public.workouts (athlete_id, session_key, client_id, done_at, pain, neuro, comment, rpe, duration_min,
+                               training_id, athlete_program_id, program_day)
+  values (a.id, 'T', p_client_id, v_done, 0, false, nullif(trim(left(p_comment, 500)), ''), p_rpe,
+          case when p_duration_min is null then null else greatest(0, least(p_duration_min, 240)) end,
+          p_training, case when linked then ap.id end, case when linked then p_program_day end)
+  returning id into w_id;
+
+  for it in select value from jsonb_array_elements(p_items) loop
+    if jsonb_typeof(it) <> 'object' then
+      raise exception 'invalid_items' using errcode = '22023';
+    end if;
+    v_feeling := it ->> 'feeling';
+    if v_feeling is not null and v_feeling not in ('facile', 'bien', 'dur', 'douleur') then
+      raise exception 'invalid_feeling' using errcode = '22023';
+    end if;
+    v_pref := it ->> 'preference';
+    if v_pref is not null and v_pref not in ('aime', 'a_changer') then
+      raise exception 'invalid_preference' using errcode = '22023';
+    end if;
+    select * into ex from public.exercises where id = (it ->> 'exercise_id');
+    if not found or exists (select 1 from public.workout_items where workout_id = w_id and exercise_id = ex.id) then
+      continue;
+    end if;
+    insert into public.workout_items (workout_id, exercise_id, level, feeling, preference)
+    values (w_id, ex.id,
+            least(greatest(coalesce((it ->> 'level')::int, 1), 1), jsonb_array_length(ex.levels)),
+            v_feeling, v_pref);
+    if v_feeling = 'douleur' then
+      v_until := public._block_exercise(a.id, ex.id, v_done);
+      blocked := blocked || jsonb_build_array(jsonb_build_object('exercise_id', ex.id, 'until', v_until));
+    end if;
+  end loop;
+
+  -- Programme terminé quand tous les jours sont faits
+  if linked then
+    select count(*) into total from public.program_days where program_id = ap.program_id;
+    select count(*) into done from public.workouts where athlete_program_id = ap.id and program_day is not null;
+    if done >= total then
+      update public.athlete_programs set status = 'termine', ended_at = now() where id = ap.id;
+    end if;
+  end if;
+
+  return jsonb_build_object('status', 'ok', 'linked', linked, 'blocked', blocked, 'plan', public._plan_json(a.id));
+end;
+$$;
+
+-- ---------------------------------------------------------------------
+-- 1.4 Profil sportif
+-- ---------------------------------------------------------------------
+
+create or replace function public._profile_json(p_athlete uuid)
+returns jsonb
+language sql stable security definer
+set search_path = public
+as $$
+  select (to_jsonb(p) - 'athlete_id') || jsonb_build_object(
+    'bmi', case when p.height_cm is not null and p.weight_kg is not null
+                then round(p.weight_kg / ((p.height_cm / 100.0) ^ 2), 1) end)
+  from public.athlete_profiles p where p.athlete_id = p_athlete;
+$$;
+
+-- Enregistre tout ou partie du profil : seules les clés envoyées changent (null efface une réponse).
+-- {"complete": true} marque le questionnaire comme terminé.
+create or replace function public.athlete_save_profile(p_token text, p_profile jsonb)
+returns jsonb
+language plpgsql volatile security definer
+set search_path = public
+as $$
+declare
+  a public.athletes;
+  allowed text[] := array['sex', 'goal', 'areas', 'motivation', 'morphology', 'height_cm', 'weight_kg', 'birth_year',
+                          'target_weight_kg', 'last_fit', 'level', 'activity', 'sessions_per_week', 'session_minutes',
+                          'equipment', 'style', 'disciplines', 'adherence', 'reward', 'feeling'];
+  k text;
+  cur jsonb;
+  merged jsonb;
+  rec public.athlete_profiles;
+begin
+  a := public._athlete_by_token(p_token);
+  if p_profile is null or jsonb_typeof(p_profile) <> 'object' then
+    raise exception 'invalid_profile' using errcode = '22023';
+  end if;
+  for k in select jsonb_object_keys(p_profile) loop
+    if k <> 'complete' and not (k = any(allowed)) then
+      raise exception 'invalid_profile_field' using errcode = '22023', detail = k;
+    end if;
+  end loop;
+  if p_profile ? 'adherence' and jsonb_typeof(p_profile -> 'adherence') <> 'null' then
+    if jsonb_typeof(p_profile -> 'adherence') <> 'object'
+       or exists (select 1 from jsonb_each(p_profile -> 'adherence') x
+                   where x.key not in ('choisir', 'ennui', 'demotive') or jsonb_typeof(x.value) <> 'boolean') then
+      raise exception 'invalid_profile' using errcode = '22023', detail = 'adherence';
+    end if;
+  end if;
+
+  select to_jsonb(p) into cur from public.athlete_profiles p where p.athlete_id = a.id;
+  cur := coalesce(cur, jsonb_build_object('athlete_id', a.id));
+  merged := cur || (p_profile - 'complete');
+  -- une liste effacée redevient une liste vide
+  foreach k in array array['areas', 'equipment', 'disciplines'] loop
+    if coalesce(jsonb_typeof(merged -> k), 'null') = 'null' then
+      merged := jsonb_set(merged, array[k], '[]'::jsonb);
+    end if;
+  end loop;
+  if coalesce(jsonb_typeof(merged -> 'adherence'), 'null') = 'null' then
+    merged := jsonb_set(merged, '{adherence}', '{}'::jsonb);
+  end if;
+
+  begin
+    rec := jsonb_populate_record(null::public.athlete_profiles, merged);
+    insert into public.athlete_profiles (
+      athlete_id, sex, goal, areas, motivation, morphology, height_cm, weight_kg, birth_year, target_weight_kg,
+      last_fit, level, activity, sessions_per_week, session_minutes, equipment, style, disciplines, adherence,
+      reward, feeling, completed_at, updated_at)
+    values (
+      a.id, rec.sex, rec.goal, rec.areas, rec.motivation, rec.morphology, rec.height_cm, rec.weight_kg, rec.birth_year,
+      rec.target_weight_kg, rec.last_fit, rec.level, rec.activity, rec.sessions_per_week, rec.session_minutes,
+      rec.equipment, rec.style, rec.disciplines, rec.adherence, rec.reward, rec.feeling,
+      case when coalesce((p_profile ->> 'complete')::boolean, false) then coalesce(rec.completed_at, now())
+           else rec.completed_at end,
+      now())
+    on conflict (athlete_id) do update set
+      sex = excluded.sex, goal = excluded.goal, areas = excluded.areas, motivation = excluded.motivation,
+      morphology = excluded.morphology, height_cm = excluded.height_cm, weight_kg = excluded.weight_kg,
+      birth_year = excluded.birth_year, target_weight_kg = excluded.target_weight_kg, last_fit = excluded.last_fit,
+      level = excluded.level, activity = excluded.activity, sessions_per_week = excluded.sessions_per_week,
+      session_minutes = excluded.session_minutes, equipment = excluded.equipment, style = excluded.style,
+      disciplines = excluded.disciplines, adherence = excluded.adherence, reward = excluded.reward,
+      feeling = excluded.feeling, completed_at = excluded.completed_at, updated_at = excluded.updated_at;
+  exception
+    when check_violation or not_null_violation or invalid_text_representation or numeric_value_out_of_range
+      or datatype_mismatch or invalid_parameter_value or invalid_datetime_format then
+      raise exception 'invalid_profile' using errcode = '22023', detail = sqlerrm;
+  end;
+  return public._profile_json(a.id);
+end;
+$$;
+
+-- L'utilisateur efface tout son profil (taille, poids, réponses du questionnaire)
+create or replace function public.athlete_delete_profile(p_token text)
+returns void
+language plpgsql volatile security definer
+set search_path = public
+as $$
+declare
+  a public.athletes;
+begin
+  a := public._athlete_by_token(p_token);
+  delete from public.athlete_profiles where athlete_id = a.id;
+end;
+$$;
+
+-- ---------------------------------------------------------------------
+-- Espace admin (amorce, interface au bloc 7)
+-- ---------------------------------------------------------------------
+
+-- Lève un tampon « Ça fait mal » avant ses 10 jours
+create or replace function public.coach_lift_block(p_athlete uuid, p_exercise text)
+returns void
+language plpgsql volatile security definer
+set search_path = public
+as $$
+begin
+  if not public.is_coach() then
+    raise exception 'forbidden' using errcode = '42501';
+  end if;
+  delete from public.exercise_blocks where athlete_id = p_athlete and exercise_id = p_exercise;
+end;
+$$;
+
+-- Débloque les jours du programme suivi jusqu'au jour p_day
+create or replace function public.coach_unlock_day(p_athlete uuid, p_day int)
+returns void
+language plpgsql volatile security definer
+set search_path = public
+as $$
+begin
+  if not public.is_coach() then
+    raise exception 'forbidden' using errcode = '42501';
+  end if;
+  if p_day is null or p_day < 1 or p_day > 120 then
+    raise exception 'invalid_day' using errcode = '22023';
+  end if;
+  update public.athlete_programs set unlocked_through = greatest(unlocked_through, p_day)
+   where athlete_id = p_athlete and status = 'actif';
+  if not found then
+    raise exception 'not_found' using errcode = 'P0002';
+  end if;
+end;
+$$;
+
 -- ---------------------------------------------------------------------
 -- Droits
 -- ---------------------------------------------------------------------
@@ -1285,3 +2211,14 @@ grant execute on function public.coach_save_exercise(jsonb) to authenticated;
 grant execute on function public.athlete_set_week_plan(text, jsonb) to anon, authenticated;
 grant execute on function public.coach_set_week_plan(uuid, jsonb) to authenticated;
 grant execute on function public.coach_set_levelup_mode(uuid, text) to authenticated;
+
+-- V5
+grant execute on function public.athlete_flag_pain(text, text) to anon, authenticated;
+grant execute on function public.athlete_catalog(text) to anon, authenticated;
+grant execute on function public.athlete_training(text, text) to anon, authenticated;
+grant execute on function public.athlete_start_program(text, text) to anon, authenticated;
+grant execute on function public.athlete_submit_training(text, text, text, int, jsonb, timestamptz, int, int, text) to anon, authenticated;
+grant execute on function public.athlete_save_profile(text, jsonb) to anon, authenticated;
+grant execute on function public.athlete_delete_profile(text) to anon, authenticated;
+grant execute on function public.coach_lift_block(uuid, text) to authenticated;
+grant execute on function public.coach_unlock_day(uuid, int) to authenticated;

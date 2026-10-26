@@ -179,7 +179,6 @@ export default function AthleteApp({ token }: { token: string }) {
       const swapNames = v.swaps.map((s) => `${nameOf(s.from)} → ${nameOf(s.to)}`);
       const leveledNames = (result?.leveled_up ?? []).map((l) => `${nameOf(l.exercise_id)} (niveau ${l.to_level})`);
       setScreen({ name: 'result', result, queued, pain: v.pain, swapNames, leveledNames });
-      if (v.neuro) setData((d) => (d ? { ...d, athlete: { ...d.athlete, frozen: true } } : d));
       if (!queued) void refresh();
     } catch (e) {
       setSubmitError(readableError(e));
@@ -216,6 +215,7 @@ export default function AthleteApp({ token }: { token: string }) {
           allowSwaps={data.athlete.allow_swaps}
           canChangeLevel={data.athlete.levelup_mode === 'self'}
           resume={screen.resume ?? null}
+          blocked={(data.blocks ?? []).map((b) => b.exercise_id)}
           onCancel={() => setScreen({ name: 'tabs' })}
           onFinish={(played) => setScreen({ name: 'feedback', session: screen.session, played })}
         />
@@ -273,10 +273,10 @@ export default function AthleteApp({ token }: { token: string }) {
         </main>
       );
     }
-    const regressedNames = (r?.regressed ?? []).map((x) => {
-      const it = data.program.find((p) => p.exercise.id === x.exercise_id);
-      return `${it?.exercise.name ?? x.exercise_id} (niveau ${x.to_level})`;
-    });
+    // V5 : « Ça fait mal » met l'exercice de côté 10 jours (plus de baisse de niveau)
+    const blockedNames = [...new Set((r?.blocked ?? []).map((x) => x.exercise_id))].map(
+      (id) => data.program.find((p) => p.exercise.id === id)?.exercise.name ?? library?.exercises.find((e) => e.id === id)?.name ?? id,
+    );
     return (
       <main className="app">
         <div className="center-screen" style={{ minHeight: '40dvh' }}>
@@ -304,12 +304,12 @@ export default function AthleteApp({ token }: { token: string }) {
             </p>
           </div>
         )}
-        {regressedNames.length > 0 && (
+        {blockedNames.length > 0 && (
           <div className="card rose">
-            <h3>On allège un peu</h3>
+            <h3>Mis de côté 10 jours</h3>
             <p className="small">
-              Suite à la douleur signalée, on revient d'un niveau sur : {regressedNames.join(', ')}. C'est normal et
-              ça fait partie du plan.
+              Suite à la douleur signalée, on ne te proposera plus : {blockedNames.join(', ')} pendant 10 jours. Un
+              autre exercice prendra sa place.
             </p>
           </div>
         )}
@@ -322,7 +322,7 @@ export default function AthleteApp({ token }: { token: string }) {
             </p>
           </div>
         )}
-        {regressedNames.length === 0 && screen.leveledNames.length === 0 && screen.pain <= 3 && (
+        {blockedNames.length === 0 && screen.leveledNames.length === 0 && screen.pain <= 3 && (
           <div className="card sage">
             <p>Une séance de plus. La régularité, c'est ce qui fait la différence.</p>
           </div>

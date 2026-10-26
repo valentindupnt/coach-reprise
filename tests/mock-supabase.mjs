@@ -70,9 +70,19 @@ export async function startMock(port = 54321) {
     athlete_set_week_plan: ['p_token', 'p_plan'],
     coach_set_week_plan: ['p_athlete', 'p_plan'],
     coach_set_levelup_mode: ['p_athlete', 'p_mode'],
+    // V5
+    athlete_flag_pain: ['p_token', 'p_exercise'],
+    athlete_catalog: ['p_token'],
+    athlete_training: ['p_token', 'p_training'],
+    athlete_start_program: ['p_token', 'p_program'],
+    athlete_submit_training: ['p_token', 'p_client_id', 'p_training', 'p_program_day', 'p_items', 'p_done_at', 'p_rpe', 'p_duration_min', 'p_comment'],
+    athlete_save_profile: ['p_token', 'p_profile'],
+    athlete_delete_profile: ['p_token'],
+    coach_lift_block: ['p_athlete', 'p_exercise'],
+    coach_unlock_day: ['p_athlete', 'p_day'],
   };
   // arguments reçus en JSON : le serveur les attend en jsonb
-  const JSONB_ARGS = new Set(['p_items', 'p_swaps', 'p_ex', 'p_plan', 'p_levels']);
+  const JSONB_ARGS = new Set(['p_items', 'p_swaps', 'p_ex', 'p_plan', 'p_levels', 'p_profile']);
 
   function filters(url, allowed) {
     const where = [];

@@ -11,9 +11,9 @@ Cadrage complet du projet : [docs/CADRAGE.md](docs/CADRAGE.md). Guide de reprise
 
 | Situation | Effet |
 |---|---|
-| Alice marque un exercice « Douleur » (ou appuie sur « Ça fait mal ») | L'exercice descend automatiquement d'un niveau |
+| Alice marque un exercice « Douleur » (ou appuie sur « Ça fait mal ») | V5 : l'exercice est mis de côté 10 jours (tampon), sans changer son niveau |
 | Douleur > 3/10 sur la séance | Alerte orange chez le coach, conseil d'alléger chez Alice |
-| Fourmillements / engourdissement / faiblesse | Programme gelé, écran « pause, contacte ton médecin », alerte rouge chez le coach |
+| Fourmillements / engourdissement / faiblesse | V5 : plus de gel du programme ni de question au bilan (décision du 26/10/2026) |
 | « Trop facile » 2 séances de suite, douleur ≤ 3, sans symptôme, pas de changement depuis 7 jours | Proposition « À valider » chez le coach. **Jamais de montée automatique.** |
 
 ## Architecture

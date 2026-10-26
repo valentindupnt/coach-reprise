@@ -6,6 +6,7 @@ export const KIND_LABEL: Record<ExerciseKind, string> = {
   mobilite: 'Mobilité',
   etirement: 'Étirement',
   respiration: 'Respiration',
+  cardio: 'Cardio',
 };
 
 export const ZONE_LABEL: Record<string, string> = {

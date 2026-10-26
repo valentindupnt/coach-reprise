@@ -541,3 +541,6 @@ begin
   perform public._seed_program(a_id);
 end;
 $$;
+
+-- V5 : étiquettes (zones, objectifs, discipline, MET) déduites pour les exercices pas encore étiquetés
+select public._v5_backfill_exercise_tags();

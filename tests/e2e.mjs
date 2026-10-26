@@ -58,7 +58,8 @@ const endSession = async (page) => {
   // la séance est finie : l'horloge simulée redevient l'heure réelle (les dates enregistrées restent exactes)
   await page.clock.setSystemTime(new Date());
 };
-const noSymptom = (page) => page.locator('fieldset', { hasText: 'fourmillements' }).getByRole('button', { name: 'Non' }).click();
+// V5 : le bilan ne pose plus la question des symptômes (le gel du programme est supprimé)
+const noSymptom = async () => {};
 const exerciseBox = (page, name) => page.locator('fieldset', { hasText: name });
 
 try {
@@ -204,10 +205,10 @@ try {
   ok('« À changer » propose 2 exercices équivalents, un est choisi');
   await submit.click();
   await alice.getByRole('heading', { name: 'Bravo Alice !' }).waitFor();
-  await alice.getByText('On allège un peu').waitFor();
+  await alice.getByText('Mis de côté 10 jours').waitFor();
   await alice.getByText('Douleur au-dessus de 3').waitFor();
   await alice.getByText('Programme adapté').waitFor();
-  ok('séance enregistrée : dead bug allégé, conseil douleur > 3, remplacement annoncé');
+  ok('séance enregistrée : dead bug mis de côté 10 jours, conseil douleur > 3, remplacement annoncé');
   await alice.screenshot({ path: SHOTS + 'alice-5-resultat.png', fullPage: true });
 
   const { rows: [w1] } = await mock.db.query(
@@ -225,9 +226,14 @@ try {
   assert.equal(progA.some((r) => r.exercise_id === 'dead_bug'), true);
   ok('le remplacement choisi à l\'écran de bilan est appliqué au programme');
 
+  const { rows: blocks } = await mock.db.query(
+    `select exercise_id, extract(epoch from (until - now())) / 86400 as days from public.exercise_blocks`);
+  const deadBugBlock = blocks.find((b) => b.exercise_id === 'dead_bug');
+  assert.ok(deadBugBlock && Number(deadBugBlock.days) > 9.9, 'tampon de 10 jours sur le dead bug');
+  const { rows: autoLc } = await mock.db.query(`select count(*)::int n from public.level_changes where source = 'auto'`);
+  assert.equal(autoLc[0].n, 0, 'plus de baisse de niveau automatique');
+  ok('« Ça fait mal » pose un tampon de 10 jours, sans baisse de niveau');
   await alice.getByRole('button', { name: "Retour à l'accueil" }).click();
-  await alice.getByText(/On a allégé : Dead bug \(niveau 1\)/).waitFor({ timeout: 5000 });
-  ok('l\'accueil rappelle l\'allègement');
 
   // ------------------------------------------------------------------
   console.log('Coach : alertes et propositions');
@@ -237,8 +243,8 @@ try {
   await coach.getByText(/effort 6\/10/).first().waitFor();
   ok('alerte visible avec douleur, effort et commentaire');
   await coach.locator('output', { hasText: '1/4' }).first().waitFor();
-  await coach.getByText(/Dead bug.*: 2 → 1/).waitFor();
-  ok('régression automatique visible au journal');
+  assert.equal(await coach.getByText(/Dead bug.*: 2 → 1/).count(), 0);
+  ok('plus de baisse de niveau automatique au journal (V5 : tampon de 10 jours à la place)');
   await coach.getByText("Changements d'exercices").waitFor();
   await coach.locator('.list-row', { hasText: 'athlète' }).first().waitFor();
   ok('le remplacement fait par Alice apparaît au journal, signé « athlète »');
@@ -421,7 +427,7 @@ try {
   await aliceCtx.setOffline(true);
   await alice.getByRole('button', { name: "J'ai terminé" }).click();
   await alice.getByRole('button', { name: 'Douleur 2 sur 10' }).click();
-  await alice.getByRole('button', { name: 'Non' }).click();
+  // V5 : plus de question sur les symptômes
   await alice.getByRole('button', { name: 'Effort 3 sur 10' }).click();
   await alice.getByRole('button', { name: 'Enregistrer ma séance' }).click();
   await alice.getByText(/ta séance est gardée sur ton téléphone/).waitFor();
@@ -460,7 +466,7 @@ try {
   await alice.getByRole('button', { name: "Retour à l'accueil" }).click();
 
   // ------------------------------------------------------------------
-  console.log('Symptôme neurologique');
+  console.log('Plus de gel du programme');
   await alice.getByRole('button', { name: 'Séances' }).click();
   await alice.getByRole('button', { name: /^M Mobilité/ }).click();
   await alice.getByRole('button', { name: "C'est parti" }).click();
@@ -468,27 +474,14 @@ try {
   await endSession(alice);
   await alice.getByRole('button', { name: 'Douleur 2 sur 10' }).click();
   await alice.getByRole('button', { name: 'Effort 2 sur 10' }).click();
-  await alice.locator('fieldset', { hasText: 'fourmillements' }).getByRole('button', { name: 'Oui' }).click();
+  assert.equal(await alice.locator('fieldset', { hasText: 'fourmillements' }).count(), 0);
   await alice.getByRole('button', { name: 'Enregistrer ma séance' }).click();
-  await alice.getByRole('heading', { name: 'On fait une pause, Alice.' }).waitFor();
-  ok('symptôme signalé : écran de pause');
-  await alice.screenshot({ path: SHOTS + 'alice-6-pause.png', fullPage: true });
+  await alice.getByRole('heading', { name: 'Bravo Alice !' }).waitFor();
+  assert.equal(await alice.getByRole('heading', { name: 'On fait une pause, Alice.' }).count(), 0);
+  ok('le bilan ne demande plus les symptômes et ne met jamais le programme en pause');
   await alice.getByRole('button', { name: "Retour à l'accueil" }).click();
-  await alice.getByRole('heading', { name: 'On fait une pause, Alice.' }).waitFor();
-  await alice.getByRole('button', { name: 'Séances' }).click();
-  assert.equal(await alice.getByRole('button', { name: /^A Renforcement A/ }).isDisabled(), true);
-  ok('les séances sont bloquées tant que le programme est en pause');
-
-  await coach.getByRole('button', { name: 'Actualiser' }).click();
-  await coach.getByText('Programme en pause : Alice').waitFor();
-  await coach.screenshot({ path: SHOTS + 'coach-3-pause.png', fullPage: true });
-  await coach.getByRole('button', { name: 'Réactiver…' }).click();
-  await coach.getByRole('button', { name: 'Oui, réactiver' }).click();
-  await coach.getByText('Programme en pause : Alice').waitFor({ state: 'detached' });
-  await alice.reload();
   await alice.getByRole('button', { name: 'Aujourd\'hui' }).click();
   await alice.getByRole('heading', { name: 'Bonjour Alice !' }).waitFor();
-  ok('le coach réactive, Alice retrouve son programme');
 
   await alice.getByRole('button', { name: 'Progrès' }).click();
   await alice.getByRole('heading', { name: 'Ma progression' }).waitFor();

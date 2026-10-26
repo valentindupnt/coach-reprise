@@ -1,5 +1,21 @@
 import { supabase, isNetworkError } from './supabase';
-import type { AthleteData, Library, ProgramSessionKey, SubmitResult, SwapOption, WeekSlot, WorkoutSubmission } from './types';
+import type {
+  AthleteData,
+  Catalog,
+  ExerciseBlock,
+  Library,
+  Plan,
+  Profile,
+  ProfilePatch,
+  ProgramSessionKey,
+  SubmitResult,
+  SwapOption,
+  Training,
+  TrainingResult,
+  TrainingSubmission,
+  WeekSlot,
+  WorkoutSubmission,
+} from './types';
 
 const CACHE_KEY = (token: string) => `cr-cache-${token.slice(0, 12)}`;
 const QUEUE_KEY = (token: string) => `cr-queue-${token.slice(0, 12)}`;
@@ -144,6 +160,51 @@ export async function flushPending(token: string): Promise<{ sent: number; froze
   setPending(token, remaining);
   return { sent, frozen };
 }
+
+// ---------- V5 : entraînements, programmes, profil, tampon « Ça fait mal » ----------
+
+async function rpc<T>(fn: string, args: Record<string, unknown>): Promise<T> {
+  if (!supabase) throw new Error('not_configured');
+  const { data, error } = await supabase.rpc(fn, args);
+  if (error) throw error;
+  return data as T;
+}
+
+/** Programmes et entraînements hors programme (démarrage rapide, découverte, express), validés. */
+export const fetchCatalog = (token: string) => rpc<Catalog>('athlete_catalog', { p_token: token });
+
+/** Un entraînement prêt à lancer : les exercices sous tampon sont déjà remplacés. */
+export const fetchTraining = (token: string, trainingId: string) =>
+  rpc<Training>('athlete_training', { p_token: token, p_training: trainingId });
+
+/** Démarre un programme (le programme en cours est abandonné). */
+export const startProgram = (token: string, programId: string) =>
+  rpc<Plan>('athlete_start_program', { p_token: token, p_program: programId });
+
+/** Enregistre tout ou partie du profil ; renvoie le profil complet (IMC calculé). */
+export const saveProfile = (token: string, patch: ProfilePatch) =>
+  rpc<Profile>('athlete_save_profile', { p_token: token, p_profile: patch });
+
+/** Efface tout le profil (taille, poids, réponses du questionnaire). */
+export const deleteProfile = (token: string) => rpc<void>('athlete_delete_profile', { p_token: token });
+
+/** Bouton « Ça fait mal » : tampon de 10 jours posé tout de suite (le bilan le pose aussi, hors ligne). */
+export const flagPain = (token: string, exerciseId: string) =>
+  rpc<ExerciseBlock>('athlete_flag_pain', { p_token: token, p_exercise: exerciseId });
+
+/** Enregistre un entraînement V5 (la file hors ligne arrive avec les écrans du bloc 4). */
+export const submitTraining = (token: string, t: TrainingSubmission) =>
+  rpc<TrainingResult>('athlete_submit_training', {
+    p_token: token,
+    p_client_id: t.client_id,
+    p_training: t.training_id,
+    p_program_day: t.program_day,
+    p_items: t.items,
+    p_done_at: t.created_at,
+    p_rpe: t.rpe ?? null,
+    p_duration_min: t.duration_min ?? null,
+    p_comment: t.comment ?? null,
+  });
 
 export function newClientId(): string {
   if (typeof crypto !== 'undefined' && 'randomUUID' in crypto) return crypto.randomUUID();

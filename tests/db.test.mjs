@@ -80,7 +80,10 @@ const approve = (...ids) => db.query(`update public.exercises set approved = tru
 const level = async (ex) => (await db.query(
   `select level from public.program_items where athlete_id=$1 and exercise_id=$2 limit 1`, [alice.id, ex])).rows[0].level;
 // Vieillit toutes les séances d'un jour (évite la limite de 12 séances / 24 h dans les tests)
-const ageAll = () => db.query(`update public.workouts set done_at = done_at - interval '1 day'`);
+const ageAll = () => db.exec(`update public.workouts set done_at = done_at - interval '1 day';
+  update public.exercise_blocks set blocked_at = blocked_at - interval '1 day', until = until - interval '1 day'`);
+const blockOf = async (ex) => (await db.query(
+  `select until from public.exercise_blocks where athlete_id=$1 and exercise_id=$2 and until > now()`, [alice.id, ex])).rows[0];
 const proposals = () => as('authenticated', COACH, async () =>
   (await db.query('select * from public.coach_proposals()')).rows);
 
@@ -151,31 +154,46 @@ console.log('Enregistrement des séances');
   ok('une séance cardio sans exercice est acceptée');
 }
 
-console.log('Régression automatique');
+console.log('Bouton « Ça fait mal » : tampon de 10 jours');
 {
   await ageAll();
   await as('authenticated', COACH, () => db.query(`select public.coach_set_level($1,'bird_dog',3,'test')`, [alice.id]));
-  assert.equal(await level('bird_dog'), 3);
   const r = await submit({ pain: 5, items: [{ exercise_id: 'bird_dog', feeling: 'douleur' }, { exercise_id: 'bird_dog', feeling: 'douleur' }] });
-  assert.equal(await level('bird_dog'), 2, 'une seule descente même si l\'exercice est envoyé deux fois');
-  assert.deepEqual(r.regressed, [{ exercise_id: 'bird_dog', to_level: 2 }]);
-  ok('« douleur » sur un exercice le fait descendre d\'un niveau, une seule fois');
+  assert.equal(await level('bird_dog'), 3, 'le niveau ne bouge plus');
+  assert.deepEqual(r.regressed, []);
+  assert.equal(r.blocked.length, 1);
+  assert.equal(r.blocked[0].exercise_id, 'bird_dog');
+  const days = (new Date(r.blocked[0].until) - Date.now()) / 86_400_000;
+  assert.ok(days > 9.9 && days <= 10.01, 'tampon de 10 jours');
+  assert.equal((await row(`select count(*)::int n from public.exercise_blocks where exercise_id = 'bird_dog'`)).n, 1);
+  ok('« douleur » sur un exercice pose un tampon de 10 jours, une seule fois, sans toucher au niveau');
 
-  await submit({ items: [{ exercise_id: 'rowing', feeling: 'douleur' }] });
-  assert.equal(await level('rowing'), 1);
-  ok('au niveau 1, on ne descend pas plus bas');
+  assert.equal((await row(`select count(*)::int n from public.level_changes where source='auto'`)).n, 0);
+  ok('plus aucune baisse de niveau automatique');
 
-  await as('authenticated', COACH, () => db.query(`select public.coach_set_level($1,'respiration',2,null)`, [alice.id]));
-  const { rows } = await db.query(`select level from public.program_items where athlete_id=$1 and exercise_id='respiration'`, [alice.id]);
-  assert.ok(rows.length === 3 && rows.every((x) => x.level === 2));
-  await submit({ session: 'M', items: [{ exercise_id: 'respiration', feeling: 'douleur' }] });
-  const { rows: rows2 } = await db.query(`select level from public.program_items where athlete_id=$1 and exercise_id='respiration'`, [alice.id]);
-  assert.ok(rows2.every((x) => x.level === 1));
-  ok('un exercice présent dans plusieurs séances garde le même niveau partout');
+  assert.ok((await get()).blocks.some((b) => b.exercise_id === 'bird_dog'));
+  assert.ok((await library()).blocks.some((b) => b.exercise_id === 'bird_dog'));
+  ok('le tampon et sa date de fin sont envoyés à l\'app (accueil et bibliothèque)');
 
-  const { rows: [{ n }] } = await db.query(`select count(*)::int n from public.level_changes where source='auto'`);
-  assert.equal(n, 2);
-  ok('chaque descente automatique est inscrite au journal');
+  for (let k = 0; k < 10; k++) await ageAll();
+  assert.equal(await blockOf('bird_dog'), undefined);
+  assert.ok(!(await get()).blocks.some((b) => b.exercise_id === 'bird_dog'));
+  ok('le tampon se lève tout seul au bout de 10 jours');
+
+  // bouton « Ça fait mal » en ligne : tampon immédiat
+  const f = await as('anon', null, async () => (await db.query(`select public.athlete_flag_pain($1,'rowing') r`, [TOKEN])).rows[0].r);
+  assert.equal(f.exercise_id, 'rowing');
+  assert.ok(await blockOf('rowing'));
+  await rejects(as('anon', null, () => db.query(`select public.athlete_flag_pain($1,'inconnu')`, [TOKEN])), /not_found/, 'exercice inconnu');
+  await rejects(as('anon', null, () => db.query(`select public.athlete_flag_pain($1,'rowing')`, ['x'.repeat(48)])), /invalid_token/, 'mauvais lien');
+  ok('le bouton « Ça fait mal » pose le tampon tout de suite quand on est en ligne');
+
+  // l'admin lève un tampon avant la fin ; personne d'autre ne le peut
+  await rejects(as('authenticated', STRANGER, () => db.query(`select public.coach_lift_block($1,'rowing')`, [alice.id])), /forbidden/, 'non-coach');
+  await rejects(as('anon', null, () => db.query(`select public.coach_lift_block($1,'rowing')`, [alice.id])), /permission denied/, 'anon');
+  await asCoach(`select public.coach_lift_block($1,'rowing')`, [alice.id]);
+  assert.equal(await blockOf('rowing'), undefined);
+  ok('l\'espace admin peut lever un tampon avant ses 10 jours');
 }
 
 console.log('Propositions de montée (validées par le coach)');
@@ -218,7 +236,7 @@ console.log('Propositions de montée (validées par le coach)');
   ok('le coach ne peut pas choisir un niveau qui n\'existe pas');
 }
 
-console.log('Symptôme neurologique');
+console.log('Plus de gel du programme');
 {
   await ageAll();
   await submit({ pain: 0, items: [{ exercise_id: 'dead_bug', feeling: 'facile' }] });
@@ -226,16 +244,15 @@ console.log('Symptôme neurologique');
   assert.equal((await proposals()).filter((x) => x.exercise_id === 'dead_bug').length, 1);
 
   const r = await submit({ pain: 1, neuro: true, items: [] });
-  assert.equal(r.frozen, true);
-  assert.equal((await get()).athlete.frozen, true);
-  ok('fourmillements ou faiblesse : le programme est gelé');
-
-  assert.equal((await proposals()).length, 0);
-  ok('aucune proposition de montée tant que le programme est gelé');
-
-  await as('authenticated', COACH, () => db.query('update public.athletes set frozen=false, frozen_at=null where id=$1', [alice.id]));
+  assert.equal(r.status, 'ok');
+  assert.equal(r.frozen, false);
   assert.equal((await get()).athlete.frozen, false);
-  ok('le coach peut débloquer');
+  ok('un symptôme signalé par une ancienne version de l\'app ne gèle plus le programme');
+
+  await db.exec(`update public.athletes set frozen = true, frozen_at = now()`);
+  await db.exec(readFileSync(new URL('../supabase/schema.sql', import.meta.url), 'utf8'));
+  assert.equal((await get()).athlete.frozen, false);
+  ok('la migration libère un utilisateur gelé auparavant');
 }
 
 console.log('Date, durée et effort de la séance');
@@ -333,8 +350,9 @@ console.log('Remplacement d\'un exercice');
   await submitX({ session: 'A', pain: 2, items: [{ exercise_id: 'glissement_talon', feeling: 'douleur' }] });
   const after = (await options('A', 'dead_bug', 4)).map((x) => x.exercise.id);
   assert.ok(!after.includes('glissement_talon'));
-  ok('un exercice douloureux ces 14 derniers jours n\'est plus proposé');
+  ok('un exercice tamponné « Ça fait mal » n\'est plus proposé en remplacement');
   await db.query(`delete from public.workout_items where exercise_id = 'glissement_talon'`);
+  await db.query(`delete from public.exercise_blocks where exercise_id = 'glissement_talon'`);
 
   // remplacement permanent demandé au bilan
   await ageAll();
@@ -377,13 +395,13 @@ console.log('Remplacement d\'un exercice');
   await asCoach(`update public.athletes set allow_swaps = true where id = $1`, [alice.id]);
   ok('quand le coach verrouille les remplacements, aucune proposition et aucun changement');
 
-  // pas de remplacement sur un programme gelé
+  // plus de gel : un symptôme signalé n'empêche plus un remplacement
   await ageAll();
   const r4 = await submitX({ neuro: true, swaps: [{ session: 'B', from: 'ext_hanche', to: 'clamshell' }] });
-  assert.equal(r4.swapped.length, 0);
-  assert.equal(r4.frozen, true);
-  await asCoach('update public.athletes set frozen=false, frozen_at=null where id=$1', [alice.id]);
-  ok('un symptôme neurologique gèle le programme avant tout remplacement');
+  assert.equal(r4.swapped.length, 1);
+  assert.equal(r4.frozen, false);
+  await asCoach(`select public.coach_swap_exercise($1,'B','clamshell','ext_hanche','retour')`, [alice.id]);
+  ok('un symptôme signalé ne bloque plus le remplacement demandé au bilan');
 }
 
 console.log('Éditeur de programme (coach)');
@@ -452,7 +470,7 @@ console.log('Éditeur de programme (coach)');
   assert.ok(!(await library()).exercises.some((e) => e.id === 'mon_exercice'));
   assert.equal((await row(`select name from public.exercises where id = 'mon_exercice'`)).name, 'Mon exercice modifié');
   await rejects(asCoach(`select public.coach_save_exercise($1::jsonb)`, [JSON.stringify({ id: 'Mauvais Id', name: 'x', kind: 'force', levels: [{ label: 'a' }] })]), /invalid_id/, 'id invalide');
-  await rejects(asCoach(`select public.coach_save_exercise($1::jsonb)`, [JSON.stringify({ id: 'abcd', name: 'x', kind: 'cardio', levels: [{ label: 'a' }] })]), /check/, 'type inconnu');
+  await rejects(asCoach(`select public.coach_save_exercise($1::jsonb)`, [JSON.stringify({ id: 'abcd', name: 'x', kind: 'danse', levels: [{ label: 'a' }] })]), /check/, 'type inconnu');
   await rejects(asCoach(`select public.coach_save_exercise($1::jsonb)`, [JSON.stringify({ id: 'abcd', name: 'x', kind: 'force', levels: [] })]), /check/, 'aucun niveau');
   await rejects(asCoach(`select public.coach_save_exercise($1::jsonb)`, [JSON.stringify({ id: 'abcd', name: 'x', kind: 'force', levels: [{ label: 'a' }], video_url: 'http://x.fr' })]), /check/, 'vidéo non https');
   ok('le coach crée, modifie et retire de la bibliothèque un exercice ; les données invalides sont refusées');
@@ -507,15 +525,14 @@ console.log('V3 : montée de niveau autonome, semaine type, compteur');
   assert.deepEqual(r3.leveled_up, []);
   ok('douleur de séance au-dessus de 3 : pas de montée');
 
-  // symptôme : programme gelé, aucune montée
+  // symptôme signalé : pas de gel, mais pas de montée sur cette séance
   await db.exec(`delete from public.workouts; delete from public.level_changes; update public.program_items set level = 1`);
   await submitX({ items: facile(z) }); await ageAll();
   const r4 = await submitX({ neuro: true, items: facile(z) }); await ageAll();
   assert.equal(await level(z), 1);
   assert.deepEqual(r4.leveled_up, []);
-  assert.equal(r4.frozen, true);
-  await db.exec(`update public.athletes set frozen = false`);
-  ok('symptôme neurologique : programme gelé et aucune montée');
+  assert.equal(r4.frozen, false);
+  ok('symptôme signalé : pas de gel, et pas de montée sur cette séance');
 
   // douleur récente sur l'exercice : aucune montée
   await db.exec(`delete from public.workouts; delete from public.level_changes; update public.program_items set level = 1`);
@@ -571,11 +588,12 @@ console.log('V3 : montée de niveau autonome, semaine type, compteur');
   assert.equal((await row(`select wi.level from public.workout_items wi where wi.exercise_id=$1`, [y])).level, 3);
   assert.ok((await row(`select count(*)::int n from public.level_changes where exercise_id=$1 and source='self'`, [y])).n === 1);
   ok('un niveau choisi pendant la séance est appliqué et le ressenti est enregistré à ce niveau');
-  // une douleur sur cet exercice le fait redescendre d'un niveau, comme toujours
+  // une douleur sur cet exercice pose le tampon, sans changer le niveau choisi
   await ageAll();
   await submitX({ items: [{ exercise_id: y, feeling: 'douleur' }] });
-  assert.equal(await level(y), 2);
-  ok('la douleur fait toujours redescendre d\'un niveau, même après un choix libre');
+  assert.equal(await level(y), 3);
+  assert.ok(await blockOf(y));
+  ok('la douleur pose le tampon de 10 jours et garde le niveau choisi');
 
   // programme gelé : aucun choix de niveau
   await db.exec(`update public.athletes set frozen = true`);
@@ -618,6 +636,228 @@ console.log('V3 : montée de niveau autonome, semaine type, compteur');
   ok('athlete_get donne le nombre total de séances');
 }
 
+console.log('V5 : étiquettes des exercices');
+{
+  const all = (await db.query(`select * from public.exercises`)).rows;
+  assert.equal(all.length, 44, '43 du catalogue + 1 créé par le coach');
+  assert.ok(all.every((e) => e.discipline && e.areas.length > 0 && e.goals.length > 0 && e.met !== null && /^\d{5}$/.test(e.met_code)));
+  ok('tous les exercices, y compris ceux créés depuis le panneau, reçoivent zones, objectifs, discipline et valeur MET');
+
+  const ex = async (id) => row(`select * from public.exercises where id = $1`, [id]);
+  assert.ok((await ex('pont')).areas.includes('fessiers'));
+  assert.deepEqual([(await ex('respiration')).discipline, Number((await ex('respiration')).met), (await ex('respiration')).met_code], ['meditation', 1, '07075']);
+  const rowing = await ex('rowing');
+  assert.equal(rowing.discipline, 'renforcement');
+  assert.ok(rowing.areas.includes('dos') && rowing.areas.includes('bras'));
+  assert.equal(rowing.mode, 'time');
+  ok('les étiquettes déduites sont cohérentes (pont : fessiers ; respiration : méditation, MET 1,0 ; rowing : dos et bras)');
+
+  const libEx = (await library()).exercises.find((e) => e.id === 'rowing');
+  for (const k of ['muscles_primary', 'muscles_secondary', 'areas', 'goals', 'discipline', 'impact', 'mode', 'met', 'met_code', 'tutorial']) {
+    assert.ok(k in libEx, k);
+  }
+  ok('la fiche envoyée à l\'app contient toutes les nouvelles étiquettes');
+
+  await rejects(db.query(`update public.exercises set areas = array['pieds'] where id = 'rowing'`), /check/, 'zone inconnue');
+  await rejects(db.query(`update public.exercises set mode = 'x' where id = 'rowing'`), /check/, 'mode inconnu');
+  await rejects(db.query(`update public.exercises set met_code = 'abc' where id = 'rowing'`), /check/, 'code MET');
+  await rejects(db.query(`update public.exercises set discipline = 'boxe' where id = 'rowing'`), /check/, 'discipline inconnue');
+  ok('une étiquette hors liste est refusée par la base');
+}
+
+// Exercices et entraînements de test (contrôlés, pour vérifier les calculs)
+await db.exec(`
+  insert into public.exercises (id, name, kind, levels, approved, mode, met, met_code, impact, equipment, intensity, areas, discipline, goals, family)
+  values
+    ('v5_t',  'Test temps',     'cardio', '[{"label":"a"}]', true, 'time', 4.0, '02020', true,  '{aucun}',     2, '{corps_entier}', 'cardio',       '{cardio}',   null),
+    ('v5_r',  'Test reps',      'force',  '[{"label":"a"}]', true, 'reps', 3.0, '02056', false, '{elastique}', 2, '{bras}',         'renforcement', '{renforcer}', 'v5fam'),
+    ('v5_r2', 'Test variante',  'force',  '[{"label":"a"}]', true, 'reps', 3.0, '02056', false, '{aucun}',     2, '{bras}',         'renforcement', '{renforcer}', 'v5fam');
+  update public.exercises set default_value = 10 where id in ('v5_r', 'v5_r2');
+  insert into public.trainings (id, title, kind, rounds, rest_seconds, approved, areas) values
+    ('t_test', 'Test rapide', 'rapide', 2, 15, true, '{bras}'),
+    ('t_brouillon', 'Brouillon', 'decouverte', 2, 15, false, '{}'),
+    ('t_day', 'Jour type', 'programme', 1, 10, true, '{corps_entier}'),
+    ('t_day2', 'Jour type 2', 'programme', 1, 10, true, '{corps_entier}');
+  insert into public.training_items (training_id, phase, position, exercise_id, value) values
+    ('t_test', 'warmup', 1, 'v5_t', 30), ('t_test', 'main', 1, 'v5_t', 40), ('t_test', 'main', 2, 'v5_r', null),
+    ('t_test', 'cooldown', 1, 'v5_t', 20),
+    ('t_day', 'main', 1, 'v5_t', 60), ('t_day2', 'main', 1, 'v5_r', null);
+`);
+const training = (id, token = TOKEN) => as('anon', null, async () =>
+  (await db.query('select public.athlete_training($1,$2) r', [token, id])).rows[0].r);
+const catalog = (token = TOKEN) => as('anon', null, async () =>
+  (await db.query('select public.athlete_catalog($1) r', [token])).rows[0].r);
+const startProgram = (id, token = TOKEN) => as('anon', null, async () =>
+  (await db.query('select public.athlete_start_program($1,$2) r', [token, id])).rows[0].r);
+const submitT = (a) => as('anon', null, async () =>
+  (await db.query('select public.athlete_submit_training($1,$2,$3,$4,$5::jsonb,$6,$7,$8,$9) r', [
+    a.token ?? TOKEN, a.client_id ?? crypto.randomUUID(), a.training, a.day ?? null, JSON.stringify(a.items ?? []),
+    a.done_at ?? null, a.rpe ?? null, a.duration ?? null, a.comment ?? null,
+  ])).rows[0].r);
+const saveProfile = (p, token = TOKEN) => as('anon', null, async () =>
+  (await db.query('select public.athlete_save_profile($1,$2::jsonb) r', [token, JSON.stringify(p)])).rows[0].r);
+
+console.log('V5 : entraînements');
+{
+  const t = await training('t_test');
+  assert.deepEqual(t.items.map((i) => `${i.phase}:${i.exercise.id}`), ['warmup:v5_t', 'main:v5_t', 'main:v5_r', 'cooldown:v5_t']);
+  // 30 + 2 x 40 + 2 x (10 reps x 3 s) + 20 = 190 s d'effort ; 6 passages, donc 5 pauses de 15 s = 75 s
+  assert.equal(t.active_seconds, 190);
+  assert.equal(t.rest_seconds_total, 75);
+  assert.equal(t.duration_min, 5);
+  ok('la durée est calculée d\'après le contenu (phases, tours, temps ou répétitions, pauses)');
+
+  // (30x4 + 80x4 + 60x3 + 20x4) / 60 + 75 s de pause à 1 MET = 11,67 + 1,25
+  assert.equal(Number(t.met_minutes), 12.9);
+  assert.deepEqual(t.equipment, ['elastique']);
+  assert.equal(t.impact, true);
+  ok('MET-minutes (pour les calories), matériel nécessaire et présence de sauts sont calculés');
+
+  await rejects(training('t_brouillon'), /not_found/, 'non validé');
+  await rejects(training('inconnu'), /not_found/, 'inconnu');
+  await rejects(training('t_test', 'x'.repeat(48)), /invalid_token/, 'mauvais lien');
+  const c = await catalog();
+  const ids = c.trainings.map((x) => x.id);
+  assert.ok(ids.includes('t_test') && !ids.includes('t_brouillon') && !ids.includes('t_day'));
+  ok('le catalogue ne montre que les entraînements validés hors programme');
+
+  // tampon : l'exercice est remplacé à l'ouverture par une variante validée
+  await as('anon', null, () => db.query(`select public.athlete_flag_pain($1,'v5_r')`, [TOKEN]));
+  const t2 = await training('t_test');
+  const swapped = t2.items.find((i) => i.phase === 'main' && i.position === 2);
+  assert.equal(swapped.exercise.id, 'v5_r2');
+  assert.equal(swapped.replaced_from, 'v5_r');
+  ok('un exercice tamponné est remplacé automatiquement à l\'ouverture de l\'entraînement');
+
+  // matériel absent du profil : pas de remplaçant possible, l'exercice est retiré de la séance
+  await db.exec(`update public.exercises set equipment = '{halteres}' where id = 'v5_r2'`);
+  await saveProfile({ equipment: ['tapis'] });
+  const t3 = await training('t_test');
+  assert.equal(t3.items.length, 3);
+  assert.ok(!t3.items.some((i) => ['v5_r', 'v5_r2'].includes(i.exercise.id)));
+  ok('sans remplaçant compatible (matériel du profil), l\'exercice tamponné est retiré');
+  await db.exec(`update public.exercises set equipment = '{aucun}' where id = 'v5_r2'; delete from public.athlete_profiles;
+    delete from public.exercise_blocks`);
+}
+
+console.log('V5 : programmes jour par jour');
+{
+  await db.exec(`
+    insert into public.programs (id, title, approved, goals, areas) values
+      ('p_test', 'Programme test', true, '{garder_la_forme}', '{corps_entier}'),
+      ('p_brouillon', 'Brouillon', false, '{}', '{}');
+    insert into public.program_days (program_id, day, training_id) values
+      ('p_test', 1, 't_day'), ('p_test', 2, 't_day2'), ('p_test', 3, 't_day'), ('p_brouillon', 1, 't_day');
+    delete from public.workouts;
+  `);
+  const c = await catalog();
+  const p = c.programs.find((x) => x.id === 'p_test');
+  assert.equal(p.days, 3);
+  assert.ok(!c.programs.some((x) => x.id === 'p_brouillon'));
+  assert.equal((await get()).plan, null);
+  await rejects(startProgram('p_brouillon'), /not_found/, 'non validé');
+  ok('le catalogue liste les programmes validés ; aucun programme suivi au départ');
+
+  const status = (plan) => plan.days.map((d) => d.status);
+  let plan = await startProgram('p_test');
+  assert.deepEqual(status(plan), ['disponible', 'verrouille', 'verrouille']);
+  assert.equal(plan.today_day, 1);
+  ok('au démarrage, seul le jour 1 est ouvert');
+
+  let r = await submitT({ training: 't_day', day: 1 });
+  assert.equal(r.linked, true);
+  assert.deepEqual(status(r.plan), ['fait', 'verrouille', 'verrouille']);
+  assert.equal(r.plan.today_day, null);
+  r = await submitT({ training: 't_day2', day: 2 });
+  assert.equal(r.status, 'ok');
+  assert.equal(r.linked, false);
+  assert.deepEqual(status(r.plan), ['fait', 'verrouille', 'verrouille']);
+  ok('un jour fait, le suivant reste verrouillé jusqu\'au lendemain (la séance est gardée, sans compter pour le plan)');
+
+  await ageAll();
+  plan = (await get()).plan;
+  assert.deepEqual(status(plan), ['fait', 'disponible', 'verrouille']);
+  r = await submitT({ training: 't_day', day: 2 });
+  assert.equal(r.linked, false, 'mauvais entraînement pour ce jour');
+  r = await submitT({ training: 't_day2', day: 2 });
+  assert.equal(r.linked, true);
+  ok('le lendemain, le jour 2 s\'ouvre ; seul le bon entraînement le valide');
+
+  await rejects(as('authenticated', STRANGER, () => db.query(`select public.coach_unlock_day($1,3)`, [alice.id])), /forbidden/, 'non-coach');
+  await asCoach(`select public.coach_unlock_day($1,3)`, [alice.id]);
+  assert.deepEqual(status((await get()).plan), ['fait', 'fait', 'disponible']);
+  ok('l\'espace admin peut débloquer un jour en avance');
+
+  const cid = crypto.randomUUID();
+  await ageAll();
+  r = await submitT({ client_id: cid, training: 't_day', day: 3, items: [{ exercise_id: 'v5_t', feeling: 'douleur' }] });
+  assert.equal(r.linked, true);
+  assert.equal(r.plan, null, 'programme terminé');
+  assert.equal((await row(`select status from public.athlete_programs where program_id = 'p_test'`)).status, 'termine');
+  assert.equal(r.blocked[0].exercise_id, 'v5_t');
+  assert.equal((await submitT({ client_id: cid, training: 't_day', day: 3 })).status, 'duplicate');
+  ok('dernier jour fait : programme terminé ; « douleur » pose le tampon ; un renvoi ne crée pas de doublon');
+
+  await startProgram('p_test');
+  await startProgram('p_test');
+  const enr = (await db.query(`select status from public.athlete_programs where athlete_id = $1 order by created_at`, [alice.id])).rows.map((x) => x.status);
+  assert.deepEqual(enr, ['termine', 'abandonne', 'actif']);
+  ok('un seul programme suivi à la fois : en démarrer un autre abandonne le précédent');
+
+  await rejects(submitT({ training: 'inconnu' }), /not_found/, 'entraînement inconnu');
+  await rejects(submitT({ training: 't_test', rpe: 11 }), /invalid_rpe/, 'effort hors échelle');
+  await rejects(submitT({ training: 't_test', items: [{ exercise_id: 'v5_t', feeling: 'super' }] }), /invalid_feeling/, 'ressenti inconnu');
+  ok('les valeurs invalides d\'un entraînement sont refusées');
+  await db.exec(`delete from public.exercise_blocks; delete from public.workouts; delete from public.athlete_programs`);
+}
+
+console.log('V5 : profil sportif');
+{
+  assert.equal((await get()).profile, null);
+  let p = await saveProfile({ goal: 'tonifier', areas: ['fessiers', 'abdos'], height_cm: 168, weight_kg: 60 });
+  assert.equal(p.goal, 'tonifier');
+  assert.equal(Number(p.bmi), 21.3);
+  p = await saveProfile({ level: 'debutant', session_minutes: 20, adherence: { ennui: true }, complete: true });
+  assert.equal(p.goal, 'tonifier', 'les réponses précédentes sont gardées');
+  assert.deepEqual(p.areas, ['fessiers', 'abdos']);
+  assert.ok(p.completed_at);
+  assert.deepEqual((await get()).profile.adherence, { ennui: true });
+  ok('le profil s\'enregistre par morceaux, garde les réponses précédentes, calcule l\'IMC');
+
+  p = await saveProfile({ areas: null, weight_kg: null });
+  assert.deepEqual(p.areas, []);
+  assert.equal(p.bmi, null);
+  ok('effacer une réponse est possible (une liste effacée redevient vide)');
+
+  await rejects(saveProfile({ height_cm: 300 }), /invalid_profile/, 'taille');
+  await rejects(saveProfile({ areas: ['pieds'] }), /invalid_profile/, 'zone');
+  await rejects(saveProfile({ session_minutes: 12 }), /invalid_profile/, 'durée');
+  await rejects(saveProfile({ birth_year: 'abc' }), /invalid_profile/, 'année');
+  await rejects(saveProfile({ adherence: { ennui: 'oui' } }), /invalid_profile/, 'adhésion');
+  await rejects(saveProfile({ diagnostic: 'x' }), /invalid_profile_field/, 'champ inconnu');
+  await rejects(saveProfile({ goal: 'x' }, 'x'.repeat(48)), /invalid_token/, 'mauvais lien');
+  assert.equal((await get()).profile.goal, 'tonifier', 'une erreur ne modifie rien');
+  ok('une valeur hors liste ou un champ inconnu sont refusés sans rien modifier');
+
+  await as('anon', null, () => db.query(`select public.athlete_delete_profile($1)`, [TOKEN]));
+  assert.equal((await get()).profile, null);
+  ok('l\'utilisateur peut effacer tout son profil');
+}
+
+console.log('V5 : sécurité des nouvelles tables');
+{
+  for (const t of ['trainings', 'training_items', 'programs', 'program_days', 'athlete_programs', 'athlete_profiles', 'exercise_blocks']) {
+    await rejects(as('anon', null, () => db.query(`select * from public.${t}`)), /permission denied/, 'anon lit ' + t);
+    const n = await as('authenticated', STRANGER, async () => (await db.query(`select count(*)::int n from public.${t}`)).rows[0].n);
+    assert.equal(n, 0, 'non-coach lit ' + t);
+  }
+  for (const f of [`select public._training_json('t_test', null)`, `select public._plan_json('${alice.id}')`,
+                   `select public._block_exercise('${alice.id}', 'v5_t', now())`]) {
+    await rejects(as('anon', null, () => db.query(f)), /permission denied/, 'anon : ' + f);
+  }
+  ok('un visiteur anonyme ne lit aucune nouvelle table ni fonction interne ; un non-coach ne voit rien');
+}
+
 console.log('Lien secret');
 {
   const t = await as('authenticated', COACH, async () =>
@@ -646,6 +886,11 @@ console.log('Remise à zéro');
   assert.ok(!prog.some((p) => p.exercise_id === 'planche_inclinee' || p.exercise_id === 'pallof_genoux'));
   assert.equal((await row(`select count(*)::int n from public.program_changes`)).n, 0);
   ok('reset-alice.sql rétablit aussi le programme de départ (remplacements, ajouts et tours annulés)');
+
+  for (const t of ['exercise_blocks', 'athlete_profiles', 'athlete_programs']) {
+    assert.equal((await row(`select count(*)::int n from public.${t} where athlete_id = $1`, [alice.id])).n, 0, t);
+  }
+  ok('reset-alice.sql efface aussi le profil, les tampons et les programmes suivis');
 }
 
 console.log(`\n${passed} vérifications réussies.`);

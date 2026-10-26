@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Figure from '../components/Figure';
-import { fetchSwapOptions } from '../lib/athleteApi';
+import { fetchSwapOptions, flagPain } from '../lib/athleteApi';
 import { WHY_LABEL, ZONE_LABEL, label, suggestSwaps } from '../lib/library';
 import type { Exercise, ProgramItem, ProgramSessionKey, SwapOption } from '../lib/types';
 import { writeLive, type LiveSession } from '../lib/liveSession';
@@ -36,6 +36,8 @@ interface Props {
   canChangeLevel: boolean;
   /** Séance interrompue (page rechargée) à reprendre là où elle en était. */
   resume?: LiveSession | null;
+  /** Exercices sous tampon « Ça fait mal » (10 jours) : jamais proposés en remplacement, même hors ligne. */
+  blocked?: string[];
   onFinish: (result: SessionResult) => void;
   onCancel: () => void;
 }
@@ -115,7 +117,7 @@ interface Chooser {
 /** Un exercice compte comme « fait » s'il a été travaillé au moins à moitié de son temps. */
 const HALF = 0.5;
 
-export default function Player({ token, session, items, rounds, library, allowSwaps, canChangeLevel, resume, onFinish, onCancel }: Props) {
+export default function Player({ token, session, items, rounds, library, allowSwaps, canChangeLevel, resume, blocked = [], onFinish, onCancel }: Props) {
   // exercices remplacés pendant la séance : identifiant d'origine -> exercice choisi
   const [replaced, setReplaced] = useState<Record<string, ProgramItem>>(() => resume?.replaced ?? {});
   const [skipped, setSkipped] = useState<string[]>(() => resume?.skipped ?? []);
@@ -312,6 +314,8 @@ export default function Player({ token, session, items, rounds, library, allowSw
     if (!step) return;
     pauseTimer();
     const item = step.item;
+    // V5 : tampon de 10 jours posé tout de suite si on est en ligne (sinon, au bilan)
+    if (mode === 'pain') void flagPain(token, item.exercise.id).catch(() => undefined);
     setChooser({ mode, item, options: allowSwaps ? null : [] });
     if (!allowSwaps) return;
     let options: SwapOption[];
@@ -319,7 +323,7 @@ export default function Player({ token, session, items, rounds, library, allowSw
       options = await fetchSwapOptions(token, session, item.exercise.id, 2);
     } catch {
       // hors ligne : mêmes règles, calculées sur la bibliothèque gardée sur le téléphone
-      options = suggestSwaps(library, item.exercise, effective, painful, 2);
+      options = suggestSwaps(library, item.exercise, effective, [...painful, ...blocked], 2);
     }
     setChooser((c) => (c && c.item.exercise.id === item.exercise.id ? { ...c, options } : c));
   }

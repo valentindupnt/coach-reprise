@@ -25,11 +25,11 @@ Quand Alice dit « Ça fait mal » ou « Ne me convient pas », ou marque « À 
 2. un exercice qui travaille **une autre zone** à intensité équivalente, puis
 3. à défaut, l'exercice d'intensité la plus proche.
 
-Conditions communes : exercice validé, même type, intensité à ± 1 près, pas déjà dans la séance, et jamais un exercice sur lequel elle a signalé une douleur dans les 14 derniers jours. Sans réseau, la même règle est calculée sur la bibliothèque gardée sur son téléphone.
+Conditions communes : exercice validé, même type, intensité à ± 1 près, pas déjà dans la séance, et jamais un exercice sous tampon « Ça fait mal » (10 jours depuis la douleur signalée, règle V5 qui remplace les 14 jours). Sans réseau, la même règle est calculée sur la bibliothèque gardée sur son téléphone.
 
 Le remplacement en séance ne vaut que pour la séance en cours. Il devient définitif seulement si Alice le confirme dans son bilan, ou si le coach le fait. Chaque changement est inscrit au journal du coach. Le coach peut retirer à Alice la possibilité de changer elle-même (case dans sa fiche).
 
-Sécurité inchangée : douleur sur un exercice = niveau −1 automatique ; symptôme neurologique = programme en pause ; montée de niveau seulement validée par le coach.
+Sécurité (V5, 26/10/2026) : douleur sur un exercice = tampon de 10 jours, l'exercice n'est plus proposé et il est remplacé à l'ouverture des entraînements. La baisse de niveau automatique et le gel du programme sont supprimés (voir `docs/MODELE-V5.md`).
 
 ## Nombre de tours (2 à 4)
 
