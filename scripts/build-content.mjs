@@ -4,7 +4,7 @@
 // Vérifie au passage tout le contenu : vocabulaires, muscles, MET, sources, niveaux, durées.
 //   node scripts/build-content.mjs [--fedb chemin/vers/free-exercise-db]
 import { writeFileSync, existsSync } from 'node:fs';
-import { MUSCLES, MET, SOURCES, FEDB_URL, AREAS, GOALS, DISCIPLINES, KINDS, EQUIPMENT } from '../content/v5/vocabulaire.mjs';
+import { MUSCLES, MET, SOURCES, FEDB_URL, AREAS, GOALS, DISCIPLINES, KINDS, EQUIPMENT, TRAINING_REFS, METHOD_REFS } from '../content/v5/vocabulaire.mjs';
 import { EXISTANTS } from '../content/v5/exercices-existants.mjs';
 import { RENFO } from '../content/v5/exercices-renfo.mjs';
 import { CARDIO } from '../content/v5/exercices-cardio.mjs';
@@ -273,6 +273,29 @@ writeFileSync(`${root}supabase/content-v5.sql`, out.join('\n'));
 
 // ------------------------------------------------------------------ données de relecture
 const label = (m) => MUSCLES[m].label;
+const exSources = new Map([...NEW, ...EXISTANTS].map((e) => [e.id, e.src.map((s) => resolveSource(s, e.id))]));
+const uniq = (list) => [...new Map(list.map((s) => [s.url, s])).values()];
+const trainingExIds = (t) => [...new Set(['warmup', 'main', 'cooldown'].flatMap((ph) => (t[ph] ?? []).map((it) => it.ex)))];
+const refsOf = (keys) => keys.map((k) => resolveSource(k, 'repères'));
+
+// Catalogue de toutes les sources : à quoi chacune sert, qui la cite
+const catalog = new Map();
+const cite = (s, usage, who) => {
+  if (!catalog.has(s.url)) catalog.set(s.url, { ...s, usages: new Set(), exercices: [], entrainements: [], programmes: [] });
+  const c = catalog.get(s.url);
+  c.usages.add(usage);
+  if (who) c[who.kind].push(who.id);
+};
+const nameOf = (id) => exByld.get(id)?.name ?? id;
+for (const [id, list] of exSources) for (const s of list) cite(s, 'Exercice : mouvement, muscles, consignes', { kind: 'exercices', id: nameOf(id) });
+for (const t of TRAININGS) for (const s of refsOf(TRAINING_REFS[t.kind])) cite(s, 'Construction des entraînements', { kind: 'entrainements', id: t.title });
+for (const p of PROGRAMS) for (const s of refsOf(TRAINING_REFS.programme)) cite(s, 'Construction des programmes (fréquence, progression)', { kind: 'programmes', id: p.title });
+for (const [k, usage] of Object.entries(METHOD_REFS)) cite(resolveSource(k, 'méthodes'), usage, null);
+const kindOf = (u) => u.includes('free-exercise-db') ? 'Base d\'exercices ouverte (domaine public)'
+  : /yogajournal|yogamatters|yogainstitute/.test(u) ? 'Fiche de posture de yoga'
+  : /pmc\.ncbi|doi\.org|boris\.unibe/.test(u) ? 'Publication scientifique'
+  : /pacompendium|acsm/.test(u) ? 'Référence professionnelle'
+  : 'Organisme de santé ou université';
 const relecture = {
   exercices: [...NEW.map((e) => ({ ...e, statut: 'Nouveau' })), ...EXISTANTS.map((e) => ({ ...e, name: EXISTING_NAMES[e.id], statut: 'Existant, ré-étiqueté' }))].map((e) => ({
     id: e.id, statut: e.statut, nom: e.name ?? null, type: e.kind ?? null, discipline: e.discipline,
@@ -289,6 +312,8 @@ const relecture = {
   entrainements: TRAININGS.map((t) => ({
     id: t.id, titre: t.title, type: t.kind, niveau: t.level, zones: t.areas.join(', '), tours: t.rounds, pause: t.rest,
     description: t.description ?? '', ...trainingStats[t.id],
+    reperes: refsOf(TRAINING_REFS[t.kind]),
+    sources_exercices: uniq(trainingExIds(t).flatMap((id) => exSources.get(id) ?? [])),
     contenu: ['warmup', 'main', 'cooldown'].map((ph) => (t[ph] ?? []).map((it) => {
       const ex = exByld.get(it.ex);
       return `${{ warmup: 'Échauffement', main: 'Corps', cooldown: 'Retour au calme' }[ph]} : ${ex.name ?? it.ex}`;
@@ -296,9 +321,16 @@ const relecture = {
   })),
   programmes: PROGRAMS.map((p) => ({
     id: p.id, titre: p.title, description: p.description, niveau: p.level, objectifs: p.goals.join(', '),
+    reperes: refsOf(TRAINING_REFS.programme),
+    sources_exercices: uniq(p.days.flatMap((tid) => trainingExIds(TRAININGS.find((t) => t.id === tid)))
+      .flatMap((id) => exSources.get(id) ?? [])),
     jours: p.days.map((tid, i) => ({ jour: i + 1, entrainement: tid, titre: TRAININGS.find((t) => t.id === tid).title,
                                        minutes: trainingStats[tid].minutes })),
   })),
+  sources: [...catalog.values()].map((c) => ({
+    titre: c.label, url: c.url, type: kindOf(c.url), usages: [...c.usages].join('\n'),
+    exercices: [...new Set(c.exercices)], entrainements: [...new Set(c.entrainements)], programmes: [...new Set(c.programmes)],
+  })).sort((a, b) => a.type.localeCompare(b.type) || b.exercices.length - a.exercices.length || a.titre.localeCompare(b.titre)),
 };
 writeFileSync(`${root}content/v5/relecture.json`, JSON.stringify(relecture, null, 1));
 

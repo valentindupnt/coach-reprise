@@ -95,6 +95,8 @@ Chaque exercice cite au moins une source consultable, visible dans le tableur et
 
 Les consignes, tutoriels et descriptions sont rédigés pour l'app : aucun texte n'est copié.
 
+Les sources sont gardées dans la base (colonne `source`) et dans le tableur de relecture, qui a un onglet **Sources** : les 132 sources avec leur lien, leur usage et le nombre d'exercices, d'entraînements et de programmes qui s'appuient dessus. Les entraînements et les programmes y ont aussi leurs repères de construction et les sources de leurs exercices. L'app ne les affiche pas à l'utilisateur (décision du 27/10/2026).
+
 ## 7. Vidéos
 
 Un lien YouTube par exercice, en français quand une vidéo claire existait (15 en anglais). Les vidéos n'ont pas été visionnées : Valentin les valide dans le tableur (colonne « Vidéo OK »). Pour une vidéo refusée, Claude en cherche une autre et met à jour `content/v5/videos.mjs`.

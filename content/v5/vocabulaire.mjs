@@ -100,6 +100,33 @@ export const SOURCES = {
     label: 'OMS, recommandations 2020 sur l\'activité physique (Bull et al., BJSM)',
     url: 'https://doi.org/10.1136/bjsports-2020-102955',
   },
+  compendium_2024: {
+    label: 'Herrmann et al., 2024 Adult Compendium of Physical Activities (Journal of Sport and Health Science)',
+    url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10818145/',
+  },
+  compendium_codes: {
+    label: 'Compendium 2024, tableau des codes « Conditioning exercise » (valeurs MET)',
+    url: 'https://pacompendium.com/conditioning-exercise',
+  },
+  tudor_locke: {
+    label: 'Tudor-Locke et al., 2018, cadence de marche et intensité (British Journal of Sports Medicine)',
+    url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6029645',
+  },
+};
+
+// Repères qui ont servi à construire les entraînements et les programmes, par type d'entraînement.
+// Les sources de chaque exercice s'ajoutent à celles-ci dans le tableur de relecture.
+export const TRAINING_REFS = {
+  programme: ['who_2020', 'acsm_2026'],
+  rapide: ['who_2020', 'acsm_2026'],
+  decouverte: ['who_2020'],
+  express: ['who_2020'],
+};
+// Sources des méthodes de calcul (calories, pas), reprises dans l'onglet Sources du tableur.
+export const METHOD_REFS = {
+  compendium_2024: 'Calories : définition du MET et méthode MET x poids x durée',
+  compendium_codes: 'Calories : valeur MET et code de chaque exercice',
+  tudor_locke: 'Pas : environ 100 pas par minute de marche modérée (habitude marche)',
 };
 
 export const FEDB_URL = (id) => `https://github.com/yuhonas/free-exercise-db/blob/main/exercises/${id}.json`;
