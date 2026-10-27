@@ -103,7 +103,7 @@ Un lien YouTube par exercice, en français quand une vidéo claire existait (15 
 
 ## 8. Ce qui reste ouvert
 
-- **Validation** de Valentin dans le tableur, puis génération de `content-v5-validation.sql`.
+- **Validation** : relue par Valentin le 27/10/2026 (« tout semble cohérent »). `supabase/content-v5-validation.sql` généré : 146 exercices, 75 entraînements, 3 programmes. Les vidéos n'ont pas été visionnées une à une : à signaler si un lien déçoit, Claude le remplace.
 - **Bloc 1.5** : migrer Alice vers `remise_en_forme`.
 - **Bloc 3** : le moteur de génération choisira le programme et pourra remplacer les jours au-delà du nombre de séances par semaine par les séances de mobilité ; les programmes intermédiaire et avancé peuvent se dériver des mêmes entraînements en montant les niveaux.
 - **Bloc 5** : dessins des 103 nouveaux exercices (aucun pour l'instant, la fiche s'affiche sans dessin).
