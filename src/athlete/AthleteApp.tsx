@@ -18,7 +18,7 @@ import {
   submitWorkout,
 } from '../lib/athleteApi';
 import { clearLive, readLive, type LiveSession } from '../lib/liveSession';
-import { sessionStats } from '../lib/stats';
+import { dayStreak, estimateKcal } from '../lib/stats';
 import { suggestSwaps } from '../lib/library';
 import { readableError } from '../lib/supabase';
 import type { AthleteData, Library, ProgramItem, ProgramSessionKey, SessionKey, SubmitResult, SwapOption, WeekSlot } from '../lib/types';
@@ -41,6 +41,13 @@ import {
 } from '../lib/plan';
 
 type Tab = 'today' | 'week' | 'library' | 'stretch' | 'progress';
+const NAV_OF: Record<Tab, 'plan' | 'train' | 'zen' | 'me'> = { today: 'plan', week: 'train', library: 'train', stretch: 'zen', progress: 'me' };
+const TrainSwitch = ({ tab, setTab }: { tab: Tab; setTab: (t: Tab) => void }) => (
+  <div className="seg-switch" role="group" aria-label="Entraînement">
+    <button aria-pressed={tab === 'week'} onClick={() => setTab('week')}>Mes séances</button>
+    <button aria-pressed={tab === 'library'} onClick={() => setTab('library')}>Tous les exercices</button>
+  </div>
+);
 type Screen =
   | { name: 'tabs' }
   | { name: 'player'; session: ProgramSessionKey; resume?: LiveSession }
@@ -113,8 +120,12 @@ export default function AthleteApp({ token }: { token: string }) {
   const week = data ? programWeek(data.athlete.start_date, now) : 1;
   const phase = phaseForWeek(week);
   const today = planForDate(now, week, data?.athlete.week_plan);
-  const stats = useMemo(() => sessionStats((data?.workouts ?? []).map((w) => w.done_at), new Date()), [data]);
 
+  const dayRun = useMemo(() => dayStreak((data?.workouts ?? []).map((w) => w.done_at), new Date()), [data]);
+  const kcal = useMemo(
+    () => estimateKcal(data?.workouts ?? [], data?.profile?.weight_kg ?? null),
+    [data],
+  );
   const doneDays = useMemo(() => {
     const s = new Set<string>();
     data?.workouts.forEach((w) => s.add(localDay(new Date(w.done_at))));
@@ -459,7 +470,7 @@ export default function AthleteApp({ token }: { token: string }) {
               )}
 
               {today.session ? (
-                <div className="card">
+                <div className="card rose">
                   <div className="row between">
                     <span className={`pill ${SESSION_META[today.session].tone === 'rose' ? 'rose' : SESSION_META[today.session].tone === 'sage' ? 'sage' : ''}`}>
                       Aujourd'hui · {minutesLabel(today.session, today.minutes)}
@@ -489,20 +500,20 @@ export default function AthleteApp({ token }: { token: string }) {
                 </div>
               )}
 
-              <div className="card">
-                <div className="stats-row">
-                  <div>
-                    <div className="stat-n">{data.athlete.workout_count}</div>
-                    <div className="tiny muted">séance{data.athlete.workout_count > 1 ? 's' : ''} au total</div>
-                  </div>
-                  <div>
-                    <div className="stat-n">{stats.thisWeek}</div>
-                    <div className="tiny muted">cette semaine</div>
-                  </div>
-                  <div>
-                    <div className="stat-n">{stats.weeks}</div>
-                    <div className="tiny muted">semaine{stats.weeks > 1 ? 's' : ''} de suite</div>
-                  </div>
+              <div className="stat-grid">
+                <div className="stat-card">
+                  <p className="lab">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c1 3 5 5 5 10a5 5 0 01-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-9z" /></svg>
+                    Kcal brûlées
+                  </p>
+                  <p className="big">{kcal.toLocaleString('fr-FR')}<small>kcal</small></p>
+                </div>
+                <div className="stat-card">
+                  <p className="lab">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>
+                    Jours enchaînés
+                  </p>
+                  <p className="big">{dayRun}<small>jour{dayRun > 1 ? 's' : ''}</small></p>
                 </div>
               </div>
 
@@ -532,8 +543,9 @@ export default function AthleteApp({ token }: { token: string }) {
           <>
             <div>
               <div className="eyebrow">Semaine type</div>
-              <h1 style={{ marginTop: 8 }}>Mes séances</h1>
+              <h1 style={{ marginTop: 8 }}>Entraînement</h1>
             </div>
+            <TrainSwitch tab={tab} setTab={setTab} />
             <div className="stack">
               {weekDays.map((d) => {
                 const p = planForDate(d, week, data.athlete.week_plan);
@@ -635,12 +647,13 @@ export default function AthleteApp({ token }: { token: string }) {
           <>
             <div>
               <div className="eyebrow">Tous les exercices</div>
-              <h1 style={{ marginTop: 8 }}>Bibliothèque</h1>
+              <h1 style={{ marginTop: 8 }}>Entraînement</h1>
               <p className="muted" style={{ marginTop: 8 }}>
                 Les exercices validés par ton coach, avec les variantes. Pour changer un exercice de ton programme, demande-lui ou
                 choisis une proposition pendant ou après la séance.
               </p>
             </div>
+            <TrainSwitch tab={tab} setTab={setTab} />
             {library ? (
               <LibraryBrowser exercises={library.exercises} inProgram={library.in_program} />
             ) : (
@@ -653,7 +666,7 @@ export default function AthleteApp({ token }: { token: string }) {
           <>
             <div>
               <div className="eyebrow">8 semaines</div>
-              <h1 style={{ marginTop: 8 }}>Ma progression</h1>
+              <h1 style={{ marginTop: 8 }}>Moi</h1>
               <p className="muted" style={{ marginTop: 8 }}>
                 {data.workouts.length} séance{data.workouts.length > 1 ? 's' : ''} enregistrée{data.workouts.length > 1 ? 's' : ''}. On avance par petites marches.
               </p>
@@ -662,7 +675,7 @@ export default function AthleteApp({ token }: { token: string }) {
               {PHASES.map((p, i) => {
                 const active = (i === 0 && week <= 2) || (i === 1 && (week === 3 || week === 4)) || (i === 2 && (week === 5 || week === 6)) || (i === 3 && week >= 7);
                 return (
-                  <div key={p.weeks} className="day-tile" style={active ? { boxShadow: 'inset 0 0 0 2px var(--sage-strong)' } : undefined}>
+                  <div key={p.weeks} className="day-tile" style={active ? { boxShadow: 'inset 0 0 0 2px var(--accent)' } : undefined}>
                     <span style={{ width: 70, fontWeight: 700, fontSize: 13, color: 'var(--sage-ink)' }}>Sem. {p.weeks}</span>
                     <span className="grow">
                       <span style={{ display: 'block', fontWeight: 700 }}>{p.name}</span>
@@ -739,11 +752,18 @@ export default function AthleteApp({ token }: { token: string }) {
       </main>
 
       <nav className="tabbar" aria-label="Navigation">
-        <button aria-current={tab === 'today' ? 'page' : undefined} onClick={() => setTab('today')}>Aujourd'hui</button>
-        <button aria-current={tab === 'week' ? 'page' : undefined} onClick={() => setTab('week')}>Séances</button>
-        <button aria-current={tab === 'library' ? 'page' : undefined} onClick={() => setTab('library')}>Exercices</button>
-        <button aria-current={tab === 'stretch' ? 'page' : undefined} onClick={() => setTab('stretch')}>Étirements</button>
-        <button aria-current={tab === 'progress' ? 'page' : undefined} onClick={() => setTab('progress')}>Progrès</button>
+        <button aria-current={NAV_OF[tab] === 'plan' ? 'page' : undefined} onClick={() => setTab('today')} aria-label="Plan">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="4" /><path d="M8 3v4M16 3v4M4 10h16" /></svg><span>Plan</span>
+        </button>
+        <button aria-current={NAV_OF[tab] === 'train' ? 'page' : undefined} onClick={() => setTab('week')} aria-label="Entraînement">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 8v8M17.5 8v8M3.5 10v4M20.5 10v4M6.5 12h11" /></svg><span>Entraînement</span>
+        </button>
+        <button aria-current={NAV_OF[tab] === 'zen' ? 'page' : undefined} onClick={() => setTab('stretch')} aria-label="Récup et zen">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9c2-2 4-2 6 0s4 2 6 0 3-1.5 4-1M4 15c2-2 4-2 6 0s4 2 6 0 3-1.5 4-1" /></svg><span>Récup et zen</span>
+        </button>
+        <button aria-current={NAV_OF[tab] === 'me' ? 'page' : undefined} onClick={() => setTab('progress')} aria-label="Moi">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5" /><path d="M5 20c.8-3.6 3.5-5.5 7-5.5s6.2 1.9 7 5.5" /></svg><span>Moi</span>
+        </button>
       </nav>
     </>
   );

@@ -33,3 +33,23 @@ export function sessionStats(doneAt: string[], now = new Date()): Streak {
   }
   return { thisWeek, weeks };
 }
+
+/** Jours de suite avec au moins une séance. Aujourd'hui compte s'il y en a une ; sinon on part d'hier. */
+export function dayStreak(doneAt: string[], now = new Date()): number {
+  const days = new Set(doneAt.map((iso) => localDay(new Date(iso))));
+  const cursor = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  if (!days.has(localDay(cursor))) cursor.setDate(cursor.getDate() - 1);
+  let n = 0;
+  while (days.has(localDay(cursor))) {
+    n++;
+    cursor.setDate(cursor.getDate() - 1);
+  }
+  return n;
+}
+
+/** Calories estimées : MET moyen de 3,5 × poids (kg, 70 par défaut) × durée (h). Valeur indicative. */
+export function estimateKcal(workouts: { duration_min: number | null }[], weightKg: number | null): number {
+  const w = weightKg && weightKg > 30 ? weightKg : 70;
+  const minutes = workouts.reduce((a, x) => a + (x.duration_min ?? 0), 0);
+  return Math.round((3.5 * w * minutes) / 60);
+}

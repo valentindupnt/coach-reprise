@@ -54,7 +54,7 @@ export default function App() {
       </Suspense>
     );
   } else {
-    content = <Message title="Ma reprise" text="Ouvre le lien personnel que ton coach t'a envoyé." />;
+    content = <Message title="NOMA" text="Ouvre le lien personnel que ton coach t'a envoyé." />;
   }
   return <ErrorBoundary>{content}</ErrorBoundary>;
 }

@@ -112,7 +112,7 @@ try {
   ok('accueil : prénom, message du coach et niveau débloqué');
   await alice.screenshot({ path: SHOTS + 'alice-1-accueil.png', fullPage: true });
 
-  await alice.getByRole('button', { name: 'Séances' }).click();
+  await alice.getByRole('button', { name: 'Entraînement', exact: true }).click();
   const tileTexts = await alice.locator('.day-tile').allInnerTexts();
   assert.ok(tileTexts.some((t) => /≈ \d+ min/.test(t)), 'les durées affichées sont estimées');
   assert.ok(!tileTexts.some((t) => /^\s*30 min/m.test(t) && /Renforcement/.test(t)), 'plus de « 30 min » en dur sur les séances de renforcement');
@@ -251,7 +251,7 @@ try {
 
   // 2e séance « trop facile » sur le Pallof press, sans douleur
   const quickSession = async (pain) => {
-    await alice.getByRole('button', { name: 'Séances' }).click();
+    await alice.getByRole('button', { name: 'Entraînement', exact: true }).click();
     await alice.getByRole('button', { name: /^A Renforcement A/ }).click();
     await alice.getByRole('button', { name: "C'est parti" }).click();
     await advance(alice, 11); // jusqu'à la fin du Pallof press
@@ -285,8 +285,9 @@ try {
   // ------------------------------------------------------------------
   console.log('Bibliothèque');
   await alice.getByRole('button', { name: "Retour à l'accueil" }).click();
-  await alice.getByRole('button', { name: 'Exercices' }).click();
-  await alice.getByRole('heading', { name: 'Bibliothèque' }).waitFor();
+  await alice.getByRole('button', { name: 'Entraînement', exact: true }).click();
+  await alice.getByRole('button', { name: 'Tous les exercices' }).click();
+  await alice.getByRole('heading', { name: 'Entraînement' }).waitFor();
   await alice.getByPlaceholder('Chercher un exercice').fill('clamshell');
   await alice.getByText('Aucun exercice ne correspond.').waitFor();
   ok('côté Alice, un exercice non validé n\'apparaît pas');
@@ -325,7 +326,8 @@ try {
   ok('le coach crée un exercice, puis le valide');
 
   await alice.reload();
-  await alice.getByRole('button', { name: 'Exercices' }).click();
+  await alice.getByRole('button', { name: 'Entraînement', exact: true }).click();
+  await alice.getByRole('button', { name: 'Tous les exercices' }).click();
   await alice.getByPlaceholder('Chercher un exercice').fill('clamshell');
   await alice.getByRole('button', { name: /Clamshell/ }).waitFor();
   await alice.getByPlaceholder('Chercher un exercice').fill('montée de genou');
@@ -380,7 +382,7 @@ try {
 
   // Alice voit les 4 tours dans le lecteur
   await alice.reload();
-  await alice.getByRole('button', { name: 'Séances' }).click();
+  await alice.getByRole('button', { name: 'Entraînement', exact: true }).click();
   await alice.getByRole('button', { name: /^A Renforcement A/ }).click();
   await alice.getByText(/4 tours/).first().waitFor();
   ok('Alice voit le nouveau nombre de tours avant de commencer');
@@ -401,7 +403,7 @@ try {
   await alice.getByRole('heading', { name: 'Bravo Alice !' }).waitFor();
   await alice.getByRole('button', { name: "Retour à l'accueil" }).click();
   await alice.reload();
-  await alice.getByRole('button', { name: 'Séances' }).click();
+  await alice.getByRole('button', { name: 'Entraînement', exact: true }).click();
   await alice.getByRole('button', { name: /^A Renforcement A/ }).click();
   await alice.getByRole('button', { name: "C'est parti" }).click();
   await next(alice, 6);
@@ -422,7 +424,7 @@ try {
 
   // ------------------------------------------------------------------
   console.log('Hors connexion');
-  await alice.getByRole('button', { name: 'Séances' }).click();
+  await alice.getByRole('button', { name: 'Entraînement', exact: true }).click();
   await alice.getByRole('button', { name: /^♡ Cardio doux/ }).click();
   await aliceCtx.setOffline(true);
   await alice.getByRole('button', { name: "J'ai terminé" }).click();
@@ -447,7 +449,7 @@ try {
   ok('au retour du réseau, la séance est envoyée une seule fois, avec sa vraie date');
 
   // propositions de remplacement sans réseau : calculées sur la bibliothèque gardée sur le téléphone
-  await alice.getByRole('button', { name: 'Séances' }).click();
+  await alice.getByRole('button', { name: 'Entraînement', exact: true }).click();
   await alice.getByRole('button', { name: /^A Renforcement A/ }).click();
   await alice.getByRole('button', { name: "C'est parti" }).click();
   await next(alice, 6);
@@ -467,7 +469,7 @@ try {
 
   // ------------------------------------------------------------------
   console.log('Plus de gel du programme');
-  await alice.getByRole('button', { name: 'Séances' }).click();
+  await alice.getByRole('button', { name: 'Entraînement', exact: true }).click();
   await alice.getByRole('button', { name: /^M Mobilité/ }).click();
   await alice.getByRole('button', { name: "C'est parti" }).click();
   await alice.getByRole('heading', { name: 'Respiration costale' }).waitFor();
@@ -480,11 +482,11 @@ try {
   assert.equal(await alice.getByRole('heading', { name: 'On fait une pause, Alice.' }).count(), 0);
   ok('le bilan ne demande plus les symptômes et ne met jamais le programme en pause');
   await alice.getByRole('button', { name: "Retour à l'accueil" }).click();
-  await alice.getByRole('button', { name: 'Aujourd\'hui' }).click();
+  await alice.getByRole('button', { name: 'Plan', exact: true }).click();
   await alice.getByRole('heading', { name: 'Bonjour Alice !' }).waitFor();
 
-  await alice.getByRole('button', { name: 'Progrès' }).click();
-  await alice.getByRole('heading', { name: 'Ma progression' }).waitFor();
+  await alice.getByRole('button', { name: 'Moi', exact: true }).click();
+  await alice.getByRole('heading', { name: 'Moi', exact: true }).waitFor();
   await alice.getByText('Mes dernières séances').waitFor();
   await alice.screenshot({ path: SHOTS + 'alice-7-progres.png', fullPage: true });
   ok('écran de progression avec durée et effort des dernières séances');
@@ -493,7 +495,7 @@ try {
   console.log('V3 : séance honnête, reprise, semaine, compteur, montée autonome');
 
   // Appuyer sur « Étape suivante » sans rien faire ne valide aucun exercice
-  await alice.getByRole('button', { name: 'Séances' }).click();
+  await alice.getByRole('button', { name: 'Entraînement', exact: true }).click();
   await alice.getByRole('button', { name: /^B Renforcement B/ }).click();
   await alice.getByRole('button', { name: "C'est parti" }).click();
   await alice.getByRole('timer').waitFor();
@@ -523,7 +525,7 @@ try {
   ok('une fois envoyée, la séance en attente disparaît de l\'accueil');
 
   // Reprise en cours de séance
-  await alice.getByRole('button', { name: 'Séances' }).click();
+  await alice.getByRole('button', { name: 'Entraînement', exact: true }).click();
   await alice.getByRole('button', { name: /^A Renforcement A/ }).click();
   await alice.getByRole('button', { name: "C'est parti" }).click();
   await alice.getByRole('heading', { name: 'Respiration costale' }).waitFor();
@@ -557,17 +559,18 @@ try {
   assert.equal(totalNow, total0 + 2);
   await alice.reload();
   await alice.getByRole('heading', { name: 'Bonjour Alice !' }).waitFor();
-  const nums = await alice.locator('.stats-row .stat-n').allInnerTexts();
-  assert.equal(Number(nums[0]), totalNow, `compteur total (${nums})`);
-  assert.ok(Number(nums[1]) >= 2 && Number(nums[2]) >= 1);
-  ok(`le compteur affiche ${nums[0]} séances, ${nums[1]} cette semaine, ${nums[2]} semaine(s) de suite`);
+  const nums = await alice.locator('.stat-card .big').allInnerTexts();
+  assert.equal(nums.length, 2, `cartes de statistiques (${nums})`);
+  assert.ok(parseInt(nums[0].replace(/\D/g, ''), 10) > 0, `kcal (${nums[0]})`);
+  assert.ok(parseInt(nums[1], 10) >= 1, `jours enchaînés (${nums[1]})`);
+  ok(`les cartes affichent ${nums[0].replace(/\s+/g, ' ')} et ${nums[1]}`);
   await alice.screenshot({ path: SHOTS + 'alice-9-compteur.png', fullPage: true });
 
   // Organiser sa semaine
   const DAYS = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
   const dow = new Date().getDay();
   const todayIdx = (dow + 6) % 7;
-  await alice.getByRole('button', { name: 'Séances' }).click();
+  await alice.getByRole('button', { name: 'Entraînement', exact: true }).click();
   await alice.getByRole('button', { name: 'Organiser ma semaine' }).click();
   const daySelect = (name) => alice.getByLabel(new RegExp(`^${name}`));
   for (const d of ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi']) await daySelect(d).selectOption('A');
@@ -581,7 +584,7 @@ try {
   const plan = (await mock.db.query(`select week_plan from public.athletes limit 1`)).rows[0].week_plan;
   assert.equal(plan[todayIdx], 'R');
   ok('Alice enregistre sa semaine type');
-  await alice.getByRole('button', { name: "Aujourd'hui" }).click();
+  await alice.getByRole('button', { name: 'Plan', exact: true }).click();
   await alice.getByText('Jour de repos').waitFor();
   await alice.getByRole('button', { name: "J'ai quand même envie de bouger" }).waitFor();
   ok('un jour de repos choisi s\'affiche à l\'accueil, avec la possibilité de bouger quand même');
@@ -609,7 +612,7 @@ try {
                select id, 'A', now() - interval '1 second', 1, false from public.athletes limit 1 returning id)
     insert into public.workout_items (workout_id, exercise_id, level, feeling)
     select w.id, 'rowing', (select level from public.program_items where exercise_id = 'rowing' and active limit 1), 'facile' from w`);
-  await alice.getByRole('button', { name: 'Séances' }).click();
+  await alice.getByRole('button', { name: 'Entraînement', exact: true }).click();
   await alice.getByRole('button', { name: /^A Renforcement A/ }).click();
   await alice.getByRole('button', { name: "C'est parti" }).click();
   await alice.getByRole('timer').waitFor();
@@ -634,7 +637,7 @@ try {
   await alice.screenshot({ path: SHOTS + 'alice-11-monte.png', fullPage: true });
   // niveau choisi pendant la séance : « Plus dur » sur le premier exercice
   await alice.getByRole('button', { name: "Retour à l'accueil" }).click();
-  await alice.getByRole('button', { name: 'Séances' }).click();
+  await alice.getByRole('button', { name: 'Entraînement', exact: true }).click();
   await alice.getByRole('button', { name: /^M Mobilité/ }).click();
   await alice.getByRole('button', { name: "C'est parti" }).click();
   await alice.getByRole('timer').waitFor();
@@ -658,7 +661,7 @@ try {
 
   // niveau choisi depuis l'écran Progrès, dans l'autre sens
   await alice.getByRole('button', { name: "Retour à l'accueil" }).click();
-  await alice.getByRole('button', { name: 'Progrès' }).click();
+  await alice.getByRole('button', { name: 'Moi', exact: true }).click();
   await alice.getByRole('button', { name: /^Plus facile : Rowing assis/ }).click();
   await poll(async () => (await mock.db.query(`select level from public.program_items where exercise_id = 'rowing' and active limit 1`)).rows[0].level === 1);
   ok('depuis « Progrès », Alice redescend un exercice d\'un niveau');
@@ -677,7 +680,7 @@ try {
   await coach.getByRole('button', { name: 'Confirmer' }).click();
   await coach.waitForFunction((old) => document.querySelector('input[aria-label="Lien personnel"]')?.value !== old, link);
   await alice.reload();
-  await alice.getByRole('button', { name: 'Aujourd\'hui' }).click();
+  await alice.getByRole('button', { name: 'Plan', exact: true }).click();
   // l'ancien lien affiche la version gardée en cache mais le serveur le refuse
   const { rows: [{ ok: stillValid }] } = await mock.db.query(`select exists(select 1 from public.athletes where access_token = $1) ok`, [link.split('/a/')[1]]);
   assert.equal(stillValid, false);
