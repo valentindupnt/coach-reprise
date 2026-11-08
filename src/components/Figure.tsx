@@ -4,14 +4,58 @@
 import type { ReactElement } from 'react';
 
 const C = {
-  body: '#7E9A86',
-  move: '#E2A793',
-  head: '#F1D9D4',
-  band: '#A5573F',
-  prop: '#E3D8C8',
-  floor: '#E3D8C8',
-  arrow: '#A5573F',
+  body: '#5B50D6',
+  move: '#E879B9',
+  head: '#C8E2F3',
+  band: '#E879B9',
+  prop: '#D9D6F6',
+  floor: '#DCE5EA',
+  arrow: '#15181C',
 };
+
+// Espace garanti entre la tête et le reste du corps (en unités du dessin).
+const HEAD_GAP = 5;
+
+// Raccourcit les traits et chemins qui touchent la tête, pour garder un espace constant.
+function withHeadGap(shapes: Shape[]): Shape[] {
+  const heads = shapes.filter((s): s is Extract<Shape, { t: 'h' }> => s.t === 'h');
+  if (!heads.length) return shapes;
+  return shapes.map((s) => {
+    if (s.t === 'l') {
+      let [x1, y1, x2, y2] = s.p;
+      const w = s.w ?? 11;
+      for (const hd of heads) {
+        const need = (hd.r ?? 12) + HEAD_GAP + w / 2;
+        for (const end of [0, 1]) {
+          const [ax0, ay0, bx, by] = end === 0 ? [x1, y1, x2, y2] : [x2, y2, x1, y1];
+          let ax = ax0, ay = ay0;
+          if (Math.hypot(ax - hd.p[0], ay - hd.p[1]) < need) {
+            const len = Math.hypot(bx - ax, by - ay) || 1;
+            const ux = (bx - ax) / len, uy = (by - ay) / len;
+            let t = 0;
+            while (t < len && Math.hypot(ax + ux * t - hd.p[0], ay + uy * t - hd.p[1]) < need) t += 0.5;
+            ax += ux * t; ay += uy * t;
+          }
+          if (end === 0) { x1 = ax; y1 = ay; } else { x2 = ax; y2 = ay; }
+        }
+      }
+      return { ...s, p: [x1, y1, x2, y2] as [number, number, number, number] };
+    }
+    if (s.t === 'p') {
+      const m = s.d.match(/^M([\d.]+) ([\d.]+)( .*)$/);
+      if (!m) return s;
+      let x = +m[1], y = +m[2];
+      const w = s.w ?? 11;
+      for (const hd of heads) {
+        const need = (hd.r ?? 12) + HEAD_GAP + w / 2;
+        const d = Math.hypot(x - hd.p[0], y - hd.p[1]);
+        if (d < need) { x = hd.p[0] + ((x - hd.p[0]) / d) * need; y = hd.p[1] + ((y - hd.p[1]) / d) * need; }
+      }
+      return { ...s, d: `M${x.toFixed(1)} ${y.toFixed(1)}${m[3]}` };
+    }
+    return s;
+  });
+}
 
 type Shape =
   | { t: 'l'; p: [number, number, number, number]; w?: number; c?: keyof typeof C; dash?: boolean }
@@ -329,7 +373,7 @@ export default function Figure({ id, label }: { id: string | null | undefined; l
     <div className="figure-box">
       <svg viewBox="0 0 320 170" role="img" aria-label={`Illustration : ${label}`}>
         <line x1={6} y1={154} x2={314} y2={154} stroke={C.floor} strokeWidth={3} strokeLinecap="round" />
-        {shapes.map(render)}
+        {withHeadGap(shapes).map(render)}
       </svg>
     </div>
   );
