@@ -2400,7 +2400,7 @@ where exists (select 1 from public.trainings where id = 'etir_echauffement' and 
 on conflict (training_id, phase, position) do nothing;
 
 insert into public.trainings (id, title, description, kind, level, areas, discipline, rounds, rest_seconds, approved, source)
-values ('etir_apres_velo', 'Après le vélo', 'Cuisses, hanches et mollets, puis bas du dos, poignets, poitrine et nuque : les zones les plus sollicitées par la position sur le vélo.', 'etirement', 1, array['jambes', 'dos', 'epaules']::text[], 'etirement', 1, 5, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
+values ('etir_apres_velo', 'Après le vélo', 'Hanches, cuisses, arrière des jambes, mollets et fessiers, puis le bas du dos : les zones les plus sollicitées par le pédalage et la position sur le vélo.', 'etirement', 1, array['jambes', 'fessiers', 'dos']::text[], 'etirement', 1, 5, false, 'Composé pour l''app (bloc 2 V5), voir docs/CONTENU-V5.md')
 on conflict (id) do update set title = excluded.title, description = excluded.description, kind = excluded.kind,
   level = excluded.level, areas = excluded.areas, discipline = excluded.discipline, rounds = excluded.rounds,
   rest_seconds = excluded.rest_seconds, source = excluded.source
@@ -2411,15 +2411,12 @@ insert into public.training_items (training_id, phase, position, exercise_id, le
 select v.training_id, v.phase, v.position, v.exercise_id, v.level, v.value::int, v.sets::int from (values
   ('etir_apres_velo', 'main', 1, 'flechisseurs', 1, null, null),
   ('etir_apres_velo', 'main', 2, 'quadriceps_debout', 2, null, null),
-  ('etir_apres_velo', 'main', 3, 'ischios', 1, null, null),
-  ('etir_apres_velo', 'main', 4, 'fessiers_4', 1, null, null),
-  ('etir_apres_velo', 'main', 5, 'mollets_assis', 1, null, null),
-  ('etir_apres_velo', 'main', 6, 'genoux_poitrine', 1, null, null),
-  ('etir_apres_velo', 'main', 7, 'enfant', 2, null, null),
-  ('etir_apres_velo', 'main', 8, 'pecs_coudes_arriere', 1, null, null),
-  ('etir_apres_velo', 'main', 9, 'avant_bras_poignets', 1, null, null),
-  ('etir_apres_velo', 'main', 10, 'cou_menton_poitrine', 2, null, null),
-  ('etir_apres_velo', 'main', 11, 'trapezes', 1, null, null)
+  ('etir_apres_velo', 'main', 3, 'ischios', 2, null, null),
+  ('etir_apres_velo', 'main', 4, 'mollets_assis', 2, null, null),
+  ('etir_apres_velo', 'main', 5, 'soleaire', 2, null, null),
+  ('etir_apres_velo', 'main', 6, 'pigeon', 3, null, null),
+  ('etir_apres_velo', 'main', 7, 'genoux_poitrine', 1, null, null),
+  ('etir_apres_velo', 'main', 8, 'sphinx', 2, null, null)
 ) as v(training_id, phase, position, exercise_id, level, value, sets)
 where exists (select 1 from public.trainings where id = 'etir_apres_velo' and approved = false)
 on conflict (training_id, phase, position) do nothing;

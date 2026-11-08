@@ -11733,7 +11733,7 @@
    "titre": "Après le vélo",
    "type": "etirement",
    "niveau": 1,
-   "zones": "jambes, dos, epaules",
+   "zones": "jambes, fessiers, dos",
    "tours": 1,
    "pause": 5,
    "postures": [
@@ -11779,29 +11779,9 @@
     {
      "id": "ischios",
      "nom": "Étirement des ischio-jambiers",
-     "niveau": 1,
-     "consigne": "2 × 20 s par côté",
-     "secondes": 80,
-     "etiquettes": {
-      "moments": [
-       "apres",
-       "hors_seance"
-      ],
-      "sports": [
-       "velo",
-       "course",
-       "muscu"
-      ],
-      "mode": "statique",
-      "hold": 20
-     }
-    },
-    {
-     "id": "fessiers_4",
-     "nom": "Étirement des fessiers en « 4 »",
-     "niveau": 1,
-     "consigne": "2 × 20 s par côté",
-     "secondes": 80,
+     "niveau": 2,
+     "consigne": "2 × 30 s par côté",
+     "secondes": 120,
      "etiquettes": {
       "moments": [
        "apres",
@@ -11819,9 +11799,9 @@
     {
      "id": "mollets_assis",
      "nom": "Étirement des mollets, assis jambe tendue",
-     "niveau": 1,
-     "consigne": "20 s par côté",
-     "secondes": 40,
+     "niveau": 2,
+     "consigne": "30 s par côté",
+     "secondes": 60,
      "etiquettes": {
       "moments": [
        "apres",
@@ -11833,6 +11813,43 @@
       ],
       "mode": "statique",
       "hold": 20
+     }
+    },
+    {
+     "id": "soleaire",
+     "nom": "Étirement du soléaire, genoux fléchis",
+     "niveau": 2,
+     "consigne": "30 s par côté",
+     "secondes": 60,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "course"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "pigeon",
+     "nom": "Pigeon (version au sol)",
+     "niveau": 3,
+     "consigne": "45 s par côté",
+     "secondes": 90,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "course"
+      ],
+      "mode": "statique",
+      "hold": 30
      }
     },
     {
@@ -11855,68 +11872,11 @@
      }
     },
     {
-     "id": "enfant",
-     "nom": "Posture de l'enfant",
+     "id": "sphinx",
+     "nom": "Sphinx",
      "niveau": 2,
-     "consigne": "30 s",
-     "secondes": 30,
-     "etiquettes": {
-      "moments": [
-       "apres",
-       "hors_seance"
-      ],
-      "sports": [
-       "velo",
-       "muscu"
-      ],
-      "mode": "statique",
-      "hold": 30
-     }
-    },
-    {
-     "id": "pecs_coudes_arriere",
-     "nom": "Étirement des pectoraux, coudes en arrière",
-     "niveau": 1,
-     "consigne": "20 s",
-     "secondes": 20,
-     "etiquettes": {
-      "moments": [
-       "apres",
-       "hors_seance"
-      ],
-      "sports": [
-       "velo",
-       "muscu"
-      ],
-      "mode": "statique",
-      "hold": 20
-     }
-    },
-    {
-     "id": "avant_bras_poignets",
-     "nom": "Étirement des avant-bras et des poignets",
-     "niveau": 1,
-     "consigne": "20 s",
-     "secondes": 20,
-     "etiquettes": {
-      "moments": [
-       "apres",
-       "hors_seance"
-      ],
-      "sports": [
-       "velo",
-       "muscu"
-      ],
-      "mode": "statique",
-      "hold": 20
-     }
-    },
-    {
-     "id": "cou_menton_poitrine",
-     "nom": "Étirement de la nuque, menton vers la poitrine",
-     "niveau": 2,
-     "consigne": "20 s",
-     "secondes": 20,
+     "consigne": "45 s",
+     "secondes": 45,
      "etiquettes": {
       "moments": [
        "apres",
@@ -11926,32 +11886,13 @@
        "velo"
       ],
       "mode": "statique",
-      "hold": 15
-     }
-    },
-    {
-     "id": "trapezes",
-     "nom": "Étirement des trapèzes",
-     "niveau": 1,
-     "consigne": "2 × 20 s par côté",
-     "secondes": 80,
-     "etiquettes": {
-      "moments": [
-       "apres",
-       "hors_seance"
-      ],
-      "sports": [
-       "velo",
-       "muscu"
-      ],
-      "mode": "statique",
-      "hold": 20
+      "hold": 30
      }
     }
    ],
-   "description": "Cuisses, hanches et mollets, puis bas du dos, poignets, poitrine et nuque : les zones les plus sollicitées par la position sur le vélo.",
+   "description": "Hanches, cuisses, arrière des jambes, mollets et fessiers, puis le bas du dos : les zones les plus sollicitées par le pédalage et la position sur le vélo.",
    "minutes": 10,
-   "seconds": 600,
+   "seconds": 590,
    "metMinutes": 21.9,
    "equipment": [],
    "impact": false,
@@ -11991,10 +11932,6 @@
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Hamstring_Stretch.json"
     },
     {
-     "label": "free-exercise-db (domaine public), fiche Ankle On The Knee",
-     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Ankle_On_The_Knee.json"
-    },
-    {
      "label": "free-exercise-db (domaine public), fiche Seated Calf Stretch",
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Seated_Calf_Stretch.json"
     },
@@ -12003,31 +11940,23 @@
      "url": "https://www.nhs.uk/live-well/exercise/how-to-stretch-after-exercising"
     },
     {
+     "label": "free-exercise-db (domaine public), fiche Standing Soleus And Achilles Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Standing_Soleus_And_Achilles_Stretch.json"
+    },
+    {
+     "label": "Yoga Journal, Sleeping Pigeon Pose",
+     "url": "https://www.yogajournal.com/article/yogapedia/master-sleeping-pigeon-pose-4-steps/"
+    },
+    {
      "label": "free-exercise-db (domaine public), fiche Hug Knees To Chest",
      "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Hug_Knees_To_Chest.json"
     },
     {
-     "label": "free-exercise-db (domaine public), fiche Childs Pose",
-     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Childs_Pose.json"
-    },
-    {
-     "label": "free-exercise-db (domaine public), fiche Elbows Back",
-     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Elbows_Back.json"
-    },
-    {
-     "label": "free-exercise-db (domaine public), fiche Kneeling Forearm Stretch",
-     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Kneeling_Forearm_Stretch.json"
-    },
-    {
-     "label": "free-exercise-db (domaine public), fiche Chin To Chest Stretch",
-     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Chin_To_Chest_Stretch.json"
-    },
-    {
-     "label": "free-exercise-db (domaine public), fiche Side Neck Stretch",
-     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Side_Neck_Stretch.json"
+     "label": "Yoga Journal, Sphinx Pose",
+     "url": "https://www.yogajournal.com/poses/sphinx-pose/"
     }
    ],
-   "contenu": "Corps : Étirement des fléchisseurs de hanche\nCorps : Étirement des quadriceps debout\nCorps : Étirement des ischio-jambiers\nCorps : Étirement des fessiers en « 4 »\nCorps : Étirement des mollets, assis jambe tendue\nCorps : Genoux à la poitrine\nCorps : Posture de l'enfant\nCorps : Étirement des pectoraux, coudes en arrière\nCorps : Étirement des avant-bras et des poignets\nCorps : Étirement de la nuque, menton vers la poitrine\nCorps : Étirement des trapèzes"
+   "contenu": "Corps : Étirement des fléchisseurs de hanche\nCorps : Étirement des quadriceps debout\nCorps : Étirement des ischio-jambiers\nCorps : Étirement des mollets, assis jambe tendue\nCorps : Étirement du soléaire, genoux fléchis\nCorps : Pigeon (version au sol)\nCorps : Genoux à la poitrine\nCorps : Sphinx"
   },
   {
    "id": "etir_apres_course",
