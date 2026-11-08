@@ -20,6 +20,10 @@ export type ExerciseGoal = 'renforcer' | 'tonifier' | 'mobilite' | 'cardio' | 'd
 export type Discipline =
   | 'renforcement' | 'gainage' | 'calisthenie' | 'cardio' | 'hiit' | 'yoga' | 'etirement' | 'pilates' | 'meditation';
 export type ExerciseMode = 'time' | 'reps';
+// FLEXO, bloc Étirements : étiquettes qui composent les sets guidés
+export type Moment = 'avant' | 'apres' | 'hors_seance';
+export type StretchSport = 'velo' | 'course' | 'muscu' | 'tous';
+export type StretchMode = 'statique' | 'dynamique' | 'activation';
 export interface Tutorial {
   steps?: string[];
   breathing?: string;
@@ -56,6 +60,14 @@ export interface Exercise {
   met_code?: string | null;
   tutorial?: Tutorial | null;
   source?: string | null;
+  /** Quand : avant l'effort, après, ou hors séance. */
+  moments?: Moment[];
+  /** Sport associé ('tous' seul s'il vaut pour tous). */
+  sports?: StretchSport[];
+  /** Statique (position tenue), dynamique (mobilité) ou activation. */
+  stretch_mode?: StretchMode | null;
+  /** Durée de maintien, en secondes et par côté (étirement statique seulement). */
+  hold_seconds?: number | null;
 }
 
 export interface ProgramItem {
@@ -146,7 +158,7 @@ export interface SubmitResult {
 }
 
 // ---------- V5 : entraînements, programmes, profil ----------
-export type TrainingKind = 'programme' | 'rapide' | 'decouverte' | 'express';
+export type TrainingKind = 'programme' | 'rapide' | 'decouverte' | 'express' | 'etirement';
 export type Phase = 'warmup' | 'main' | 'cooldown';
 
 export interface TrainingSummary {

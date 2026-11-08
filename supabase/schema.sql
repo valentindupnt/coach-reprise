@@ -185,6 +185,32 @@ alter table public.exercises add column if not exists default_value int;
 alter table public.exercises add column if not exists met numeric(4,1);
 alter table public.exercises add column if not exists met_code text;
 alter table public.exercises add column if not exists tutorial jsonb;
+
+-- FLEXO, bloc Étirements : étiquettes qui servent à composer les sets guidés
+--   moments      : quand l'exercice se fait : 'avant' (échauffement), 'apres' (retour au calme), 'hors_seance'
+--   sports       : sport associé : 'velo', 'course', 'muscu', ou 'tous' (seul)
+--   stretch_mode : 'statique' (position tenue), 'dynamique' (mobilité en mouvement), 'activation'
+--   hold_seconds : durée de maintien en secondes, par côté, pour un étirement statique seulement
+alter table public.exercises add column if not exists moments text[] not null default '{}';
+alter table public.exercises add column if not exists sports text[] not null default '{}';
+alter table public.exercises add column if not exists stretch_mode text;
+alter table public.exercises add column if not exists hold_seconds int;
+do $$
+begin
+  alter table public.exercises drop constraint if exists exercises_moments_check;
+  alter table public.exercises add constraint exercises_moments_check
+    check (moments <@ array['avant', 'apres', 'hors_seance']);
+  alter table public.exercises drop constraint if exists exercises_sports_check;
+  alter table public.exercises add constraint exercises_sports_check
+    check (sports <@ array['velo', 'course', 'muscu', 'tous']
+           and not ('tous' = any (sports) and cardinality(sports) > 1));
+  alter table public.exercises drop constraint if exists exercises_stretch_mode_check;
+  alter table public.exercises add constraint exercises_stretch_mode_check
+    check (stretch_mode is null or stretch_mode in ('statique', 'dynamique', 'activation'));
+  alter table public.exercises drop constraint if exists exercises_hold_seconds_check;
+  alter table public.exercises add constraint exercises_hold_seconds_check
+    check (hold_seconds is null or (hold_seconds between 5 and 120 and stretch_mode = 'statique'));
+end $$;
 do $$
 begin
   -- 'cardio' rejoint les types historiques (jumping jacks, montées de genoux...)
@@ -217,14 +243,15 @@ end $$;
 
 -- 1.2 Entraînements : une suite d'exercices en trois phases.
 --   kind   : 'programme' (jour d'un programme), 'rapide' (démarrage rapide par zone),
---            'decouverte' (moments pour soi), 'express' (3 à 5 min sans matériel, gardé hors ligne)
+--            'decouverte' (moments pour soi), 'express' (3 à 5 min sans matériel, gardé hors ligne),
+--            'etirement' (set guidé d'étirements ou de mobilité, FLEXO)
 --   level  : 1 débutant, 2 intermédiaire, 3 avancé
 --   rounds : tours du corps de séance ; rest_seconds : pause entre deux exercices
 create table if not exists public.trainings (
   id text primary key check (id ~ '^[a-z0-9_]{2,60}$'),
   title text not null check (char_length(title) between 1 and 80),
   description text check (description is null or char_length(description) <= 500),
-  kind text not null check (kind in ('programme', 'rapide', 'decouverte', 'express')),
+  kind text not null check (kind in ('programme', 'rapide', 'decouverte', 'express', 'etirement')),
   level int not null default 1 check (level between 1 and 3),
   areas text[] not null default '{}'
     check (areas <@ array['bras', 'epaules', 'abdos', 'fessiers', 'jambes', 'dos', 'corps_entier']),
@@ -250,6 +277,14 @@ create table if not exists public.training_items (
   unique (training_id, phase, position)
 );
 create index if not exists training_items_exercise_idx on public.training_items (exercise_id);
+
+-- FLEXO : le type 'etirement' rejoint les types d'entraînement (base déjà migrée : on remplace la contrainte)
+do $$
+begin
+  alter table public.trainings drop constraint if exists trainings_kind_check;
+  alter table public.trainings add constraint trainings_kind_check
+    check (kind in ('programme', 'rapide', 'decouverte', 'express', 'etirement'));
+end $$;
 
 -- 1.3 Programmes : un entraînement par jour, débloqué jour après jour
 create table if not exists public.programs (
@@ -468,6 +503,11 @@ as $$
     'met', e.met,
     'met_code', e.met_code,
     'tutorial', e.tutorial,
+    -- FLEXO : étiquettes des étirements
+    'moments', to_jsonb(e.moments),
+    'sports', to_jsonb(e.sports),
+    'stretch_mode', e.stretch_mode,
+    'hold_seconds', e.hold_seconds,
     'source', e.source
   );
 $$;
@@ -1666,7 +1706,7 @@ begin
     'duration_min', ceil((active + rest) / 60.0)::int,
     'active_seconds', active,
     'rest_seconds_total', rest,
-    'met_minutes', round(met_sec / 60.0 + rest / 60.0, 1),
+    'met_minutes', round((met_sec + rest) / 60.0, 1),
     'exercise_count', (select count(distinct ti.exercise_id) from public.training_items ti where ti.training_id = p_training),
     'equipment', coalesce((
       select jsonb_agg(distinct q order by q)
