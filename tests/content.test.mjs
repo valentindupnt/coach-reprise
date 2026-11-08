@@ -58,7 +58,47 @@ for (const e of relecture.entrainements) {
   assert.equal(s.s.duration_min, e.minutes, `${e.id} : durée base ${s.s.duration_min} / générateur ${e.minutes}`);
   assert.equal(Number(s.s.met_minutes), e.metMinutes, `${e.id} : MET-minutes`);
 }
-ok('durées et MET-minutes calculées par la base identiques au générateur, pour les 75 entraînements');
+ok(`durées et MET-minutes calculées par la base identiques au générateur, pour les ${relecture.entrainements.length} entraînements`);
+
+// ---------------------------------------------------------------- FLEXO, bloc Étirements
+const sets = await all(`select t.id, t.kind, (public._training_stats(t.id)->>'active_seconds')::int act,
+  (public._training_stats(t.id)->>'rest_seconds_total')::int rest, (public._training_stats(t.id)->>'impact')::boolean impact,
+  public._training_stats(t.id)->'equipment' eq from public.trainings t where t.kind = 'etirement' order by t.id`);
+assert.deepEqual(sets.map((x) => x.id), ['etir_apres_course', 'etir_apres_muscu', 'etir_apres_velo', 'etir_echauffement',
+  'etir_hanches_dos', 'etir_nuque_epaules', 'etir_soir']);
+for (const x of sets) {
+  const sec = x.act + x.rest;
+  assert.ok(sec >= 560 && sec <= 600, `${x.id} : ${sec} s`);
+  assert.ok(!x.impact && !x.eq.length, `${x.id} : ni saut ni matériel`);
+}
+ok('7 sets guidés de type « etirement », chacun entre 9 min 20 et 10 min, sans saut ni matériel');
+
+const warm = await all(`select e.id, e.stretch_mode, e.moments from public.training_items ti join public.exercises e on e.id = ti.exercise_id
+  where ti.training_id = 'etir_echauffement'`);
+assert.ok(warm.every((x) => x.stretch_mode !== 'statique' && x.moments.includes('avant')), 'échauffement : rien de statique');
+const after = await all(`select ti.training_id, e.id, e.moments from public.training_items ti join public.exercises e on e.id = ti.exercise_id
+  where ti.training_id in ('etir_apres_velo', 'etir_apres_course', 'etir_apres_muscu')`);
+assert.deepEqual(after.filter((x) => !x.moments.includes('apres')), []);
+ok('échauffement en mobilité dynamique seulement ; sets « après » composés d\'exercices étiquetés « après »');
+
+const noTag = await all(`select distinct e.id from public.training_items ti join public.trainings t on t.id = ti.training_id
+  join public.exercises e on e.id = ti.exercise_id
+  where t.kind = 'etirement' and (e.stretch_mode is null or e.moments = '{}' or e.sports = '{}' or e.illustration is null
+    or e.video_url is null or e.source is null or (e.stretch_mode = 'statique') <> (e.hold_seconds is not null))`);
+assert.deepEqual(noTag, []);
+ok('chaque posture des sets : étiquettes complètes, schéma, vidéo et source');
+
+for (const [bad, why] of [[`stretch_mode = 'souple'`, 'mode inconnu'], [`moments = array['pendant']`, 'moment inconnu'],
+  [`sports = array['tous', 'velo']`, '« tous » mélangé'], [`sports = array['natation']`, 'sport inconnu'],
+  [`hold_seconds = 30, stretch_mode = 'dynamique'`, 'maintien hors statique'], [`hold_seconds = 300`, 'maintien trop long']]) {
+  await assert.rejects(db.exec(`update public.exercises set ${bad} where id = 'ischios'`), /check/, why);
+}
+ok('la base refuse les étiquettes hors vocabulaire et un maintien sur un exercice non statique');
+
+const fiche = (await one(`select public._exercise_json(e) j from public.exercises e where id = 'soleaire'`)).j;
+assert.deepEqual([fiche.moments, fiche.sports, fiche.stretch_mode, fiche.hold_seconds, fiche.illustration],
+  [['apres', 'hors_seance'], ['course'], 'statique', 20, 'soleaire']);
+ok('la fiche envoyée à l\'app porte moment, sport, mode, maintien et schéma');
 
 const prog = await all(`select t.id, (public._training_stats(t.id)->>'impact')::boolean impact,
   public._training_stats(t.id)->'equipment' eq from public.trainings t where t.kind in ('programme','express')`);
@@ -117,17 +157,36 @@ execFileSync('python3', [`${root}scripts/build-validation.py`, filled]);
 writeFileSync(genSql, readFileSync(outPath, 'utf8'));
 if (before === null) execFileSync('rm', ['-f', outPath]); else writeFileSync(outPath, before);
 await db.exec(readFileSync(genSql, 'utf8'));
+// puis le tableur du bloc Étirements, rempli de « oui » lui aussi
+const filledEtir = `${dir}/rempli-etirements.xlsx`;
+execFileSync('python3', ['-c', `
+import sys
+from openpyxl import load_workbook
+wb = load_workbook(sys.argv[1])
+for name in ('Nouveaux étirements', 'Sets guidés'):
+    ws = wb[name]
+    for r in range(2, ws.max_row + 1):
+        ws.cell(r, 4, 'oui')
+wb.save(sys.argv[2])`, `${root}content/v5/relecture-etirements.xlsx`, filledEtir]);
+const outEtir = `${root}supabase/content-etirements-validation.sql`;
+const beforeEtir = (() => { try { return readFileSync(outEtir, 'utf8'); } catch { return null; } })();
+execFileSync('python3', [`${root}scripts/build-validation.py`, filledEtir]);
+const etirSql = readFileSync(outEtir, 'utf8');
+if (beforeEtir === null) execFileSync('rm', ['-f', outEtir]); else writeFileSync(outEtir, beforeEtir);
+assert.ok(!etirSql.includes('update public.programs'), 'le tableur des étirements ne valide aucun programme');
+await db.exec(etirSql);
 const v = await one(`select (select count(*) from public.exercises where not approved)::int e,
   (select count(*) from public.trainings where not approved)::int t, (select count(*) from public.programs where not approved)::int p`);
 assert.deepEqual(v, { e: 0, t: 0, p: 0 });
-ok('tableur rempli de « oui » : exercices, entraînements et programmes validés');
+ok('tableurs du bloc 2 et des étirements remplis de « oui » : exercices, entraînements, sets et programmes validés');
 
 const { access_token: token } = await one(`select access_token from public.athletes where first_name = 'Alice'`);
 const cat = (await one(`select public.athlete_catalog($1) c`, [token])).c;
 assert.equal(cat.programs.length, 3);
 assert.equal(cat.trainings.filter((x) => x.kind === 'rapide').length, 18);
 assert.equal(cat.trainings.filter((x) => x.kind === 'express').length, 6);
-ok('catalogue : 3 programmes, 18 démarrages rapides, 6 séances express');
+assert.equal(cat.trainings.filter((x) => x.kind === 'etirement').length, 7);
+ok('catalogue : 3 programmes, 18 démarrages rapides, 6 séances express, 7 sets d\'étirements');
 
 const plan = (await one(`select public.athlete_start_program($1, 'hanches_fessiers') p`, [token])).p;
 assert.ok(JSON.stringify(plan).includes('hf_s1_a'), 'le jour 1 est la séance « Fessiers : les bases »');

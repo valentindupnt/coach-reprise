@@ -1,5 +1,7 @@
-"""Après relecture : génère supabase/content-v5-validation.sql à partir du tableur rempli.
-   python3 scripts/build-validation.py chemin/vers/relecture-bloc2.xlsx
+"""Après relecture : génère le SQL de validation à partir du tableur rempli.
+   python3 scripts/build-validation.py chemin/vers/relecture-bloc2.xlsx       -> supabase/content-v5-validation.sql
+   python3 scripts/build-validation.py chemin/vers/relecture-etirements.xlsx  -> supabase/content-etirements-validation.sql
+   (le tableur des étirements est reconnu à son onglet « Sets guidés »)
 - Exercice marqué « oui » : validé (approved = true).
 - Entraînement marqué « oui » : validé seulement si tous ses exercices sont validés (dans le tableur ou déjà en base).
 - Programme marqué « oui » : validé seulement si tous ses entraînements le sont.
@@ -23,16 +25,18 @@ def answers(ws, col):
     return out
 
 
-ex_ok = answers(wb['Exercices'], 3)
-tr_ok = answers(wb['Entraînements'], 3)
-ws = wb['Programmes']
+etirements = 'Sets guidés' in wb.sheetnames
+ex_ok = answers(wb['Nouveaux étirements' if etirements else 'Exercices'], 3)
+tr_ok = answers(wb['Sets guidés' if etirements else 'Entraînements'], 3)
 pr_ok = {}
-for row in ws.iter_rows(values_only=True):
-    if row[0] and str(row[1] or '').strip().lower() == 'oui' and not isinstance(row[1], int):
-        pr_ok[row[0]] = True
+if 'Programmes' in wb.sheetnames:
+    for row in wb['Programmes'].iter_rows(values_only=True):
+        if row[0] and str(row[1] or '').strip().lower() == 'oui' and not isinstance(row[1], int):
+            pr_ok[row[0]] = True
 
 q = lambda s: "'" + s.replace("'", "''") + "'"
-lines = ['-- Validation du contenu V5 (bloc 2), générée par scripts/build-validation.py depuis ' + src.name,
+what = 'du bloc Étirements (FLEXO)' if etirements else 'du contenu V5 (bloc 2)'
+lines = [f'-- Validation {what}, générée par scripts/build-validation.py depuis ' + src.name,
          '-- À lancer APRÈS content-v5.sql. Relançable.', '']
 if ex_ok:
     lines.append('update public.exercises set approved = true where id in (' + ', '.join(q(i) for i in sorted(ex_ok)) + ');')
@@ -52,6 +56,6 @@ lines += ['', '-- Ce qui reste à valider après ce script :',
           "select 'exercices' quoi, count(*) from public.exercises where not approved",
           "union all select 'entraînements', count(*) from public.trainings where not approved",
           "union all select 'programmes', count(*) from public.programs where not approved;"]
-out = ROOT / 'supabase/content-v5-validation.sql'
+out = ROOT / ('supabase/content-etirements-validation.sql' if etirements else 'supabase/content-v5-validation.sql')
 out.write_text('\n'.join(lines) + '\n')
 print(f'{out} : {len(ex_ok)} exercices, {len(tr_ok)} entraînements, {len(ids)} programmes marqués « oui »')
