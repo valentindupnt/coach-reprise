@@ -208,3 +208,9 @@ table.history th { font-weight: 700; color: var(--muted); font-size: 13px; borde
   line-height: 1.1;
   color: var(--sage-ink);
 }
+
+/* Bloc Étirements : lecteur de set */
+.stretch-full { display: flex; flex-direction: column; gap: 16px; }
+.stretch-bar { height: 6px; border-radius: 999px; background: var(--sand-strong); overflow: hidden; }
+.stretch-bar span { display: block; height: 100%; background: var(--sage-strong); transition: width 0.3s linear; }
+.stretch-side { text-align: center; font-weight: 700; font-size: 20px; color: var(--sage-strong); }

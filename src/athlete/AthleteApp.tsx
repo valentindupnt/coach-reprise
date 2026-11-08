@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import Player, { type SessionResult } from './Player';
 import LibraryBrowser from '../components/LibraryBrowser';
+import Stretches from './Stretches';
 import Feedback, { type FeedbackValue } from './Feedback';
 import { FrozenScreen, SafetyCard } from './Safety';
 import {
@@ -39,7 +40,7 @@ import {
   programWeek,
 } from '../lib/plan';
 
-type Tab = 'today' | 'week' | 'library' | 'progress';
+type Tab = 'today' | 'week' | 'library' | 'stretch' | 'progress';
 type Screen =
   | { name: 'tabs' }
   | { name: 'player'; session: ProgramSessionKey; resume?: LiveSession }
@@ -628,6 +629,8 @@ export default function AthleteApp({ token }: { token: string }) {
           </>
         )}
 
+        {tab === 'stretch' && <Stretches token={token} />}
+
         {tab === 'library' && (
           <>
             <div>
@@ -739,6 +742,7 @@ export default function AthleteApp({ token }: { token: string }) {
         <button aria-current={tab === 'today' ? 'page' : undefined} onClick={() => setTab('today')}>Aujourd'hui</button>
         <button aria-current={tab === 'week' ? 'page' : undefined} onClick={() => setTab('week')}>Séances</button>
         <button aria-current={tab === 'library' ? 'page' : undefined} onClick={() => setTab('library')}>Exercices</button>
+        <button aria-current={tab === 'stretch' ? 'page' : undefined} onClick={() => setTab('stretch')}>Étirements</button>
         <button aria-current={tab === 'progress' ? 'page' : undefined} onClick={() => setTab('progress')}>Progrès</button>
       </nav>
     </>
