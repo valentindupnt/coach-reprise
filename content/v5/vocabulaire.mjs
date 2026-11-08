@@ -112,7 +112,31 @@ export const SOURCES = {
     label: 'Tudor-Locke et al., 2018, cadence de marche et intensité (British Journal of Sports Medicine)',
     url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6029645',
   },
+  // FLEXO, bloc Étirements : moment, mode et durée de maintien
+  nhs_apres_effort: {
+    label: 'NHS, How to stretch after exercising (étirements de 15 à 20 secondes après la séance)',
+    url: 'https://www.nhs.uk/live-well/exercise/how-to-stretch-after-exercising',
+  },
+  nhs_echauffement: {
+    label: 'NHS, How to warm up before exercising (mouvements dynamiques, pas d\'étirements statiques)',
+    url: 'https://www.nhs.uk/content-widgets/live-well/exercise/how-to-warm-up-before-exercising',
+  },
+  behm_2016: {
+    label: 'Behm et al., 2016, Acute effects of muscle stretching on physical performance, range of motion, and injury incidence (Applied Physiology, Nutrition, and Metabolism)',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/26642915/',
+  },
+  acsm_souplesse: {
+    label: 'ACSM, Stretching and flexibility guidelines update (10 à 30 secondes par étirement, 2 à 3 jours par semaine au moins)',
+    url: 'https://www.acsm.org/blog-detail/acsm-certified-blog/2021/03/18/stretching-and-flexibility-guidelines-update',
+  },
 };
+
+// FLEXO, bloc Étirements : vocabulaires des étiquettes (contrôlés par supabase/schema.sql)
+export const MOMENTS = ['avant', 'apres', 'hors_seance'];
+export const SPORTS = ['velo', 'course', 'muscu', 'tous'];
+export const STRETCH_MODES = ['statique', 'dynamique', 'activation'];
+// Repères de construction des sets guidés d'étirements
+export const SET_REFS = ['nhs_echauffement', 'nhs_apres_effort', 'behm_2016', 'acsm_souplesse'];
 
 // Repères qui ont servi à construire les entraînements et les programmes, par type d'entraînement.
 // Les sources de chaque exercice s'ajoutent à celles-ci dans le tableur de relecture.
@@ -121,6 +145,7 @@ export const TRAINING_REFS = {
   rapide: ['who_2020', 'acsm_2026'],
   decouverte: ['who_2020'],
   express: ['who_2020'],
+  etirement: SET_REFS,
 };
 // Sources des méthodes de calcul (calories, pas), reprises dans l'onglet Sources du tableur.
 export const METHOD_REFS = {

@@ -3,12 +3,13 @@
 //   - content/v5/relecture.json  : données du tableur de relecture (scripts/build-relecture.py)
 // Vérifie au passage tout le contenu : vocabulaires, muscles, MET, sources, niveaux, durées.
 //   node scripts/build-content.mjs [--fedb chemin/vers/free-exercise-db]
-import { writeFileSync, existsSync } from 'node:fs';
-import { MUSCLES, MET, SOURCES, FEDB_URL, AREAS, GOALS, DISCIPLINES, KINDS, EQUIPMENT, TRAINING_REFS, METHOD_REFS } from '../content/v5/vocabulaire.mjs';
+import { writeFileSync, existsSync, readFileSync } from 'node:fs';
+import { MUSCLES, MET, SOURCES, FEDB_URL, AREAS, GOALS, DISCIPLINES, KINDS, EQUIPMENT, TRAINING_REFS, METHOD_REFS, MOMENTS, SPORTS, STRETCH_MODES } from '../content/v5/vocabulaire.mjs';
 import { EXISTANTS } from '../content/v5/exercices-existants.mjs';
 import { RENFO } from '../content/v5/exercices-renfo.mjs';
 import { CARDIO } from '../content/v5/exercices-cardio.mjs';
 import { YOGA } from '../content/v5/exercices-yoga.mjs';
+import { ETIREMENTS, TAGS } from '../content/v5/etirements.mjs';
 import { VIDEOS } from '../content/v5/videos.mjs';
 import { TRAININGS, PROGRAMS } from '../content/v5/entrainements.mjs';
 import { EXISTING_LEVELS, EXISTING_NAMES } from '../content/v5/niveaux-existants.mjs';
@@ -20,11 +21,15 @@ const checkFedb = existsSync(`${fedbDir}/exercises`);
 
 const errors = [];
 const err = (m) => errors.push(m);
-const NEW = [...RENFO, ...CARDIO, ...YOGA];
+const NEW = [...RENFO, ...CARDIO, ...YOGA, ...ETIREMENTS];
 
 // Identifiants des 43 exercices déjà en base (seed.sql)
 const SEEDED = new Set(EXISTANTS.map((e) => e.id));
 if (SEEDED.size !== 43) err(`attendu 43 exercices existants, trouvé ${SEEDED.size}`);
+
+// Schémas : identifiants des silhouettes dessinées dans src/components/Figure.tsx (clé = identifiant d'exercice)
+const POSES = new Set([...readFileSync(`${root}src/components/Figure.tsx`, 'utf8').matchAll(/^  ([a-z0-9_]+): \[/gm)].map((m) => m[1]));
+const poseOf = (id) => (POSES.has(id) ? id : null);
 
 // ------------------------------------------------------------------ sources
 function resolveSource(s, id) {
@@ -87,6 +92,29 @@ for (const e of NEW) {
     err(`${id} : exercice à sauts sans variante sans saut de la même famille`);
 }
 
+// ------------------------------------------------------------------ étiquettes des étirements (FLEXO)
+for (const [id, t] of Object.entries(TAGS)) {
+  if (!ids.has(id)) { err(`étiquettes : exercice inconnu ${id}`); continue; }
+  if (!t.moments.length || t.moments.some((m) => !MOMENTS.includes(m))) err(`${id} : moment ${t.moments}`);
+  if (new Set(t.moments).size !== t.moments.length) err(`${id} : moment en double`);
+  if (!t.sports.length || t.sports.some((x) => !SPORTS.includes(x))) err(`${id} : sport ${t.sports}`);
+  if (t.sports.includes('tous') && t.sports.length > 1) err(`${id} : « tous » ne se mélange pas à un sport`);
+  if (!STRETCH_MODES.includes(t.mode)) err(`${id} : mode ${t.mode}`);
+  if (t.mode === 'statique') {
+    if (!(t.hold >= 5 && t.hold <= 120)) err(`${id} : étirement statique sans durée de maintien valable (${t.hold})`);
+    if (t.moments.length === 1 && t.moments[0] === 'avant') err(`${id} : étirement statique étiqueté « avant » seulement`);
+  } else {
+    if (t.hold !== null) err(`${id} : durée de maintien sur un exercice non statique`);
+  }
+  const ex = [...NEW, ...EXISTANTS].find((x) => x.id === id);
+  if (!VIDEOS[id]) err(`${id} : pas de lien vidéo`);
+  if (!ex.src?.length) err(`${id} : aucune source`);
+  // le maintien ne dépasse pas la durée du niveau le plus long
+  if (t.mode === 'statique' && ex.levels && Math.max(...ex.levels.map(([, v]) => v)) < t.hold) err(`${id} : maintien de ${t.hold} s plus long que tous ses niveaux`);
+}
+// tout nouvel étirement ou toute mobilité nouvelle porte ses étiquettes
+for (const e of NEW) if (['etirement', 'mobilite'].includes(e.kind) && !TAGS[e.id]) err(`${e.id} : étirement ou mobilité sans étiquettes`);
+
 // Zones historiques (colonne zones) déduites des muscles principaux
 const zonesOf = (e) => [...new Set(e.primary.map((m) => MUSCLES[m].zone))];
 
@@ -94,6 +122,14 @@ const zonesOf = (e) => [...new Set(e.primary.map((m) => MUSCLES[m].zone))];
 const q = (s) => (s === null || s === undefined ? 'null' : `'${String(s).replace(/'/g, "''")}'`);
 const arr = (a) => (a.length ? `array[${a.map(q).join(', ')}]::text[]` : `'{}'::text[]`);
 const js = (o) => `${q(JSON.stringify(o))}::jsonb`;
+// Étiquettes (FLEXO) et schéma d'un exercice déjà en base : lignes à placer dans un update
+function tagSql(id) {
+  const t = TAGS[id];
+  const lines = [];
+  if (t) lines.push(`  moments = ${arr(t.moments)}, sports = ${arr(t.sports)}, stretch_mode = ${q(t.mode)}, hold_seconds = ${t.hold ?? 'null'},`);
+  if (poseOf(id)) lines.push(`  illustration = coalesce(illustration, ${q(poseOf(id))}),`);
+  return lines.length ? lines.join('\n') + '\n' : '';
+}
 
 const exByld = new Map();
 const out = [];
@@ -115,7 +151,8 @@ out.push(`-- ===================================================================
 out.push('-- ---------------------------------------------------------------- 1. Nouveaux exercices');
 const cols = ['id', 'name', 'kind', 'illustration', 'video_url', 'cues', 'caution', 'levels', 'zones', 'equipment',
   'intensity', 'family', 'pattern', 'max_sets', 'approved', 'source', 'muscles_primary', 'muscles_secondary',
-  'areas', 'goals', 'discipline', 'impact', 'mode', 'default_value', 'met', 'met_code', 'tutorial'];
+  'areas', 'goals', 'discipline', 'impact', 'mode', 'default_value', 'met', 'met_code', 'tutorial',
+  'moments', 'sports', 'stretch_mode', 'hold_seconds'];
 const rows = [];
 for (const e of NEW) {
   const sources = e.src.map((s) => resolveSource(s, e.id));
@@ -123,10 +160,11 @@ for (const e of NEW) {
   const tutorial = { steps: e.tutorial_steps ?? e.cues, breathing: e.breathing, mistakes: e.mistakes };
   const video = VIDEOS[e.id]?.url ?? null;
   exByld.set(e.id, { ...e, levelsJson: levels });
-  rows.push(`(${[q(e.id), q(e.name), q(e.kind), 'null', q(video), arr(e.cues), q(e.caution ?? null), js(levels),
+  rows.push(`(${[q(e.id), q(e.name), q(e.kind), q(poseOf(e.id)), q(video), arr(e.cues), q(e.caution ?? null), js(levels),
     arr(zonesOf(e)), arr(e.equipment), e.intensity, q(e.family), q(e.pattern), e.max_sets, 'false',
     q(sourceText(sources)), arr(e.primary), arr(e.secondary), arr(e.areas), arr(e.goals), q(e.discipline),
-    e.impact ? 'true' : 'false', q(e.mode), e.value, MET[e.met].met.toFixed(1), q(e.met), js(tutorial)].join(', ')})`);
+    e.impact ? 'true' : 'false', q(e.mode), e.value, MET[e.met].met.toFixed(1), q(e.met), js(tutorial),
+    arr(TAGS[e.id]?.moments ?? []), arr(TAGS[e.id]?.sports ?? []), q(TAGS[e.id]?.mode ?? null), TAGS[e.id]?.hold ?? 'null'].join(', ')})`);
 }
 out.push(`insert into public.exercises (${cols.join(', ')}) values\n${rows.join(',\n')}
 on conflict (id) do update set
@@ -141,7 +179,7 @@ for (const e of EXISTANTS) {
   const video = VIDEOS[e.id]?.url ?? null;
   exByld.set(e.id, { ...e, existing: true });
   out.push(`update public.exercises set
-  muscles_primary = ${arr(e.primary)}, muscles_secondary = ${arr(e.secondary)},
+${tagSql(e.id)}  muscles_primary = ${arr(e.primary)}, muscles_secondary = ${arr(e.secondary)},
   areas = ${arr(e.areas)}, goals = ${arr(e.goals)}, discipline = ${q(e.discipline)}, impact = false,
   equipment = ${arr(e.equipment)}, mode = ${q(e.mode)}, default_value = ${e.value},
   met = ${MET[e.met].met.toFixed(1)}, met_code = ${q(e.met)},
@@ -149,6 +187,16 @@ for (const e of EXISTANTS) {
   video_url = coalesce(video_url, ${q(video)})${extra ? `,
   source = case when coalesce(source, '') like ${q('%' + sources[0].url + '%')} then source else concat_ws(' ; ', source, ${q(extra)}) end` : ''}
 where id = ${q(e.id)};`);
+}
+out.push('');
+
+// Étiquettes FLEXO et schéma des exercices du bloc 2, y compris ceux déjà validés : seules les 4 colonnes
+// d'étiquettes et un schéma encore vide changent ; nom, consignes, niveaux et validation restent intacts.
+out.push('-- ---------------------------------------------------------------- 2 bis. Étiquettes des étirements (FLEXO)');
+for (const e of NEW) {
+  const t = TAGS[e.id];
+  if (!t) continue;
+  out.push(`update public.exercises set moments = ${arr(t.moments)}, sports = ${arr(t.sports)}, stretch_mode = ${q(t.mode)}, hold_seconds = ${t.hold ?? 'null'}${poseOf(e.id) ? `, illustration = coalesce(illustration, ${q(poseOf(e.id))})` : ''} where id = ${q(e.id)};`);
 }
 out.push('');
 
@@ -181,7 +229,7 @@ function stats(t) {
     }
   }
   const rest = Math.max(execs - 1, 0) * t.rest;
-  return { minutes: Math.ceil((active + rest) / 60), metMinutes: Math.round((metSec / 60 + rest / 60) * 10) / 10,
+  return { minutes: Math.ceil((active + rest) / 60), seconds: active + rest, metMinutes: Math.round((metSec / 60 + rest / 60) * 10) / 10,
            equipment: [...equip], impact };
 }
 
@@ -191,7 +239,7 @@ for (const t of TRAININGS) {
   if (!/^[a-z0-9_]{2,60}$/.test(t.id)) err(`${t.id} : identifiant d'entraînement invalide`);
   if (tids.has(t.id)) err(`${t.id} : entraînement en double`);
   tids.add(t.id);
-  if (!['programme', 'rapide', 'decouverte', 'express'].includes(t.kind)) err(`${t.id} : type ${t.kind}`);
+  if (!['programme', 'rapide', 'decouverte', 'express', 'etirement'].includes(t.kind)) err(`${t.id} : type ${t.kind}`);
   if (!(t.level >= 1 && t.level <= 3)) err(`${t.id} : niveau`);
   if (!(t.rounds >= 1 && t.rounds <= 6)) err(`${t.id} : tours`);
   for (const a of t.areas) if (!AREAS.includes(a)) err(`${t.id} : zone ${a}`);
@@ -210,6 +258,34 @@ for (const t of TRAININGS) {
   const s = stats(t);
   trainingStats[t.id] = s;
   if (t.target && Math.abs(s.minutes - t.target) > 2) err(`${t.id} : ${s.minutes} min au lieu de ${t.target}`);
+  if (t.kind === 'etirement') {
+    // un set se joue d'un trait : 10 minutes, de 9 min 20 à 10 min pile, sans matériel, sans saut
+    if (s.minutes !== 10 || s.seconds < 560) err(`${t.id} : set de ${s.seconds} s au lieu de 10 minutes (entre 560 et 600 s)`);
+    if (s.equipment.length) err(`${t.id} : set avec matériel (${s.equipment})`);
+    if (s.impact) err(`${t.id} : set avec sauts`);
+    if (t.rounds !== 1 || t.warmup.length || t.cooldown.length) err(`${t.id} : un set tient en un seul tour de corps de séance`);
+    const items = t.main.map((it) => ({ id: it.ex, tag: TAGS[it.ex] }));
+    for (const it of items) if (!it.tag) err(`${t.id} : ${it.id} sans étiquettes`);
+    for (const it of items) if (it.tag && !POSES.has(it.id)) err(`${t.id} : ${it.id} sans schéma (Figure.tsx)`);
+    const tagged = items.filter((it) => it.tag);
+    if (t.id === 'etir_echauffement') {
+      // avant l'effort : dynamique et activation seulement, jamais un étirement long
+      for (const it of tagged) {
+        if (!it.tag.moments.includes('avant')) err(`${t.id} : ${it.id} n'est pas étiqueté « avant »`);
+        if (it.tag.mode === 'statique') err(`${t.id} : ${it.id} est un étirement statique`);
+      }
+    } else {
+      const stat = tagged.filter((it) => it.tag.mode === 'statique').length;
+      if (stat < tagged.length * 0.6) err(`${t.id} : seulement ${stat} étirements statiques sur ${tagged.length}`);
+      if (tagged.some((it) => it.tag.moments.length === 1 && it.tag.moments[0] === 'avant')) err(`${t.id} : contient un exercice réservé à l'avant-effort`);
+    }
+    const sport = { etir_apres_velo: 'velo', etir_apres_course: 'course', etir_apres_muscu: 'muscu' }[t.id];
+    if (sport) {
+      for (const it of tagged) if (!it.tag.moments.includes('apres')) err(`${t.id} : ${it.id} n'est pas étiqueté « après »`);
+      const ok = tagged.filter((it) => it.tag.sports.includes(sport) || it.tag.sports.includes('tous')).length;
+      if (ok < tagged.length * 0.8) err(`${t.id} : seulement ${ok} exercices sur ${tagged.length} associés au sport « ${sport} »`);
+    }
+  }
   if (t.kind === 'express') {
     if (s.minutes < 3 || s.minutes > 5) err(`${t.id} : séance express de ${s.minutes} min`);
     if (s.equipment.length) err(`${t.id} : séance express avec matériel`);
@@ -308,9 +384,18 @@ const relecture = {
     consignes: e.cues ? e.cues.join('\n') : '(inchangées)', precaution: e.caution ?? '',
     respiration: e.breathing, erreurs: e.mistakes.join('\n'),
     sources: e.src.map((s) => resolveSource(s, e.id)), video: VIDEOS[e.id] ?? null,
+    lot: ETIREMENTS.some((x) => x.id === e.id) ? 'etirements' : 'bloc2',
+    etiquettes: TAGS[e.id] ?? null, schema: POSES.has(e.id),
   })),
   entrainements: TRAININGS.map((t) => ({
     id: t.id, titre: t.title, type: t.kind, niveau: t.level, zones: t.areas.join(', '), tours: t.rounds, pause: t.rest,
+    postures: t.kind === 'etirement' ? t.main.map((it) => {
+      const ex = exByld.get(it.ex);
+      const lv = it.level ?? t.level;
+      const levels = ex.levelsJson ?? [];
+      return { id: it.ex, nom: ex.name, niveau: lv, consigne: levels[Math.min(lv, levels.length) - 1]?.label ?? '',
+               secondes: itemSeconds(ex, lv, it.value), etiquettes: TAGS[it.ex] ?? null };
+    }) : null,
     description: t.description ?? '', ...trainingStats[t.id],
     reperes: refsOf(TRAINING_REFS[t.kind]),
     sources_exercices: uniq(trainingExIds(t).flatMap((id) => exSources.get(id) ?? [])),

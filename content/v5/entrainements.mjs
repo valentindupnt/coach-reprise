@@ -8,6 +8,8 @@
 // Tous les programmes, démarrages rapides et séances express sont SANS matériel et SANS saut,
 // sauf les démarrages rapides avancés « corps entier » et « jambes » (sauts, remplacés si besoin).
 
+import { SETS } from './etirements.mjs';
+
 function parse(s) {
   const m = /^([a-z0-9_]+)(?:@(\d+))?(?:=(\d+))?(?:\*(\d+))?$/.exec(s);
   if (!m) throw new Error(`entrée mal formée : ${s}`);
@@ -324,4 +326,7 @@ const EXPRESS = [
       main: ['coherence_cardiaque@1'] }),
 ];
 
-export const TRAININGS = [...COMMUNS, ...REMISE, ...FESSIERS, ...GAINAGE, ...RAPIDES, ...DECOUVERTE, ...EXPRESS];
+// FLEXO, bloc Étirements : les sept sets guidés de 10 minutes (content/v5/etirements.mjs)
+const ETIREMENTS = SETS.map((s) => T(s));
+
+export const TRAININGS = [...COMMUNS, ...REMISE, ...FESSIERS, ...GAINAGE, ...RAPIDES, ...DECOUVERTE, ...EXPRESS, ...ETIREMENTS];

@@ -149,4 +149,13 @@ export const VIDEOS = {
   v_up: { url: "https://www.youtube.com/watch?v=D51oisjL-aE", title: "Comment faire les V-ups", lang: 'fr' },
   wall_slides: { url: "https://www.youtube.com/watch?v=K8TMa3-E2Is", title: "Wall slide exercice (Nxt Generation Physio)", lang: 'fr' },
   ytw: { url: "https://www.youtube.com/watch?v=G0nPXt_TgRg", title: "Posture : l'exercice des lettres I, Y, T, W, A", lang: 'fr' },
+  // FLEXO, bloc Étirements : liens trouvés sur YouTube, à valider par Valentin (non visionnés)
+  avant_bras_poignets: { url: "https://www.youtube.com/watch?v=88iGQTqBGMc", title: "Comment étirer les avant-bras ?", lang: 'fr' },
+  balancier_lateral: { url: "https://www.youtube.com/watch?v=NpumDVrMrrQ", title: "Balancement avec jambe tendue sur le côté", lang: 'fr' },
+  cercles_chevilles: { url: "https://www.youtube.com/watch?v=lxwOle4nLYE", title: "Échauffement des chevilles avant la course à pied", lang: 'fr' },
+  cou_menton_poitrine: { url: "https://www.youtube.com/watch?v=ZuDFjDkdPnA", title: "Étirement du cou et de la nuque", lang: 'fr' },
+  mollets_assis: { url: "https://www.youtube.com/watch?v=NErP0oA_IKg", title: "Mollets : mollets assis jambes tendues", lang: 'fr' },
+  pecs_coudes_arriere: { url: "https://www.youtube.com/watch?v=j-Q81CEKyFA", title: "Étirement des pectoraux", lang: 'fr' },
+  rouler_epaules: { url: "https://www.youtube.com/watch?v=RIdrCbPpMO0", title: "Échauffement des épaules en rond", lang: 'fr' },
+  soleaire: { url: "https://www.youtube.com/watch?v=C2156l6B9Ro", title: "Comment faire l'étirement des soléaires", lang: 'fr' },
 };

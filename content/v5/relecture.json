@@ -34,7 +34,19 @@
     "url": "https://www.youtube.com/watch?v=EMfbjJWIllU",
     "title": "Comment faire des squats de la bonne façon au poids du corps ou avec charge",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "avant"
+    ],
+    "sports": [
+     "tous"
+    ],
+    "mode": "activation",
+    "hold": null
+   },
+   "schema": true
   },
   {
    "id": "squat_sumo",
@@ -66,7 +78,10 @@
     "url": "https://www.youtube.com/watch?v=xnvkQeZ_XaE",
     "title": "Comment faire un squat sumo",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "chaise_mur",
@@ -98,7 +113,10 @@
     "url": "https://www.youtube.com/watch?v=-NuqBMIgrcc",
     "title": "La chaise murale : endurance et cuisses sans matériel (tuto rapide)",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "fente_avant",
@@ -134,7 +152,10 @@
     "url": "https://www.youtube.com/watch?v=HH9FQpjXw7A",
     "title": "Comment faire les fentes : technique et erreurs à éviter",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "fente_arriere",
@@ -166,7 +187,10 @@
     "url": "https://www.youtube.com/watch?v=Zz8DrsAUIZo",
     "title": "Comment faire une fente arrière correctement ?",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "fente_laterale",
@@ -198,7 +222,10 @@
     "url": "https://www.youtube.com/watch?v=3EvkUQHvFkI",
     "title": "Musculation des cuisses : fentes latérales",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "fente_bulgare",
@@ -230,7 +257,10 @@
     "url": "https://www.youtube.com/watch?v=M1xhRlf8poM",
     "title": "Fentes bulgares sur chaise : exécution, technique, conseils et progression",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "pont_unilateral",
@@ -262,7 +292,10 @@
     "url": "https://www.youtube.com/watch?v=43qFZebHGj8",
     "title": "Pont fessier à une jambe : single leg glute bridge",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "hip_thrust",
@@ -294,7 +327,10 @@
     "url": "https://www.youtube.com/watch?v=34xR5kn02xY",
     "title": "Tuto : muscler les fessiers avec le hip thrust (Decathlon)",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "ruade",
@@ -326,7 +362,10 @@
     "url": "https://www.youtube.com/watch?v=vElEKAdulIE",
     "title": "How To: Donkey Kicks for Glute Strength",
     "lang": "en"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "bouche_incendie",
@@ -358,7 +397,10 @@
     "url": "https://www.youtube.com/watch?v=6yoip-ClM34",
     "title": "Fire hydrants : exécution, technique, conseils et progression",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "charniere_hanche",
@@ -390,7 +432,10 @@
     "url": "https://www.youtube.com/watch?v=9ylRcYLSz40",
     "title": "How to Do a Good Morning Exercise (Perfect Hip Hinge Form for Beginners)",
     "lang": "en"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "souleve_roumain",
@@ -426,7 +471,10 @@
     "url": "https://www.youtube.com/watch?v=hyBx3QViCw8",
     "title": "Deadlift roumain avec haltères : exécution, technique, conseils et progression",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "squat_goblet",
@@ -458,7 +506,10 @@
     "url": "https://www.youtube.com/watch?v=QNPVhVsJS2A",
     "title": "Goblet squat : exécution, technique, conseils et progression",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "releve_mollets_unipodal",
@@ -490,7 +541,10 @@
     "url": "https://www.youtube.com/watch?v=jGUplusFlEY",
     "title": "Mollets : mollets debout à une jambe",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "adducteurs_couche",
@@ -526,7 +580,10 @@
     "url": "https://www.youtube.com/watch?v=3EiBfcTLZDE",
     "title": "Exercice intérieur des cuisses (adducteurs) : levé de jambe allongé",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "pont_marche",
@@ -558,7 +615,10 @@
     "url": "https://www.youtube.com/watch?v=8-invS7-Ugo",
     "title": "How to Do a Glute Bridge March",
     "lang": "en"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "squat_unipodal_chaise",
@@ -594,7 +654,10 @@
     "url": "https://www.youtube.com/watch?v=STa-MCOn3xM",
     "title": "Pistol squat, squat à 1 jambe (alternatives et progression)",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "pompe_mur",
@@ -630,7 +693,10 @@
     "url": "https://www.youtube.com/watch?v=emhF1efZ-38",
     "title": "Pompes contre le mur pour débutants",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "pompe_inclinee",
@@ -662,7 +728,10 @@
     "url": "https://www.youtube.com/watch?v=pH9hQDirfog",
     "title": "Pompes inclinées",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "pompe_genoux",
@@ -694,7 +763,10 @@
     "url": "https://www.youtube.com/watch?v=SWUw2epT8P4",
     "title": "Pompe sur les genoux : démonstration, explication et conseils",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "pompe",
@@ -726,7 +798,10 @@
     "url": "https://www.youtube.com/watch?v=V9TUK5IdRrY",
     "title": "Comment bien faire les pompes (évitez les erreurs courantes et progressez)",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "pompe_serree",
@@ -758,7 +833,10 @@
     "url": "https://www.youtube.com/watch?v=FvnPL4cYUQk",
     "title": "Les pompes prise serrée pour les triceps (pour qui, comment, variantes)",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "pompe_pike",
@@ -790,7 +868,10 @@
     "url": "https://www.youtube.com/watch?v=NrkGYnsgbOA",
     "title": "Pike push up (niveau 1)",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "dips_chaise",
@@ -822,7 +903,10 @@
     "url": "https://www.youtube.com/watch?v=hIB3YWZk834",
     "title": "Dips sur chaise : exécution, technique, conseils et progression",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "rowing_haltere",
@@ -854,7 +938,10 @@
     "url": "https://www.youtube.com/watch?v=VLzDhlGdpS0",
     "title": "Musculation du dos : le rowing haltère à 1 bras",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "developpe_epaules",
@@ -886,7 +973,10 @@
     "url": "https://www.youtube.com/watch?v=CE9KiCPFw0E",
     "title": "Technique du développé épaules aux haltères (assis ou debout)",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "curl_marteau",
@@ -918,7 +1008,10 @@
     "url": "https://www.youtube.com/watch?v=CsZSbMuqDYw",
     "title": "Comment faire un curl marteau : technique correcte pour les biceps",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "extension_triceps_haltere",
@@ -950,7 +1043,10 @@
     "url": "https://www.youtube.com/watch?v=Reitru3_Srk",
     "title": "Extension triceps avec haltère : démonstration, muscles, variantes, conseils et progression",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "oiseau_haltere",
@@ -982,7 +1078,10 @@
     "url": "https://www.youtube.com/watch?v=mzbY2Vd0Mts",
     "title": "Oiseau buste penché avec haltères",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "developpe_sol",
@@ -1014,7 +1113,10 @@
     "url": "https://www.youtube.com/watch?v=WVfLGkuhHHU",
     "title": "Développé couché au sol : un développé couché pas comme les autres",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "tirage_vertical_elastique",
@@ -1046,7 +1148,10 @@
     "url": "https://www.youtube.com/watch?v=8rSNwrdPgN4",
     "title": "Tirage vertical à l'élastique",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "developpe_elastique",
@@ -1078,7 +1183,10 @@
     "url": "https://www.youtube.com/watch?v=Y28EDAb2ASY",
     "title": "Développé militaire élastique : exercice debout pour les épaules",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "superman",
@@ -1110,7 +1218,10 @@
     "url": "https://www.youtube.com/watch?v=O-DOcsnwAQY",
     "title": "Comment se muscler les lombaires et le bas du dos : superman",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "ytw",
@@ -1142,7 +1253,10 @@
     "url": "https://www.youtube.com/watch?v=G0nPXt_TgRg",
     "title": "Posture : l'exercice des lettres I, Y, T, W, A",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "rowing_inverse_table",
@@ -1174,7 +1288,10 @@
     "url": "https://www.youtube.com/watch?v=lcsEJQAbdiw",
     "title": "Rowing inversé sous une table : exercice pour renforcer le dos",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "crunch",
@@ -1206,7 +1323,10 @@
     "url": "https://www.youtube.com/watch?v=LEb7Juw9tMo",
     "title": "Comment bien faire les crunchs pour les abdos",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "crunch_inverse",
@@ -1238,7 +1358,10 @@
     "url": "https://www.youtube.com/watch?v=0bq05pA3bkA",
     "title": "Musculation des abdominaux : crunch inversé",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "crunch_velo",
@@ -1274,7 +1397,10 @@
     "url": "https://www.youtube.com/watch?v=rsX2MJPzXrE",
     "title": "Crunch cycliste : un exercice pour la taille",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "releve_jambes",
@@ -1306,7 +1432,10 @@
     "url": "https://www.youtube.com/watch?v=RNgWIsjj5U8",
     "title": "Exercice abdos : relevé de jambes allongé",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "ciseaux",
@@ -1342,7 +1471,10 @@
     "url": "https://www.youtube.com/watch?v=a8Y_-YCnaUg",
     "title": "L'exercice des ciseaux pour renforcer ses abdominaux",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "toucher_talons",
@@ -1374,7 +1506,10 @@
     "url": "https://www.youtube.com/watch?v=yocM348hYfE",
     "title": "Exercice fitness : touché de cheville",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "rotation_russe",
@@ -1406,7 +1541,10 @@
     "url": "https://www.youtube.com/watch?v=RdUUAlWz1Qk",
     "title": "Russian twist : exercice de gainage des obliques",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "hollow",
@@ -1438,7 +1576,10 @@
     "url": "https://www.youtube.com/watch?v=G5i11cyxSL4",
     "title": "Hollow body hold : muscles, variantes, conseils et progression",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "planche_epaules",
@@ -1470,7 +1611,10 @@
     "url": "https://www.youtube.com/watch?v=S1FlmYy31jQ",
     "title": "Planche tape épaule (et progression)",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "planche_dynamique",
@@ -1502,7 +1646,10 @@
     "url": "https://www.youtube.com/watch?v=9rQvKBRBHhg",
     "title": "Exercice fitness : gainage up and down",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "planche_inverse",
@@ -1534,7 +1681,10 @@
     "url": "https://www.youtube.com/watch?v=d3B2ed1qI0o",
     "title": "Planche inversée : 3 fautes à éviter",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "ours_statique",
@@ -1566,7 +1716,10 @@
     "url": "https://www.youtube.com/watch?v=GkTNfd8zFPs",
     "title": "How to Do a Bear Hold",
     "lang": "en"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "planche_laterale_rotation",
@@ -1598,7 +1751,10 @@
     "url": "https://www.youtube.com/watch?v=OXte6nIofiM",
     "title": "Planche latérale avec rotation (Guide Musculation)",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "v_up",
@@ -1630,7 +1786,10 @@
     "url": "https://www.youtube.com/watch?v=D51oisjL-aE",
     "title": "Comment faire les V-ups",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "chenille",
@@ -1662,7 +1821,19 @@
     "url": "https://www.youtube.com/watch?v=zeAm-lP_Ha0",
     "title": "La chenille avec pompe (inchworm with push-up)",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "avant"
+    ],
+    "sports": [
+     "tous"
+    ],
+    "mode": "dynamique",
+    "hold": null
+   },
+   "schema": true
   },
   {
    "id": "marche_ours",
@@ -1694,7 +1865,10 @@
     "url": "https://www.youtube.com/watch?v=D_4Vcp2d9_I",
     "title": "Marche de l'ours : gainage dynamique et mobilité sans matériel",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "marche_genoux_hauts",
@@ -1730,7 +1904,19 @@
     "url": "https://www.youtube.com/watch?v=QilgMPG7OaA",
     "title": "March in Place (HASfit, exercices sans impact)",
     "lang": "en"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "avant"
+    ],
+    "sports": [
+     "tous"
+    ],
+    "mode": "activation",
+    "hold": null
+   },
+   "schema": true
   },
   {
    "id": "step_jacks",
@@ -1762,7 +1948,10 @@
     "url": "https://www.youtube.com/watch?v=doj3IIyhwvs",
     "title": "Jumping jack sans saut",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "boxe_ombre",
@@ -1794,7 +1983,10 @@
     "url": "https://www.youtube.com/watch?v=bQeSUBjOlN8",
     "title": "Apprendre le shadow boxing en 3 minutes",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "burpee_sans_saut",
@@ -1826,7 +2018,10 @@
     "url": "https://www.youtube.com/watch?v=gadl7yD6Img",
     "title": "Burpees sans saut",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "mountain_climbers_lents",
@@ -1858,7 +2053,10 @@
     "url": "https://www.youtube.com/watch?v=rtEJyD8fweo",
     "title": "Mountain climbers lents et contrôlés",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "patineur_sans_saut",
@@ -1890,7 +2088,10 @@
     "url": "https://www.youtube.com/watch?v=2EyH9MN7hYE",
     "title": "How To Do A Curtsy Lunge",
     "lang": "en"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "squat_coup_de_pied",
@@ -1922,7 +2123,10 @@
     "url": "https://www.youtube.com/watch?v=FGjCiK4alq4",
     "title": "Squat with Front Kick (One Minute Exercises)",
     "lang": "en"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "fentes_alternees_rapides",
@@ -1954,7 +2158,10 @@
     "url": "https://www.youtube.com/watch?v=9i4YcNHiKbU",
     "title": "Fentes arrières alternées",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "jumping_jacks",
@@ -1986,7 +2193,10 @@
     "url": "https://www.youtube.com/watch?v=kefNHIKaNkU",
     "title": "Tuto : les jumping jacks, exercice cardio (Decathlon)",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "montees_genoux",
@@ -2018,7 +2228,10 @@
     "url": "https://www.youtube.com/watch?v=RsVbI852C-o",
     "title": "Comment faire des montées de genoux",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "talons_fesses",
@@ -2050,7 +2263,10 @@
     "url": "https://www.youtube.com/watch?v=XFknECYblwQ",
     "title": "Talons-fesses (butt kicks) : exercice cardio simple",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "squat_saute",
@@ -2082,7 +2298,10 @@
     "url": "https://www.youtube.com/watch?v=Swf_f7SHdUI",
     "title": "Squat sauté : muscles, variantes, conseils et progression",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "fente_sautee",
@@ -2114,7 +2333,10 @@
     "url": "https://www.youtube.com/watch?v=4_Sjotzszx4",
     "title": "Fentes sautées : muscles, variantes, conseils et progression",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "patineur",
@@ -2146,7 +2368,10 @@
     "url": "https://www.youtube.com/watch?v=9_jLW6VkU8A",
     "title": "Speed Skaters Exercise (Skater Hops): Proper Form",
     "lang": "en"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "burpee",
@@ -2182,7 +2407,10 @@
     "url": "https://www.youtube.com/watch?v=4YPWd8z090A",
     "title": "Comment faire des burpees (Les Fitness Basics)",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "mountain_climbers",
@@ -2214,7 +2442,10 @@
     "url": "https://www.youtube.com/watch?v=gXv9T1flQhU",
     "title": "Mountain climber : exécution, technique, conseils et progression",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "corde_imaginaire",
@@ -2246,7 +2477,10 @@
     "url": "https://www.youtube.com/watch?v=2Qg1Mt-LVSI",
     "title": "Étape 1 : corde à sauter sans corde",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "saut_etoile",
@@ -2278,7 +2512,10 @@
     "url": "https://www.youtube.com/watch?v=NkbiKuADX_M",
     "title": "Comment faire les star jumps",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "cercles_bras",
@@ -2310,7 +2547,20 @@
     "url": "https://www.youtube.com/watch?v=goaXpTMg3QI",
     "title": "Cercles de bras",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "avant",
+     "hors_seance"
+    ],
+    "sports": [
+     "tous"
+    ],
+    "mode": "dynamique",
+    "hold": null
+   },
+   "schema": true
   },
   {
    "id": "cercles_hanches",
@@ -2342,7 +2592,20 @@
     "url": "https://www.youtube.com/watch?v=VcpoDKlvEkk",
     "title": "Cercles des hanches (échauffement)",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "avant",
+     "hors_seance"
+    ],
+    "sports": [
+     "tous"
+    ],
+    "mode": "dynamique",
+    "hold": null
+   },
+   "schema": true
   },
   {
    "id": "balancier_jambes",
@@ -2374,7 +2637,19 @@
     "url": "https://www.youtube.com/watch?v=_JWHy86izcw",
     "title": "Balancements de jambes avant-arrière (échauffement)",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "avant"
+    ],
+    "sports": [
+     "tous"
+    ],
+    "mode": "dynamique",
+    "hold": null
+   },
+   "schema": true
   },
   {
    "id": "rotations_buste",
@@ -2406,7 +2681,20 @@
     "url": "https://www.youtube.com/watch?v=I4NlqG57l4Q",
     "title": "Rotations du buste",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "avant",
+     "hors_seance"
+    ],
+    "sports": [
+     "tous"
+    ],
+    "mode": "dynamique",
+    "hold": null
+   },
+   "schema": true
   },
   {
    "id": "plus_grand_etirement",
@@ -2438,7 +2726,19 @@
     "url": "https://www.youtube.com/watch?v=_vfHhERqpbI",
     "title": "World's Greatest Stretch (le meilleur étirement du monde)",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "avant"
+    ],
+    "sports": [
+     "tous"
+    ],
+    "mode": "dynamique",
+    "hold": null
+   },
+   "schema": true
   },
   {
    "id": "montagne",
@@ -2470,7 +2770,19 @@
     "url": "https://www.youtube.com/watch?v=ve_cJNhiQVA",
     "title": "La posture de la montagne, Tadasana",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "hors_seance"
+    ],
+    "sports": [
+     "tous"
+    ],
+    "mode": "statique",
+    "hold": 20
+   },
+   "schema": false
   },
   {
    "id": "salutation_soleil",
@@ -2502,7 +2814,20 @@
     "url": "https://www.youtube.com/watch?v=sFprTU_r38o",
     "title": "Salutation au soleil pour débutants : 3 progressions",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "avant",
+     "hors_seance"
+    ],
+    "sports": [
+     "tous"
+    ],
+    "mode": "dynamique",
+    "hold": null
+   },
+   "schema": false
   },
   {
    "id": "chien_tete_bas",
@@ -2534,7 +2859,20 @@
     "url": "https://www.youtube.com/watch?v=Ei4a7kDbdlg",
     "title": "Posture du chien tête en bas (Adho Mukha Svanasana) pour débuter",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "apres",
+     "hors_seance"
+    ],
+    "sports": [
+     "tous"
+    ],
+    "mode": "statique",
+    "hold": 20
+   },
+   "schema": false
   },
   {
    "id": "cobra",
@@ -2566,7 +2904,20 @@
     "url": "https://www.youtube.com/watch?v=RGYgiC9319o",
     "title": "Apprendre la posture du cobra, Bhujangasana",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "apres",
+     "hors_seance"
+    ],
+    "sports": [
+     "velo"
+    ],
+    "mode": "statique",
+    "hold": 20
+   },
+   "schema": true
   },
   {
    "id": "sphinx",
@@ -2598,7 +2949,20 @@
     "url": "https://www.youtube.com/watch?v=GjRvu1tYP7E",
     "title": "La posture du sphinx guidée, débutants ou seniors",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "apres",
+     "hors_seance"
+    ],
+    "sports": [
+     "velo"
+    ],
+    "mode": "statique",
+    "hold": 30
+   },
+   "schema": true
   },
   {
    "id": "guerrier_1",
@@ -2630,7 +2994,19 @@
     "url": "https://www.youtube.com/watch?v=FSv689Hk49o",
     "title": "Posture du guerrier 1 (Virabhadrasana) pour les débutants",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "hors_seance"
+    ],
+    "sports": [
+     "tous"
+    ],
+    "mode": "statique",
+    "hold": 20
+   },
+   "schema": false
   },
   {
    "id": "guerrier_2",
@@ -2662,7 +3038,19 @@
     "url": "https://www.youtube.com/watch?v=rtfWanShIsc",
     "title": "Tuto yoga : le guerrier 2 à la loupe",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "hors_seance"
+    ],
+    "sports": [
+     "tous"
+    ],
+    "mode": "statique",
+    "hold": 20
+   },
+   "schema": false
   },
   {
    "id": "triangle",
@@ -2694,7 +3082,19 @@
     "url": "https://www.youtube.com/watch?v=zc1zqcH52yY",
     "title": "Yoga : posture du triangle, Utthita Trikonasana",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "hors_seance"
+    ],
+    "sports": [
+     "tous"
+    ],
+    "mode": "statique",
+    "hold": 20
+   },
+   "schema": false
   },
   {
    "id": "arbre",
@@ -2726,7 +3126,19 @@
     "url": "https://www.youtube.com/watch?v=t8KXifZclxM",
     "title": "Yoga : posture de l'arbre, Vrikshasana",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "hors_seance"
+    ],
+    "sports": [
+     "tous"
+    ],
+    "mode": "statique",
+    "hold": 20
+   },
+   "schema": false
   },
   {
    "id": "chaise_yoga",
@@ -2758,7 +3170,19 @@
     "url": "https://www.youtube.com/watch?v=h3anl2PgCHA",
     "title": "Comment faire la posture de la chaise, Utkatasana",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "hors_seance"
+    ],
+    "sports": [
+     "tous"
+    ],
+    "mode": "statique",
+    "hold": 20
+   },
+   "schema": false
   },
   {
    "id": "fente_basse",
@@ -2790,7 +3214,21 @@
     "url": "https://www.youtube.com/watch?v=A5wGqQ21l2o",
     "title": "Yoga : posture du croissant de lune (Anjaneyasana)",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "apres",
+     "hors_seance"
+    ],
+    "sports": [
+     "velo",
+     "course"
+    ],
+    "mode": "statique",
+    "hold": 30
+   },
+   "schema": true
   },
   {
    "id": "pigeon",
@@ -2822,7 +3260,21 @@
     "url": "https://www.youtube.com/watch?v=YqNO0ImMtEY",
     "title": "Posture du pigeon (Yoga by Decathlon)",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "apres",
+     "hors_seance"
+    ],
+    "sports": [
+     "velo",
+     "course"
+    ],
+    "mode": "statique",
+    "hold": 30
+   },
+   "schema": true
   },
   {
    "id": "papillon",
@@ -2854,7 +3306,21 @@
     "url": "https://www.youtube.com/watch?v=53WnXeu_Yuw",
     "title": "Posture de yoga du papillon, Baddha Konasana",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "apres",
+     "hors_seance"
+    ],
+    "sports": [
+     "velo",
+     "course"
+    ],
+    "mode": "statique",
+    "hold": 30
+   },
+   "schema": true
   },
   {
    "id": "pince_assise",
@@ -2886,7 +3352,21 @@
     "url": "https://www.youtube.com/watch?v=O5lSF1AgAqs",
     "title": "Pince assise, Paschimottanasana",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "apres",
+     "hors_seance"
+    ],
+    "sports": [
+     "velo",
+     "course"
+    ],
+    "mode": "statique",
+    "hold": 30
+   },
+   "schema": false
   },
   {
    "id": "torsion_couchee",
@@ -2918,7 +3398,21 @@
     "url": "https://www.youtube.com/watch?v=cvCPeN6XjHs",
     "title": "Posture de la torsion allongée au sol",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "apres",
+     "hors_seance"
+    ],
+    "sports": [
+     "course",
+     "muscu"
+    ],
+    "mode": "statique",
+    "hold": 30
+   },
+   "schema": true
   },
   {
    "id": "bebe_heureux",
@@ -2950,7 +3444,19 @@
     "url": "https://www.youtube.com/watch?v=1FqB-qyeKAE",
     "title": "Bébé heureux : 1 minute de yoga par jour",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "hors_seance"
+    ],
+    "sports": [
+     "tous"
+    ],
+    "mode": "statique",
+    "hold": 30
+   },
+   "schema": true
   },
   {
    "id": "jambes_au_mur",
@@ -2982,7 +3488,21 @@
     "url": "https://www.youtube.com/watch?v=aXd7u9MoI7E",
     "title": "Viparita Karani : les jambes le long du mur",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "apres",
+     "hors_seance"
+    ],
+    "sports": [
+     "velo",
+     "course"
+    ],
+    "mode": "statique",
+    "hold": 120
+   },
+   "schema": false
   },
   {
    "id": "quadriceps_debout",
@@ -3018,7 +3538,22 @@
     "url": "https://www.youtube.com/watch?v=4c5oLJxm2Nk",
     "title": "Étirement des quadriceps en position debout (Masseo)",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "apres",
+     "hors_seance"
+    ],
+    "sports": [
+     "velo",
+     "course",
+     "muscu"
+    ],
+    "mode": "statique",
+    "hold": 20
+   },
+   "schema": true
   },
   {
    "id": "etirement_lateral",
@@ -3050,7 +3585,21 @@
     "url": "https://www.youtube.com/watch?v=ML6zsqBPmPg",
     "title": "Étirement latéral debout",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "apres",
+     "hors_seance"
+    ],
+    "sports": [
+     "velo",
+     "muscu"
+    ],
+    "mode": "statique",
+    "hold": 20
+   },
+   "schema": true
   },
   {
    "id": "epaule_bras_croise",
@@ -3082,7 +3631,21 @@
     "url": "https://www.youtube.com/watch?v=mlUh1XQikKM",
     "title": "Étirement épaule : technique bras croisé devant la poitrine",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "apres",
+     "hors_seance"
+    ],
+    "sports": [
+     "velo",
+     "muscu"
+    ],
+    "mode": "statique",
+    "hold": 20
+   },
+   "schema": true
   },
   {
    "id": "triceps_etirement",
@@ -3114,7 +3677,20 @@
     "url": "https://www.youtube.com/watch?v=V8nA6t_r8JM",
     "title": "Étirement triceps : technique bras derrière la tête",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "apres",
+     "hors_seance"
+    ],
+    "sports": [
+     "muscu"
+    ],
+    "mode": "statique",
+    "hold": 20
+   },
+   "schema": true
   },
   {
    "id": "torsion_assise",
@@ -3146,7 +3722,20 @@
     "url": "https://www.youtube.com/watch?v=gsp1AZcEn54",
     "title": "1 minute de yoga par jour : torsion assise",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "apres",
+     "hors_seance"
+    ],
+    "sports": [
+     "muscu"
+    ],
+    "mode": "statique",
+    "hold": 20
+   },
+   "schema": true
   },
   {
    "id": "genoux_poitrine",
@@ -3182,7 +3771,21 @@
     "url": "https://www.youtube.com/watch?v=KCiEleLODc8",
     "title": "Un étirement pour détendre les lombaires",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "apres",
+     "hors_seance"
+    ],
+    "sports": [
+     "velo",
+     "course"
+    ],
+    "mode": "statique",
+    "hold": 20
+   },
+   "schema": true
   },
   {
    "id": "coherence_cardiaque",
@@ -3214,7 +3817,10 @@
     "url": "https://www.youtube.com/watch?v=vs_8iqpGoEM",
     "title": "Cohérence cardiaque 5:5, 5 minutes de respiration guidée",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "respiration_carree",
@@ -3246,7 +3852,10 @@
     "url": "https://www.youtube.com/watch?v=O6NKXExzkww",
     "title": "Respiration carrée (exercice de 5 min)",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "meditation_souffle",
@@ -3282,7 +3891,10 @@
     "url": "https://www.youtube.com/watch?v=VBSelbkOELA",
     "title": "Méditation guidée courte spéciale débutant, 5 min de pleine conscience",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "scan_corporel",
@@ -3318,7 +3930,10 @@
     "url": "https://www.youtube.com/watch?v=1WAXGcKi9i8",
     "title": "Méditation guidée : balayage corporel 10 min",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "relaxation_progressive",
@@ -3350,7 +3965,404 @@
     "url": "https://www.youtube.com/watch?v=2KSp2uQsEH8",
     "title": "Relaxation musculaire progressive, guidée par Isabelle Soucy, Ph. D.",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
+  },
+  {
+   "id": "cercles_chevilles",
+   "statut": "Nouveau",
+   "nom": "Cercles de chevilles",
+   "type": "mobilite",
+   "discipline": "etirement",
+   "zones": "jambes",
+   "objectifs": "mobilite",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "40 s",
+   "niveaux": "1. 8 cercles par cheville et par sens (40 s)\n2. 12 cercles par cheville et par sens (60 s)",
+   "muscles_principaux": "Mollets",
+   "muscles_secondaires": "",
+   "met": "2.3 (code 02101, Étirements doux)",
+   "consignes": "Debout sur une jambe, une main sur un appui (mur, dossier de chaise).\nSoulève l'autre pied et dessine de grands cercles avec les orteils.\nChange de sens à mi-temps, puis de cheville.",
+   "precaution": "Mouvement lent, sans forcer sur la cheville.",
+   "respiration": "Respiration libre.",
+   "erreurs": "Faire bouger tout le genou plutôt que la cheville.\nAller trop vite.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Ankle Circles",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Ankle_Circles.json"
+    },
+    {
+     "label": "NHS, How to warm up before exercising (mouvements dynamiques, pas d'étirements statiques)",
+     "url": "https://www.nhs.uk/content-widgets/live-well/exercise/how-to-warm-up-before-exercising"
+    }
+   ],
+   "video": {
+    "url": "https://www.youtube.com/watch?v=lxwOle4nLYE",
+    "title": "Échauffement des chevilles avant la course à pied",
+    "lang": "fr"
+   },
+   "lot": "etirements",
+   "etiquettes": {
+    "moments": [
+     "avant"
+    ],
+    "sports": [
+     "velo",
+     "course"
+    ],
+    "mode": "dynamique",
+    "hold": null
+   },
+   "schema": true
+  },
+  {
+   "id": "balancier_lateral",
+   "statut": "Nouveau",
+   "nom": "Balanciers de jambe sur le côté",
+   "type": "mobilite",
+   "discipline": "etirement",
+   "zones": "jambes, fessiers",
+   "objectifs": "mobilite",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "40 s",
+   "niveaux": "1. Petite amplitude (30 s)\n2. Amplitude croissante (40 s)",
+   "muscles_principaux": "Adducteurs, Moyen fessier",
+   "muscles_secondaires": "Grand fessier",
+   "met": "2.3 (code 02101, Étirements doux)",
+   "consignes": "De face à un appui (mur, dossier de chaise), une main dessus.\nBalance la jambe tendue de côté, puis devant l'autre jambe.\nAugmente l'amplitude petit à petit. Change de jambe à mi-temps.",
+   "precaution": "Garde le buste droit et l'amplitude confortable.",
+   "respiration": "Respiration libre.",
+   "erreurs": "Lancer la jambe brutalement.\nPencher le buste de l'autre côté.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Side Leg Raises",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Side_Leg_Raises.json"
+    },
+    {
+     "label": "NHS, How to warm up before exercising (mouvements dynamiques, pas d'étirements statiques)",
+     "url": "https://www.nhs.uk/content-widgets/live-well/exercise/how-to-warm-up-before-exercising"
+    }
+   ],
+   "video": {
+    "url": "https://www.youtube.com/watch?v=NpumDVrMrrQ",
+    "title": "Balancement avec jambe tendue sur le côté",
+    "lang": "fr"
+   },
+   "lot": "etirements",
+   "etiquettes": {
+    "moments": [
+     "avant"
+    ],
+    "sports": [
+     "tous"
+    ],
+    "mode": "dynamique",
+    "hold": null
+   },
+   "schema": true
+  },
+  {
+   "id": "rouler_epaules",
+   "statut": "Nouveau",
+   "nom": "Rotations d'épaules",
+   "type": "mobilite",
+   "discipline": "etirement",
+   "zones": "epaules",
+   "objectifs": "mobilite, detente",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "30 s",
+   "niveaux": "1. 5 cercles dans chaque sens (30 s)\n2. 8 grands cercles dans chaque sens (40 s)",
+   "muscles_principaux": "Trapèzes, Épaules (côté)",
+   "muscles_secondaires": "Haut du dos (rhomboïdes)",
+   "met": "2.3 (code 02101, Étirements doux)",
+   "consignes": "Debout ou assis, bras relâchés le long du corps.\nMonte les épaules vers les oreilles, recule-les, puis descends-les en un grand cercle.\nChange de sens à mi-temps.",
+   "precaution": "",
+   "respiration": "Respiration libre.",
+   "erreurs": "Faire de petits cercles pressés.\nAvancer la tête.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Shoulder Circles",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Shoulder_Circles.json"
+    },
+    {
+     "label": "NHS, How to warm up before exercising (mouvements dynamiques, pas d'étirements statiques)",
+     "url": "https://www.nhs.uk/content-widgets/live-well/exercise/how-to-warm-up-before-exercising"
+    }
+   ],
+   "video": {
+    "url": "https://www.youtube.com/watch?v=RIdrCbPpMO0",
+    "title": "Échauffement des épaules en rond",
+    "lang": "fr"
+   },
+   "lot": "etirements",
+   "etiquettes": {
+    "moments": [
+     "avant",
+     "hors_seance"
+    ],
+    "sports": [
+     "tous"
+    ],
+    "mode": "dynamique",
+    "hold": null
+   },
+   "schema": true
+  },
+  {
+   "id": "mollets_assis",
+   "statut": "Nouveau",
+   "nom": "Étirement des mollets, assis jambe tendue",
+   "type": "etirement",
+   "discipline": "etirement",
+   "zones": "jambes",
+   "objectifs": "mobilite",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "40 s",
+   "niveaux": "1. 20 s par côté (40 s)\n2. 30 s par côté (60 s)",
+   "muscles_principaux": "Mollets",
+   "muscles_secondaires": "Ischio-jambiers",
+   "met": "2.3 (code 02101, Étirements doux)",
+   "consignes": "Assis au sol, une jambe tendue, l'autre genou plié et pied au sol.\nAttrape l'avant du pied tendu (ou passe une serviette autour) et ramène les orteils vers toi.\nDos droit, genou tendu sans le bloquer. Change de jambe.",
+   "precaution": "Tire doucement : une tension, jamais une douleur derrière le genou.",
+   "respiration": "Respire lentement pendant le maintien.",
+   "erreurs": "Arrondir le dos pour atteindre le pied.\nVerrouiller le genou.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Seated Calf Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Seated_Calf_Stretch.json"
+    },
+    {
+     "label": "NHS, How to stretch after exercising (étirements de 15 à 20 secondes après la séance)",
+     "url": "https://www.nhs.uk/live-well/exercise/how-to-stretch-after-exercising"
+    }
+   ],
+   "video": {
+    "url": "https://www.youtube.com/watch?v=NErP0oA_IKg",
+    "title": "Mollets : mollets assis jambes tendues",
+    "lang": "fr"
+   },
+   "lot": "etirements",
+   "etiquettes": {
+    "moments": [
+     "apres",
+     "hors_seance"
+    ],
+    "sports": [
+     "velo",
+     "course"
+    ],
+    "mode": "statique",
+    "hold": 20
+   },
+   "schema": true
+  },
+  {
+   "id": "soleaire",
+   "statut": "Nouveau",
+   "nom": "Étirement du soléaire, genoux fléchis",
+   "type": "etirement",
+   "discipline": "etirement",
+   "zones": "jambes",
+   "objectifs": "mobilite",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "40 s",
+   "niveaux": "1. 20 s par côté (40 s)\n2. 30 s par côté (60 s)",
+   "muscles_principaux": "Mollets",
+   "muscles_secondaires": "",
+   "met": "2.3 (code 02101, Étirements doux)",
+   "consignes": "Debout, un pied devant l'autre, pieds largeur de hanches.\nPlie les deux genoux en gardant le talon arrière bien posé au sol.\nBuste droit, poids réparti. Change de jambe.",
+   "precaution": "Les genoux restent dans l'axe des pieds.",
+   "respiration": "Respire lentement pendant le maintien.",
+   "erreurs": "Décoller le talon arrière.\nLaisser le genou rentrer vers l'intérieur.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Standing Soleus And Achilles Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Standing_Soleus_And_Achilles_Stretch.json"
+    },
+    {
+     "label": "NHS, How to stretch after exercising (étirements de 15 à 20 secondes après la séance)",
+     "url": "https://www.nhs.uk/live-well/exercise/how-to-stretch-after-exercising"
+    }
+   ],
+   "video": {
+    "url": "https://www.youtube.com/watch?v=C2156l6B9Ro",
+    "title": "Comment faire l'étirement des soléaires",
+    "lang": "fr"
+   },
+   "lot": "etirements",
+   "etiquettes": {
+    "moments": [
+     "apres",
+     "hors_seance"
+    ],
+    "sports": [
+     "course"
+    ],
+    "mode": "statique",
+    "hold": 20
+   },
+   "schema": true
+  },
+  {
+   "id": "pecs_coudes_arriere",
+   "statut": "Nouveau",
+   "nom": "Étirement des pectoraux, coudes en arrière",
+   "type": "etirement",
+   "discipline": "etirement",
+   "zones": "epaules",
+   "objectifs": "mobilite",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "20 s",
+   "niveaux": "1. 20 s (20 s)\n2. 30 s (30 s)",
+   "muscles_principaux": "Pectoraux",
+   "muscles_secondaires": "Épaules (avant)",
+   "met": "2.3 (code 02101, Étirements doux)",
+   "consignes": "Debout, mains posées dans le bas du dos, doigts vers le bas.\nRamène doucement les coudes vers l'arrière pour ouvrir la poitrine.\nÉpaules basses, menton légèrement rentré.",
+   "precaution": "Arrête-toi à la première tension : pas de douleur dans l'épaule.",
+   "respiration": "Inspire en ouvrant, expire en relâchant.",
+   "erreurs": "Cambrer le bas du dos.\nRemonter les épaules vers les oreilles.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Elbows Back",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Elbows_Back.json"
+    },
+    {
+     "label": "NHS, Flexibility exercises",
+     "url": "https://www.nhs.uk/live-well/exercise/flexibility-exercises/"
+    }
+   ],
+   "video": {
+    "url": "https://www.youtube.com/watch?v=j-Q81CEKyFA",
+    "title": "Étirement des pectoraux",
+    "lang": "fr"
+   },
+   "lot": "etirements",
+   "etiquettes": {
+    "moments": [
+     "apres",
+     "hors_seance"
+    ],
+    "sports": [
+     "velo",
+     "muscu"
+    ],
+    "mode": "statique",
+    "hold": 20
+   },
+   "schema": true
+  },
+  {
+   "id": "avant_bras_poignets",
+   "statut": "Nouveau",
+   "nom": "Étirement des avant-bras et des poignets",
+   "type": "etirement",
+   "discipline": "etirement",
+   "zones": "bras",
+   "objectifs": "mobilite",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "20 s",
+   "niveaux": "1. 20 s (20 s)\n2. 30 s (30 s)",
+   "muscles_principaux": "Avant-bras",
+   "muscles_secondaires": "",
+   "met": "2.3 (code 02101, Étirements doux)",
+   "consignes": "À genoux, mains posées à plat devant toi, doigts tournés vers les genoux.\nPenche-toi doucement vers l'arrière, paumes bien à plat, jusqu'à sentir l'étirement.\nReviens lentement vers l'avant pour relâcher.",
+   "precaution": "Les poignets ne doivent pas faire mal : ne penche que d'un peu.",
+   "respiration": "Respire calmement.",
+   "erreurs": "Soulever les paumes du sol.\nSe laisser tomber vers l'arrière.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Kneeling Forearm Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Kneeling_Forearm_Stretch.json"
+    },
+    {
+     "label": "NHS, Flexibility exercises",
+     "url": "https://www.nhs.uk/live-well/exercise/flexibility-exercises/"
+    }
+   ],
+   "video": {
+    "url": "https://www.youtube.com/watch?v=88iGQTqBGMc",
+    "title": "Comment étirer les avant-bras ?",
+    "lang": "fr"
+   },
+   "lot": "etirements",
+   "etiquettes": {
+    "moments": [
+     "apres",
+     "hors_seance"
+    ],
+    "sports": [
+     "velo",
+     "muscu"
+    ],
+    "mode": "statique",
+    "hold": 20
+   },
+   "schema": true
+  },
+  {
+   "id": "cou_menton_poitrine",
+   "statut": "Nouveau",
+   "nom": "Étirement de la nuque, menton vers la poitrine",
+   "type": "etirement",
+   "discipline": "etirement",
+   "zones": "dos",
+   "objectifs": "mobilite, detente",
+   "intensite": 1,
+   "sauts": "non",
+   "materiel": "aucun",
+   "mode": "20 s",
+   "niveaux": "1. 15 s (15 s)\n2. 20 s (20 s)\n3. 30 s (30 s)",
+   "muscles_principaux": "Cou",
+   "muscles_secondaires": "Trapèzes",
+   "met": "2.3 (code 02101, Étirements doux)",
+   "consignes": "Assis ou debout, dos droit, épaules basses.\nLaisse la tête descendre, menton vers la poitrine.\nPose les mains à l'arrière de la tête, sans tirer : leur poids suffit.",
+   "precaution": "Ne tire jamais sur la nuque. Arrête en cas de vertige ou de fourmillements.",
+   "respiration": "Respire lentement et relâche les épaules à chaque expiration.",
+   "erreurs": "Tirer sur la tête avec les mains.\nHausser les épaules.",
+   "sources": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Chin To Chest Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Chin_To_Chest_Stretch.json"
+    },
+    {
+     "label": "NHS, Flexibility exercises",
+     "url": "https://www.nhs.uk/live-well/exercise/flexibility-exercises/"
+    }
+   ],
+   "video": {
+    "url": "https://www.youtube.com/watch?v=ZuDFjDkdPnA",
+    "title": "Étirement du cou et de la nuque",
+    "lang": "fr"
+   },
+   "lot": "etirements",
+   "etiquettes": {
+    "moments": [
+     "apres",
+     "hors_seance"
+    ],
+    "sports": [
+     "velo"
+    ],
+    "mode": "statique",
+    "hold": 15
+   },
+   "schema": true
   },
   {
    "id": "rowing",
@@ -3382,7 +4394,10 @@
     "url": "https://www.youtube.com/watch?v=mYdXe92a_EM",
     "title": "Rowing assis avec élastiques",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": true
   },
   {
    "id": "pull_apart",
@@ -3414,7 +4429,10 @@
     "url": "https://www.youtube.com/watch?v=MSJzslGuutU",
     "title": "Exercice omoplates : band pull apart",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": true
   },
   {
    "id": "pallof",
@@ -3446,7 +4464,10 @@
     "url": "https://www.youtube.com/watch?v=I4SKLCM9lyo",
     "title": "Comment réaliser le Pallof press",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": true
   },
   {
    "id": "dead_bug",
@@ -3478,7 +4499,10 @@
     "url": "https://www.youtube.com/watch?v=bG17b4f_4bg",
     "title": "Gainage planche et dead bug : la bonne technique",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": true
   },
   {
    "id": "bird_dog",
@@ -3510,7 +4534,10 @@
     "url": "https://www.youtube.com/watch?v=l2DXJoi0WYE",
     "title": "Gainage bird dog : 1 min pour un dos solide",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": true
   },
   {
    "id": "planche",
@@ -3546,7 +4573,10 @@
     "url": "https://www.youtube.com/watch?v=ARCrsCnSB-k",
     "title": "La planche sur les genoux : commence ici pour un gainage parfait",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": true
   },
   {
    "id": "squat_chaise",
@@ -3582,7 +4612,10 @@
     "url": "https://www.youtube.com/watch?v=bAiHLkX0iWo",
     "title": "Squat sur chaise",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": true
   },
   {
    "id": "pont",
@@ -3614,7 +4647,10 @@
     "url": "https://www.youtube.com/watch?v=9Wma4mC8wpw",
     "title": "Comment faire un pont fessier",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": true
   },
   {
    "id": "marche_laterale",
@@ -3646,7 +4682,10 @@
     "url": "https://www.youtube.com/watch?v=mZ23K1ulW2A",
     "title": "Banded Lateral Walk",
     "lang": "en"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": true
   },
   {
    "id": "ext_hanche",
@@ -3678,7 +4717,10 @@
     "url": "https://www.youtube.com/watch?v=xwTFt_yWEkI",
     "title": "Extension de la hanche, genou plié",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": true
   },
   {
    "id": "planche_laterale",
@@ -3714,7 +4756,10 @@
     "url": "https://www.youtube.com/watch?v=_H9lCamSHR0",
     "title": "Comment bien faire son gainage latéral ? Tutoriel et progression par kiné",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": true
   },
   {
    "id": "respiration",
@@ -3746,7 +4791,20 @@
     "url": "https://www.youtube.com/watch?v=3Bb4ytM0ARA",
     "title": "Comment maîtriser la respiration latérale costale en Pilates ?",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "apres",
+     "hors_seance"
+    ],
+    "sports": [
+     "tous"
+    ],
+    "mode": "activation",
+    "hold": null
+   },
+   "schema": true
   },
   {
    "id": "bascule_bassin",
@@ -3778,7 +4836,10 @@
     "url": "https://www.youtube.com/watch?v=IEN7fe43K4o",
     "title": "Pilates : rétroversion du bassin allongé",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": true
   },
   {
    "id": "chat_vache",
@@ -3814,7 +4875,20 @@
     "url": "https://www.youtube.com/watch?v=Sf0h4chQzis",
     "title": "Chat-vache : soulage ton dos en 3 min (yoga débutant)",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "avant",
+     "hors_seance"
+    ],
+    "sports": [
+     "tous"
+    ],
+    "mode": "dynamique",
+    "hold": null
+   },
+   "schema": true
   },
   {
    "id": "omoplates",
@@ -3846,7 +4920,20 @@
     "url": "https://www.youtube.com/watch?v=pdI4HS138tc",
     "title": "Exercice épaule : rapprocher les omoplates",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "avant",
+     "hors_seance"
+    ],
+    "sports": [
+     "muscu"
+    ],
+    "mode": "activation",
+    "hold": null
+   },
+   "schema": true
   },
   {
    "id": "wall_slides",
@@ -3878,7 +4965,20 @@
     "url": "https://www.youtube.com/watch?v=K8TMa3-E2Is",
     "title": "Wall slide exercice (Nxt Generation Physio)",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "avant",
+     "hors_seance"
+    ],
+    "sports": [
+     "muscu"
+    ],
+    "mode": "activation",
+    "hold": null
+   },
+   "schema": true
   },
   {
    "id": "ext_thoracique",
@@ -3910,7 +5010,20 @@
     "url": "https://www.youtube.com/watch?v=4ZqOMX-18O0",
     "title": "Thoracic Extension Over a Chair",
     "lang": "en"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "hors_seance"
+    ],
+    "sports": [
+     "velo",
+     "muscu"
+    ],
+    "mode": "dynamique",
+    "hold": null
+   },
+   "schema": true
   },
   {
    "id": "chin_tuck",
@@ -3942,7 +5055,19 @@
     "url": "https://www.youtube.com/watch?v=tQYo15dpKdM",
     "title": "Chin Tucks (Cervical Retractions)",
     "lang": "en"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "hors_seance"
+    ],
+    "sports": [
+     "tous"
+    ],
+    "mode": "activation",
+    "hold": null
+   },
+   "schema": true
   },
   {
    "id": "pecs_porte",
@@ -3974,7 +5099,20 @@
     "url": "https://www.youtube.com/watch?v=6pIDnFHUK8E",
     "title": "Étirement du grand et du petit pectoral (Masseo)",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "apres",
+     "hors_seance"
+    ],
+    "sports": [
+     "muscu"
+    ],
+    "mode": "statique",
+    "hold": 20
+   },
+   "schema": true
   },
   {
    "id": "trapezes",
@@ -4010,7 +5148,21 @@
     "url": "https://www.youtube.com/watch?v=vfoWMKhx4v4",
     "title": "Étirement du trapèze supérieur (Masseo)",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "apres",
+     "hors_seance"
+    ],
+    "sports": [
+     "velo",
+     "muscu"
+    ],
+    "mode": "statique",
+    "hold": 20
+   },
+   "schema": true
   },
   {
    "id": "enfant",
@@ -4042,7 +5194,21 @@
     "url": "https://www.youtube.com/watch?v=8kGL8IghPbo",
     "title": "Yoga : posture de l'enfant, Balasana",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "apres",
+     "hors_seance"
+    ],
+    "sports": [
+     "velo",
+     "muscu"
+    ],
+    "mode": "statique",
+    "hold": 30
+   },
+   "schema": true
   },
   {
    "id": "flechisseurs",
@@ -4078,7 +5244,21 @@
     "url": "https://www.youtube.com/watch?v=5M6zv6hGskQ",
     "title": "Étirement psoas : technique en fente genou au sol",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "apres",
+     "hors_seance"
+    ],
+    "sports": [
+     "velo",
+     "course"
+    ],
+    "mode": "statique",
+    "hold": 20
+   },
+   "schema": true
   },
   {
    "id": "ischios",
@@ -4110,7 +5290,22 @@
     "url": "https://www.youtube.com/watch?v=WTZQYMpSNJk",
     "title": "Étirement des ischio-jambiers en position allongée",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "apres",
+     "hors_seance"
+    ],
+    "sports": [
+     "velo",
+     "course",
+     "muscu"
+    ],
+    "mode": "statique",
+    "hold": 20
+   },
+   "schema": true
   },
   {
    "id": "fessiers_4",
@@ -4146,7 +5341,22 @@
     "url": "https://www.youtube.com/watch?v=_tvE9m9kkxM",
     "title": "Étirement du muscle pyramidal en position allongée",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "apres",
+     "hors_seance"
+    ],
+    "sports": [
+     "velo",
+     "course",
+     "muscu"
+    ],
+    "mode": "statique",
+    "hold": 20
+   },
+   "schema": true
   },
   {
    "id": "mollets",
@@ -4182,7 +5392,21 @@
     "url": "https://www.youtube.com/watch?v=zzNI5vxssTI",
     "title": "Étirement mollets : technique debout contre le mur",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "apres",
+     "hors_seance"
+    ],
+    "sports": [
+     "velo",
+     "course"
+    ],
+    "mode": "statique",
+    "hold": 20
+   },
+   "schema": true
   },
   {
    "id": "glissement_talon",
@@ -4214,7 +5438,10 @@
     "url": "https://www.youtube.com/watch?v=6-anByqnKp8",
     "title": "Core Exercise: Heel Slide",
     "lang": "en"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "planche_inclinee",
@@ -4246,7 +5473,10 @@
     "url": "https://www.youtube.com/watch?v=jLcQfXPMHXY",
     "title": "Gainage à l'aide d'une chaise",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "pallof_genoux",
@@ -4278,7 +5508,10 @@
     "url": "https://www.youtube.com/watch?v=LpBNsIv2olo",
     "title": "How to do a Half Kneeling Pallof Press",
     "lang": "en"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "rowing_debout",
@@ -4310,7 +5543,10 @@
     "url": "https://www.youtube.com/watch?v=OcYrtl3ZAMs",
     "title": "Exercice dos à la bande élastique : tirage horizontal debout",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "face_pull_bas",
@@ -4342,7 +5578,10 @@
     "url": "https://www.youtube.com/watch?v=i-hVYySziaU",
     "title": "Resistance band face pull : exercice à l'élastique pour l'arrière des épaules",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "rotation_externe",
@@ -4374,7 +5613,10 @@
     "url": "https://www.youtube.com/watch?v=zUP5qcl9AeA",
     "title": "Rotation externe d'épaule (coude au corps)",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "elevation_laterale",
@@ -4406,7 +5648,10 @@
     "url": "https://www.youtube.com/watch?v=zz9D2QulpBs",
     "title": "Élévations latérales à l'élastique pour muscler les épaules",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "curl_biceps",
@@ -4438,7 +5683,10 @@
     "url": "https://www.youtube.com/watch?v=L2QhFSJ-Jb4",
     "title": "Curl biceps élastique",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "triceps_elastique",
@@ -4470,7 +5718,10 @@
     "url": "https://www.youtube.com/watch?v=IH3w7O5UWKU",
     "title": "Triceps extension élastique",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "clamshell",
@@ -4497,7 +5748,10 @@
     "url": "https://www.youtube.com/watch?v=0e4oPtPbqvQ",
     "title": "Bien exécuter l'exercice du clamshell",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "abduction_couchee",
@@ -4529,7 +5783,10 @@
     "url": "https://www.youtube.com/watch?v=7IytTOalmio",
     "title": "Musculation des fessiers : abduction de la hanche au sol",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "squat_mur",
@@ -4561,7 +5818,10 @@
     "url": "https://www.youtube.com/watch?v=5R4D6zaokL0",
     "title": "Squat au mur",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "montee_marche",
@@ -4597,7 +5857,10 @@
     "url": "https://www.youtube.com/watch?v=6yF-VaStT_E",
     "title": "Comment faire un step up",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "pont_ischios",
@@ -4629,7 +5892,10 @@
     "url": "https://www.youtube.com/watch?v=-GUGUNyJv1U",
     "title": "Renforcement ischio-jambiers : pont fessier (KOSS)",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "extension_hanche_debout",
@@ -4661,7 +5927,10 @@
     "url": "https://www.youtube.com/watch?v=5-3LkHIlWzM",
     "title": "Extensions de hanches debout avec élastique",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "releve_mollets",
@@ -4693,7 +5962,10 @@
     "url": "https://www.youtube.com/watch?v=YXbHh4rlQGE",
     "title": "Montées sur pointes de pied",
     "lang": "fr"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   },
   {
    "id": "livre_ouvert",
@@ -4725,7 +5997,20 @@
     "url": "https://www.youtube.com/watch?v=rDviWORCWEw",
     "title": "Open Books (Sidelying Thoracic Rotation)",
     "lang": "en"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": {
+    "moments": [
+     "avant",
+     "hors_seance"
+    ],
+    "sports": [
+     "tous"
+    ],
+    "mode": "dynamique",
+    "hold": null
+   },
+   "schema": true
   },
   {
    "id": "curl_up_mcgill",
@@ -4757,7 +6042,10 @@
     "url": "https://www.youtube.com/watch?v=_tz9WGVH25g",
     "title": "How To Correctly Perform The McGill Modified Curl Up",
     "lang": "en"
-   }
+   },
+   "lot": "bloc2",
+   "etiquettes": null,
+   "schema": false
   }
  ],
  "entrainements": [
@@ -4769,8 +6057,10 @@
    "zones": "corps_entier",
    "tours": 1,
    "pause": 10,
+   "postures": null,
    "description": "Une séance courte pour délier le dos, les hanches et les épaules entre deux renforcements.",
    "minutes": 5,
+   "seconds": 250,
    "metMinutes": 8.7,
    "equipment": [],
    "impact": false,
@@ -4820,8 +6110,10 @@
    "zones": "corps_entier",
    "tours": 1,
    "pause": 10,
+   "postures": null,
    "description": "Mobilité active pour récupérer et bouger mieux.",
    "minutes": 6,
+   "seconds": 335,
    "metMinutes": 11.8,
    "equipment": [],
    "impact": false,
@@ -4875,8 +6167,10 @@
    "zones": "corps_entier",
    "tours": 1,
    "pause": 10,
+   "postures": null,
    "description": "Mobilité puis deux salutations au soleil en douceur.",
    "minutes": 7,
+   "seconds": 380,
    "metMinutes": 15.3,
    "equipment": [],
    "impact": false,
@@ -4930,8 +6224,10 @@
    "zones": "corps_entier",
    "tours": 1,
    "pause": 10,
+   "postures": null,
    "description": "Une séance de mobilité plus longue pour finir le mois en souplesse.",
    "minutes": 9,
+   "seconds": 510,
    "metMinutes": 20.7,
    "equipment": [],
    "impact": false,
@@ -4989,8 +6285,10 @@
    "zones": "corps_entier",
    "tours": 1,
    "pause": 10,
+   "postures": null,
    "description": "Étirements doux de tout le corps pour finir la semaine.",
    "minutes": 7,
+   "seconds": 400,
    "metMinutes": 13,
    "equipment": [],
    "impact": false,
@@ -5044,8 +6342,10 @@
    "zones": "corps_entier",
    "tours": 1,
    "pause": 10,
+   "postures": null,
    "description": "Postures de yoga au sol et respiration lente.",
    "minutes": 9,
+   "seconds": 485,
    "metMinutes": 13.6,
    "equipment": [],
    "impact": false,
@@ -5099,8 +6399,10 @@
    "zones": "corps_entier",
    "tours": 1,
    "pause": 10,
+   "postures": null,
    "description": "Ouverture des hanches, détente du dos et quelques minutes de calme.",
    "minutes": 9,
+   "seconds": 490,
    "metMinutes": 14.9,
    "equipment": [],
    "impact": false,
@@ -5158,8 +6460,10 @@
    "zones": "corps_entier",
    "tours": 1,
    "pause": 10,
+   "postures": null,
    "description": "Étirements et scan corporel pour savourer le chemin parcouru.",
    "minutes": 10,
+   "seconds": 550,
    "metMinutes": 13.7,
    "equipment": [],
    "impact": false,
@@ -5213,8 +6517,10 @@
    "zones": "jambes, fessiers, abdos",
    "tours": 2,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 11,
+   "seconds": 612,
    "metMinutes": 22.7,
    "equipment": [],
    "impact": false,
@@ -5284,8 +6590,10 @@
    "zones": "bras, epaules, dos",
    "tours": 2,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 9,
+   "seconds": 526,
    "metMinutes": 20,
    "equipment": [],
    "impact": false,
@@ -5351,8 +6659,10 @@
    "zones": "corps_entier",
    "tours": 2,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 8,
+   "seconds": 470,
    "metMinutes": 24.6,
    "equipment": [],
    "impact": false,
@@ -5406,8 +6716,10 @@
    "zones": "jambes, fessiers, abdos",
    "tours": 2,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 14,
+   "seconds": 827,
    "metMinutes": 31.5,
    "equipment": [],
    "impact": false,
@@ -5489,8 +6801,10 @@
    "zones": "bras, epaules, dos",
    "tours": 2,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 14,
+   "seconds": 783,
    "metMinutes": 30.1,
    "equipment": [],
    "impact": false,
@@ -5568,8 +6882,10 @@
    "zones": "corps_entier",
    "tours": 2,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 14,
+   "seconds": 790,
    "metMinutes": 44,
    "equipment": [],
    "impact": false,
@@ -5643,8 +6959,10 @@
    "zones": "jambes, fessiers, abdos",
    "tours": 3,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 20,
+   "seconds": 1176,
    "metMinutes": 45.4,
    "equipment": [],
    "impact": false,
@@ -5730,8 +7048,10 @@
    "zones": "bras, epaules, dos",
    "tours": 3,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 18,
+   "seconds": 1045,
    "metMinutes": 41.5,
    "equipment": [],
    "impact": false,
@@ -5809,8 +7129,10 @@
    "zones": "corps_entier",
    "tours": 3,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 20,
+   "seconds": 1182,
    "metMinutes": 66.3,
    "equipment": [],
    "impact": false,
@@ -5888,8 +7210,10 @@
    "zones": "jambes, fessiers, abdos",
    "tours": 3,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 24,
+   "seconds": 1401,
    "metMinutes": 54.6,
    "equipment": [],
    "impact": false,
@@ -5983,8 +7307,10 @@
    "zones": "bras, epaules, dos",
    "tours": 3,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 26,
+   "seconds": 1505,
    "metMinutes": 66,
    "equipment": [],
    "impact": false,
@@ -6070,8 +7396,10 @@
    "zones": "corps_entier",
    "tours": 3,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 23,
+   "seconds": 1355,
    "metMinutes": 76.1,
    "equipment": [],
    "impact": false,
@@ -6161,8 +7489,10 @@
    "zones": "fessiers",
    "tours": 2,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 12,
+   "seconds": 696,
    "metMinutes": 27.5,
    "equipment": [],
    "impact": false,
@@ -6232,8 +7562,10 @@
    "zones": "jambes, fessiers",
    "tours": 2,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 11,
+   "seconds": 602,
    "metMinutes": 23.9,
    "equipment": [],
    "impact": false,
@@ -6307,8 +7639,10 @@
    "zones": "fessiers, abdos",
    "tours": 2,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 9,
+   "seconds": 535,
    "metMinutes": 20,
    "equipment": [],
    "impact": false,
@@ -6374,8 +7708,10 @@
    "zones": "fessiers",
    "tours": 2,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 15,
+   "seconds": 893,
    "metMinutes": 34.9,
    "equipment": [],
    "impact": false,
@@ -6453,8 +7789,10 @@
    "zones": "jambes, fessiers",
    "tours": 2,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 14,
+   "seconds": 811,
    "metMinutes": 32.1,
    "equipment": [],
    "impact": false,
@@ -6536,8 +7874,10 @@
    "zones": "fessiers, abdos",
    "tours": 2,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 13,
+   "seconds": 765,
    "metMinutes": 35,
    "equipment": [],
    "impact": false,
@@ -6615,8 +7955,10 @@
    "zones": "fessiers",
    "tours": 3,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 21,
+   "seconds": 1222,
    "metMinutes": 47.9,
    "equipment": [],
    "impact": false,
@@ -6694,8 +8036,10 @@
    "zones": "jambes, fessiers",
    "tours": 3,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 19,
+   "seconds": 1135,
    "metMinutes": 46.7,
    "equipment": [],
    "impact": false,
@@ -6777,8 +8121,10 @@
    "zones": "fessiers, abdos",
    "tours": 3,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 18,
+   "seconds": 1063,
    "metMinutes": 52.6,
    "equipment": [],
    "impact": false,
@@ -6852,8 +8198,10 @@
    "zones": "fessiers",
    "tours": 3,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 25,
+   "seconds": 1468,
    "metMinutes": 57.5,
    "equipment": [],
    "impact": false,
@@ -6939,8 +8287,10 @@
    "zones": "jambes, fessiers",
    "tours": 3,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 25,
+   "seconds": 1458,
    "metMinutes": 58.1,
    "equipment": [],
    "impact": false,
@@ -7034,8 +8384,10 @@
    "zones": "fessiers, abdos",
    "tours": 3,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 25,
+   "seconds": 1493,
    "metMinutes": 70,
    "equipment": [],
    "impact": false,
@@ -7121,8 +8473,10 @@
    "zones": "abdos",
    "tours": 2,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 9,
+   "seconds": 515,
    "metMinutes": 18.2,
    "equipment": [],
    "impact": false,
@@ -7192,8 +8546,10 @@
    "zones": "bras, dos, epaules",
    "tours": 2,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 9,
+   "seconds": 526,
    "metMinutes": 20.2,
    "equipment": [],
    "impact": false,
@@ -7263,8 +8619,10 @@
    "zones": "abdos",
    "tours": 2,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 11,
+   "seconds": 613,
    "metMinutes": 26.3,
    "equipment": [],
    "impact": false,
@@ -7326,8 +8684,10 @@
    "zones": "abdos",
    "tours": 2,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 14,
+   "seconds": 787,
    "metMinutes": 28.4,
    "equipment": [],
    "impact": false,
@@ -7405,8 +8765,10 @@
    "zones": "bras, dos, epaules",
    "tours": 2,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 13,
+   "seconds": 753,
    "metMinutes": 29.5,
    "equipment": [],
    "impact": false,
@@ -7488,8 +8850,10 @@
    "zones": "abdos",
    "tours": 2,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 13,
+   "seconds": 733,
    "metMinutes": 30.4,
    "equipment": [],
    "impact": false,
@@ -7563,8 +8927,10 @@
    "zones": "abdos",
    "tours": 3,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 21,
+   "seconds": 1227,
    "metMinutes": 44.1,
    "equipment": [],
    "impact": false,
@@ -7654,8 +9020,10 @@
    "zones": "bras, dos, epaules",
    "tours": 3,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 21,
+   "seconds": 1223,
    "metMinutes": 47.5,
    "equipment": [],
    "impact": false,
@@ -7745,8 +9113,10 @@
    "zones": "abdos",
    "tours": 3,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 18,
+   "seconds": 1050,
    "metMinutes": 45.1,
    "equipment": [],
    "impact": false,
@@ -7824,8 +9194,10 @@
    "zones": "abdos",
    "tours": 3,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 24,
+   "seconds": 1409,
    "metMinutes": 50.3,
    "equipment": [],
    "impact": false,
@@ -7923,8 +9295,10 @@
    "zones": "bras, dos, epaules",
    "tours": 3,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 24,
+   "seconds": 1399,
    "metMinutes": 54.8,
    "equipment": [],
    "impact": false,
@@ -8022,8 +9396,10 @@
    "zones": "abdos",
    "tours": 3,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 23,
+   "seconds": 1330,
    "metMinutes": 56.8,
    "equipment": [],
    "impact": false,
@@ -8117,8 +9493,10 @@
    "zones": "corps_entier",
    "tours": 2,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 8,
+   "seconds": 440,
    "metMinutes": 17.2,
    "equipment": [],
    "impact": false,
@@ -8180,8 +9558,10 @@
    "zones": "corps_entier",
    "tours": 2,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 13,
+   "seconds": 737,
    "metMinutes": 32.9,
    "equipment": [],
    "impact": false,
@@ -8263,8 +9643,10 @@
    "zones": "corps_entier",
    "tours": 3,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 17,
+   "seconds": 1013,
    "metMinutes": 66.7,
    "equipment": [],
    "impact": true,
@@ -8346,8 +9728,10 @@
    "zones": "abdos",
    "tours": 2,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 8,
+   "seconds": 447,
    "metMinutes": 15.7,
    "equipment": [],
    "impact": false,
@@ -8405,8 +9789,10 @@
    "zones": "abdos",
    "tours": 2,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 13,
+   "seconds": 732,
    "metMinutes": 27.2,
    "equipment": [],
    "impact": false,
@@ -8492,8 +9878,10 @@
    "zones": "abdos",
    "tours": 3,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 18,
+   "seconds": 1038,
    "metMinutes": 57,
    "equipment": [],
    "impact": true,
@@ -8563,8 +9951,10 @@
    "zones": "jambes",
    "tours": 2,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 9,
+   "seconds": 520,
    "metMinutes": 21.1,
    "equipment": [],
    "impact": false,
@@ -8630,8 +10020,10 @@
    "zones": "jambes",
    "tours": 2,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 14,
+   "seconds": 811,
    "metMinutes": 32.1,
    "equipment": [],
    "impact": false,
@@ -8713,8 +10105,10 @@
    "zones": "jambes",
    "tours": 3,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 18,
+   "seconds": 1054,
    "metMinutes": 66.6,
    "equipment": [],
    "impact": true,
@@ -8796,8 +10190,10 @@
    "zones": "bras",
    "tours": 2,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 8,
+   "seconds": 428,
    "metMinutes": 19.2,
    "equipment": [],
    "impact": false,
@@ -8851,8 +10247,10 @@
    "zones": "bras",
    "tours": 2,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 12,
+   "seconds": 718,
    "metMinutes": 32.2,
    "equipment": [],
    "impact": false,
@@ -8914,8 +10312,10 @@
    "zones": "bras",
    "tours": 3,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 18,
+   "seconds": 1030,
    "metMinutes": 48.8,
    "equipment": [],
    "impact": false,
@@ -8985,8 +10385,10 @@
    "zones": "epaules",
    "tours": 2,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 7,
+   "seconds": 406,
    "metMinutes": 17.2,
    "equipment": [],
    "impact": false,
@@ -9040,8 +10442,10 @@
    "zones": "epaules",
    "tours": 2,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 12,
+   "seconds": 710,
    "metMinutes": 32.2,
    "equipment": [],
    "impact": false,
@@ -9103,8 +10507,10 @@
    "zones": "epaules",
    "tours": 3,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 19,
+   "seconds": 1114,
    "metMinutes": 58.9,
    "equipment": [],
    "impact": false,
@@ -9174,8 +10580,10 @@
    "zones": "dos",
    "tours": 2,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 8,
+   "seconds": 471,
    "metMinutes": 17.8,
    "equipment": [],
    "impact": false,
@@ -9233,8 +10641,10 @@
    "zones": "dos",
    "tours": 2,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 12,
+   "seconds": 664,
    "metMinutes": 24.7,
    "equipment": [],
    "impact": false,
@@ -9304,8 +10714,10 @@
    "zones": "dos",
    "tours": 3,
    "pause": 15,
+   "postures": null,
    "description": "",
    "minutes": 19,
+   "seconds": 1093,
    "metMinutes": 41.8,
    "equipment": [],
    "impact": false,
@@ -9383,8 +10795,10 @@
    "zones": "corps_entier",
    "tours": 1,
    "pause": 5,
+   "postures": null,
    "description": "Une séquence douce pour réveiller le corps : salutation au soleil et postures debout.",
    "minutes": 8,
+   "seconds": 430,
    "metMinutes": 17.4,
    "equipment": [],
    "impact": false,
@@ -9446,8 +10860,10 @@
    "zones": "corps_entier",
    "tours": 1,
    "pause": 5,
+   "postures": null,
    "description": "Relâcher les tensions de la journée avant de dormir, tout en douceur.",
    "minutes": 9,
+   "seconds": 490,
    "metMinutes": 16.6,
    "equipment": [],
    "impact": false,
@@ -9509,8 +10925,10 @@
    "zones": "",
    "tours": 1,
    "pause": 5,
+   "postures": null,
    "description": "Quelques minutes de respiration lente, puis d'attention au souffle.",
    "minutes": 8,
+   "seconds": 425,
    "metMinutes": 7.1,
    "equipment": [],
    "impact": false,
@@ -9544,8 +10962,10 @@
    "zones": "abdos",
    "tours": 2,
    "pause": 10,
+   "postures": null,
    "description": "Un gainage court et efficace, quand il ne reste que quelques minutes.",
    "minutes": 5,
+   "seconds": 290,
    "metMinutes": 11.4,
    "equipment": [],
    "impact": false,
@@ -9587,8 +11007,10 @@
    "zones": "",
    "tours": 1,
    "pause": 5,
+   "postures": null,
    "description": "Jambes au mur, puis relaxation progressive pour préparer le sommeil.",
    "minutes": 12,
+   "seconds": 670,
    "metMinutes": 13.8,
    "equipment": [
     "mur"
@@ -9624,8 +11046,10 @@
    "zones": "fessiers, jambes",
    "tours": 1,
    "pause": 5,
+   "postures": null,
    "description": "Ouvrir les hanches après une journée assise.",
    "minutes": 8,
+   "seconds": 455,
    "metMinutes": 16.7,
    "equipment": [],
    "impact": false,
@@ -9683,8 +11107,10 @@
    "zones": "",
    "tours": 1,
    "pause": 5,
+   "postures": null,
    "description": "Parcourir le corps de la tête aux pieds pour se poser.",
    "minutes": 9,
+   "seconds": 485,
    "metMinutes": 8.1,
    "equipment": [],
    "impact": false,
@@ -9718,8 +11144,10 @@
    "zones": "corps_entier",
    "tours": 1,
    "pause": 5,
+   "postures": null,
    "description": "Mobilité du matin, sans quitter la chambre.",
    "minutes": 3,
+   "seconds": 179,
    "metMinutes": 6.7,
    "equipment": [],
    "impact": false,
@@ -9769,8 +11197,10 @@
    "zones": "corps_entier",
    "tours": 2,
    "pause": 10,
+   "postures": null,
    "description": "Quatre minutes pour se réchauffer, sans saut.",
    "minutes": 4,
+   "seconds": 230,
    "metMinutes": 13.8,
    "equipment": [],
    "impact": false,
@@ -9804,8 +11234,10 @@
    "zones": "abdos",
    "tours": 2,
    "pause": 10,
+   "postures": null,
    "description": "Quatre exercices de gainage enchaînés deux fois.",
    "minutes": 5,
+   "seconds": 270,
    "metMinutes": 10.5,
    "equipment": [],
    "impact": false,
@@ -9851,8 +11283,10 @@
    "zones": "jambes, fessiers",
    "tours": 2,
    "pause": 10,
+   "postures": null,
    "description": "Squats, fentes et pont : l'essentiel des jambes.",
    "minutes": 5,
+   "seconds": 274,
    "metMinutes": 11.8,
    "equipment": [],
    "impact": false,
@@ -9894,8 +11328,10 @@
    "zones": "dos, epaules",
    "tours": 1,
    "pause": 5,
+   "postures": null,
    "description": "Dénouer la nuque, les épaules et le dos entre deux réunions.",
    "minutes": 4,
+   "seconds": 220,
    "metMinutes": 8.9,
    "equipment": [],
    "impact": false,
@@ -9937,8 +11373,10 @@
    "zones": "",
    "tours": 1,
    "pause": 0,
+   "postures": null,
    "description": "Respiration lente pour faire redescendre la pression.",
    "minutes": 3,
+   "seconds": 180,
    "metMinutes": 3,
    "equipment": [],
    "impact": false,
@@ -9955,6 +11393,2066 @@
     }
    ],
    "contenu": "Corps : Respiration lente (6 cycles par minute)"
+  },
+  {
+   "id": "etir_echauffement",
+   "titre": "Échauffement avant effort",
+   "type": "etirement",
+   "niveau": 1,
+   "zones": "corps_entier",
+   "tours": 1,
+   "pause": 5,
+   "postures": [
+    {
+     "id": "marche_genoux_hauts",
+     "nom": "Marche sur place, genoux hauts",
+     "niveau": 2,
+     "consigne": "Rythme soutenu",
+     "secondes": 40,
+     "etiquettes": {
+      "moments": [
+       "avant"
+      ],
+      "sports": [
+       "tous"
+      ],
+      "mode": "activation",
+      "hold": null
+     }
+    },
+    {
+     "id": "cercles_chevilles",
+     "nom": "Cercles de chevilles",
+     "niveau": 2,
+     "consigne": "12 cercles par cheville et par sens",
+     "secondes": 60,
+     "etiquettes": {
+      "moments": [
+       "avant"
+      ],
+      "sports": [
+       "velo",
+       "course"
+      ],
+      "mode": "dynamique",
+      "hold": null
+     }
+    },
+    {
+     "id": "balancier_jambes",
+     "nom": "Balanciers de jambe",
+     "niveau": 2,
+     "consigne": "Amplitude croissante",
+     "secondes": 40,
+     "etiquettes": {
+      "moments": [
+       "avant"
+      ],
+      "sports": [
+       "tous"
+      ],
+      "mode": "dynamique",
+      "hold": null
+     }
+    },
+    {
+     "id": "balancier_lateral",
+     "nom": "Balanciers de jambe sur le côté",
+     "niveau": 2,
+     "consigne": "Amplitude croissante",
+     "secondes": 40,
+     "etiquettes": {
+      "moments": [
+       "avant"
+      ],
+      "sports": [
+       "tous"
+      ],
+      "mode": "dynamique",
+      "hold": null
+     }
+    },
+    {
+     "id": "cercles_hanches",
+     "nom": "Cercles de hanches",
+     "niveau": 2,
+     "consigne": "Grands cercles",
+     "secondes": 30,
+     "etiquettes": {
+      "moments": [
+       "avant",
+       "hors_seance"
+      ],
+      "sports": [
+       "tous"
+      ],
+      "mode": "dynamique",
+      "hold": null
+     }
+    },
+    {
+     "id": "rotations_buste",
+     "nom": "Rotations du buste",
+     "niveau": 2,
+     "consigne": "Plus d'amplitude",
+     "secondes": 30,
+     "etiquettes": {
+      "moments": [
+       "avant",
+       "hors_seance"
+      ],
+      "sports": [
+       "tous"
+      ],
+      "mode": "dynamique",
+      "hold": null
+     }
+    },
+    {
+     "id": "cercles_bras",
+     "nom": "Cercles de bras",
+     "niveau": 2,
+     "consigne": "Petits puis grands cercles",
+     "secondes": 30,
+     "etiquettes": {
+      "moments": [
+       "avant",
+       "hors_seance"
+      ],
+      "sports": [
+       "tous"
+      ],
+      "mode": "dynamique",
+      "hold": null
+     }
+    },
+    {
+     "id": "rouler_epaules",
+     "nom": "Rotations d'épaules",
+     "niveau": 2,
+     "consigne": "8 grands cercles dans chaque sens",
+     "secondes": 40,
+     "etiquettes": {
+      "moments": [
+       "avant",
+       "hors_seance"
+      ],
+      "sports": [
+       "tous"
+      ],
+      "mode": "dynamique",
+      "hold": null
+     }
+    },
+    {
+     "id": "chat_vache",
+     "nom": "Chat-vache",
+     "niveau": 2,
+     "consigne": "10 répétitions",
+     "secondes": 60,
+     "etiquettes": {
+      "moments": [
+       "avant",
+       "hors_seance"
+      ],
+      "sports": [
+       "tous"
+      ],
+      "mode": "dynamique",
+      "hold": null
+     }
+    },
+    {
+     "id": "livre_ouvert",
+     "nom": "Livre ouvert (rotation du haut du dos)",
+     "niveau": 1,
+     "consigne": "8 répétitions par côté",
+     "secondes": 60,
+     "etiquettes": {
+      "moments": [
+       "avant",
+       "hors_seance"
+      ],
+      "sports": [
+       "tous"
+      ],
+      "mode": "dynamique",
+      "hold": null
+     }
+    },
+    {
+     "id": "squat",
+     "nom": "Squat au poids du corps",
+     "niveau": 1,
+     "consigne": "Amplitude confortable",
+     "secondes": 30,
+     "etiquettes": {
+      "moments": [
+       "avant"
+      ],
+      "sports": [
+       "tous"
+      ],
+      "mode": "activation",
+      "hold": null
+     }
+    },
+    {
+     "id": "chenille",
+     "nom": "Chenille (inchworm)",
+     "niveau": 1,
+     "consigne": "Genoux fléchis",
+     "secondes": 15,
+     "etiquettes": {
+      "moments": [
+       "avant"
+      ],
+      "sports": [
+       "tous"
+      ],
+      "mode": "dynamique",
+      "hold": null
+     }
+    },
+    {
+     "id": "plus_grand_etirement",
+     "nom": "Le plus grand étirement du monde",
+     "niveau": 2,
+     "consigne": "Avec rotation du buste",
+     "secondes": 60,
+     "etiquettes": {
+      "moments": [
+       "avant"
+      ],
+      "sports": [
+       "tous"
+      ],
+      "mode": "dynamique",
+      "hold": null
+     }
+    }
+   ],
+   "description": "Mobilité dynamique de la tête aux pieds, sans étirement long : elle prépare les articulations avant le vélo, la course ou la muscu.",
+   "minutes": 10,
+   "seconds": 595,
+   "metMinutes": 23,
+   "equipment": [],
+   "impact": false,
+   "reperes": [
+    {
+     "label": "NHS, How to warm up before exercising (mouvements dynamiques, pas d'étirements statiques)",
+     "url": "https://www.nhs.uk/content-widgets/live-well/exercise/how-to-warm-up-before-exercising"
+    },
+    {
+     "label": "NHS, How to stretch after exercising (étirements de 15 à 20 secondes après la séance)",
+     "url": "https://www.nhs.uk/live-well/exercise/how-to-stretch-after-exercising"
+    },
+    {
+     "label": "Behm et al., 2016, Acute effects of muscle stretching on physical performance, range of motion, and injury incidence (Applied Physiology, Nutrition, and Metabolism)",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/26642915/"
+    },
+    {
+     "label": "ACSM, Stretching and flexibility guidelines update (10 à 30 secondes par étirement, 2 à 3 jours par semaine au moins)",
+     "url": "https://www.acsm.org/blog-detail/acsm-certified-blog/2021/03/18/stretching-and-flexibility-guidelines-update"
+    }
+   ],
+   "sources_exercices": [
+    {
+     "label": "OMS, recommandations 2020 sur l'activité physique (Bull et al., BJSM)",
+     "url": "https://doi.org/10.1136/bjsports-2020-102955"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Step-up with Knee Raise",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Step-up_with_Knee_Raise.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Ankle Circles",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Ankle_Circles.json"
+    },
+    {
+     "label": "NHS, How to warm up before exercising (mouvements dynamiques, pas d'étirements statiques)",
+     "url": "https://www.nhs.uk/content-widgets/live-well/exercise/how-to-warm-up-before-exercising"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Front Leg Raises",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Front_Leg_Raises.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Side Leg Raises",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Side_Leg_Raises.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Standing Hip Circles",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Standing_Hip_Circles.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Torso Rotation",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Torso_Rotation.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Arm Circles",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Arm_Circles.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Shoulder Circles",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Shoulder_Circles.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Cat Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Cat_Stretch.json"
+    },
+    {
+     "label": "NHS, Flexibility exercises",
+     "url": "https://www.nhs.uk/live-well/exercise/flexibility-exercises/"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Side-Lying Floor Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Side-Lying_Floor_Stretch.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Bodyweight Squat",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Bodyweight_Squat.json"
+    },
+    {
+     "label": "NHS, Strength exercises",
+     "url": "https://www.nhs.uk/live-well/exercise/strength-and-flexibility-exercises/strength-exercises/"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Inchworm",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Inchworm.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Worlds Greatest Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Worlds_Greatest_Stretch.json"
+    }
+   ],
+   "contenu": "Corps : Marche sur place, genoux hauts\nCorps : Cercles de chevilles\nCorps : Balanciers de jambe\nCorps : Balanciers de jambe sur le côté\nCorps : Cercles de hanches\nCorps : Rotations du buste\nCorps : Cercles de bras\nCorps : Rotations d'épaules\nCorps : Chat-vache\nCorps : Livre ouvert (rotation du haut du dos)\nCorps : Squat au poids du corps\nCorps : Chenille (inchworm)\nCorps : Le plus grand étirement du monde"
+  },
+  {
+   "id": "etir_apres_velo",
+   "titre": "Après le vélo",
+   "type": "etirement",
+   "niveau": 1,
+   "zones": "jambes, dos, epaules",
+   "tours": 1,
+   "pause": 5,
+   "postures": [
+    {
+     "id": "flechisseurs",
+     "nom": "Étirement des fléchisseurs de hanche",
+     "niveau": 1,
+     "consigne": "2 × 20 s par côté",
+     "secondes": 80,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "course"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "quadriceps_debout",
+     "nom": "Étirement des quadriceps debout",
+     "niveau": 2,
+     "consigne": "30 s par côté",
+     "secondes": 60,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "course",
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "ischios",
+     "nom": "Étirement des ischio-jambiers",
+     "niveau": 1,
+     "consigne": "2 × 20 s par côté",
+     "secondes": 80,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "course",
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "fessiers_4",
+     "nom": "Étirement des fessiers en « 4 »",
+     "niveau": 1,
+     "consigne": "2 × 20 s par côté",
+     "secondes": 80,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "course",
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "mollets_assis",
+     "nom": "Étirement des mollets, assis jambe tendue",
+     "niveau": 1,
+     "consigne": "20 s par côté",
+     "secondes": 40,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "course"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "genoux_poitrine",
+     "nom": "Genoux à la poitrine",
+     "niveau": 1,
+     "consigne": "Une jambe à la fois",
+     "secondes": 40,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "course"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "enfant",
+     "nom": "Posture de l'enfant",
+     "niveau": 2,
+     "consigne": "30 s",
+     "secondes": 30,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 30
+     }
+    },
+    {
+     "id": "pecs_coudes_arriere",
+     "nom": "Étirement des pectoraux, coudes en arrière",
+     "niveau": 1,
+     "consigne": "20 s",
+     "secondes": 20,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "avant_bras_poignets",
+     "nom": "Étirement des avant-bras et des poignets",
+     "niveau": 1,
+     "consigne": "20 s",
+     "secondes": 20,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "cou_menton_poitrine",
+     "nom": "Étirement de la nuque, menton vers la poitrine",
+     "niveau": 2,
+     "consigne": "20 s",
+     "secondes": 20,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo"
+      ],
+      "mode": "statique",
+      "hold": 15
+     }
+    },
+    {
+     "id": "trapezes",
+     "nom": "Étirement des trapèzes",
+     "niveau": 1,
+     "consigne": "2 × 20 s par côté",
+     "secondes": 80,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    }
+   ],
+   "description": "Cuisses, hanches et mollets, puis bas du dos, poignets, poitrine et nuque : les zones les plus sollicitées par la position sur le vélo.",
+   "minutes": 10,
+   "seconds": 600,
+   "metMinutes": 21.9,
+   "equipment": [],
+   "impact": false,
+   "reperes": [
+    {
+     "label": "NHS, How to warm up before exercising (mouvements dynamiques, pas d'étirements statiques)",
+     "url": "https://www.nhs.uk/content-widgets/live-well/exercise/how-to-warm-up-before-exercising"
+    },
+    {
+     "label": "NHS, How to stretch after exercising (étirements de 15 à 20 secondes après la séance)",
+     "url": "https://www.nhs.uk/live-well/exercise/how-to-stretch-after-exercising"
+    },
+    {
+     "label": "Behm et al., 2016, Acute effects of muscle stretching on physical performance, range of motion, and injury incidence (Applied Physiology, Nutrition, and Metabolism)",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/26642915/"
+    },
+    {
+     "label": "ACSM, Stretching and flexibility guidelines update (10 à 30 secondes par étirement, 2 à 3 jours par semaine au moins)",
+     "url": "https://www.acsm.org/blog-detail/acsm-certified-blog/2021/03/18/stretching-and-flexibility-guidelines-update"
+    }
+   ],
+   "sources_exercices": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Kneeling Hip Flexor",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Kneeling_Hip_Flexor.json"
+    },
+    {
+     "label": "NHS, Flexibility exercises",
+     "url": "https://www.nhs.uk/live-well/exercise/flexibility-exercises/"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Quad Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Quad_Stretch.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Hamstring Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Hamstring_Stretch.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Ankle On The Knee",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Ankle_On_The_Knee.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Seated Calf Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Seated_Calf_Stretch.json"
+    },
+    {
+     "label": "NHS, How to stretch after exercising (étirements de 15 à 20 secondes après la séance)",
+     "url": "https://www.nhs.uk/live-well/exercise/how-to-stretch-after-exercising"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Hug Knees To Chest",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Hug_Knees_To_Chest.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Childs Pose",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Childs_Pose.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Elbows Back",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Elbows_Back.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Kneeling Forearm Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Kneeling_Forearm_Stretch.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Chin To Chest Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Chin_To_Chest_Stretch.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Side Neck Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Side_Neck_Stretch.json"
+    }
+   ],
+   "contenu": "Corps : Étirement des fléchisseurs de hanche\nCorps : Étirement des quadriceps debout\nCorps : Étirement des ischio-jambiers\nCorps : Étirement des fessiers en « 4 »\nCorps : Étirement des mollets, assis jambe tendue\nCorps : Genoux à la poitrine\nCorps : Posture de l'enfant\nCorps : Étirement des pectoraux, coudes en arrière\nCorps : Étirement des avant-bras et des poignets\nCorps : Étirement de la nuque, menton vers la poitrine\nCorps : Étirement des trapèzes"
+  },
+  {
+   "id": "etir_apres_course",
+   "titre": "Après la course",
+   "type": "etirement",
+   "niveau": 1,
+   "zones": "jambes, fessiers",
+   "tours": 1,
+   "pause": 5,
+   "postures": [
+    {
+     "id": "mollets_assis",
+     "nom": "Étirement des mollets, assis jambe tendue",
+     "niveau": 2,
+     "consigne": "30 s par côté",
+     "secondes": 60,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "course"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "soleaire",
+     "nom": "Étirement du soléaire, genoux fléchis",
+     "niveau": 2,
+     "consigne": "30 s par côté",
+     "secondes": 60,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "course"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "quadriceps_debout",
+     "nom": "Étirement des quadriceps debout",
+     "niveau": 2,
+     "consigne": "30 s par côté",
+     "secondes": 60,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "course",
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "flechisseurs",
+     "nom": "Étirement des fléchisseurs de hanche",
+     "niveau": 1,
+     "consigne": "2 × 20 s par côté",
+     "secondes": 80,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "course"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "ischios",
+     "nom": "Étirement des ischio-jambiers",
+     "niveau": 1,
+     "consigne": "2 × 20 s par côté",
+     "secondes": 80,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "course",
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "fessiers_4",
+     "nom": "Étirement des fessiers en « 4 »",
+     "niveau": 1,
+     "consigne": "2 × 20 s par côté",
+     "secondes": 80,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "course",
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "papillon",
+     "nom": "Papillon",
+     "niveau": 1,
+     "consigne": "30 s",
+     "secondes": 30,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "course"
+      ],
+      "mode": "statique",
+      "hold": 30
+     }
+    },
+    {
+     "id": "genoux_poitrine",
+     "nom": "Genoux à la poitrine",
+     "niveau": 1,
+     "consigne": "Une jambe à la fois",
+     "secondes": 40,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "course"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "torsion_couchee",
+     "nom": "Torsion allongée",
+     "niveau": 1,
+     "consigne": "30 s par côté",
+     "secondes": 60,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "course",
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 30
+     }
+    }
+   ],
+   "description": "Mollets, cuisses, hanches et fessiers : les étirements du bas du corps qui suivent une sortie de course à pied.",
+   "minutes": 10,
+   "seconds": 590,
+   "metMinutes": 21.8,
+   "equipment": [],
+   "impact": false,
+   "reperes": [
+    {
+     "label": "NHS, How to warm up before exercising (mouvements dynamiques, pas d'étirements statiques)",
+     "url": "https://www.nhs.uk/content-widgets/live-well/exercise/how-to-warm-up-before-exercising"
+    },
+    {
+     "label": "NHS, How to stretch after exercising (étirements de 15 à 20 secondes après la séance)",
+     "url": "https://www.nhs.uk/live-well/exercise/how-to-stretch-after-exercising"
+    },
+    {
+     "label": "Behm et al., 2016, Acute effects of muscle stretching on physical performance, range of motion, and injury incidence (Applied Physiology, Nutrition, and Metabolism)",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/26642915/"
+    },
+    {
+     "label": "ACSM, Stretching and flexibility guidelines update (10 à 30 secondes par étirement, 2 à 3 jours par semaine au moins)",
+     "url": "https://www.acsm.org/blog-detail/acsm-certified-blog/2021/03/18/stretching-and-flexibility-guidelines-update"
+    }
+   ],
+   "sources_exercices": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Seated Calf Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Seated_Calf_Stretch.json"
+    },
+    {
+     "label": "NHS, How to stretch after exercising (étirements de 15 à 20 secondes après la séance)",
+     "url": "https://www.nhs.uk/live-well/exercise/how-to-stretch-after-exercising"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Standing Soleus And Achilles Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Standing_Soleus_And_Achilles_Stretch.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Quad Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Quad_Stretch.json"
+    },
+    {
+     "label": "NHS, Flexibility exercises",
+     "url": "https://www.nhs.uk/live-well/exercise/flexibility-exercises/"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Kneeling Hip Flexor",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Kneeling_Hip_Flexor.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Hamstring Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Hamstring_Stretch.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Ankle On The Knee",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Ankle_On_The_Knee.json"
+    },
+    {
+     "label": "Yoga Journal, Bound Angle Pose",
+     "url": "https://www.yogajournal.com/poses/bound-angle-pose-2/"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Hug Knees To Chest",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Hug_Knees_To_Chest.json"
+    },
+    {
+     "label": "Yogamatters, bibliothèque de postures : Supine Twist",
+     "url": "https://www.yogamatters.com/blogs/pose-library/supine-twist-supta-matsyendrasana"
+    }
+   ],
+   "contenu": "Corps : Étirement des mollets, assis jambe tendue\nCorps : Étirement du soléaire, genoux fléchis\nCorps : Étirement des quadriceps debout\nCorps : Étirement des fléchisseurs de hanche\nCorps : Étirement des ischio-jambiers\nCorps : Étirement des fessiers en « 4 »\nCorps : Papillon\nCorps : Genoux à la poitrine\nCorps : Torsion allongée"
+  },
+  {
+   "id": "etir_apres_muscu",
+   "titre": "Après la muscu",
+   "type": "etirement",
+   "niveau": 1,
+   "zones": "corps_entier",
+   "tours": 1,
+   "pause": 5,
+   "postures": [
+    {
+     "id": "pecs_coudes_arriere",
+     "nom": "Étirement des pectoraux, coudes en arrière",
+     "niveau": 2,
+     "consigne": "30 s",
+     "secondes": 30,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "epaule_bras_croise",
+     "nom": "Étirement de l'épaule, bras croisé",
+     "niveau": 1,
+     "consigne": "20 s par côté",
+     "secondes": 40,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "triceps_etirement",
+     "nom": "Étirement des triceps",
+     "niveau": 1,
+     "consigne": "20 s par côté",
+     "secondes": 40,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "avant_bras_poignets",
+     "nom": "Étirement des avant-bras et des poignets",
+     "niveau": 2,
+     "consigne": "30 s",
+     "secondes": 30,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "etirement_lateral",
+     "nom": "Étirement latéral debout",
+     "niveau": 2,
+     "consigne": "20 s par côté",
+     "secondes": 40,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "enfant",
+     "nom": "Posture de l'enfant",
+     "niveau": 2,
+     "consigne": "30 s",
+     "secondes": 30,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 30
+     }
+    },
+    {
+     "id": "quadriceps_debout",
+     "nom": "Étirement des quadriceps debout",
+     "niveau": 1,
+     "consigne": "20 s par côté",
+     "secondes": 40,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "course",
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "ischios",
+     "nom": "Étirement des ischio-jambiers",
+     "niveau": 1,
+     "consigne": "2 × 20 s par côté",
+     "secondes": 80,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "course",
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "fessiers_4",
+     "nom": "Étirement des fessiers en « 4 »",
+     "niveau": 1,
+     "consigne": "2 × 20 s par côté",
+     "secondes": 80,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "course",
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "flechisseurs",
+     "nom": "Étirement des fléchisseurs de hanche",
+     "niveau": 1,
+     "consigne": "2 × 20 s par côté",
+     "secondes": 80,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "course"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "mollets_assis",
+     "nom": "Étirement des mollets, assis jambe tendue",
+     "niveau": 1,
+     "consigne": "20 s par côté",
+     "secondes": 40,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "course"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    }
+   ],
+   "description": "Poitrine, épaules, bras, flancs puis jambes : un retour au calme pour tout le corps après une séance de renforcement.",
+   "minutes": 10,
+   "seconds": 580,
+   "metMinutes": 21.2,
+   "equipment": [],
+   "impact": false,
+   "reperes": [
+    {
+     "label": "NHS, How to warm up before exercising (mouvements dynamiques, pas d'étirements statiques)",
+     "url": "https://www.nhs.uk/content-widgets/live-well/exercise/how-to-warm-up-before-exercising"
+    },
+    {
+     "label": "NHS, How to stretch after exercising (étirements de 15 à 20 secondes après la séance)",
+     "url": "https://www.nhs.uk/live-well/exercise/how-to-stretch-after-exercising"
+    },
+    {
+     "label": "Behm et al., 2016, Acute effects of muscle stretching on physical performance, range of motion, and injury incidence (Applied Physiology, Nutrition, and Metabolism)",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/26642915/"
+    },
+    {
+     "label": "ACSM, Stretching and flexibility guidelines update (10 à 30 secondes par étirement, 2 à 3 jours par semaine au moins)",
+     "url": "https://www.acsm.org/blog-detail/acsm-certified-blog/2021/03/18/stretching-and-flexibility-guidelines-update"
+    }
+   ],
+   "sources_exercices": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Elbows Back",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Elbows_Back.json"
+    },
+    {
+     "label": "NHS, Flexibility exercises",
+     "url": "https://www.nhs.uk/live-well/exercise/flexibility-exercises/"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Shoulder Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Shoulder_Stretch.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Triceps Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Triceps_Stretch.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Kneeling Forearm Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Kneeling_Forearm_Stretch.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Standing Lateral Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Standing_Lateral_Stretch.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Childs Pose",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Childs_Pose.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Quad Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Quad_Stretch.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Hamstring Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Hamstring_Stretch.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Ankle On The Knee",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Ankle_On_The_Knee.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Kneeling Hip Flexor",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Kneeling_Hip_Flexor.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Seated Calf Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Seated_Calf_Stretch.json"
+    },
+    {
+     "label": "NHS, How to stretch after exercising (étirements de 15 à 20 secondes après la séance)",
+     "url": "https://www.nhs.uk/live-well/exercise/how-to-stretch-after-exercising"
+    }
+   ],
+   "contenu": "Corps : Étirement des pectoraux, coudes en arrière\nCorps : Étirement de l'épaule, bras croisé\nCorps : Étirement des triceps\nCorps : Étirement des avant-bras et des poignets\nCorps : Étirement latéral debout\nCorps : Posture de l'enfant\nCorps : Étirement des quadriceps debout\nCorps : Étirement des ischio-jambiers\nCorps : Étirement des fessiers en « 4 »\nCorps : Étirement des fléchisseurs de hanche\nCorps : Étirement des mollets, assis jambe tendue"
+  },
+  {
+   "id": "etir_hanches_dos",
+   "titre": "Hanches et dos",
+   "type": "etirement",
+   "niveau": 1,
+   "zones": "dos, fessiers",
+   "tours": 1,
+   "pause": 5,
+   "postures": [
+    {
+     "id": "chat_vache",
+     "nom": "Chat-vache",
+     "niveau": 1,
+     "consigne": "8 répétitions, petite amplitude",
+     "secondes": 45,
+     "etiquettes": {
+      "moments": [
+       "avant",
+       "hors_seance"
+      ],
+      "sports": [
+       "tous"
+      ],
+      "mode": "dynamique",
+      "hold": null
+     }
+    },
+    {
+     "id": "enfant",
+     "nom": "Posture de l'enfant",
+     "niveau": 3,
+     "consigne": "45 s",
+     "secondes": 45,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 30
+     }
+    },
+    {
+     "id": "fente_basse",
+     "nom": "Fente basse (posture du croissant)",
+     "niveau": 1,
+     "consigne": "Mains sur la cuisse, 30 s par côté",
+     "secondes": 60,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "course"
+      ],
+      "mode": "statique",
+      "hold": 30
+     }
+    },
+    {
+     "id": "pigeon",
+     "nom": "Pigeon (version au sol)",
+     "niveau": 1,
+     "consigne": "Buste redressé, 30 s par côté",
+     "secondes": 60,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "course"
+      ],
+      "mode": "statique",
+      "hold": 30
+     }
+    },
+    {
+     "id": "papillon",
+     "nom": "Papillon",
+     "niveau": 3,
+     "consigne": "1 min, buste incliné",
+     "secondes": 60,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "course"
+      ],
+      "mode": "statique",
+      "hold": 30
+     }
+    },
+    {
+     "id": "bebe_heureux",
+     "nom": "Bébé heureux",
+     "niveau": 2,
+     "consigne": "Mains sur les pieds",
+     "secondes": 45,
+     "etiquettes": {
+      "moments": [
+       "hors_seance"
+      ],
+      "sports": [
+       "tous"
+      ],
+      "mode": "statique",
+      "hold": 30
+     }
+    },
+    {
+     "id": "genoux_poitrine",
+     "nom": "Genoux à la poitrine",
+     "niveau": 1,
+     "consigne": "Une jambe à la fois",
+     "secondes": 40,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "course"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "torsion_couchee",
+     "nom": "Torsion allongée",
+     "niveau": 1,
+     "consigne": "30 s par côté",
+     "secondes": 60,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "course",
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 30
+     }
+    },
+    {
+     "id": "sphinx",
+     "nom": "Sphinx",
+     "niveau": 2,
+     "consigne": "45 s",
+     "secondes": 45,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo"
+      ],
+      "mode": "statique",
+      "hold": 30
+     }
+    },
+    {
+     "id": "cobra",
+     "nom": "Cobra",
+     "niveau": 2,
+     "consigne": "20 s",
+     "secondes": 20,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "livre_ouvert",
+     "nom": "Livre ouvert (rotation du haut du dos)",
+     "niveau": 1,
+     "consigne": "8 répétitions par côté",
+     "secondes": 60,
+     "etiquettes": {
+      "moments": [
+       "avant",
+       "hors_seance"
+      ],
+      "sports": [
+       "tous"
+      ],
+      "mode": "dynamique",
+      "hold": null
+     }
+    }
+   ],
+   "description": "Ouvrir les hanches et délier le dos, de la mobilité douce aux postures au sol : utile après une journée assise.",
+   "minutes": 10,
+   "seconds": 590,
+   "metMinutes": 21.5,
+   "equipment": [],
+   "impact": false,
+   "reperes": [
+    {
+     "label": "NHS, How to warm up before exercising (mouvements dynamiques, pas d'étirements statiques)",
+     "url": "https://www.nhs.uk/content-widgets/live-well/exercise/how-to-warm-up-before-exercising"
+    },
+    {
+     "label": "NHS, How to stretch after exercising (étirements de 15 à 20 secondes après la séance)",
+     "url": "https://www.nhs.uk/live-well/exercise/how-to-stretch-after-exercising"
+    },
+    {
+     "label": "Behm et al., 2016, Acute effects of muscle stretching on physical performance, range of motion, and injury incidence (Applied Physiology, Nutrition, and Metabolism)",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/26642915/"
+    },
+    {
+     "label": "ACSM, Stretching and flexibility guidelines update (10 à 30 secondes par étirement, 2 à 3 jours par semaine au moins)",
+     "url": "https://www.acsm.org/blog-detail/acsm-certified-blog/2021/03/18/stretching-and-flexibility-guidelines-update"
+    }
+   ],
+   "sources_exercices": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Cat Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Cat_Stretch.json"
+    },
+    {
+     "label": "NHS, Flexibility exercises",
+     "url": "https://www.nhs.uk/live-well/exercise/flexibility-exercises/"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Childs Pose",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Childs_Pose.json"
+    },
+    {
+     "label": "Yoga Journal, Low Lunge",
+     "url": "https://www.yogajournal.com/poses/low-lunge/"
+    },
+    {
+     "label": "Yoga Journal, Sleeping Pigeon Pose",
+     "url": "https://www.yogajournal.com/article/yogapedia/master-sleeping-pigeon-pose-4-steps/"
+    },
+    {
+     "label": "Yoga Journal, Bound Angle Pose",
+     "url": "https://www.yogajournal.com/poses/bound-angle-pose-2/"
+    },
+    {
+     "label": "Yogamatters, bibliothèque de postures : Happy Baby Pose",
+     "url": "https://www.yogamatters.com/blogs/pose-library/happy-baby-pose-ananda-balasana"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Hug Knees To Chest",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Hug_Knees_To_Chest.json"
+    },
+    {
+     "label": "Yogamatters, bibliothèque de postures : Supine Twist",
+     "url": "https://www.yogamatters.com/blogs/pose-library/supine-twist-supta-matsyendrasana"
+    },
+    {
+     "label": "Yoga Journal, Sphinx Pose",
+     "url": "https://www.yogajournal.com/poses/sphinx-pose/"
+    },
+    {
+     "label": "Yoga Journal, Cobra Pose",
+     "url": "https://www.yogajournal.com/poses/types/cobra-pose-2/"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Side-Lying Floor Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Side-Lying_Floor_Stretch.json"
+    }
+   ],
+   "contenu": "Corps : Chat-vache\nCorps : Posture de l'enfant\nCorps : Fente basse (posture du croissant)\nCorps : Pigeon (version au sol)\nCorps : Papillon\nCorps : Bébé heureux\nCorps : Genoux à la poitrine\nCorps : Torsion allongée\nCorps : Sphinx\nCorps : Cobra\nCorps : Livre ouvert (rotation du haut du dos)"
+  },
+  {
+   "id": "etir_soir",
+   "titre": "Soir, avant de dormir",
+   "type": "etirement",
+   "niveau": 1,
+   "zones": "corps_entier",
+   "tours": 1,
+   "pause": 5,
+   "postures": [
+    {
+     "id": "etirement_lateral",
+     "nom": "Étirement latéral debout",
+     "niveau": 2,
+     "consigne": "20 s par côté",
+     "secondes": 40,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "quadriceps_debout",
+     "nom": "Étirement des quadriceps debout",
+     "niveau": 1,
+     "consigne": "20 s par côté",
+     "secondes": 40,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "course",
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "sphinx",
+     "nom": "Sphinx",
+     "niveau": 3,
+     "consigne": "1 min",
+     "secondes": 60,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo"
+      ],
+      "mode": "statique",
+      "hold": 30
+     }
+    },
+    {
+     "id": "genoux_poitrine",
+     "nom": "Genoux à la poitrine",
+     "niveau": 1,
+     "consigne": "Une jambe à la fois",
+     "secondes": 40,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "course"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "fessiers_4",
+     "nom": "Étirement des fessiers en « 4 »",
+     "niveau": 1,
+     "consigne": "2 × 20 s par côté",
+     "secondes": 80,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "course",
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "torsion_couchee",
+     "nom": "Torsion allongée",
+     "niveau": 1,
+     "consigne": "30 s par côté",
+     "secondes": 60,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "course",
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 30
+     }
+    },
+    {
+     "id": "papillon",
+     "nom": "Papillon",
+     "niveau": 3,
+     "consigne": "1 min, buste incliné",
+     "secondes": 60,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "course"
+      ],
+      "mode": "statique",
+      "hold": 30
+     }
+    },
+    {
+     "id": "bebe_heureux",
+     "nom": "Bébé heureux",
+     "niveau": 2,
+     "consigne": "Mains sur les pieds",
+     "secondes": 45,
+     "etiquettes": {
+      "moments": [
+       "hors_seance"
+      ],
+      "sports": [
+       "tous"
+      ],
+      "mode": "statique",
+      "hold": 30
+     }
+    },
+    {
+     "id": "enfant",
+     "nom": "Posture de l'enfant",
+     "niveau": 3,
+     "consigne": "45 s",
+     "secondes": 45,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 30
+     }
+    },
+    {
+     "id": "respiration",
+     "nom": "Respiration costale",
+     "niveau": 1,
+     "consigne": "Allongée",
+     "secondes": 60,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "tous"
+      ],
+      "mode": "activation",
+      "hold": null
+     }
+    }
+   ],
+   "description": "Une séquence lente pour relâcher le corps avant de dormir, finie par une minute de respiration.",
+   "minutes": 10,
+   "seconds": 575,
+   "metMinutes": 19.8,
+   "equipment": [],
+   "impact": false,
+   "reperes": [
+    {
+     "label": "NHS, How to warm up before exercising (mouvements dynamiques, pas d'étirements statiques)",
+     "url": "https://www.nhs.uk/content-widgets/live-well/exercise/how-to-warm-up-before-exercising"
+    },
+    {
+     "label": "NHS, How to stretch after exercising (étirements de 15 à 20 secondes après la séance)",
+     "url": "https://www.nhs.uk/live-well/exercise/how-to-stretch-after-exercising"
+    },
+    {
+     "label": "Behm et al., 2016, Acute effects of muscle stretching on physical performance, range of motion, and injury incidence (Applied Physiology, Nutrition, and Metabolism)",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/26642915/"
+    },
+    {
+     "label": "ACSM, Stretching and flexibility guidelines update (10 à 30 secondes par étirement, 2 à 3 jours par semaine au moins)",
+     "url": "https://www.acsm.org/blog-detail/acsm-certified-blog/2021/03/18/stretching-and-flexibility-guidelines-update"
+    }
+   ],
+   "sources_exercices": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Standing Lateral Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Standing_Lateral_Stretch.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Quad Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Quad_Stretch.json"
+    },
+    {
+     "label": "NHS, Flexibility exercises",
+     "url": "https://www.nhs.uk/live-well/exercise/flexibility-exercises/"
+    },
+    {
+     "label": "Yoga Journal, Sphinx Pose",
+     "url": "https://www.yogajournal.com/poses/sphinx-pose/"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Hug Knees To Chest",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Hug_Knees_To_Chest.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Ankle On The Knee",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Ankle_On_The_Knee.json"
+    },
+    {
+     "label": "Yogamatters, bibliothèque de postures : Supine Twist",
+     "url": "https://www.yogamatters.com/blogs/pose-library/supine-twist-supta-matsyendrasana"
+    },
+    {
+     "label": "Yoga Journal, Bound Angle Pose",
+     "url": "https://www.yogajournal.com/poses/bound-angle-pose-2/"
+    },
+    {
+     "label": "Yogamatters, bibliothèque de postures : Happy Baby Pose",
+     "url": "https://www.yogamatters.com/blogs/pose-library/happy-baby-pose-ananda-balasana"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Childs Pose",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Childs_Pose.json"
+    },
+    {
+     "label": "Respiration lente autour de 6 cycles par minute, revue systématique (Université de Berne)",
+     "url": "https://boris.unibe.ch/193198"
+    }
+   ],
+   "contenu": "Corps : Étirement latéral debout\nCorps : Étirement des quadriceps debout\nCorps : Sphinx\nCorps : Genoux à la poitrine\nCorps : Étirement des fessiers en « 4 »\nCorps : Torsion allongée\nCorps : Papillon\nCorps : Bébé heureux\nCorps : Posture de l'enfant\nCorps : Respiration costale"
+  },
+  {
+   "id": "etir_nuque_epaules",
+   "titre": "Nuque et épaules",
+   "type": "etirement",
+   "niveau": 1,
+   "zones": "dos, epaules",
+   "tours": 1,
+   "pause": 5,
+   "postures": [
+    {
+     "id": "rouler_epaules",
+     "nom": "Rotations d'épaules",
+     "niveau": 1,
+     "consigne": "5 cercles dans chaque sens",
+     "secondes": 30,
+     "etiquettes": {
+      "moments": [
+       "avant",
+       "hors_seance"
+      ],
+      "sports": [
+       "tous"
+      ],
+      "mode": "dynamique",
+      "hold": null
+     }
+    },
+    {
+     "id": "cou_menton_poitrine",
+     "nom": "Étirement de la nuque, menton vers la poitrine",
+     "niveau": 3,
+     "consigne": "30 s",
+     "secondes": 30,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo"
+      ],
+      "mode": "statique",
+      "hold": 15
+     }
+    },
+    {
+     "id": "trapezes",
+     "nom": "Étirement des trapèzes",
+     "niveau": 1,
+     "consigne": "2 × 20 s par côté",
+     "secondes": 80,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "chin_tuck",
+     "nom": "Menton rentré",
+     "niveau": 3,
+     "consigne": "12 répétitions, maintien 5 s",
+     "secondes": 75,
+     "etiquettes": {
+      "moments": [
+       "hors_seance"
+      ],
+      "sports": [
+       "tous"
+      ],
+      "mode": "activation",
+      "hold": null
+     }
+    },
+    {
+     "id": "epaule_bras_croise",
+     "nom": "Étirement de l'épaule, bras croisé",
+     "niveau": 1,
+     "consigne": "20 s par côté",
+     "secondes": 40,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "triceps_etirement",
+     "nom": "Étirement des triceps",
+     "niveau": 1,
+     "consigne": "20 s par côté",
+     "secondes": 40,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "pecs_coudes_arriere",
+     "nom": "Étirement des pectoraux, coudes en arrière",
+     "niveau": 2,
+     "consigne": "30 s",
+     "secondes": 30,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "etirement_lateral",
+     "nom": "Étirement latéral debout",
+     "niveau": 1,
+     "consigne": "15 s par côté",
+     "secondes": 30,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "torsion_assise",
+     "nom": "Torsion assise",
+     "niveau": 1,
+     "consigne": "20 s par côté",
+     "secondes": 40,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "avant_bras_poignets",
+     "nom": "Étirement des avant-bras et des poignets",
+     "niveau": 1,
+     "consigne": "20 s",
+     "secondes": 20,
+     "etiquettes": {
+      "moments": [
+       "apres",
+       "hors_seance"
+      ],
+      "sports": [
+       "velo",
+       "muscu"
+      ],
+      "mode": "statique",
+      "hold": 20
+     }
+    },
+    {
+     "id": "omoplates",
+     "nom": "Rapprochement des omoplates",
+     "niveau": 3,
+     "consigne": "12 répétitions, maintien 5 s",
+     "secondes": 75,
+     "etiquettes": {
+      "moments": [
+       "avant",
+       "hors_seance"
+      ],
+      "sports": [
+       "muscu"
+      ],
+      "mode": "activation",
+      "hold": null
+     }
+    },
+    {
+     "id": "cercles_bras",
+     "nom": "Cercles de bras",
+     "niveau": 1,
+     "consigne": "Petits cercles",
+     "secondes": 30,
+     "etiquettes": {
+      "moments": [
+       "avant",
+       "hors_seance"
+      ],
+      "sports": [
+       "tous"
+      ],
+      "mode": "dynamique",
+      "hold": null
+     }
+    }
+   ],
+   "description": "Défaire les tensions de la nuque, des épaules et du haut du dos après des heures au bureau ou sur le guidon.",
+   "minutes": 10,
+   "seconds": 575,
+   "metMinutes": 22.4,
+   "equipment": [],
+   "impact": false,
+   "reperes": [
+    {
+     "label": "NHS, How to warm up before exercising (mouvements dynamiques, pas d'étirements statiques)",
+     "url": "https://www.nhs.uk/content-widgets/live-well/exercise/how-to-warm-up-before-exercising"
+    },
+    {
+     "label": "NHS, How to stretch after exercising (étirements de 15 à 20 secondes après la séance)",
+     "url": "https://www.nhs.uk/live-well/exercise/how-to-stretch-after-exercising"
+    },
+    {
+     "label": "Behm et al., 2016, Acute effects of muscle stretching on physical performance, range of motion, and injury incidence (Applied Physiology, Nutrition, and Metabolism)",
+     "url": "https://pubmed.ncbi.nlm.nih.gov/26642915/"
+    },
+    {
+     "label": "ACSM, Stretching and flexibility guidelines update (10 à 30 secondes par étirement, 2 à 3 jours par semaine au moins)",
+     "url": "https://www.acsm.org/blog-detail/acsm-certified-blog/2021/03/18/stretching-and-flexibility-guidelines-update"
+    }
+   ],
+   "sources_exercices": [
+    {
+     "label": "free-exercise-db (domaine public), fiche Shoulder Circles",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Shoulder_Circles.json"
+    },
+    {
+     "label": "NHS, How to warm up before exercising (mouvements dynamiques, pas d'étirements statiques)",
+     "url": "https://www.nhs.uk/content-widgets/live-well/exercise/how-to-warm-up-before-exercising"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Chin To Chest Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Chin_To_Chest_Stretch.json"
+    },
+    {
+     "label": "NHS, Flexibility exercises",
+     "url": "https://www.nhs.uk/live-well/exercise/flexibility-exercises/"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Side Neck Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Side_Neck_Stretch.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Shoulder Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Shoulder_Stretch.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Triceps Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Triceps_Stretch.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Elbows Back",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Elbows_Back.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Standing Lateral Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Standing_Lateral_Stretch.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Spinal Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Spinal_Stretch.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Kneeling Forearm Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Kneeling_Forearm_Stretch.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Upper Back Stretch",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Upper_Back_Stretch.json"
+    },
+    {
+     "label": "free-exercise-db (domaine public), fiche Arm Circles",
+     "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Arm_Circles.json"
+    }
+   ],
+   "contenu": "Corps : Rotations d'épaules\nCorps : Étirement de la nuque, menton vers la poitrine\nCorps : Étirement des trapèzes\nCorps : Menton rentré\nCorps : Étirement de l'épaule, bras croisé\nCorps : Étirement des triceps\nCorps : Étirement des pectoraux, coudes en arrière\nCorps : Étirement latéral debout\nCorps : Torsion assise\nCorps : Étirement des avant-bras et des poignets\nCorps : Rapprochement des omoplates\nCorps : Cercles de bras"
   }
  ],
  "programmes": [
@@ -11285,12 +14783,35 @@
    "programmes": []
   },
   {
+   "titre": "free-exercise-db (domaine public), fiche Side Leg Raises",
+   "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Side_Leg_Raises.json",
+   "type": "Base d'exercices ouverte (domaine public)",
+   "usages": "Exercice : mouvement, muscles, consignes",
+   "exercices": [
+    "Balanciers de jambe sur le côté",
+    "Levée de jambe sur le côté"
+   ],
+   "entrainements": [],
+   "programmes": []
+  },
+  {
    "titre": "free-exercise-db (domaine public), fiche Alternate Heel Touchers",
    "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Alternate_Heel_Touchers.json",
    "type": "Base d'exercices ouverte (domaine public)",
    "usages": "Exercice : mouvement, muscles, consignes",
    "exercices": [
     "Touchers de talons"
+   ],
+   "entrainements": [],
+   "programmes": []
+  },
+  {
+   "titre": "free-exercise-db (domaine public), fiche Ankle Circles",
+   "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Ankle_Circles.json",
+   "type": "Base d'exercices ouverte (domaine public)",
+   "usages": "Exercice : mouvement, muscles, consignes",
+   "exercices": [
+    "Cercles de chevilles"
    ],
    "entrainements": [],
    "programmes": []
@@ -11505,6 +15026,17 @@
    "programmes": []
   },
   {
+   "titre": "free-exercise-db (domaine public), fiche Chin To Chest Stretch",
+   "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Chin_To_Chest_Stretch.json",
+   "type": "Base d'exercices ouverte (domaine public)",
+   "usages": "Exercice : mouvement, muscles, consignes",
+   "exercices": [
+    "Étirement de la nuque, menton vers la poitrine"
+   ],
+   "entrainements": [],
+   "programmes": []
+  },
+  {
    "titre": "free-exercise-db (domaine public), fiche Close-Grip EZ-Bar Curl with Band",
    "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Close-Grip_EZ-Bar_Curl_with_Band.json",
    "type": "Base d'exercices ouverte (domaine public)",
@@ -11599,6 +15131,17 @@
    "usages": "Exercice : mouvement, muscles, consignes",
    "exercices": [
     "Crunch vélo"
+   ],
+   "entrainements": [],
+   "programmes": []
+  },
+  {
+   "titre": "free-exercise-db (domaine public), fiche Elbows Back",
+   "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Elbows_Back.json",
+   "type": "Base d'exercices ouverte (domaine public)",
+   "usages": "Exercice : mouvement, muscles, consignes",
+   "exercices": [
+    "Étirement des pectoraux, coudes en arrière"
    ],
    "entrainements": [],
    "programmes": []
@@ -11742,6 +15285,17 @@
    "usages": "Exercice : mouvement, muscles, consignes",
    "exercices": [
     "Squat sur une jambe vers une chaise"
+   ],
+   "entrainements": [],
+   "programmes": []
+  },
+  {
+   "titre": "free-exercise-db (domaine public), fiche Kneeling Forearm Stretch",
+   "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Kneeling_Forearm_Stretch.json",
+   "type": "Base d'exercices ouverte (domaine public)",
+   "usages": "Exercice : mouvement, muscles, consignes",
+   "exercices": [
+    "Étirement des avant-bras et des poignets"
    ],
    "entrainements": [],
    "programmes": []
@@ -11945,6 +15499,28 @@
    "programmes": []
   },
   {
+   "titre": "free-exercise-db (domaine public), fiche Seated Calf Stretch",
+   "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Seated_Calf_Stretch.json",
+   "type": "Base d'exercices ouverte (domaine public)",
+   "usages": "Exercice : mouvement, muscles, consignes",
+   "exercices": [
+    "Étirement des mollets, assis jambe tendue"
+   ],
+   "entrainements": [],
+   "programmes": []
+  },
+  {
+   "titre": "free-exercise-db (domaine public), fiche Shoulder Circles",
+   "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Shoulder_Circles.json",
+   "type": "Base d'exercices ouverte (domaine public)",
+   "usages": "Exercice : mouvement, muscles, consignes",
+   "exercices": [
+    "Rotations d'épaules"
+   ],
+   "entrainements": [],
+   "programmes": []
+  },
+  {
    "titre": "free-exercise-db (domaine public), fiche Shoulder Press - With Bands",
    "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Shoulder_Press_-_With_Bands.json",
    "type": "Base d'exercices ouverte (domaine public)",
@@ -11962,17 +15538,6 @@
    "usages": "Exercice : mouvement, muscles, consignes",
    "exercices": [
     "Étirement de l'épaule, bras croisé"
-   ],
-   "entrainements": [],
-   "programmes": []
-  },
-  {
-   "titre": "free-exercise-db (domaine public), fiche Side Leg Raises",
-   "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Side_Leg_Raises.json",
-   "type": "Base d'exercices ouverte (domaine public)",
-   "usages": "Exercice : mouvement, muscles, consignes",
-   "exercices": [
-    "Levée de jambe sur le côté"
    ],
    "entrainements": [],
    "programmes": []
@@ -12116,6 +15681,17 @@
    "usages": "Exercice : mouvement, muscles, consignes",
    "exercices": [
     "Étirement latéral debout"
+   ],
+   "entrainements": [],
+   "programmes": []
+  },
+  {
+   "titre": "free-exercise-db (domaine public), fiche Standing Soleus And Achilles Stretch",
+   "url": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Standing_Soleus_And_Achilles_Stretch.json",
+   "type": "Base d'exercices ouverte (domaine public)",
+   "usages": "Exercice : mouvement, muscles, consignes",
+   "exercices": [
+    "Étirement du soléaire, genoux fléchis"
    ],
    "entrainements": [],
    "programmes": []
@@ -12425,6 +16001,9 @@
    "exercices": [
     "Étirement des quadriceps debout",
     "Genoux à la poitrine",
+    "Étirement des pectoraux, coudes en arrière",
+    "Étirement des avant-bras et des poignets",
+    "Étirement de la nuque, menton vers la poitrine",
     "Chat-vache",
     "Glissés de bras au mur",
     "Menton rentré",
@@ -12465,6 +16044,47 @@
     "Curl-up de McGill"
    ],
    "entrainements": [],
+   "programmes": []
+  },
+  {
+   "titre": "NHS, How to warm up before exercising (mouvements dynamiques, pas d'étirements statiques)",
+   "url": "https://www.nhs.uk/content-widgets/live-well/exercise/how-to-warm-up-before-exercising",
+   "type": "Organisme de santé ou université",
+   "usages": "Exercice : mouvement, muscles, consignes\nConstruction des entraînements",
+   "exercices": [
+    "Cercles de chevilles",
+    "Balanciers de jambe sur le côté",
+    "Rotations d'épaules"
+   ],
+   "entrainements": [
+    "Échauffement avant effort",
+    "Après le vélo",
+    "Après la course",
+    "Après la muscu",
+    "Hanches et dos",
+    "Soir, avant de dormir",
+    "Nuque et épaules"
+   ],
+   "programmes": []
+  },
+  {
+   "titre": "NHS, How to stretch after exercising (étirements de 15 à 20 secondes après la séance)",
+   "url": "https://www.nhs.uk/live-well/exercise/how-to-stretch-after-exercising",
+   "type": "Organisme de santé ou université",
+   "usages": "Exercice : mouvement, muscles, consignes\nConstruction des entraînements",
+   "exercices": [
+    "Étirement des mollets, assis jambe tendue",
+    "Étirement du soléaire, genoux fléchis"
+   ],
+   "entrainements": [
+    "Échauffement avant effort",
+    "Après le vélo",
+    "Après la course",
+    "Après la muscu",
+    "Hanches et dos",
+    "Soir, avant de dormir",
+    "Nuque et épaules"
+   ],
    "programmes": []
   },
   {
@@ -12521,6 +16141,23 @@
     "Relaxation musculaire progressive"
    ],
    "entrainements": [],
+   "programmes": []
+  },
+  {
+   "titre": "Behm et al., 2016, Acute effects of muscle stretching on physical performance, range of motion, and injury incidence (Applied Physiology, Nutrition, and Metabolism)",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/26642915/",
+   "type": "Organisme de santé ou université",
+   "usages": "Construction des entraînements",
+   "exercices": [],
+   "entrainements": [
+    "Échauffement avant effort",
+    "Après le vélo",
+    "Après la course",
+    "Après la muscu",
+    "Hanches et dos",
+    "Soir, avant de dormir",
+    "Nuque et épaules"
+   ],
    "programmes": []
   },
   {
@@ -12676,6 +16313,23 @@
     "Hanches et fessiers",
     "Gainage et calisthénie"
    ]
+  },
+  {
+   "titre": "ACSM, Stretching and flexibility guidelines update (10 à 30 secondes par étirement, 2 à 3 jours par semaine au moins)",
+   "url": "https://www.acsm.org/blog-detail/acsm-certified-blog/2021/03/18/stretching-and-flexibility-guidelines-update",
+   "type": "Référence professionnelle",
+   "usages": "Construction des entraînements",
+   "exercices": [],
+   "entrainements": [
+    "Échauffement avant effort",
+    "Après le vélo",
+    "Après la course",
+    "Après la muscu",
+    "Hanches et dos",
+    "Soir, avant de dormir",
+    "Nuque et épaules"
+   ],
+   "programmes": []
   },
   {
    "titre": "Compendium 2024, tableau des codes « Conditioning exercise » (valeurs MET)",
