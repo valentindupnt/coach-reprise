@@ -2,11 +2,15 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import Player, { type SessionResult } from './Player';
 import LibraryBrowser from '../components/LibraryBrowser';
 import Stretches from './Stretches';
+import Questionnaire from './Questionnaire';
+import QuickStart from './QuickStart';
+import type { Answers } from '../lib/questionnaire';
 import Feedback, { type FeedbackValue } from './Feedback';
 import { FrozenScreen, SafetyCard } from './Safety';
 import {
   fetchAthlete,
   fetchLibrary,
+  fetchQuestionnaire,
   fetchSwapOptions,
   flushPending,
   newClientId,
@@ -52,6 +56,7 @@ type Screen =
   | { name: 'tabs' }
   | { name: 'player'; session: ProgramSessionKey; resume?: LiveSession }
   | { name: 'cardio' }
+  | { name: 'questionnaire' }
   | { name: 'feedback'; session: SessionKey; played: SessionResult | null }
   | { name: 'result'; result: SubmitResult | null; queued: boolean; pain: number; swapNames: string[]; leveledNames: string[] };
 
@@ -64,6 +69,10 @@ function startOfWeek(d: Date): Date {
 
 export default function AthleteApp({ token }: { token: string }) {
   const [data, setData] = useState<AthleteData | null>(() => readCache(token));
+  const [qState, setQState] = useState<{ answers: Answers; done: boolean } | null>(null);
+  useEffect(() => {
+    fetchQuestionnaire(token).then((q) => setQState({ answers: q.answers as Answers, done: !!q.completed_at })).catch(() => undefined);
+  }, [token]);
   const [library, setLibrary] = useState<Library | null>(() => readLibraryCache(token));
   const [loadError, setLoadError] = useState<string | null>(null);
   const [offline, setOffline] = useState(false);
@@ -230,6 +239,23 @@ export default function AthleteApp({ token }: { token: string }) {
           blocked={(data.blocks ?? []).map((b) => b.exercise_id)}
           onCancel={() => setScreen({ name: 'tabs' })}
           onFinish={(played) => setScreen({ name: 'feedback', session: screen.session, played })}
+        />
+      </main>
+    );
+  }
+
+  if (screen.name === 'questionnaire') {
+    return (
+      <main className="app">
+        <Questionnaire
+          token={token}
+          initial={qState?.answers ?? {}}
+          onCancel={() => setScreen({ name: 'tabs' })}
+          onDone={() => {
+            setQState((q) => ({ answers: q?.answers ?? {}, done: true }));
+            setScreen({ name: 'tabs' });
+            void refresh();
+          }}
         />
       </main>
     );
@@ -499,6 +525,19 @@ export default function AthleteApp({ token }: { token: string }) {
                   </button>
                 </div>
               )}
+
+              {qState && !qState.done && (
+                <div className="card lavender">
+                  <div className="eyebrow">Ton plan</div>
+                  <h3>Réponds à 8 questions</h3>
+                  <p className="small">Niveau, repères, objectif, rythme : ça sert à construire ton programme.</p>
+                  <button className="btn block" onClick={() => setScreen({ name: 'questionnaire' })}>
+                    {Object.keys(qState.answers).length > 0 ? 'Reprendre le questionnaire' : 'Commencer'}
+                  </button>
+                </div>
+              )}
+
+              <QuickStart token={token} onOpen={() => setTab('stretch')} />
 
               <div className="stat-grid">
                 <div className="stat-card">

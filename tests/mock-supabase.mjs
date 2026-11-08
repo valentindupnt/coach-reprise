@@ -54,6 +54,11 @@ export async function startMock(port = 54321) {
 
   const RPC_ARGS = {
     athlete_get: ['p_token'],
+    athlete_get_questionnaire: ['p_token'],
+    athlete_save_questionnaire: ['p_token', 'p_answers', 'p_complete'],
+    athlete_get_favorites: ['p_token'],
+    athlete_set_favorite: ['p_token', 'p_training', 'p_on'],
+    athlete_save_profile: ['p_token', 'p_profile'],
     athlete_submit_workout: ['p_token', 'p_client_id', 'p_session', 'p_pain', 'p_neuro', 'p_items', 'p_comment', 'p_done_at', 'p_rpe', 'p_duration_min', 'p_swaps', 'p_levels'],
     athlete_swap_options: ['p_token', 'p_session', 'p_exercise', 'p_limit'],
     athlete_library: ['p_token'],
@@ -82,7 +87,7 @@ export async function startMock(port = 54321) {
     coach_unlock_day: ['p_athlete', 'p_day'],
   };
   // arguments reçus en JSON : le serveur les attend en jsonb
-  const JSONB_ARGS = new Set(['p_items', 'p_swaps', 'p_ex', 'p_plan', 'p_levels', 'p_profile']);
+  const JSONB_ARGS = new Set(['p_answers', 'p_items', 'p_swaps', 'p_ex', 'p_plan', 'p_levels', 'p_profile']);
 
   function filters(url, allowed) {
     const where = [];

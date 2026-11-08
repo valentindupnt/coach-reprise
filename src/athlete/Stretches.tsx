@@ -2,7 +2,7 @@
 // Contenu identique pour tous : aucune règle par profil. Les sets viennent de athlete_catalog (kind = 'etirement').
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Figure from '../components/Figure';
-import { fetchCatalog, fetchTraining } from '../lib/athleteApi';
+import { fetchCatalog, fetchFavorites, fetchTraining, setFavorite } from '../lib/athleteApi';
 import {
   MODE_LABEL,
   MOMENT_LABEL,
@@ -37,6 +37,13 @@ export default function Stretches({ token }: { token: string }) {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<string | null>(null);
   const [view, setView] = useState<View>({ name: 'list' });
+  const [favs, setFavs] = useState<string[]>([]);
+  useEffect(() => { fetchFavorites(token).then(setFavs).catch(() => undefined); }, [token]);
+  const toggleFav = useCallback(async (id: string) => {
+    const on = !favs.includes(id);
+    setFavs((f) => (on ? [...f, id] : f.filter((x) => x !== id)));
+    try { setFavs(await setFavorite(token, id, on)); } catch { setFavs((f) => (on ? f.filter((x) => x !== id) : [...f, id])); }
+  }, [favs, token]);
 
   useEffect(() => {
     let alive = true;
@@ -70,7 +77,12 @@ export default function Stretches({ token }: { token: string }) {
       <>
         <button className="btn ghost" style={{ alignSelf: 'flex-start' }} onClick={() => setView({ name: 'list' })}>← Les sets</button>
         <div>
-          <div className="eyebrow">Set guidé de {minutesLabel(totalSeconds(segs))}</div>
+          <div className="row between">
+            <div className="eyebrow">Set guidé de {minutesLabel(totalSeconds(segs))}</div>
+            <button className="heart" aria-pressed={favs.includes(t.id)} aria-label={favs.includes(t.id) ? 'Retirer des favoris' : 'Ajouter aux favoris'} onClick={() => void toggleFav(t.id)}>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.6-7 10-7 10z" /></svg>
+            </button>
+          </div>
           <h1 style={{ marginTop: 8 }}>{t.title}</h1>
           {t.description && <p className="muted" style={{ marginTop: 8 }}>{t.description}</p>}
         </div>
@@ -110,13 +122,18 @@ export default function Stretches({ token }: { token: string }) {
         <p className="small muted">Aucun set pour le moment : le contenu doit encore être validé.</p>
       )}
       {sets?.map((s) => (
-        <button key={s.id} className="day-tile" onClick={() => void open(s.id)} disabled={loading !== null}>
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{ fontWeight: 600 }}>{s.title}</div>
-            <div className="small muted">{s.exercise_count} postures · {s.duration_min} min</div>
-          </div>
-          <span className="small muted">{loading === s.id ? '...' : 'Ouvrir'}</span>
-        </button>
+        <div key={s.id} className="row" style={{ gap: 4 }}>
+          <button className="day-tile" style={{ flex: 1 }} onClick={() => void open(s.id)} disabled={loading !== null}>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={{ fontWeight: 500 }}>{s.title}</div>
+              <div className="small muted">{s.exercise_count} postures · {s.duration_min} min</div>
+            </div>
+            <span className="small muted">{loading === s.id ? '...' : 'Ouvrir'}</span>
+          </button>
+          <button className="heart" aria-pressed={favs.includes(s.id)} aria-label={favs.includes(s.id) ? `Retirer ${s.title} des favoris` : `Mettre ${s.title} en favori`} onClick={() => void toggleFav(s.id)}>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.6-7 10-7 10z" /></svg>
+          </button>
+        </div>
       ))}
     </>
   );

@@ -566,6 +566,45 @@ try {
   ok(`les cartes affichent ${nums[0].replace(/\s+/g, ' ')} et ${nums[1]}`);
   await alice.screenshot({ path: SHOTS + 'alice-9-compteur.png', fullPage: true });
 
+  // NOMA : questionnaire de départ
+  console.log('Questionnaire');
+  await alice.reload();
+  await alice.getByRole('heading', { name: 'Bonjour Alice !' }).waitFor();
+  await alice.getByRole('button', { name: /Commencer|Reprendre le questionnaire/ }).first().click();
+  await alice.getByRole('heading', { name: 'Ton niveau en musculation ?' }).waitFor();
+  await alice.getByRole('button', { name: 'Intermédiaire' }).click();
+  await alice.getByRole('button', { name: 'Continuer' }).click();
+  await alice.getByRole('heading', { name: "Tes repères aujourd'hui" }).waitFor();
+  await alice.getByRole('button', { name: '+ Pompes' }).click();
+  await alice.getByRole('button', { name: 'Plus Pompes' }).click();
+  await alice.getByRole('button', { name: 'Continuer' }).click();
+  await alice.getByRole('button', { name: 'Muscu complète' }).click();
+  await alice.getByRole('button', { name: 'Continuer' }).click();
+  await alice.getByRole('button', { name: '4 jours' }).click();
+  await alice.getByRole('button', { name: 'Continuer' }).click();
+  await alice.getByRole('button', { name: '50 min' }).click();
+  await alice.getByRole('button', { name: 'Continuer' }).click();
+  await alice.getByRole('button', { name: 'En salle' }).click();
+  await alice.getByRole('button', { name: 'Continuer' }).click();
+  await alice.getByRole('button', { name: 'Épaules' }).click();
+  await alice.getByRole('button', { name: 'Continuer' }).click();
+  await alice.getByLabel('Taille (cm)').fill('173');
+  await alice.getByLabel('Poids (kg)').fill('74');
+  await alice.getByRole('button', { name: 'Terminer' }).click();
+  await alice.getByRole('heading', { name: "Merci, c'est noté" }).waitFor();
+  const q = (await mock.db.query(`select answers, completed_at from public.athlete_questionnaire`)).rows[0];
+  assert.equal(q.answers.level, 'intermediaire');
+  assert.equal(q.answers.refs.pompes, 11);
+  assert.deepEqual(q.answers.avoid, ['epaules']);
+  assert.ok(q.completed_at);
+  const prof = (await mock.db.query(`select height_cm, weight_kg from public.athlete_profiles`)).rows[0];
+  assert.equal(prof.height_cm, 173);
+  ok('le questionnaire en 8 questions enregistre les réponses et le profil');
+  await alice.getByRole('button', { name: 'Retour au plan' }).click();
+  assert.equal(await alice.getByRole('button', { name: 'Reprendre le questionnaire' }).count(), 0);
+  ok('une fois terminé, le questionnaire ne s\'affiche plus sur le plan');
+
+
   // Organiser sa semaine
   const DAYS = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
   const dow = new Date().getDay();

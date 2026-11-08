@@ -893,4 +893,33 @@ console.log('Remise à zéro');
   ok('reset-alice.sql efface aussi le profil, les tampons et les programmes suivis');
 }
 
+// ---------------------------------------------------------------- NOMA : questionnaire et favoris
+{
+  const token = (await db.query(`select access_token from public.athletes where first_name = 'Alice'`)).rows[0].access_token;
+  const q1 = (await db.query('select public.athlete_save_questionnaire($1,$2::jsonb,false) r', [token, JSON.stringify({ level: 'debutant', refs: { pompes: 12 } })])).rows[0].r;
+  assert.equal(q1.completed_at, null);
+  const q2 = (await db.query('select public.athlete_save_questionnaire($1,$2::jsonb,true) r', [token, JSON.stringify({ goal: 'fessiers', avoid: ['genoux'] })])).rows[0].r;
+  assert.equal(q2.answers.level, 'debutant', 'les réponses précédentes sont gardées');
+  assert.equal(q2.answers.goal, 'fessiers');
+  assert.ok(q2.completed_at, 'questionnaire terminé');
+  const got = (await db.query('select public.athlete_get_questionnaire($1) r', [token])).rows[0].r;
+  assert.equal(got.answers.refs.pompes, 12);
+  await assert.rejects(db.query('select public.athlete_save_questionnaire($1,$2::jsonb,false)', [token, '[1]']));
+  await assert.rejects(db.query('select public.athlete_save_questionnaire($1,$2::jsonb,false)', ['mauvais', '{}']));
+  ok('questionnaire : réponses cumulées, terminé, lisible, entrées invalides refusées');
+
+  const { rows: [tr] } = await db.query(`select id from public.trainings where approved limit 1`);
+  if (tr) {
+    const f1 = (await db.query('select public.athlete_set_favorite($1,$2,true) r', [token, tr.id])).rows[0].r;
+    assert.deepEqual(f1, [tr.id]);
+    const f2 = (await db.query('select public.athlete_set_favorite($1,$2,true) r', [token, tr.id])).rows[0].r;
+    assert.deepEqual(f2, [tr.id], 'pas de doublon');
+    assert.deepEqual((await db.query('select public.athlete_get_favorites($1) r', [token])).rows[0].r, [tr.id]);
+    assert.deepEqual((await db.query('select public.athlete_set_favorite($1,$2,false) r', [token, tr.id])).rows[0].r, []);
+    ok('favoris : ajout sans doublon, lecture, retrait');
+  }
+  await assert.rejects(db.query('select public.athlete_set_favorite($1,$2,true)', [token, 'inconnu']));
+  ok('favoris : un entraînement inconnu ou non validé est refusé');
+}
+
 console.log(`\n${passed} vérifications réussies.`);

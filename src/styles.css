@@ -238,3 +238,24 @@ table.history th { font-weight: 700; color: var(--muted); font-size: 13px; borde
 .seg-switch { display: flex; gap: 8px; }
 .seg-switch button { flex: 1; min-height: 44px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-weight: 500; font-size: 14px; }
 .seg-switch button[aria-pressed='true'] { background: var(--ink); border-color: var(--ink); color: #fff; }
+
+/* NOMA : questionnaire */
+.option { display: flex; align-items: center; gap: 12px; width: 100%; padding: 16px 20px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); font-weight: 500; font-size: 15px; text-align: left; min-height: 56px; }
+.option[aria-pressed='true'] { background: var(--pink); border-color: var(--pink); }
+.tick { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid var(--ink); color: #fff; }
+.tick.on { background: var(--ink); }
+.seg-bar { display: flex; gap: 4px; }
+.seg-bar span { flex: 1; height: 4px; border-radius: 999px; background: var(--line); }
+.seg-bar span.on { background: var(--ink); }
+.ref-list { display: flex; flex-direction: column; background: var(--surface); border-radius: 24px; padding: 4px 16px; }
+.ref-list:empty { display: none; }
+.ref-row { display: flex; align-items: center; gap: 8px; min-height: 64px; border-bottom: 1px solid var(--line); }
+.ref-row:last-child { border-bottom: 0; }
+.ref-val { min-width: 56px; text-align: center; font-size: 17px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.ref-val small { font-size: 12px; color: var(--muted); font-weight: 400; margin-left: 2px; }
+.mini { flex: none; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); font-size: 20px; line-height: 1; }
+.rm { flex: none; width: 32px; height: 44px; border: 0; background: transparent; color: var(--muted); font-size: 20px; }
+.q-bottom { position: fixed; left: 16px; right: 16px; bottom: calc(24px + var(--safe-bottom)); max-width: 448px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px; }
+.heart { flex: none; width: 44px; height: 44px; border: 0; background: transparent; display: inline-flex; align-items: center; justify-content: center; }
+.heart svg { width: 24px; height: 24px; fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.heart[aria-pressed='true'] svg { fill: var(--accent); stroke: var(--accent); }

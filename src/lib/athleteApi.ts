@@ -210,3 +210,24 @@ export function newClientId(): string {
   if (typeof crypto !== 'undefined' && 'randomUUID' in crypto) return crypto.randomUUID();
   return `${Date.now()}-${Math.random().toString(36).slice(2)}`;
 }
+
+// ---------- NOMA : questionnaire de départ et favoris ----------
+
+export interface QuestionnaireState {
+  answers: Record<string, unknown>;
+  completed_at: string | null;
+}
+
+export const fetchQuestionnaire = (token: string) => rpc<QuestionnaireState>('athlete_get_questionnaire', { p_token: token });
+
+export const saveQuestionnaire = (token: string, answers: Record<string, unknown>, complete = false) =>
+  rpc<QuestionnaireState>('athlete_save_questionnaire', { p_token: token, p_answers: answers, p_complete: complete });
+
+export const fetchFavorites = (token: string) => rpc<string[]>('athlete_get_favorites', { p_token: token });
+
+export const setFavorite = (token: string, trainingId: string, on: boolean) =>
+  rpc<string[]>('athlete_set_favorite', { p_token: token, p_training: trainingId, p_on: on });
+
+/** Taille, poids et année de naissance : profil existant. */
+export const saveBodyProfile = (token: string, p: { height_cm?: number | null; weight_kg?: number | null; birth_year?: number | null }) =>
+  rpc<unknown>('athlete_save_profile', { p_token: token, p_profile: p });
